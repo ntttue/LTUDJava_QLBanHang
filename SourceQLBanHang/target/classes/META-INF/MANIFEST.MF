@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: sshahine
+Created-By: 1.8.0_66 (Oracle Corporation 25.66-b18)
+Build-Date: 2016-08-18
+Build-Time: 10:47:29.953+0300
+Build-Revision: 91ae60ec05a261adfbb39607c2536c6b2cb1bfb9
+Specification-Title: jfoenix
+Specification-Version: 0.0.0-SNAPSHOT
+Implementation-Title: jfoenix
+Implementation-Version: 0.0.0-SNAPSHOT
+
