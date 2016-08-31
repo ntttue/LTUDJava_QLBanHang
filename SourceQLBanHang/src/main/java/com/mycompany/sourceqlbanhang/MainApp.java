@@ -20,13 +20,13 @@ public class MainApp extends Application {
 //        stage.setTitle("JavaFX and Maven");
 //        stage.setScene(scene);
 //        stage.show();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxmlHeThong/fxmlThemNguoiDung.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLDangNhap.fxml"));
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/fxmlthemnguoidung.css");
+        scene.getStylesheets().add("/styles/fxmldangnhap.css");
 
-        stage.setTitle("THÊM NGƯỜI DÙNG");
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("QUáº¢N LÃ BÃN HÃ€NG");
+        stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
         stage.show();
     }
