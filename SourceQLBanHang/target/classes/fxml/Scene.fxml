@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.sourceqlbanhang.FXMLController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <JFXButton blendMode="GREEN" buttonType="RAISED" cache="true" cacheHint="QUALITY" defaultButton="true" depthTest="ENABLE" layoutX="80.0" layoutY="75.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.72" prefHeight="54.0" prefWidth="175.0" ripplerFill="#5e65c9" style="-fx-background-color: #D9E2F3;" text="Hello Ducks">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+    </children>
+</AnchorPane>
