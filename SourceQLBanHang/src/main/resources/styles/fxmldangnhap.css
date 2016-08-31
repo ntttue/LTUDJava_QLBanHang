@@ -1,0 +1,35 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #EDEDED;
+    width: 700px;
+    height: 500px;
+}
+#paneImage{
+    -fx-background-image:  url("../images/loginICon.png") ;
+    -fx-background-size: cover;
+}
+#lbname{
+    -fx-font: 16px Georgia, Serif;
+    -fx-text-fill: #333333;
+}
+.textField{
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 0px;
+    -fx-border-width: 1px;
+    /*-fx-border-style: ridge;*/
+    -fx-border-radius: 3px;
+    width: 225px;
+    -fx-background-color: #FBFBFB;
+}
+.mybutton{
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 1px;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 3px;
+    width: 225px;
+    -fx-background-color: #817E7C;
+    -fx-text-fill: #FEFFF3;
+}
