@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TitledPane alignment="TOP_LEFT" animated="false" contentDisplay="TOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="442.0" text="Thêm nhóm hàng hóa" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <SplitPane orientation="VERTICAL" prefHeight="300.0" prefWidth="440.0">
+         <items>
+            <TitledPane animated="false" prefHeight="264.0" prefWidth="440.0" text="Thông tin hàng hóa">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="293.0" prefWidth="438.0">
+                     <children>
+                        <Label layoutX="56.0" layoutY="31.0" prefHeight="17.0" prefWidth="40.0" text="Mã" />
+                        <Label layoutX="56.0" layoutY="74.0" prefHeight="17.0" prefWidth="40.0" text="Tên" />
+                        <Label layoutX="53.0" layoutY="115.0" prefHeight="17.0" prefWidth="65.0" text="Ghi chú" />
+                        <JFXTextField layoutX="120.0" layoutY="16.0" maxWidth="274.0" minWidth="274.0" prefHeight="31.0" prefWidth="275.0" />
+                        <JFXTextField layoutX="120.0" layoutY="59.0" prefWidth="275.0" />
+                        <JFXTextField layoutX="120.0" layoutY="100.0" prefWidth="275.0" />
+                        <JFXCheckBox layoutX="117.0" layoutY="147.0" prefHeight="17.0" prefWidth="102.0" text="Còn quản lý" />
+                        <JFXButton fx:id="btnLuu" layoutX="146.0" layoutY="183.0" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #0080ff;" text="Lưu" textAlignment="CENTER" />
+                        <JFXButton layoutX="280.0" layoutY="183.0" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #ff0000;" text="Đóng" />
+                        <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="#151417" layoutX="151.0" layoutY="184.0" />
+                        <SVGPath content="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z" fill="#141414" layoutX="288.0" layoutY="184.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </items>
+      </SplitPane>
+   </content>
+</TitledPane>

@@ -20,7 +20,7 @@ public class MainApp extends Application {
 //        stage.setTitle("JavaFX and Maven");
 //        stage.setScene(scene);
 //        stage.show();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLDangNhap.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLThemNhomHangHoa.fxml"));
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/fxmldangnhap.css");
