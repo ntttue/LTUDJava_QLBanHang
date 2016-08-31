@@ -25,7 +25,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/fxmldangnhap.css");
 
-        stage.setTitle("QUáº¢N LÃ BÃN HÃ€NG");
+        stage.setTitle("QUÃ¡ÂºÂ¢N LÃƒÂ BÃƒÂN HÃƒâ‚¬NG");
         stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
         stage.show();

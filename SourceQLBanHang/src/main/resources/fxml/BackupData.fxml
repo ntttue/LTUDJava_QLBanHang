@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
@@ -15,20 +16,23 @@
         <URL value="@/styles/backupdata.css" />
     </stylesheets>
    <children>
-      <Text fill="#505bd0" layoutX="204.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sao lưu dự phòng dữ liệu" textOrigin="CENTER">
+      <TextField layoutX="116.0" layoutY="153.0" prefHeight="25.0" prefWidth="429.0" text="D:\Backup" />
+      <TextField layoutX="116.0" layoutY="114.0" prefHeight="25.0" prefWidth="429.0" text="QLBH.31.08.16 10.06.bak" />
+      <ProgressBar layoutX="116.0" layoutY="74.0" prefHeight="25.0" prefWidth="429.0" progress="0.6" />
+      <JFXButton alignment="CENTER_RIGHT" layoutX="457.0" layoutY="202.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#9e6868" style="-fx-background-color: #e9ebee;" text="Đóng" wrapText="true" />
+      <JFXButton alignment="CENTER_RIGHT" layoutX="352.0" layoutY="202.0" prefHeight="30.0" prefWidth="90.0" ripplerFill="#c98c8c" style="-fx-background-color: #e9ebee;" text="Thực hiện" />
+      <JFXCheckBox layoutX="116.0" layoutY="208.0" text="Ghi đè tập tin cũ" />
+      <Text layoutX="30.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường dẫn" />
+      <Text layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên tập tin" />
+      <Text layoutX="30.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiến trình" />
+      <Text fill="#505bd0" layoutX="209.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sao lưu dự phòng dữ liệu" textOrigin="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="35.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiến trình" />
-      <Text layoutX="27.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên tập tin" />
-      <Text layoutX="25.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường dẫn" />
-      <JFXRippler layoutX="343.0" layoutY="156.0" prefHeight="32.0" prefWidth="32.0" ripplerFill="#6739a8" />
-      <JFXCheckBox layoutX="111.0" layoutY="215.0" text="Ghi đè tập tin cũ" />
-      <JFXButton layoutX="393.0" layoutY="211.0" text="Thực hiện" />
-      <JFXButton layoutX="494.0" layoutY="211.0" text="Đóng" />
-      <ProgressBar layoutX="111.0" layoutY="81.0" prefHeight="25.0" prefWidth="429.0" progress="0.6" />
-      <TextField layoutX="111.0" layoutY="121.0" prefHeight="25.0" prefWidth="429.0" />
-      <TextField layoutX="111.0" layoutY="160.0" prefHeight="25.0" prefWidth="429.0" />
+      <Text layoutX="319.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="60%" />
+      <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#30d740" layoutX="356.0" layoutY="205.0" />
+      <SVGPath content="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12zm8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8z" fill="#eea30c" layoutX="465.0" layoutY="205.0" />
+      <SVGPath content="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" fill="#b5f228" layoutX="520.0" layoutY="154.0" />
    </children>
 </AnchorPane>
