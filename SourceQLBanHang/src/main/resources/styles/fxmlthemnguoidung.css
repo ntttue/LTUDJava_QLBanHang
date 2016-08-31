@@ -1,0 +1,46 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.lbHeader{
+    -fx-background-color: #4F95D2;
+    -fx-text-fill: #f5f4f4;
+    -fx-alignment: CENTER;
+    -fx-font: 20px ;
+}
+.lbInfor{
+    -fx-max-height: 27px;
+    -fx-max-width: 90px;
+    -fx-min-height: 27px;
+    -fx-min-width: 90px;
+}
+.textField{
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 0px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    width: 225px;
+    -fx-background-color: #FBFBFB;
+    -fx-min-height: 30px;
+
+}
+#paneInfor{
+    -fx-border-width: 0 0 0 1px;
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 0px;
+    -fx-border-width: 1px;
+}
+.lbred{
+    -fx-text-fill: red;
+}
+.btn{
+     -fx-border-color: #DADADA;
+    -fx-border-insets: 1px;
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 3px;
+    -fx-background-color: #4F95D2;
+    -fx-text-fill: #FEFFF3;
+}

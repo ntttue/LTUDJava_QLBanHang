@@ -1,2 +1,5 @@
-com\mycompany\sourceqlbanhang\FXMLController.class
 com\mycompany\sourceqlbanhang\MainApp.class
+HeThong\FxmlThemNguoiDungController.class
+com\mycompany\sourceqlbanhang\BackupDataController.class
+com\mycompany\sourceqlbanhang\FXMLDangNhapController.class
+com\mycompany\sourceqlbanhang\FXMLController.class
