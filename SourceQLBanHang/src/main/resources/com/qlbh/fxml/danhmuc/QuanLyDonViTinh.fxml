@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0"
+	styleClass="mainFxmlClass" stylesheets="@../../css/quanlydonvitinh.css"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<TableView layoutX="14.0" layoutY="14.0" prefHeight="370.0"
+			prefWidth="576.0">
+			<columns>
+				<TableColumn prefWidth="75.0" text="Mã" />
+				<TableColumn prefWidth="75.0" text="Tên" />
+				<TableColumn prefWidth="75.0" text="Ghi chú" />
+				<TableColumn prefWidth="75.0" text="Còn quản lý" />
+			</columns>
+		</TableView>
+	</children>
+</AnchorPane>
