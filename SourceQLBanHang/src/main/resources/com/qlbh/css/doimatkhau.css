@@ -1,4 +1,14 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+#paneIcon{
+	 -fx-background-image:  url("../images/changePass.png") ;
+    -fx-background-size: cover;
+}
 .lblTitle{
 	-fx-font: 16.0px Georgia, Serif;
     -fx-text-fill: #333333;
@@ -14,11 +24,17 @@
 }
 .okButton{
 	-fx-background-color: #e9ebee;
+	-fx-border-color: #DADADA;
 	-fx-border-radius: 3.0px;
+	With:105px;
+	Height: 40px;
 	-fx-graphic: url("../images/ok.png");
 }
 .cancelButton{
 	-fx-background-color: #e9ebee;
+	-fx-border-color: #DADADA;
+	With:105px;
+	Height: 40px;
 	-fx-border-radius: 2.0px;
 	-fx-graphic: url("../images/cancel.png");
 }
