@@ -1,0 +1,56 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #FFFFFF;
+}
+.paneInfor{
+    -fx-border-width: 0 0 0 1px;
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 0px;
+    -fx-border-width: 1px;
+}
+.lbHeader{
+    -fx-background-color: #4F95D2;
+    -fx-text-fill: #f5f4f4;
+    -fx-alignment: CENTER;
+    -fx-font: 20px ;
+}
+.textField{
+    -fx-border-color: #DADADA;
+    -fx-border-insets: 0.0px;
+    -fx-border-width: 1.0px;
+    -fx-border-radius: 3.0px;
+    -fx-pref-width:  260.0px;
+    -fx-min-width: 260px;
+    -fx-max-width: 260px;
+    -fx-background-color: #FBFBFB;
+}
+.cbx{
+	 -fx-border-color: #DADADA;
+    -fx-border-insets: 0.0px;
+    -fx-border-width: 1.0px;
+    -fx-border-radius: 3.0px;
+    -fx-pref-width:  260.0px;
+    -fx-min-width: 260px;
+    -fx-max-width: 260px;
+    -fx-background-color: #FBFBFB;
+	-fx-pref-height: 31.0px;
+}
+.okButton{
+	-fx-background-color: #e9ebee;
+	-fx-border-color: #DADADA;
+	-fx-border-radius: 3.0px;
+	-fx-pref-width: 105px;
+	-fx-pref-height: 40px;
+	-fx-graphic: url("../images/ok.png");
+}
+.cancelButton{
+	-fx-background-color: #e9ebee;
+	-fx-border-color: #DADADA;
+	-fx-pref-width: 105px;
+	-fx-pref-height: 40px;
+	-fx-border-radius: 2.0px;
+	-fx-graphic: url("../images/cancel.png");
+}
