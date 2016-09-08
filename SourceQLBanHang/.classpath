@@ -13,6 +13,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Desktop/HCDH/HK2-2016/LapTrinhUngDungJava/DoAn/Source/Eclipse/LTUDJava_QLBanHang/lib/jfoenix.jar"/>
+	<classpathentry kind="lib" path="../lib/jfoenix.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
