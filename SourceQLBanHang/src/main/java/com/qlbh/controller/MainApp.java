@@ -15,9 +15,9 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/chucnang/LichSuNhapXuatHangHoa.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../fxml/danhmuc/ThemNhanVien.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Lịch sử nhập xuất hàng hóa");
+			primaryStage.setTitle("Thêm nhân viên");
 			primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.setScene(scene);
 			primaryStage.show();
