@@ -15,9 +15,9 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../fxml/danhmuc/ThemBoPhanCongTy.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Đổi mật khẩu");
+			primaryStage.setTitle("Thêm bộ phận");
 			primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.setScene(scene);
 			primaryStage.show();
