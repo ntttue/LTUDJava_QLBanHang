@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="263.0" prefWidth="391.0" stylesheets="@../../css/doimatkhau.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Pane id="paneIcon" layoutX="25.0" layoutY="-1.0" prefHeight="62.0" prefWidth="66.0" />
+		<Label id="lblTitle" layoutX="155.0" layoutY="11.0" styleClass="lblTitle" text="THAY ĐỔI MẬT KHẨU" />
+		<Label layoutX="21.0" layoutY="65.0" prefHeight="25.0" prefWidth="98.0" text="Mật khẩu cũ" />
+		<Label layoutX="21.0" layoutY="106.0" prefHeight="25.0" prefWidth="98.0" text="Mật khẩu mới" />
+		<Label layoutX="21.0" layoutY="152.0" prefHeight="25.0" prefWidth="106.0" text="Nhập lại mật khẩu" />
+		<JFXTextField layoutX="134.0" layoutY="56.0" maxWidth="221.0" minWidth="221.0" prefHeight="31.0" prefWidth="221.0" styleClass="textField" />
+		<JFXTextField layoutX="134.0" layoutY="99.0" maxWidth="221.0" minWidth="221.0" prefHeight="31.0" prefWidth="221.0" styleClass="textField" />
+		<JFXTextField layoutX="134.0" layoutY="145.0" maxWidth="221.0" minWidth="221.0" prefHeight="31.0" prefWidth="221.0" styleClass="textField" />
+		<JFXButton buttonType="RAISED" layoutX="134.0" layoutY="195.0" prefHeight="39.0" prefWidth="106.0" styleClass="okButton" text="Cập nhật" />
+		<JFXButton buttonType="RAISED" layoutX="249.0" layoutY="195.0" prefHeight="39.0" prefWidth="106.0" styleClass="cancelButton" text="Thoát" />
+	</children>
+	
+</AnchorPane>

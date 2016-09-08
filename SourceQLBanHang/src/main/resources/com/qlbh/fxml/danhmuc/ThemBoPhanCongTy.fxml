@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="302.0" prefWidth="391.0" stylesheets="@../../css/thembophancongty.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Pane id="paneIcon" layoutX="26.0" layoutY="1.0" prefHeight="62.0" prefWidth="66.0" />
+		<Label id="lblTitle" layoutX="139.0" layoutY="14.0" prefHeight="33.0" prefWidth="152.0" styleClass="lblTitle" text="THÊM BỘ PHẬN" />
+		<Label layoutX="21.0" layoutY="65.0" prefHeight="25.0" prefWidth="79.0" text="Mã" />
+		<Label layoutX="21.0" layoutY="106.0" prefHeight="25.0" prefWidth="79.0" text="Tên bộ phận" />
+		<Label layoutX="21.0" layoutY="158.0" prefHeight="25.0" prefWidth="79.0" text="Ghi chú" />
+		<JFXTextField layoutX="114.0" layoutY="56.0" maxWidth="221.0" minWidth="221.0" prefHeight="31.0" prefWidth="221.0" styleClass="textField" />
+		<JFXTextField layoutX="114.0" layoutY="99.0" maxWidth="221.0" minWidth="221.0" prefHeight="31.0" prefWidth="221.0" styleClass="textField" />
+		<JFXButton buttonType="RAISED" layoutX="114.0" layoutY="220.0" prefHeight="39.0" prefWidth="106.0" styleClass="okButton" text="Cập nhật" />
+		<JFXButton buttonType="RAISED" layoutX="229.0" layoutY="220.0" prefHeight="39.0" prefWidth="106.0" styleClass="cancelButton" text="Thoát" />
+      <JFXTextArea layoutX="114.0" layoutY="146.0" maxWidth="221.0" minWidth="192.0" prefHeight="48.0" prefWidth="221.0" styleClass="textField" />
+	</children>
+	
+</AnchorPane>
