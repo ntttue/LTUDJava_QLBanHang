@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="519.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="196.0" layoutY="62.0" prefHeight="138.0" prefWidth="452.0" style="-fx-background-color: #e0e0e0;" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="62.0">
+         <children>
+            <Text layoutX="10.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tùy chọn">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <JFXRadioButton layoutX="15.0" layoutY="43.0" text="Bỏ qua nếu tồn tại" />
+            <JFXRadioButton layoutX="15.0" layoutY="76.0" text="Cập nhật nếu tồn tại" />
+            <JFXRadioButton layoutX="15.0" layoutY="107.0" text="Ngưng lại nếu tồn tại" />
+         </children>
+      </Pane>
+      <Pane layoutX="6.0" layoutY="6.0" prefHeight="475.0" prefWidth="183.0" style="-fx-background-color: #283593;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="198.0" layoutY="216.0" prefHeight="244.0" prefWidth="452.0" style="-fx-background-color: #e0e0e0;">
+         <children>
+            <JFXRadioButton layoutX="15.0" layoutY="96.0" text="Nhà cung cấp" />
+            <JFXRadioButton layoutX="15.0" layoutY="69.0" text="Khách hàng" />
+            <JFXRadioButton layoutX="15.0" layoutY="40.0" text="Khu vực" />
+            <JFXRadioButton layoutX="15.0" layoutY="213.0" text="Hàng hóa" />
+            <JFXRadioButton layoutX="15.0" layoutY="184.0" text="Đơn vị" />
+            <JFXRadioButton layoutX="15.0" layoutY="155.0" text="Kho hàng" />
+            <JFXRadioButton layoutX="15.0" layoutY="124.0" text="Nhóm hàng" />
+            <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chọn Dạng Dữ Liệu Được Nhập">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text fill="#4854dd" layoutX="204.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File Excel Mẫu">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text fill="#3e3ec9" layoutX="320.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập danh mục từ file excel">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Pane layoutY="475.0" prefHeight="62.0" prefWidth="662.0" style="-fx-background-color: #e0e0e0;">
+         <children>
+            <JFXButton layoutX="556.0" layoutY="12.0" prefHeight="30.0" prefWidth="85.0" style="-fx-border-width: 0.5; -fx-border-color: #bdbdbd;" text="Hủy Bỏ" />
+            <JFXButton layoutX="430.0" layoutY="12.0" prefHeight="30.0" prefWidth="85.0" style="-fx-border-width: 0.5; -fx-border-color: #bdbdbd;" text="Tiếp tục &gt;" />
+            <JFXButton layoutX="331.0" layoutY="12.0" prefHeight="30.0" prefWidth="85.0" style="-fx-border-width: 0.5; -fx-border-color: #bdbdbd;" text="&lt; Quay lại" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
