@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="237.0" layoutY="62.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="100.0" prefWidth="506.0" BorderPane.alignment="CENTER">
+               <children>
+                  <RadioButton layoutX="99.0" layoutY="42.0" mnemonicParsing="false" text="Thời gian" AnchorPane.leftAnchor="100.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton layoutX="31.0" layoutY="42.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="71.0" text="Tất cả" AnchorPane.leftAnchor="20.0">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </RadioButton>
+                  <Label layoutX="215.0" layoutY="42.0" text="Từ">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker layoutX="256.0" layoutY="38.0" prefHeight="25.0" prefWidth="141.0" />
+                  <Label layoutX="406.0" layoutY="42.0" text="Đến">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker layoutX="461.0" layoutY="38.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView layoutX="192.0" layoutY="33.0" prefHeight="400.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="86.0" text="STT" />
+                      <TableColumn prefWidth="208.0" text="Chứng từ" />
+                        <TableColumn prefWidth="134.0" text="Ngày" />
+                        <TableColumn prefWidth="188.0" text="Loại chứng từ" />
+                        <TableColumn minWidth="0.0" prefWidth="187.0" text="Thành tiền" />
+                        <TableColumn prefWidth="196.0" text="Diễn giải" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

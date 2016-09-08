@@ -1,4 +1,4 @@
-package com.qlbh.controller;
+package com.qlbh.controller.chucnang;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class MainApp extends Application {
+public class ChungTuController extends Application{
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -17,7 +17,7 @@ public class MainApp extends Application {
 		try {
 			root = FXMLLoader.load(getClass().getResource("../fxml/chucnang/ChungTu.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Đăng nhập");
+			primaryStage.setTitle("Chứng từ");
 			primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -25,8 +25,9 @@ public class MainApp extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
