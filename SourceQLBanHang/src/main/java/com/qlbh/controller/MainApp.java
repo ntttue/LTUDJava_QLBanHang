@@ -17,7 +17,7 @@ public class MainApp extends Application {
 		try {
 			root = FXMLLoader.load(getClass().getResource("../fxml/chucnang/ChungTu.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Đăng nhập");
+			primaryStage.setTitle("Chứng từ");
 			primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.setScene(scene);
 			primaryStage.show();
