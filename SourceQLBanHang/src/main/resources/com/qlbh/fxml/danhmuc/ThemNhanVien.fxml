@@ -39,6 +39,6 @@
 			</children>
 		</Pane>
 		<JFXButton buttonType="RAISED" layoutX="127.0" layoutY="388.0" prefHeight="40.0" prefWidth="108.0" ripplerFill="#0bd3a1" styleClass="okButton" text="Thêm" />
-		<JFXButton buttonType="RAISED" layoutX="273.0" layoutY="388.0" prefHeight="40.0" prefWidth="116.0" ripplerFill="#d1260d" styleClass="cancelButton" text="Thoát" />
+		<JFXButton buttonType="RAISED" layoutX="273.0" layoutY="388.0" prefHeight="40.0" prefWidth="116.0" ripplerFill="#79261b" styleClass="cancelButton" text="Thoát" />
 	</children>
 </AnchorPane>
