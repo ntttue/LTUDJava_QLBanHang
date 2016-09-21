@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Nguoidung" table="nguoidung" catalog="qlbh" optimistic-lock="version">
+        <id name="tennd" type="string">
+            <column name="tennd" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vaitro" class="com.qlbh.pojo.Vaitro" fetch="select">
+            <column name="mavaitro" />
+        </many-to-one>
+        <property name="matkhau" type="string">
+            <column name="matkhau" />
+        </property>
+        <property name="manhanvien" type="java.lang.Short">
+            <column name="manhanvien" />
+        </property>
+        <property name="diengiai" type="string">
+            <column name="diengiai" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Khachhang" table="khachhang" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="loaikhachhang" class="com.qlbh.pojo.Loaikhachhang" fetch="select">
+            <column name="maloaikh" />
+        </many-to-one>
+        <property name="makh" type="string">
+            <column name="makh" not-null="true" />
+        </property>
+        <property name="makhuvuc" type="java.lang.Short">
+            <column name="makhuvuc" />
+        </property>
+        <property name="ten" type="string">
+            <column name="ten" />
+        </property>
+        <property name="diachi" type="string">
+            <column name="diachi" />
+        </property>
+        <property name="masothue" type="string">
+            <column name="masothue" />
+        </property>
+        <property name="dienthoai" type="string">
+            <column name="dienthoai" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="taikhoan" type="string">
+            <column name="taikhoan" />
+        </property>
+        <property name="nganhang" type="string">
+            <column name="nganhang" />
+        </property>
+        <property name="gioihanno" type="big_decimal">
+            <column name="gioihanno" precision="30" scale="10" />
+        </property>
+        <property name="nohientai" type="big_decimal">
+            <column name="nohientai" precision="30" scale="10" />
+        </property>
+        <property name="yahoo" type="string">
+            <column name="yahoo" />
+        </property>
+        <property name="skype" type="string">
+            <column name="skype" />
+        </property>
+        <property name="nguoilienhe" type="string">
+            <column name="nguoilienhe" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+        <set name="phieuxuats" table="phieuxuat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="makhachhang" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Phieuxuat" />
+        </set>
+    </class>
+</hibernate-mapping>

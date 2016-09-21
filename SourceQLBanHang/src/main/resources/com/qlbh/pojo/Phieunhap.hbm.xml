@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Phieunhap" table="phieunhap" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
+            <column name="makho" />
+        </many-to-one>
+        <many-to-one name="nhacungcap" class="com.qlbh.pojo.Nhacungcap" fetch="select">
+            <column name="manhacc" />
+        </many-to-one>
+        <property name="manvn" type="java.lang.Integer">
+            <column name="manvn" />
+        </property>
+        <property name="ngaynhap" type="date">
+            <column name="ngaynhap" length="10" />
+        </property>
+        <property name="tongtien" type="java.lang.Double">
+            <column name="tongtien" precision="22" scale="0" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+        <set name="chitietphieunhaps" table="chitietphieunhap" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maphieunhap" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Chitietphieunhap" />
+        </set>
+    </class>
+</hibernate-mapping>

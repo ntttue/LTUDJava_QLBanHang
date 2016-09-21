@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Phieuxuat" table="phieuxuat" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="khachhang" class="com.qlbh.pojo.Khachhang" fetch="select">
+            <column name="makhachhang" />
+        </many-to-one>
+        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
+            <column name="makho" />
+        </many-to-one>
+        <property name="diachi" type="string">
+            <column name="diachi" />
+        </property>
+        <property name="ngaygiao" type="date">
+            <column name="ngaygiao" length="10" />
+        </property>
+        <property name="manvbh" type="java.lang.Integer">
+            <column name="manvbh" />
+        </property>
+        <property name="ngaylap" type="date">
+            <column name="ngaylap" length="10" />
+        </property>
+        <property name="tongtien" type="java.lang.Double">
+            <column name="tongtien" precision="22" scale="0" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maphieuxuat" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Chitietphieuxuat" />
+        </set>
+    </class>
+</hibernate-mapping>

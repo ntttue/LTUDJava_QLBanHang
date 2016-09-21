@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Chitietphieuxuat" table="chitietphieuxuat" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hanghoa" class="com.qlbh.pojo.Hanghoa" fetch="select">
+            <column name="mahanghoa" />
+        </many-to-one>
+        <many-to-one name="phieuxuat" class="com.qlbh.pojo.Phieuxuat" fetch="select">
+            <column name="maphieuxuat" />
+        </many-to-one>
+        <property name="soluong" type="java.lang.Integer">
+            <column name="soluong" />
+        </property>
+        <property name="dongia" type="java.lang.Double">
+            <column name="dongia" precision="22" scale="0" />
+        </property>
+        <property name="thanhtien" type="java.lang.Double">
+            <column name="thanhtien" precision="22" scale="0" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+    </class>
+</hibernate-mapping>

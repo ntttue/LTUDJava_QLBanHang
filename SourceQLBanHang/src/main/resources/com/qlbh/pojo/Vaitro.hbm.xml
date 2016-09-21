@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Vaitro" table="vaitro" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vaitro" class="com.qlbh.pojo.Vaitro" fetch="select">
+            <column name="mavaitrocha" />
+        </many-to-one>
+        <property name="ten" type="string">
+            <column name="ten" />
+        </property>
+        <property name="diengiai" type="string">
+            <column name="diengiai" />
+        </property>
+        <property name="truycap" type="java.lang.Byte">
+            <column name="truycap" />
+        </property>
+        <property name="them" type="java.lang.Byte">
+            <column name="them" />
+        </property>
+        <property name="xem" type="java.lang.Byte">
+            <column name="xem" />
+        </property>
+        <property name="xoa" type="java.lang.Byte">
+            <column name="xoa" />
+        </property>
+        <property name="sua" type="java.lang.Byte">
+            <column name="sua" />
+        </property>
+        <property name="in" type="java.lang.Byte">
+            <column name="in" />
+        </property>
+        <property name="nhap" type="java.lang.Byte">
+            <column name="nhap" />
+        </property>
+        <property name="xuat" type="java.lang.Byte">
+            <column name="xuat" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+        <set name="nguoidungs" table="nguoidung" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mavaitro" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Nguoidung" />
+        </set>
+        <set name="vaitros" table="vaitro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mavaitrocha" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Vaitro" />
+        </set>
+    </class>
+</hibernate-mapping>

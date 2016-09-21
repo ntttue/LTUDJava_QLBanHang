@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Nhacungcap" table="nhacungcap" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="khuvuc" class="com.qlbh.pojo.Khuvuc" fetch="select">
+            <column name="makhuvuc" />
+        </many-to-one>
+        <property name="ten" type="string">
+            <column name="ten" />
+        </property>
+        <property name="diachi" type="string">
+            <column name="diachi" />
+        </property>
+        <property name="masothue" type="string">
+            <column name="masothue" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" />
+        </property>
+        <property name="taikhoan" type="string">
+            <column name="taikhoan" />
+        </property>
+        <property name="nganhang" type="string">
+            <column name="nganhang" />
+        </property>
+        <property name="manguoilienhe" type="java.lang.Integer">
+            <column name="manguoilienhe" />
+        </property>
+        <property name="chucvu" type="string">
+            <column name="chucvu" />
+        </property>
+        <property name="activite" type="java.lang.Byte">
+            <column name="activite" />
+        </property>
+        <set name="hanghoas" table="hanghoa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="manhacc" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Hanghoa" />
+        </set>
+        <set name="phieunhaps" table="phieunhap" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="manhacc" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Phieunhap" />
+        </set>
+    </class>
+</hibernate-mapping>
