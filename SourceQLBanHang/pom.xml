@@ -16,6 +16,11 @@
 			</plugin>
 		</plugins>
 	</build>
+	<resources>
+		<resource>
+			<directory>src/main/resources/com/qlbh</directory>
+		</resource>
+	</resources>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>

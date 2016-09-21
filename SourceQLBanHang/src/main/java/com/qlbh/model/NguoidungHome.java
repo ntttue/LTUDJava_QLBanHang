@@ -7,11 +7,16 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Session;
+import org.hibernate.mapping.List;
 
 import com.qlbh.pojo.Nguoidung;
+import com.qlbh.util.HibernateUtil;
+import org.hibernate.Query;
 
 /**
  * Home object for domain model class Nguoidung.
+ * 
  * @see com.qlbh.model.Nguoidung
  * @author Hibernate Tools
  */
@@ -22,6 +27,7 @@ public class NguoidungHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	Session session = HibernateUtil.getSessionFactory().openSession();
 
 	public void persist(Nguoidung transientInstance) {
 		log.debug("persisting Nguoidung instance");
@@ -67,5 +73,15 @@ public class NguoidungHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+
+	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
+		Nguoidung nd = new Nguoidung();
+		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :tennd";
+		Query query = session.createQuery(hql);
+		query.setParameter("tennd", tenDangNhap);
+		query.setParameter("tennd", matKhau);
+		query.list();
+		return nd;
 	}
 }
