@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Khachhang" table="khachhang" catalog="qlbh" optimistic-lock="version">
         <id name="ma" type="int">
             <column name="ma" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="khuvuc" class="com.qlbh.pojo.Khuvuc" fetch="select">
+            <column name="makhuvuc" />
+        </many-to-one>
         <many-to-one name="loaikhachhang" class="com.qlbh.pojo.Loaikhachhang" fetch="select">
             <column name="maloaikh" />
         </many-to-one>
         <property name="makh" type="string">
             <column name="makh" not-null="true" />
-        </property>
-        <property name="makhuvuc" type="java.lang.Short">
-            <column name="makhuvuc" />
         </property>
         <property name="ten" type="string">
             <column name="ten" />

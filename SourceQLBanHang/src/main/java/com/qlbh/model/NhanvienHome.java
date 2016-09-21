@@ -8,23 +8,23 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.qlbh.pojo.Khohang;
+import com.qlbh.pojo.Nhanvien;
 
 /**
- * Home object for domain model class Khohang.
- * @see com.qlbh.model.Khohang
+ * Home object for domain model class Nhanvien.
+ * @see com.qlbh.model.Nhanvien
  * @author Hibernate Tools
  */
 @Stateless
-public class KhohangHome {
+public class NhanvienHome {
 
-	private static final Log log = LogFactory.getLog(KhohangHome.class);
+	private static final Log log = LogFactory.getLog(NhanvienHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(Khohang transientInstance) {
-		log.debug("persisting Khohang instance");
+	public void persist(Nhanvien transientInstance) {
+		log.debug("persisting Nhanvien instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -34,8 +34,8 @@ public class KhohangHome {
 		}
 	}
 
-	public void remove(Khohang persistentInstance) {
-		log.debug("removing Khohang instance");
+	public void remove(Nhanvien persistentInstance) {
+		log.debug("removing Nhanvien instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -45,10 +45,10 @@ public class KhohangHome {
 		}
 	}
 
-	public Khohang merge(Khohang detachedInstance) {
-		log.debug("merging Khohang instance");
+	public Nhanvien merge(Nhanvien detachedInstance) {
+		log.debug("merging Nhanvien instance");
 		try {
-			Khohang result = entityManager.merge(detachedInstance);
+			Nhanvien result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -57,10 +57,10 @@ public class KhohangHome {
 		}
 	}
 
-	public Khohang findById(int id) {
-		log.debug("getting Khohang instance with id: " + id);
+	public Nhanvien findById(int id) {
+		log.debug("getting Nhanvien instance with id: " + id);
 		try {
-			Khohang instance = entityManager.find(Khohang.class, id);
+			Nhanvien instance = entityManager.find(Nhanvien.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {

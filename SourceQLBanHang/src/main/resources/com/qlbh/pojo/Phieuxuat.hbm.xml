@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Phieuxuat" table="phieuxuat" catalog="qlbh" optimistic-lock="version">
         <id name="ma" type="int">
@@ -14,14 +14,14 @@
         <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
             <column name="makho" />
         </many-to-one>
+        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select">
+            <column name="manvbh" />
+        </many-to-one>
         <property name="diachi" type="string">
             <column name="diachi" />
         </property>
         <property name="ngaygiao" type="date">
             <column name="ngaygiao" length="10" />
-        </property>
-        <property name="manvbh" type="java.lang.Integer">
-            <column name="manvbh" />
         </property>
         <property name="ngaylap" type="date">
             <column name="ngaylap" length="10" />

@@ -1,12 +1,14 @@
 package com.qlbh.model;
-// Generated 21/09/2016 5:08:23 PM by Hibernate Tools 4.3.5.Final
+// Generated 21/09/2016 7:13:01 PM by Hibernate Tools 4.3.5.Final
 
-import com.qlbh.pojo.Khuvuc;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.qlbh.pojo.Khuvuc;
 
 /**
  * Home object for domain model class Khuvuc.

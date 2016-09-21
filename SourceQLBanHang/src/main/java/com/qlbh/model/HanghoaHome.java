@@ -1,5 +1,5 @@
 package com.qlbh.model;
-// Generated 21/09/2016 5:08:23 PM by Hibernate Tools 4.3.5.Final
+// Generated 21/09/2016 7:13:01 PM by Hibernate Tools 4.3.5.Final
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,6 +25,7 @@ public class Khuvuc  implements java.io.Serializable {
      private String ten;
      private String ghichu;
      private Byte activite;
+     private Set<Khachhang> khachhangs = new HashSet<Khachhang>(0);
      private Set<Nhacungcap> nhacungcaps = new HashSet<Nhacungcap>(0);
 
     public Khuvuc() {
@@ -34,11 +35,12 @@ public class Khuvuc  implements java.io.Serializable {
     public Khuvuc(int ma) {
         this.ma = ma;
     }
-    public Khuvuc(int ma, String ten, String ghichu, Byte activite, Set<Nhacungcap> nhacungcaps) {
+    public Khuvuc(int ma, String ten, String ghichu, Byte activite, Set<Khachhang> khachhangs, Set<Nhacungcap> nhacungcaps) {
        this.ma = ma;
        this.ten = ten;
        this.ghichu = ghichu;
        this.activite = activite;
+       this.khachhangs = khachhangs;
        this.nhacungcaps = nhacungcaps;
     }
    
@@ -82,6 +84,15 @@ public class Khuvuc  implements java.io.Serializable {
     
     public void setActivite(Byte activite) {
         this.activite = activite;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="khuvuc")
+    public Set<Khachhang> getKhachhangs() {
+        return this.khachhangs;
+    }
+    
+    public void setKhachhangs(Set<Khachhang> khachhangs) {
+        this.khachhangs = khachhangs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="khuvuc")

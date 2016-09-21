@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Nhanvien" table="nhanvien" catalog="qlbh" optimistic-lock="version">
+        <id name="ma" type="int">
+            <column name="Ma" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bophan" class="com.qlbh.pojo.Bophan" fetch="select">
+            <column name="MaBoPhan" />
+        </many-to-one>
+        <property name="ten" type="string">
+            <column name="Ten" />
+        </property>
+        <property name="diaChi" type="string">
+            <column name="DiaChi" />
+        </property>
+        <property name="gioiTinh" type="java.lang.Boolean">
+            <column name="GioiTinh" />
+        </property>
+        <property name="chucVu" type="string">
+            <column name="ChucVu" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" />
+        </property>
+        <property name="dienThoai" type="string">
+            <column name="DienThoai" />
+        </property>
+        <property name="nguoiLienQuan" type="string">
+            <column name="NguoiLienQuan" />
+        </property>
+        <property name="luong" type="java.lang.Double">
+            <column name="Luong" precision="65" scale="0" />
+        </property>
+        <property name="activiti" type="java.lang.Boolean">
+            <column name="Activiti" />
+        </property>
+        <set name="khohangs" table="khohang" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="manguoiql" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Khohang" />
+        </set>
+        <set name="phieunhaps" table="phieunhap" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="manvn" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Phieunhap" />
+        </set>
+        <set name="phieuxuats" table="phieuxuat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="manvbh" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Phieuxuat" />
+        </set>
+    </class>
+</hibernate-mapping>

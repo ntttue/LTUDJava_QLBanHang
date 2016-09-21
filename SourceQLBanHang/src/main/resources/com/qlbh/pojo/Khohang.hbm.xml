@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 2:16:34 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Khohang" table="khohang" catalog="qlbh" optimistic-lock="version">
         <id name="ma" type="int">
             <column name="ma" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select">
+            <column name="manguoiql" />
+        </many-to-one>
         <property name="ten" type="string">
             <column name="ten" />
-        </property>
-        <property name="manguoiql" type="java.lang.Integer">
-            <column name="manguoiql" />
         </property>
         <property name="nguoilienhe" type="string">
             <column name="nguoilienhe" />

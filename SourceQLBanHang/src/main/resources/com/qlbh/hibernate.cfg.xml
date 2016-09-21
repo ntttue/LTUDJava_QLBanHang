@@ -16,6 +16,7 @@
     <mapping resource="com/qlbh/pojo/Loaihang.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Loaikhachhang.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Khohang.hbm.xml"/>
+    <mapping resource="com/qlbh/pojo/Nhanvien.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Nguoidung.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Nhacungcap.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Vaitro.hbm.xml"/>

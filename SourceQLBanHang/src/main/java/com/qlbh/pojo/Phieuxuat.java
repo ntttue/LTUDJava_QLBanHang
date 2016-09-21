@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,9 +29,9 @@ public class Phieuxuat  implements java.io.Serializable {
      private int ma;
      private Khachhang khachhang;
      private Khohang khohang;
+     private Nhanvien nhanvien;
      private String diachi;
      private Date ngaygiao;
-     private Integer manvbh;
      private Date ngaylap;
      private Double tongtien;
      private Byte activite;
@@ -44,13 +44,13 @@ public class Phieuxuat  implements java.io.Serializable {
     public Phieuxuat(int ma) {
         this.ma = ma;
     }
-    public Phieuxuat(int ma, Khachhang khachhang, Khohang khohang, String diachi, Date ngaygiao, Integer manvbh, Date ngaylap, Double tongtien, Byte activite, Set<Chitietphieuxuat> chitietphieuxuats) {
+    public Phieuxuat(int ma, Khachhang khachhang, Khohang khohang, Nhanvien nhanvien, String diachi, Date ngaygiao, Date ngaylap, Double tongtien, Byte activite, Set<Chitietphieuxuat> chitietphieuxuats) {
        this.ma = ma;
        this.khachhang = khachhang;
        this.khohang = khohang;
+       this.nhanvien = nhanvien;
        this.diachi = diachi;
        this.ngaygiao = ngaygiao;
-       this.manvbh = manvbh;
        this.ngaylap = ngaylap;
        this.tongtien = tongtien;
        this.activite = activite;
@@ -89,6 +89,16 @@ public class Phieuxuat  implements java.io.Serializable {
         this.khohang = khohang;
     }
 
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="manvbh")
+    public Nhanvien getNhanvien() {
+        return this.nhanvien;
+    }
+    
+    public void setNhanvien(Nhanvien nhanvien) {
+        this.nhanvien = nhanvien;
+    }
+
     
     @Column(name="diachi")
     public String getDiachi() {
@@ -107,16 +117,6 @@ public class Phieuxuat  implements java.io.Serializable {
     
     public void setNgaygiao(Date ngaygiao) {
         this.ngaygiao = ngaygiao;
-    }
-
-    
-    @Column(name="manvbh")
-    public Integer getManvbh() {
-        return this.manvbh;
-    }
-    
-    public void setManvbh(Integer manvbh) {
-        this.manvbh = manvbh;
     }
 
     @Temporal(TemporalType.DATE)

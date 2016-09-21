@@ -1,10 +1,14 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +25,7 @@ public class Bophan  implements java.io.Serializable {
      private String ten;
      private String ghichu;
      private Byte activite;
+     private Set<Nhanvien> nhanviens = new HashSet<Nhanvien>(0);
 
     public Bophan() {
     }
@@ -29,11 +34,12 @@ public class Bophan  implements java.io.Serializable {
     public Bophan(int ma) {
         this.ma = ma;
     }
-    public Bophan(int ma, String ten, String ghichu, Byte activite) {
+    public Bophan(int ma, String ten, String ghichu, Byte activite, Set<Nhanvien> nhanviens) {
        this.ma = ma;
        this.ten = ten;
        this.ghichu = ghichu;
        this.activite = activite;
+       this.nhanviens = nhanviens;
     }
    
      @Id 
@@ -76,6 +82,15 @@ public class Bophan  implements java.io.Serializable {
     
     public void setActivite(Byte activite) {
         this.activite = activite;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="bophan")
+    public Set<Nhanvien> getNhanviens() {
+        return this.nhanviens;
+    }
+    
+    public void setNhanviens(Set<Nhanvien> nhanviens) {
+        this.nhanviens = nhanviens;
     }
 
 

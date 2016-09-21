@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -25,9 +25,9 @@ public class Khachhang  implements java.io.Serializable {
 
 
      private int ma;
+     private Khuvuc khuvuc;
      private Loaikhachhang loaikhachhang;
      private String makh;
-     private Short makhuvuc;
      private String ten;
      private String diachi;
      private String masothue;
@@ -51,11 +51,11 @@ public class Khachhang  implements java.io.Serializable {
         this.ma = ma;
         this.makh = makh;
     }
-    public Khachhang(int ma, Loaikhachhang loaikhachhang, String makh, Short makhuvuc, String ten, String diachi, String masothue, String dienthoai, String email, String taikhoan, String nganhang, BigDecimal gioihanno, BigDecimal nohientai, String yahoo, String skype, String nguoilienhe, Byte activite, Set<Phieuxuat> phieuxuats) {
+    public Khachhang(int ma, Khuvuc khuvuc, Loaikhachhang loaikhachhang, String makh, String ten, String diachi, String masothue, String dienthoai, String email, String taikhoan, String nganhang, BigDecimal gioihanno, BigDecimal nohientai, String yahoo, String skype, String nguoilienhe, Byte activite, Set<Phieuxuat> phieuxuats) {
        this.ma = ma;
+       this.khuvuc = khuvuc;
        this.loaikhachhang = loaikhachhang;
        this.makh = makh;
-       this.makhuvuc = makhuvuc;
        this.ten = ten;
        this.diachi = diachi;
        this.masothue = masothue;
@@ -85,6 +85,16 @@ public class Khachhang  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="makhuvuc")
+    public Khuvuc getKhuvuc() {
+        return this.khuvuc;
+    }
+    
+    public void setKhuvuc(Khuvuc khuvuc) {
+        this.khuvuc = khuvuc;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="maloaikh")
     public Loaikhachhang getLoaikhachhang() {
         return this.loaikhachhang;
@@ -102,16 +112,6 @@ public class Khachhang  implements java.io.Serializable {
     
     public void setMakh(String makh) {
         this.makh = makh;
-    }
-
-    
-    @Column(name="makhuvuc")
-    public Short getMakhuvuc() {
-        return this.makhuvuc;
-    }
-    
-    public void setMakhuvuc(Short makhuvuc) {
-        this.makhuvuc = makhuvuc;
     }
 
     

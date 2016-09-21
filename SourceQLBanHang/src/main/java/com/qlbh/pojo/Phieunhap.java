@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,7 +29,7 @@ public class Phieunhap  implements java.io.Serializable {
      private int ma;
      private Khohang khohang;
      private Nhacungcap nhacungcap;
-     private Integer manvn;
+     private Nhanvien nhanvien;
      private Date ngaynhap;
      private Double tongtien;
      private Byte activite;
@@ -42,11 +42,11 @@ public class Phieunhap  implements java.io.Serializable {
     public Phieunhap(int ma) {
         this.ma = ma;
     }
-    public Phieunhap(int ma, Khohang khohang, Nhacungcap nhacungcap, Integer manvn, Date ngaynhap, Double tongtien, Byte activite, Set<Chitietphieunhap> chitietphieunhaps) {
+    public Phieunhap(int ma, Khohang khohang, Nhacungcap nhacungcap, Nhanvien nhanvien, Date ngaynhap, Double tongtien, Byte activite, Set<Chitietphieunhap> chitietphieunhaps) {
        this.ma = ma;
        this.khohang = khohang;
        this.nhacungcap = nhacungcap;
-       this.manvn = manvn;
+       this.nhanvien = nhanvien;
        this.ngaynhap = ngaynhap;
        this.tongtien = tongtien;
        this.activite = activite;
@@ -85,14 +85,14 @@ public class Phieunhap  implements java.io.Serializable {
         this.nhacungcap = nhacungcap;
     }
 
-    
-    @Column(name="manvn")
-    public Integer getManvn() {
-        return this.manvn;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="manvn")
+    public Nhanvien getNhanvien() {
+        return this.nhanvien;
     }
     
-    public void setManvn(Integer manvn) {
-        this.manvn = manvn;
+    public void setNhanvien(Nhanvien nhanvien) {
+        this.nhanvien = nhanvien;
     }
 
     @Temporal(TemporalType.DATE)

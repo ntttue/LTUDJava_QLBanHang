@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 2:16:33 PM by Hibernate Tools 4.3.1
+// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,8 +24,8 @@ public class Khohang  implements java.io.Serializable {
 
 
      private int ma;
+     private Nhanvien nhanvien;
      private String ten;
-     private Integer manguoiql;
      private String nguoilienhe;
      private String diachi;
      private String dienthoai;
@@ -42,10 +44,10 @@ public class Khohang  implements java.io.Serializable {
     public Khohang(int ma) {
         this.ma = ma;
     }
-    public Khohang(int ma, String ten, Integer manguoiql, String nguoilienhe, String diachi, String dienthoai, String email, String fax, String diengiai, Byte activite, Set<Hanghoa> hanghoas, Set<Phieuxuat> phieuxuats, Set<Phieunhap> phieunhaps) {
+    public Khohang(int ma, Nhanvien nhanvien, String ten, String nguoilienhe, String diachi, String dienthoai, String email, String fax, String diengiai, Byte activite, Set<Hanghoa> hanghoas, Set<Phieuxuat> phieuxuats, Set<Phieunhap> phieunhaps) {
        this.ma = ma;
+       this.nhanvien = nhanvien;
        this.ten = ten;
-       this.manguoiql = manguoiql;
        this.nguoilienhe = nguoilienhe;
        this.diachi = diachi;
        this.dienthoai = dienthoai;
@@ -70,6 +72,16 @@ public class Khohang  implements java.io.Serializable {
         this.ma = ma;
     }
 
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="manguoiql")
+    public Nhanvien getNhanvien() {
+        return this.nhanvien;
+    }
+    
+    public void setNhanvien(Nhanvien nhanvien) {
+        this.nhanvien = nhanvien;
+    }
+
     
     @Column(name="ten")
     public String getTen() {
@@ -78,16 +90,6 @@ public class Khohang  implements java.io.Serializable {
     
     public void setTen(String ten) {
         this.ten = ten;
-    }
-
-    
-    @Column(name="manguoiql")
-    public Integer getManguoiql() {
-        return this.manguoiql;
-    }
-    
-    public void setManguoiql(Integer manguoiql) {
-        this.manguoiql = manguoiql;
     }
 
     
