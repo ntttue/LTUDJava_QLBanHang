@@ -15,9 +15,9 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/BackupData.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../fxml/DangNhap.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Sao lưu dữ liệu");
+			primaryStage.setTitle("Đăng nhập");
 			primaryStage.initStyle(StageStyle.UTILITY);
 			primaryStage.setScene(scene);
 			primaryStage.show();
