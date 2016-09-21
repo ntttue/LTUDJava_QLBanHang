@@ -36,12 +36,13 @@
 			<version>3.2</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
 		<dependency>
-			<groupId>JFoenix</groupId>
-			<artifactId>JFoenix</artifactId>
-			<version>2.0</version>
-			<type>jar</type>
+			<groupId>com.jfoenix</groupId>
+			<artifactId>jfoenix</artifactId>
+			<version>1.0.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
 		<dependency>
 			<groupId>javax.persistence</groupId>
