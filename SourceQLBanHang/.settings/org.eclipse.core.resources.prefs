@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/java/com/qlbh/controller/MainApp.java=UTF-8
+encoding//src/main/java/com/qlbh/app/MainApp.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/chucnang/ChungTuController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/chucnang/NhapHangController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/chucnang/TonKhoController.java=UTF-8

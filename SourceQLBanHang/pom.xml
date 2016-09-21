@@ -18,28 +18,20 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
-			<type>jar</type>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.0.4</version>
-			<type>jar</type>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mycompany</groupId>
 			<artifactId>mavenproject3</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>jar</type>
-		 <exclusions>
-		  <exclusion>
-		   <groupId>unknown.binary</groupId>
-		   <artifactId>postgresql-9.2-1002.jdbc4</artifactId>
-		  </exclusion>
-		 </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>javax.ejb</groupId>
@@ -48,17 +40,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
-			<scope>provided</scope>
+			<groupId>JFoenix</groupId>
+			<artifactId>JFoenix</artifactId>
+			<version>2.0</version>
+			<type>jar</type>
 		</dependency>
-	 <dependency>
-	  <groupId>JFoenix</groupId>
-	  <artifactId>JFoenix</artifactId>
-	  <version>2.0</version>
-	  <type>jar</type>
-	 </dependency>
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,4 +1,4 @@
-package com.qlbh.controller;
+package com.qlbh.app;
 
 import java.io.IOException;
 
