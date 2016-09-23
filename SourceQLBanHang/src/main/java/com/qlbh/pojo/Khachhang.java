@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,9 +26,10 @@ import javax.persistence.Table;
 public class Khachhang  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Khuvuc khuvuc;
      private Loaikhachhang loaikhachhang;
+     private String ma;
      private String makh;
      private String ten;
      private String diachi;
@@ -40,21 +43,16 @@ public class Khachhang  implements java.io.Serializable {
      private String yahoo;
      private String skype;
      private String nguoilienhe;
-     private Byte activite;
+     private Boolean activite;
      private Set<Phieuxuat> phieuxuats = new HashSet<Phieuxuat>(0);
 
     public Khachhang() {
     }
 
-	
-    public Khachhang(int ma, String makh) {
-        this.ma = ma;
-        this.makh = makh;
-    }
-    public Khachhang(int ma, Khuvuc khuvuc, Loaikhachhang loaikhachhang, String makh, String ten, String diachi, String masothue, String dienthoai, String email, String taikhoan, String nganhang, BigDecimal gioihanno, BigDecimal nohientai, String yahoo, String skype, String nguoilienhe, Byte activite, Set<Phieuxuat> phieuxuats) {
-       this.ma = ma;
+    public Khachhang(Khuvuc khuvuc, Loaikhachhang loaikhachhang, String ma, String makh, String ten, String diachi, String masothue, String dienthoai, String email, String taikhoan, String nganhang, BigDecimal gioihanno, BigDecimal nohientai, String yahoo, String skype, String nguoilienhe, Boolean activite, Set<Phieuxuat> phieuxuats) {
        this.khuvuc = khuvuc;
        this.loaikhachhang = loaikhachhang;
+       this.ma = ma;
        this.makh = makh;
        this.ten = ten;
        this.diachi = diachi;
@@ -72,20 +70,20 @@ public class Khachhang  implements java.io.Serializable {
        this.phieuxuats = phieuxuats;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="makhuvuc")
+    @JoinColumn(name="khuvucid")
     public Khuvuc getKhuvuc() {
         return this.khuvuc;
     }
@@ -95,7 +93,7 @@ public class Khachhang  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maloaikh")
+    @JoinColumn(name="loaikhid")
     public Loaikhachhang getLoaikhachhang() {
         return this.loaikhachhang;
     }
@@ -105,7 +103,17 @@ public class Khachhang  implements java.io.Serializable {
     }
 
     
-    @Column(name="makh", nullable=false)
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    
+    @Column(name="makh")
     public String getMakh() {
         return this.makh;
     }
@@ -236,11 +244,11 @@ public class Khachhang  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

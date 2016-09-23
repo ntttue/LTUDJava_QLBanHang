@@ -1,9 +1,11 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,34 +19,41 @@ import javax.persistence.Table;
 public class Tygia  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
+     private String ma;
      private String ten;
      private Float tygiaquydoi;
-     private Byte activite;
+     private Boolean activite;
 
     public Tygia() {
     }
 
-	
-    public Tygia(int ma) {
-        this.ma = ma;
-    }
-    public Tygia(int ma, String ten, Float tygiaquydoi, Byte activite) {
+    public Tygia(String ma, String ten, Float tygiaquydoi, Boolean activite) {
        this.ma = ma;
        this.ten = ten;
        this.tygiaquydoi = tygiaquydoi;
        this.activite = activite;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
         return this.ma;
     }
     
-    public void setMa(int ma) {
+    public void setMa(String ma) {
         this.ma = ma;
     }
 
@@ -70,11 +79,11 @@ public class Tygia  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

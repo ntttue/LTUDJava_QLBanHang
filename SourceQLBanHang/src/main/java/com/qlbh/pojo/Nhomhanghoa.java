@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,20 +23,17 @@ import javax.persistence.Table;
 public class Nhomhanghoa  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
+     private String ma;
      private String ten;
      private String ghichu;
-     private Byte activite;
+     private Boolean activite;
      private Set<Hanghoa> hanghoas = new HashSet<Hanghoa>(0);
 
     public Nhomhanghoa() {
     }
 
-	
-    public Nhomhanghoa(int ma) {
-        this.ma = ma;
-    }
-    public Nhomhanghoa(int ma, String ten, String ghichu, Byte activite, Set<Hanghoa> hanghoas) {
+    public Nhomhanghoa(String ma, String ten, String ghichu, Boolean activite, Set<Hanghoa> hanghoas) {
        this.ma = ma;
        this.ten = ten;
        this.ghichu = ghichu;
@@ -42,15 +41,25 @@ public class Nhomhanghoa  implements java.io.Serializable {
        this.hanghoas = hanghoas;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
         return this.ma;
     }
     
-    public void setMa(int ma) {
+    public void setMa(String ma) {
         this.ma = ma;
     }
 
@@ -76,11 +85,11 @@ public class Nhomhanghoa  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

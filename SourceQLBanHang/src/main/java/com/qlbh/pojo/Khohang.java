@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +25,9 @@ import javax.persistence.Table;
 public class Khohang  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Nhanvien nhanvien;
+     private String ma;
      private String ten;
      private String nguoilienhe;
      private String diachi;
@@ -32,21 +35,17 @@ public class Khohang  implements java.io.Serializable {
      private String email;
      private String fax;
      private String diengiai;
-     private Byte activite;
-     private Set<Hanghoa> hanghoas = new HashSet<Hanghoa>(0);
+     private Boolean activite;
      private Set<Phieuxuat> phieuxuats = new HashSet<Phieuxuat>(0);
+     private Set<Hanghoa> hanghoas = new HashSet<Hanghoa>(0);
      private Set<Phieunhap> phieunhaps = new HashSet<Phieunhap>(0);
 
     public Khohang() {
     }
 
-	
-    public Khohang(int ma) {
-        this.ma = ma;
-    }
-    public Khohang(int ma, Nhanvien nhanvien, String ten, String nguoilienhe, String diachi, String dienthoai, String email, String fax, String diengiai, Byte activite, Set<Hanghoa> hanghoas, Set<Phieuxuat> phieuxuats, Set<Phieunhap> phieunhaps) {
-       this.ma = ma;
+    public Khohang(Nhanvien nhanvien, String ma, String ten, String nguoilienhe, String diachi, String dienthoai, String email, String fax, String diengiai, Boolean activite, Set<Phieuxuat> phieuxuats, Set<Hanghoa> hanghoas, Set<Phieunhap> phieunhaps) {
        this.nhanvien = nhanvien;
+       this.ma = ma;
        this.ten = ten;
        this.nguoilienhe = nguoilienhe;
        this.diachi = diachi;
@@ -55,31 +54,41 @@ public class Khohang  implements java.io.Serializable {
        this.fax = fax;
        this.diengiai = diengiai;
        this.activite = activite;
-       this.hanghoas = hanghoas;
        this.phieuxuats = phieuxuats;
+       this.hanghoas = hanghoas;
        this.phieunhaps = phieunhaps;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="manguoiql")
+    @JoinColumn(name="nguoiqlid")
     public Nhanvien getNhanvien() {
         return this.nhanvien;
     }
     
     public void setNhanvien(Nhanvien nhanvien) {
         this.nhanvien = nhanvien;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     
@@ -154,21 +163,12 @@ public class Khohang  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="khohang")
-    public Set<Hanghoa> getHanghoas() {
-        return this.hanghoas;
-    }
-    
-    public void setHanghoas(Set<Hanghoa> hanghoas) {
-        this.hanghoas = hanghoas;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="khohang")
@@ -178,6 +178,15 @@ public class Khohang  implements java.io.Serializable {
     
     public void setPhieuxuats(Set<Phieuxuat> phieuxuats) {
         this.phieuxuats = phieuxuats;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="khohang")
+    public Set<Hanghoa> getHanghoas() {
+        return this.hanghoas;
+    }
+    
+    public void setHanghoas(Set<Hanghoa> hanghoas) {
+        this.hanghoas = hanghoas;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="khohang")

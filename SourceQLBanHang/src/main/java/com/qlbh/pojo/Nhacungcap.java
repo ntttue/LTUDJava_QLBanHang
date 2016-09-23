@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +25,9 @@ import javax.persistence.Table;
 public class Nhacungcap  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Khuvuc khuvuc;
+     private String ma;
      private String ten;
      private String diachi;
      private String masothue;
@@ -34,22 +37,18 @@ public class Nhacungcap  implements java.io.Serializable {
      private String website;
      private String taikhoan;
      private String nganhang;
-     private Integer manguoilienhe;
+     private String manguoilienhe;
      private String chucvu;
-     private Byte activite;
+     private Boolean activite;
      private Set<Hanghoa> hanghoas = new HashSet<Hanghoa>(0);
      private Set<Phieunhap> phieunhaps = new HashSet<Phieunhap>(0);
 
     public Nhacungcap() {
     }
 
-	
-    public Nhacungcap(int ma) {
-        this.ma = ma;
-    }
-    public Nhacungcap(int ma, Khuvuc khuvuc, String ten, String diachi, String masothue, String fax, String tel, String email, String website, String taikhoan, String nganhang, Integer manguoilienhe, String chucvu, Byte activite, Set<Hanghoa> hanghoas, Set<Phieunhap> phieunhaps) {
-       this.ma = ma;
+    public Nhacungcap(Khuvuc khuvuc, String ma, String ten, String diachi, String masothue, String fax, String tel, String email, String website, String taikhoan, String nganhang, String manguoilienhe, String chucvu, Boolean activite, Set<Hanghoa> hanghoas, Set<Phieunhap> phieunhaps) {
        this.khuvuc = khuvuc;
+       this.ma = ma;
        this.ten = ten;
        this.diachi = diachi;
        this.masothue = masothue;
@@ -66,26 +65,36 @@ public class Nhacungcap  implements java.io.Serializable {
        this.phieunhaps = phieunhaps;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="makhuvuc")
+    @JoinColumn(name="khuvucid")
     public Khuvuc getKhuvuc() {
         return this.khuvuc;
     }
     
     public void setKhuvuc(Khuvuc khuvuc) {
         this.khuvuc = khuvuc;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     
@@ -179,12 +188,12 @@ public class Nhacungcap  implements java.io.Serializable {
     }
 
     
-    @Column(name="manguoilienhe")
-    public Integer getManguoilienhe() {
+    @Column(name="manguoilienhe", length=20)
+    public String getManguoilienhe() {
         return this.manguoilienhe;
     }
     
-    public void setManguoilienhe(Integer manguoilienhe) {
+    public void setManguoilienhe(String manguoilienhe) {
         this.manguoilienhe = manguoilienhe;
     }
 
@@ -200,11 +209,11 @@ public class Nhacungcap  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

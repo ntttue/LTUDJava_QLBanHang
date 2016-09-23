@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,11 +25,12 @@ import javax.persistence.Table;
 public class Hanghoa  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Khohang khohang;
      private Loaihang loaihang;
      private Nhacungcap nhacungcap;
      private Nhomhanghoa nhomhanghoa;
+     private String ma;
      private String ten;
      private String donvi;
      private String xuatxu;
@@ -35,24 +38,20 @@ public class Hanghoa  implements java.io.Serializable {
      private Double giabanle;
      private Double giabansi;
      private Integer tonkho;
-     private byte[] anh;
-     private Byte activite;
-     private Set<Chitietphieuxuat> chitietphieuxuats = new HashSet<Chitietphieuxuat>(0);
+     private String anh;
+     private Boolean activite;
      private Set<Chitietphieunhap> chitietphieunhaps = new HashSet<Chitietphieunhap>(0);
+     private Set<Chitietphieuxuat> chitietphieuxuats = new HashSet<Chitietphieuxuat>(0);
 
     public Hanghoa() {
     }
 
-	
-    public Hanghoa(int ma) {
-        this.ma = ma;
-    }
-    public Hanghoa(int ma, Khohang khohang, Loaihang loaihang, Nhacungcap nhacungcap, Nhomhanghoa nhomhanghoa, String ten, String donvi, String xuatxu, Double giamua, Double giabanle, Double giabansi, Integer tonkho, byte[] anh, Byte activite, Set<Chitietphieuxuat> chitietphieuxuats, Set<Chitietphieunhap> chitietphieunhaps) {
-       this.ma = ma;
+    public Hanghoa(Khohang khohang, Loaihang loaihang, Nhacungcap nhacungcap, Nhomhanghoa nhomhanghoa, String ma, String ten, String donvi, String xuatxu, Double giamua, Double giabanle, Double giabansi, Integer tonkho, String anh, Boolean activite, Set<Chitietphieunhap> chitietphieunhaps, Set<Chitietphieuxuat> chitietphieuxuats) {
        this.khohang = khohang;
        this.loaihang = loaihang;
        this.nhacungcap = nhacungcap;
        this.nhomhanghoa = nhomhanghoa;
+       this.ma = ma;
        this.ten = ten;
        this.donvi = donvi;
        this.xuatxu = xuatxu;
@@ -62,24 +61,24 @@ public class Hanghoa  implements java.io.Serializable {
        this.tonkho = tonkho;
        this.anh = anh;
        this.activite = activite;
-       this.chitietphieuxuats = chitietphieuxuats;
        this.chitietphieunhaps = chitietphieunhaps;
+       this.chitietphieuxuats = chitietphieuxuats;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="makhohang")
+    @JoinColumn(name="khohangid")
     public Khohang getKhohang() {
         return this.khohang;
     }
@@ -89,7 +88,7 @@ public class Hanghoa  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maloaihang")
+    @JoinColumn(name="loaihangid")
     public Loaihang getLoaihang() {
         return this.loaihang;
     }
@@ -99,7 +98,7 @@ public class Hanghoa  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="manhacc")
+    @JoinColumn(name="nhaccid")
     public Nhacungcap getNhacungcap() {
         return this.nhacungcap;
     }
@@ -109,13 +108,23 @@ public class Hanghoa  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="manhomhang")
+    @JoinColumn(name="nhomhangid")
     public Nhomhanghoa getNhomhanghoa() {
         return this.nhomhanghoa;
     }
     
     public void setNhomhanghoa(Nhomhanghoa nhomhanghoa) {
         this.nhomhanghoa = nhomhanghoa;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     
@@ -189,32 +198,23 @@ public class Hanghoa  implements java.io.Serializable {
     }
 
     
-    @Column(name="anh")
-    public byte[] getAnh() {
+    @Column(name="anh", length=65535)
+    public String getAnh() {
         return this.anh;
     }
     
-    public void setAnh(byte[] anh) {
+    public void setAnh(String anh) {
         this.anh = anh;
     }
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="hanghoa")
-    public Set<Chitietphieuxuat> getChitietphieuxuats() {
-        return this.chitietphieuxuats;
-    }
-    
-    public void setChitietphieuxuats(Set<Chitietphieuxuat> chitietphieuxuats) {
-        this.chitietphieuxuats = chitietphieuxuats;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="hanghoa")
@@ -224,6 +224,15 @@ public class Hanghoa  implements java.io.Serializable {
     
     public void setChitietphieunhaps(Set<Chitietphieunhap> chitietphieunhaps) {
         this.chitietphieunhaps = chitietphieunhaps;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="hanghoa")
+    public Set<Chitietphieuxuat> getChitietphieuxuats() {
+        return this.chitietphieuxuats;
+    }
+    
+    public void setChitietphieuxuats(Set<Chitietphieuxuat> chitietphieuxuats) {
+        this.chitietphieuxuats = chitietphieuxuats;
     }
 
 

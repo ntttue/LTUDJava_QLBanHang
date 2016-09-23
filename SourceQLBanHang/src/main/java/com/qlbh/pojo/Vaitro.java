@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,32 +25,29 @@ import javax.persistence.Table;
 public class Vaitro  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Vaitro vaitro;
+     private String ma;
      private String ten;
      private String diengiai;
-     private Byte truycap;
-     private Byte them;
-     private Byte xem;
-     private Byte xoa;
-     private Byte sua;
-     private Byte in;
-     private Byte nhap;
-     private Byte xuat;
-     private Byte activite;
-     private Set<Nguoidung> nguoidungs = new HashSet<Nguoidung>(0);
+     private Boolean truycap;
+     private Boolean them;
+     private Boolean xem;
+     private Boolean xoa;
+     private Boolean sua;
+     private Boolean in;
+     private Boolean nhap;
+     private Boolean xuat;
+     private Boolean activite;
      private Set<Vaitro> vaitros = new HashSet<Vaitro>(0);
+     private Set<Nguoidung> nguoidungs = new HashSet<Nguoidung>(0);
 
     public Vaitro() {
     }
 
-	
-    public Vaitro(int ma) {
-        this.ma = ma;
-    }
-    public Vaitro(int ma, Vaitro vaitro, String ten, String diengiai, Byte truycap, Byte them, Byte xem, Byte xoa, Byte sua, Byte in, Byte nhap, Byte xuat, Byte activite, Set<Nguoidung> nguoidungs, Set<Vaitro> vaitros) {
-       this.ma = ma;
+    public Vaitro(Vaitro vaitro, String ma, String ten, String diengiai, Boolean truycap, Boolean them, Boolean xem, Boolean xoa, Boolean sua, Boolean in, Boolean nhap, Boolean xuat, Boolean activite, Set<Vaitro> vaitros, Set<Nguoidung> nguoidungs) {
        this.vaitro = vaitro;
+       this.ma = ma;
        this.ten = ten;
        this.diengiai = diengiai;
        this.truycap = truycap;
@@ -60,30 +59,40 @@ public class Vaitro  implements java.io.Serializable {
        this.nhap = nhap;
        this.xuat = xuat;
        this.activite = activite;
-       this.nguoidungs = nguoidungs;
        this.vaitros = vaitros;
+       this.nguoidungs = nguoidungs;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="mavaitrocha")
+    @JoinColumn(name="vaitrochaid")
     public Vaitro getVaitro() {
         return this.vaitro;
     }
     
     public void setVaitro(Vaitro vaitro) {
         this.vaitro = vaitro;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     
@@ -108,101 +117,92 @@ public class Vaitro  implements java.io.Serializable {
 
     
     @Column(name="truycap")
-    public Byte getTruycap() {
+    public Boolean getTruycap() {
         return this.truycap;
     }
     
-    public void setTruycap(Byte truycap) {
+    public void setTruycap(Boolean truycap) {
         this.truycap = truycap;
     }
 
     
     @Column(name="them")
-    public Byte getThem() {
+    public Boolean getThem() {
         return this.them;
     }
     
-    public void setThem(Byte them) {
+    public void setThem(Boolean them) {
         this.them = them;
     }
 
     
     @Column(name="xem")
-    public Byte getXem() {
+    public Boolean getXem() {
         return this.xem;
     }
     
-    public void setXem(Byte xem) {
+    public void setXem(Boolean xem) {
         this.xem = xem;
     }
 
     
     @Column(name="xoa")
-    public Byte getXoa() {
+    public Boolean getXoa() {
         return this.xoa;
     }
     
-    public void setXoa(Byte xoa) {
+    public void setXoa(Boolean xoa) {
         this.xoa = xoa;
     }
 
     
     @Column(name="sua")
-    public Byte getSua() {
+    public Boolean getSua() {
         return this.sua;
     }
     
-    public void setSua(Byte sua) {
+    public void setSua(Boolean sua) {
         this.sua = sua;
     }
 
     
     @Column(name="in")
-    public Byte getIn() {
+    public Boolean getIn() {
         return this.in;
     }
     
-    public void setIn(Byte in) {
+    public void setIn(Boolean in) {
         this.in = in;
     }
 
     
     @Column(name="nhap")
-    public Byte getNhap() {
+    public Boolean getNhap() {
         return this.nhap;
     }
     
-    public void setNhap(Byte nhap) {
+    public void setNhap(Boolean nhap) {
         this.nhap = nhap;
     }
 
     
     @Column(name="xuat")
-    public Byte getXuat() {
+    public Boolean getXuat() {
         return this.xuat;
     }
     
-    public void setXuat(Byte xuat) {
+    public void setXuat(Boolean xuat) {
         this.xuat = xuat;
     }
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="vaitro")
-    public Set<Nguoidung> getNguoidungs() {
-        return this.nguoidungs;
-    }
-    
-    public void setNguoidungs(Set<Nguoidung> nguoidungs) {
-        this.nguoidungs = nguoidungs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="vaitro")
@@ -212,6 +212,15 @@ public class Vaitro  implements java.io.Serializable {
     
     public void setVaitros(Set<Vaitro> vaitros) {
         this.vaitros = vaitros;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="vaitro")
+    public Set<Nguoidung> getNguoidungs() {
+        return this.nguoidungs;
+    }
+    
+    public void setNguoidungs(Set<Nguoidung> nguoidungs) {
+        this.nguoidungs = nguoidungs;
     }
 
 

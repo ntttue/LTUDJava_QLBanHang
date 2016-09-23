@@ -1,10 +1,12 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,24 +22,20 @@ import javax.persistence.Table;
 public class Chitietphieunhap  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Hanghoa hanghoa;
      private Phieunhap phieunhap;
      private Integer soluong;
      private Double dongia;
      private Double thanhtien;
      private String ghichu;
-     private Byte activite;
+     private Boolean activite;
+     private String ma;
 
     public Chitietphieunhap() {
     }
 
-	
-    public Chitietphieunhap(int ma) {
-        this.ma = ma;
-    }
-    public Chitietphieunhap(int ma, Hanghoa hanghoa, Phieunhap phieunhap, Integer soluong, Double dongia, Double thanhtien, String ghichu, Byte activite) {
-       this.ma = ma;
+    public Chitietphieunhap(Hanghoa hanghoa, Phieunhap phieunhap, Integer soluong, Double dongia, Double thanhtien, String ghichu, Boolean activite, String ma) {
        this.hanghoa = hanghoa;
        this.phieunhap = phieunhap;
        this.soluong = soluong;
@@ -45,22 +43,23 @@ public class Chitietphieunhap  implements java.io.Serializable {
        this.thanhtien = thanhtien;
        this.ghichu = ghichu;
        this.activite = activite;
+       this.ma = ma;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="mahanghoa")
+    @JoinColumn(name="hanghoaid")
     public Hanghoa getHanghoa() {
         return this.hanghoa;
     }
@@ -70,7 +69,7 @@ public class Chitietphieunhap  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="maphieunhap")
+    @JoinColumn(name="phieunhapid")
     public Phieunhap getPhieunhap() {
         return this.phieunhap;
     }
@@ -121,12 +120,22 @@ public class Chitietphieunhap  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
 

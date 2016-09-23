@@ -1,25 +1,28 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/09/2016 10:02:30 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Hanghoa" table="hanghoa" catalog="qlbh" optimistic-lock="version">
-        <id name="ma" type="int">
-            <column name="ma" />
-            <generator class="assigned" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
         </id>
         <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
-            <column name="makhohang" />
+            <column name="khohangid" />
         </many-to-one>
         <many-to-one name="loaihang" class="com.qlbh.pojo.Loaihang" fetch="select">
-            <column name="maloaihang" />
+            <column name="loaihangid" />
         </many-to-one>
         <many-to-one name="nhacungcap" class="com.qlbh.pojo.Nhacungcap" fetch="select">
-            <column name="manhacc" />
+            <column name="nhaccid" />
         </many-to-one>
         <many-to-one name="nhomhanghoa" class="com.qlbh.pojo.Nhomhanghoa" fetch="select">
-            <column name="manhomhang" />
+            <column name="nhomhangid" />
         </many-to-one>
+        <property name="ma" type="string">
+            <column name="ma" length="20" />
+        </property>
         <property name="ten" type="string">
             <column name="ten" />
         </property>
@@ -41,23 +44,23 @@
         <property name="tonkho" type="java.lang.Integer">
             <column name="tonkho" />
         </property>
-        <property name="anh" type="binary">
-            <column name="anh" />
+        <property name="anh" type="string">
+            <column name="anh" length="65535" />
         </property>
-        <property name="activite" type="java.lang.Byte">
+        <property name="activite" type="java.lang.Boolean">
             <column name="activite" />
         </property>
-        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="mahanghoa" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Chitietphieuxuat" />
-        </set>
         <set name="chitietphieunhaps" table="chitietphieunhap" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="mahanghoa" />
+                <column name="hanghoaid" />
             </key>
             <one-to-many class="com.qlbh.pojo.Chitietphieunhap" />
+        </set>
+        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hanghoaid" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Chitietphieuxuat" />
         </set>
     </class>
 </hibernate-mapping>

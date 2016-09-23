@@ -1,9 +1,11 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,7 +19,8 @@ import javax.persistence.Table;
 public class Congty  implements java.io.Serializable {
 
 
-     private short ma;
+     private Integer id;
+     private String ma;
      private String ten;
      private String diachi;
      private String masothue;
@@ -25,17 +28,17 @@ public class Congty  implements java.io.Serializable {
      private String fax;
      private String email;
      private String website;
-     private byte[] logo;
-     private Byte activite;
+     private String logo;
+     private Boolean activite;
 
     public Congty() {
     }
 
 	
-    public Congty(short ma) {
+    public Congty(String ma) {
         this.ma = ma;
     }
-    public Congty(short ma, String ten, String diachi, String masothue, String tel, String fax, String email, String website, byte[] logo, Byte activite) {
+    public Congty(String ma, String ten, String diachi, String masothue, String tel, String fax, String email, String website, String logo, Boolean activite) {
        this.ma = ma;
        this.ten = ten;
        this.diachi = diachi;
@@ -48,15 +51,25 @@ public class Congty  implements java.io.Serializable {
        this.activite = activite;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public short getMa() {
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
+    @Column(name="ma", nullable=false, length=20)
+    public String getMa() {
         return this.ma;
     }
     
-    public void setMa(short ma) {
+    public void setMa(String ma) {
         this.ma = ma;
     }
 
@@ -131,22 +144,22 @@ public class Congty  implements java.io.Serializable {
     }
 
     
-    @Column(name="logo")
-    public byte[] getLogo() {
+    @Column(name="logo", length=65535)
+    public String getLogo() {
         return this.logo;
     }
     
-    public void setLogo(byte[] logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

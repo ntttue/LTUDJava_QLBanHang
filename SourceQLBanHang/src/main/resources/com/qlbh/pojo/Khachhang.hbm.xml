@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/09/2016 10:02:30 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Khachhang" table="khachhang" catalog="qlbh" optimistic-lock="version">
-        <id name="ma" type="int">
-            <column name="ma" />
-            <generator class="assigned" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
         </id>
         <many-to-one name="khuvuc" class="com.qlbh.pojo.Khuvuc" fetch="select">
-            <column name="makhuvuc" />
+            <column name="khuvucid" />
         </many-to-one>
         <many-to-one name="loaikhachhang" class="com.qlbh.pojo.Loaikhachhang" fetch="select">
-            <column name="maloaikh" />
+            <column name="loaikhid" />
         </many-to-one>
+        <property name="ma" type="string">
+            <column name="ma" length="20" />
+        </property>
         <property name="makh" type="string">
-            <column name="makh" not-null="true" />
+            <column name="makh" />
         </property>
         <property name="ten" type="string">
             <column name="ten" />
@@ -53,12 +56,12 @@
         <property name="nguoilienhe" type="string">
             <column name="nguoilienhe" />
         </property>
-        <property name="activite" type="java.lang.Byte">
+        <property name="activite" type="java.lang.Boolean">
             <column name="activite" />
         </property>
         <set name="phieuxuats" table="phieuxuat" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="makhachhang" />
+                <column name="khachhangid" />
             </key>
             <one-to-many class="com.qlbh.pojo.Phieuxuat" />
         </set>

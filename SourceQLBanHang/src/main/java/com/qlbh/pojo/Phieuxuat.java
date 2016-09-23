@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,29 +28,26 @@ import javax.persistence.TemporalType;
 public class Phieuxuat  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
      private Khachhang khachhang;
      private Khohang khohang;
      private Nhanvien nhanvien;
+     private String ma;
      private String diachi;
      private Date ngaygiao;
      private Date ngaylap;
      private Double tongtien;
-     private Byte activite;
+     private Boolean activite;
      private Set<Chitietphieuxuat> chitietphieuxuats = new HashSet<Chitietphieuxuat>(0);
 
     public Phieuxuat() {
     }
 
-	
-    public Phieuxuat(int ma) {
-        this.ma = ma;
-    }
-    public Phieuxuat(int ma, Khachhang khachhang, Khohang khohang, Nhanvien nhanvien, String diachi, Date ngaygiao, Date ngaylap, Double tongtien, Byte activite, Set<Chitietphieuxuat> chitietphieuxuats) {
-       this.ma = ma;
+    public Phieuxuat(Khachhang khachhang, Khohang khohang, Nhanvien nhanvien, String ma, String diachi, Date ngaygiao, Date ngaylap, Double tongtien, Boolean activite, Set<Chitietphieuxuat> chitietphieuxuats) {
        this.khachhang = khachhang;
        this.khohang = khohang;
        this.nhanvien = nhanvien;
+       this.ma = ma;
        this.diachi = diachi;
        this.ngaygiao = ngaygiao;
        this.ngaylap = ngaylap;
@@ -57,20 +56,20 @@ public class Phieuxuat  implements java.io.Serializable {
        this.chitietphieuxuats = chitietphieuxuats;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
-        return this.ma;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setMa(int ma) {
-        this.ma = ma;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="makhachhang")
+    @JoinColumn(name="khachhangid")
     public Khachhang getKhachhang() {
         return this.khachhang;
     }
@@ -80,7 +79,7 @@ public class Phieuxuat  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="makho")
+    @JoinColumn(name="khoid")
     public Khohang getKhohang() {
         return this.khohang;
     }
@@ -90,13 +89,23 @@ public class Phieuxuat  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="manvbh")
+    @JoinColumn(name="nhanvienbanhangid")
     public Nhanvien getNhanvien() {
         return this.nhanvien;
     }
     
     public void setNhanvien(Nhanvien nhanvien) {
         this.nhanvien = nhanvien;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
+        return this.ma;
+    }
+    
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     
@@ -141,11 +150,11 @@ public class Phieuxuat  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

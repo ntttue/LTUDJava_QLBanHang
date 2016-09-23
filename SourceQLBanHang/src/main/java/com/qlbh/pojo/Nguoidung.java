@@ -1,10 +1,12 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,49 +22,78 @@ import javax.persistence.Table;
 public class Nguoidung  implements java.io.Serializable {
 
 
-     private String tennd;
+     private Integer id;
+     private Nhanvien nhanvien;
      private Vaitro vaitro;
+     private String mand;
+     private String tennd;
      private String matkhau;
-     private Short manhanvien;
      private String diengiai;
-     private Byte activite;
+     private Boolean activite;
 
     public Nguoidung() {
     }
 
-	
-    public Nguoidung(String tennd) {
-        this.tennd = tennd;
-    }
-    public Nguoidung(String tennd, Vaitro vaitro, String matkhau, Short manhanvien, String diengiai, Byte activite) {
-       this.tennd = tennd;
+    public Nguoidung(Nhanvien nhanvien, Vaitro vaitro, String mand, String tennd, String matkhau, String diengiai, Boolean activite) {
+       this.nhanvien = nhanvien;
        this.vaitro = vaitro;
+       this.mand = mand;
+       this.tennd = tennd;
        this.matkhau = matkhau;
-       this.manhanvien = manhanvien;
        this.diengiai = diengiai;
        this.activite = activite;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="tennd", unique=true, nullable=false)
-    public String getTennd() {
-        return this.tennd;
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setTennd(String tennd) {
-        this.tennd = tennd;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="mavaitro")
+    @JoinColumn(name="nhanvienid")
+    public Nhanvien getNhanvien() {
+        return this.nhanvien;
+    }
+    
+    public void setNhanvien(Nhanvien nhanvien) {
+        this.nhanvien = nhanvien;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="vaitroid")
     public Vaitro getVaitro() {
         return this.vaitro;
     }
     
     public void setVaitro(Vaitro vaitro) {
         this.vaitro = vaitro;
+    }
+
+    
+    @Column(name="mand", length=20)
+    public String getMand() {
+        return this.mand;
+    }
+    
+    public void setMand(String mand) {
+        this.mand = mand;
+    }
+
+    
+    @Column(name="tennd")
+    public String getTennd() {
+        return this.tennd;
+    }
+    
+    public void setTennd(String tennd) {
+        this.tennd = tennd;
     }
 
     
@@ -73,16 +104,6 @@ public class Nguoidung  implements java.io.Serializable {
     
     public void setMatkhau(String matkhau) {
         this.matkhau = matkhau;
-    }
-
-    
-    @Column(name="manhanvien")
-    public Short getManhanvien() {
-        return this.manhanvien;
-    }
-    
-    public void setManhanvien(Short manhanvien) {
-        this.manhanvien = manhanvien;
     }
 
     
@@ -97,11 +118,11 @@ public class Nguoidung  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
     }
 

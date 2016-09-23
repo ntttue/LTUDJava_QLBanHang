@@ -1,33 +1,36 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2016 7:11:20 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/09/2016 10:02:30 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Khuvuc" table="khuvuc" catalog="qlbh" optimistic-lock="version">
-        <id name="ma" type="int">
-            <column name="ma" />
-            <generator class="assigned" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
         </id>
+        <property name="ma" type="string">
+            <column name="ma" length="20" />
+        </property>
         <property name="ten" type="string">
             <column name="ten" />
         </property>
         <property name="ghichu" type="string">
             <column name="ghichu" />
         </property>
-        <property name="activite" type="java.lang.Byte">
+        <property name="activite" type="java.lang.Boolean">
             <column name="activite" />
         </property>
-        <set name="khachhangs" table="khachhang" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="makhuvuc" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Khachhang" />
-        </set>
         <set name="nhacungcaps" table="nhacungcap" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="makhuvuc" />
+                <column name="khuvucid" />
             </key>
             <one-to-many class="com.qlbh.pojo.Nhacungcap" />
+        </set>
+        <set name="khachhangs" table="khachhang" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="khuvucid" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Khachhang" />
         </set>
     </class>
 </hibernate-mapping>

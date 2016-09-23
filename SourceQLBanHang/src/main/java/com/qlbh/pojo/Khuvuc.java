@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/09/2016 7:11:19 PM by Hibernate Tools 4.3.1
+// Generated 23/09/2016 10:02:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,38 +23,45 @@ import javax.persistence.Table;
 public class Khuvuc  implements java.io.Serializable {
 
 
-     private int ma;
+     private Integer id;
+     private String ma;
      private String ten;
      private String ghichu;
-     private Byte activite;
-     private Set<Khachhang> khachhangs = new HashSet<Khachhang>(0);
+     private Boolean activite;
      private Set<Nhacungcap> nhacungcaps = new HashSet<Nhacungcap>(0);
+     private Set<Khachhang> khachhangs = new HashSet<Khachhang>(0);
 
     public Khuvuc() {
     }
 
-	
-    public Khuvuc(int ma) {
-        this.ma = ma;
-    }
-    public Khuvuc(int ma, String ten, String ghichu, Byte activite, Set<Khachhang> khachhangs, Set<Nhacungcap> nhacungcaps) {
+    public Khuvuc(String ma, String ten, String ghichu, Boolean activite, Set<Nhacungcap> nhacungcaps, Set<Khachhang> khachhangs) {
        this.ma = ma;
        this.ten = ten;
        this.ghichu = ghichu;
        this.activite = activite;
-       this.khachhangs = khachhangs;
        this.nhacungcaps = nhacungcaps;
+       this.khachhangs = khachhangs;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="ma", unique=true, nullable=false)
-    public int getMa() {
+    @Column(name="id", unique=true, nullable=false)
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
+    @Column(name="ma", length=20)
+    public String getMa() {
         return this.ma;
     }
     
-    public void setMa(int ma) {
+    public void setMa(String ma) {
         this.ma = ma;
     }
 
@@ -78,21 +87,12 @@ public class Khuvuc  implements java.io.Serializable {
 
     
     @Column(name="activite")
-    public Byte getActivite() {
+    public Boolean getActivite() {
         return this.activite;
     }
     
-    public void setActivite(Byte activite) {
+    public void setActivite(Boolean activite) {
         this.activite = activite;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="khuvuc")
-    public Set<Khachhang> getKhachhangs() {
-        return this.khachhangs;
-    }
-    
-    public void setKhachhangs(Set<Khachhang> khachhangs) {
-        this.khachhangs = khachhangs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="khuvuc")
@@ -102,6 +102,15 @@ public class Khuvuc  implements java.io.Serializable {
     
     public void setNhacungcaps(Set<Nhacungcap> nhacungcaps) {
         this.nhacungcaps = nhacungcaps;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="khuvuc")
+    public Set<Khachhang> getKhachhangs() {
+        return this.khachhangs;
+    }
+    
+    public void setKhachhangs(Set<Khachhang> khachhangs) {
+        this.khachhangs = khachhangs;
     }
 
 
