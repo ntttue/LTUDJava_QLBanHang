@@ -1,5 +1,5 @@
 package com.qlbh.model;
-// Generated 21/09/2016 7:13:01 PM by Hibernate Tools 4.3.5.Final
+// Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -7,12 +7,11 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.mapping.List;
 
 import com.qlbh.pojo.Nguoidung;
 import com.qlbh.util.HibernateUtil;
-import org.hibernate.Query;
 
 /**
  * Home object for domain model class Nguoidung.
@@ -63,7 +62,7 @@ public class NguoidungHome {
 		}
 	}
 
-	public Nguoidung findById(String id) {
+	public Nguoidung findById(Integer id) {
 		log.debug("getting Nguoidung instance with id: " + id);
 		try {
 			Nguoidung instance = entityManager.find(Nguoidung.class, id);

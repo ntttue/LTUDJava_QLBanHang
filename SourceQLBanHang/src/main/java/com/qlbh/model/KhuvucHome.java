@@ -1,5 +1,5 @@
 package com.qlbh.model;
-// Generated 21/09/2016 7:13:01 PM by Hibernate Tools 4.3.5.Final
+// Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -57,7 +57,7 @@ public class KhuvucHome {
 		}
 	}
 
-	public Khuvuc findById(int id) {
+	public Khuvuc findById(Integer id) {
 		log.debug("getting Khuvuc instance with id: " + id);
 		try {
 			Khuvuc instance = entityManager.find(Khuvuc.class, id);

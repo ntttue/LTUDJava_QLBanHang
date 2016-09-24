@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="qlbh" match-name="bophan"/>
+  <table-filter match-catalog="qlbh" match-name="chitietphieunhap"/>
+  <table-filter match-catalog="qlbh" match-name="chitietphieuxuat"/>
+  <table-filter match-catalog="qlbh" match-name="congty"/>
+  <table-filter match-catalog="qlbh" match-name="donvitinh"/>
+  <table-filter match-catalog="qlbh" match-name="hanghoa"/>
+  <table-filter match-catalog="qlbh" match-name="khachhang"/>
+  <table-filter match-catalog="qlbh" match-name="khohang"/>
+  <table-filter match-catalog="qlbh" match-name="khuvuc"/>
+  <table-filter match-catalog="qlbh" match-name="loaihang"/>
+  <table-filter match-catalog="qlbh" match-name="loaikhachhang"/>
+  <table-filter match-catalog="qlbh" match-name="nguoidung"/>
+  <table-filter match-catalog="qlbh" match-name="nhacungcap"/>
+  <table-filter match-catalog="qlbh" match-name="nhanvien"/>
+  <table-filter match-catalog="qlbh" match-name="nhomhanghoa"/>
+  <table-filter match-catalog="qlbh" match-name="phieunhap"/>
+  <table-filter match-catalog="qlbh" match-name="phieuxuat"/>
+  <table-filter match-catalog="qlbh" match-name="tygia"/>
+  <table-filter match-catalog="qlbh" match-name="vaitro"/>
+</hibernate-reverse-engineering>
