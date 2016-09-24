@@ -27,4 +27,4 @@
 		<mapping resource="com.qlbh.pojo.Nhomhanghoa.hbm.xml" />
 		<mapping resource="com.qlbh.pojo.Khachhang.hbm.xml" />
 	</session-factory>
-</hibernate-configuration
+</hibernate-configuration>
