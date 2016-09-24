@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-09-24 14:21:06
+Date: 2016-09-24 15:07:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -278,7 +278,7 @@ CREATE TABLE `nhanvien` (
   `Ma` varchar(20) COLLATE utf8_vietnamese_ci NOT NULL,
   `Ten` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `DiaChi` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `GioiTinh` bit(64) DEFAULT NULL,
+  `GioiTinh` bit(1) DEFAULT NULL,
   `ChucVu` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `Email` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `DienThoai` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
@@ -373,14 +373,14 @@ CREATE TABLE `vaitro` (
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `diengiai` longtext COLLATE utf8_unicode_ci,
   `vaitrochaid` int(11) DEFAULT NULL,
-  `truycap` bit(4) DEFAULT NULL,
-  `them` bit(4) DEFAULT NULL,
-  `xem` bit(4) DEFAULT NULL,
-  `xoa` bit(4) DEFAULT NULL,
-  `sua` bit(4) DEFAULT NULL,
-  `in` bit(4) DEFAULT NULL,
-  `nhap` bit(4) DEFAULT NULL,
-  `xuat` bit(4) DEFAULT NULL,
+  `truycap` bit(1) DEFAULT NULL,
+  `them` bit(1) DEFAULT NULL,
+  `xem` bit(1) DEFAULT NULL,
+  `xoa` bit(1) DEFAULT NULL,
+  `sua` bit(1) DEFAULT NULL,
+  `in` bit(1) DEFAULT NULL,
+  `nhap` bit(1) DEFAULT NULL,
+  `xuat` bit(1) DEFAULT NULL,
   `activite` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`),
