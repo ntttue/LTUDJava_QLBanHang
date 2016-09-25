@@ -12,6 +12,7 @@ import org.hibernate.Session;
 
 import com.qlbh.pojo.Nguoidung;
 import com.qlbh.util.HibernateUtil;
+import java.util.List;
 
 /**
  * Home object for domain model class Nguoidung.
@@ -76,11 +77,17 @@ public class NguoidungHome {
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
 		Nguoidung nd = new Nguoidung();
-		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :tennd";
+//		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :tennd";
+		String hql = "from Nguoidung";
+
 		Query query = session.createQuery(hql);
-		query.setParameter("tennd", tenDangNhap);
-		query.setParameter("tennd", matKhau);
-		query.list();
+//		query.setParameter("tennd", tenDangNhap);
+//		query.setParameter("tennd", matKhau);
+		List<Nguoidung> ds = query.list();
+		if(!ds.isEmpty()){
+			nd = ds.get(0);
+		}
+		System.out.println(nd.getTennd());
 		return nd;
 	}
 }

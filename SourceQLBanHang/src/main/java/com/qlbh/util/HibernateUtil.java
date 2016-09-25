@@ -17,7 +17,6 @@ public class HibernateUtil {
 		try {
 			conf = new Configuration();
 			conf.configure("hibernate.cfg.xml");
-
 			System.out.println("configuration");
 			factory = conf.buildSessionFactory();
 			return factory;
