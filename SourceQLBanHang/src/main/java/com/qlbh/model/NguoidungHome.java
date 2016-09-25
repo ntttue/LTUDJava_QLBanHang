@@ -77,17 +77,19 @@ public class NguoidungHome {
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
 		Nguoidung nd = new Nguoidung();
-//		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :tennd";
-		String hql = "from Nguoidung";
+//		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";
+		 String hql = "from Nguoidung";
 
 		Query query = session.createQuery(hql);
 //		query.setParameter("tennd", tenDangNhap);
-//		query.setParameter("tennd", matKhau);
+//		query.setParameter("matkhau", matKhau);
 		List<Nguoidung> ds = query.list();
-		if(!ds.isEmpty()){
+		if (!ds.isEmpty()) {
 			nd = ds.get(0);
+			System.out.println(nd.getTennd());
+			return nd;
 		}
-		System.out.println(nd.getTennd());
-		return nd;
+
+		return null;
 	}
 }

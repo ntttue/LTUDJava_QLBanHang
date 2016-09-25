@@ -16,7 +16,10 @@
 		<URL value="@../css/dangnhap.css" />
 	</stylesheets>
 	<children>
-		<Pane id="paneImage" layoutX="14.0" layoutY="14.0" prefHeight="295.0" prefWidth="295.0" />
+		<Pane id="paneImage" layoutX="14.0" layoutY="14.0" prefHeight="295.0" prefWidth="295.0">
+         <children>
+            <StackPane fx:id="stackPane" layoutX="-13.0" layoutY="-15.0" prefHeight="309.0" prefWidth="601.0" />
+         </children></Pane>
 		<Pane id="paneInfo" layoutX="328.0" layoutY="27.0" prefHeight="230.0" prefWidth="273.0">
 			<children>
 				<Label id="lbname" contentDisplay="CENTER" layoutX="25.0" layoutY="14.0" prefHeight="31.0" prefWidth="210.0" text="QUẢN LÝ BÁN HÀNG">

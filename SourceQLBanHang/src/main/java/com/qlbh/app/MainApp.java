@@ -18,7 +18,7 @@ public class MainApp extends Application {
 			root = FXMLLoader.load(getClass().getResource("../fxml/DangNhap.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Đăng nhập");
-			primaryStage.initStyle(StageStyle.UTILITY);
+			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
