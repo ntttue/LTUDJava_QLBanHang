@@ -14,6 +14,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/jfoenix.jar"/>
-	<classpathentry kind="lib" path="D:/Study/KH2_HCDH/LTUDJava/DoAn/LTUDJava_QLBanHang/lib/mysql-connector-java-5.1.4/mysql-connector-java-5.1.4-bin.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
