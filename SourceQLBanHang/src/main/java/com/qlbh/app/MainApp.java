@@ -15,10 +15,12 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/DangNhap.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../fxml/ManHinhChinh.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Đăng nhập");
+			primaryStage.setTitle("Phần mềm quản lý bán hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.setMaximized(true);
+//			primaryStage.setFullScreen(true);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {

@@ -1,14 +1,20 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
+import com.qlbh.pojo.Nguoidung;
 import com.qlbh.pojo.Tygia;
+import com.qlbh.util.HibernateUtil;
 
 /**
  * Home object for domain model class Tygia.
@@ -22,6 +28,7 @@ public class TygiaHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	Session session = HibernateUtil.getSessionFactory().openSession();
 
 	public void persist(Tygia transientInstance) {
 		log.debug("persisting Tygia instance");
@@ -67,5 +74,15 @@ public class TygiaHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<Tygia> getTygias() {
+		String hql = "from Tygia";
+		Query query = session.createQuery(hql);
+		List<Tygia> tygias = query.list();
+		if (!tygias.isEmpty()) {
+			return tygias;
+		}
+		return null;
 	}
 }

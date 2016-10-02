@@ -1,11 +1,17 @@
 package com.qlbh.controller;
 
+import java.util.List;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.qlbh.model.NguoidungHome;
 import com.qlbh.pojo.Nguoidung;
+
+import com.qlbh.model.TygiaHome;
+import com.qlbh.pojo.Tygia;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
