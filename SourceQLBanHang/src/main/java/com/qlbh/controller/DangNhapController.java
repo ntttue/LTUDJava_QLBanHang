@@ -30,8 +30,11 @@ public class DangNhapController {
 		String tenDangNhap = this.txtTenDangNhap.getText();
 		String matKhau = this.txtMatKhau.getText();
 		Nguoidung nd = new Nguoidung();
+		nd.setTennd("abc");
+		nd.setMand("123");
 		NguoidungHome ndHome = new NguoidungHome();
-		nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
+		ndHome.create(nd);
+//		nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
 
 		if (nd != null) {
 			JFXDialog dialog = new JFXDialog(stackPane, new Label("Hello " + nd.getTennd()),
