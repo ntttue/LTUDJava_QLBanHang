@@ -1,5 +1,7 @@
 package com.qlbh.controller;
 
+import org.apache.log4j.Logger;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXPasswordField;
@@ -12,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 public class DangNhapController {
-
+	final static Logger logger = Logger.getLogger(DangNhapController.class);
 	@FXML
 	private JFXButton btnDangNhap;
 	@FXML
@@ -34,7 +36,7 @@ public class DangNhapController {
 		nd.setMand("123");
 		NguoidungHome ndHome = new NguoidungHome();
 		ndHome.create(nd);
-//		nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
+		// nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
 
 		if (nd != null) {
 			JFXDialog dialog = new JFXDialog(stackPane, new Label("Hello " + nd.getTennd()),
