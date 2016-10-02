@@ -7,10 +7,13 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nguoidung;
+import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateUtil;
 import java.util.List;
 
@@ -21,64 +24,23 @@ import java.util.List;
  * @author Hibernate Tools
  */
 @Stateless
-public class NguoidungHome {
+public class NguoidungHome extends AbstractDao {
 
-	private static final Log log = LogFactory.getLog(NguoidungHome.class);
-
-	@PersistenceContext
-	private EntityManager entityManager;
+	final static Logger logger = Logger.getLogger(NguoidungHome.class);
 	Session session = HibernateUtil.getSessionFactory().openSession();
 
-	public void persist(Nguoidung transientInstance) {
-		log.debug("persisting Nguoidung instance");
-		try {
-			entityManager.persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
+	public void create(Nguoidung nd) throws DataAccessLayerException {
+		super.saveOrUpdate(nd);
 	}
 
-	public void remove(Nguoidung persistentInstance) {
-		log.debug("removing Nguoidung instance");
-		try {
-			entityManager.remove(persistentInstance);
-			log.debug("remove successful");
-		} catch (RuntimeException re) {
-			log.error("remove failed", re);
-			throw re;
-		}
-	}
-
-	public Nguoidung merge(Nguoidung detachedInstance) {
-		log.debug("merging Nguoidung instance");
-		try {
-			Nguoidung result = entityManager.merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public Nguoidung findById(Integer id) {
-		log.debug("getting Nguoidung instance with id: " + id);
-		try {
-			Nguoidung instance = entityManager.find(Nguoidung.class, id);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
+	public NguoidungHome() {
+		super();
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
 		Nguoidung nd = new Nguoidung();
 		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";
-//		 String hql = "from Nguoidung";
+		// String hql = "from Nguoidung";
 
 		Query query = session.createQuery(hql);
 		query.setParameter("tennd", tenDangNhap);
