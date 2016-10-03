@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,18 +8,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0"
-	styleClass="mainFxmlClass" stylesheets="@../../css/quanlydonvitinh.css"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="800.0" styleClass="mainFxmlClass" stylesheets="@../../css/quanlydonvitinh.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.QuanLyDonViTinhController">
 	<children>
-		<TableView layoutX="14.0" layoutY="14.0" prefHeight="370.0"
-			prefWidth="576.0">
+		<TableView fx:id="dgvDonViTinh" layoutY="50.0" onMouseClicked="#dgvDonViTinhClick" prefHeight="300.0" prefWidth="800.0">
 			<columns>
-				<TableColumn prefWidth="75.0" text="Mã" />
-				<TableColumn prefWidth="75.0" text="Tên" />
-				<TableColumn prefWidth="75.0" text="Ghi chú" />
-				<TableColumn prefWidth="75.0" text="Còn quản lý" />
+				<TableColumn prefWidth="181.0" text="Mã" />
+				<TableColumn prefWidth="308.0" text="Tên" />
+				<TableColumn prefWidth="310.0" text="Ghi chú" />
 			</columns>
 		</TableView>
+      <Button fx:id="btnThem" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnThemClick" prefHeight="25.0" prefWidth="100.0" text="Thêm" />
+      <Button fx:id="btnCapNhat" layoutX="128.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnCapNhatClick" prefHeight="25.0" prefWidth="100.0" text="Cập nhật" />
+      <Button fx:id="btnXoa" layoutX="242.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnXoaClick" prefHeight="25.0" prefWidth="100.0" text="Xóa" />
+      <Button fx:id="btnTaiLai" layoutX="356.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnTaiLaiClick" prefHeight="25.0" prefWidth="100.0" text="Tải lại" />
 	</children>
 </AnchorPane>
