@@ -15,7 +15,7 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/DangNhap.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Đăng nhập");
 			primaryStage.initStyle(StageStyle.UNIFIED);

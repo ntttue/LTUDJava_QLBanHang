@@ -1,34 +1,61 @@
 package com.qlbh.controller.chucnang;
 
-import java.io.IOException;
+import com.qlbh.pojo.Nhanvien;
+import com.qlbh.pojo.Phieunhap;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
-public class NhapHangController extends Application{
-	@Override
-	public void start(Stage primaryStage) {
-		Parent root;
-		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setTitle("Nhập Hàng");
-			primaryStage.initStyle(StageStyle.UTILITY);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+public class NhapHangController {
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
+	@FXML
+    private Button btnLuu;
+
+    @FXML
+    private ComboBox<?> cmbMaNCC;
+
+    @FXML
+    private TextField txtThanhToan;
+
+    @FXML
+    private ComboBox<?> cmbKho;
+
+    @FXML
+    private Button btnTaoMoi;
+
+    @FXML
+    private TableView<Phieunhap> tablePhieuNhap;
+
+    @FXML
+    private TextArea txtGhiChu;
+
+    @FXML
+    private ComboBox<Nhanvien> cmbNhanVien;
+
+    @FXML
+    private TextField txtDiaChi;
+
+    @FXML
+    private ComboBox<?> cmbTenNCC;
+
+    @FXML
+    private TextField txtMaPhieu;
+
+    @FXML
+    private Button btnNapLai;
+
+    @FXML
+    private DatePicker datePickerNhap;
+
+    @FXML
+    void btnTaoMoiClick(ActionEvent event) {
+
+    }
 
 }
