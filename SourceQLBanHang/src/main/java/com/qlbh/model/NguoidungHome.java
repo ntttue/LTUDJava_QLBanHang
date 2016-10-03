@@ -36,7 +36,7 @@ public class NguoidungHome extends AbstractDao {
 	public NguoidungHome() {
 		super();
 	}
-
+	//
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
 		Nguoidung nd = new Nguoidung();
 		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";

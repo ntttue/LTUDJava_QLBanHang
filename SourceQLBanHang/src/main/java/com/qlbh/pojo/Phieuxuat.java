@@ -33,6 +33,7 @@ public class Phieuxuat implements java.io.Serializable {
 	private Date ngaygiao;
 	private Date ngaylap;
 	private Double tongtien;
+	private String ghichu;
 	private Boolean activite;
 	private Set<Chitietphieuxuat> chitietphieuxuats = new HashSet<Chitietphieuxuat>(0);
 
@@ -140,6 +141,16 @@ public class Phieuxuat implements java.io.Serializable {
 
 	public void setTongtien(Double tongtien) {
 		this.tongtien = tongtien;
+	}
+	
+	
+	@Column(name = "ghichu")
+	public String getGhichu() {
+		return ghichu;
+	}
+
+	public void setGhichu(String ghichu) {
+		this.ghichu = ghichu;
 	}
 
 	@Column(name = "activite")

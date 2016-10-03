@@ -1,17 +1,23 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.ArrayList;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.qlbh.pojo.Nhanvien;
+import com.qlbh.util.HibernateUtil;
 
 /**
  * Home object for domain model class Nhanvien.
+ * 
  * @see com.qlbh.model.Nhanvien
  * @author Hibernate Tools
  */
@@ -22,6 +28,8 @@ public class NhanvienHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+
+	private Session session = HibernateUtil.getSessionFactory().openSession();
 
 	public void persist(Nhanvien transientInstance) {
 		log.debug("persisting Nhanvien instance");
@@ -67,5 +75,13 @@ public class NhanvienHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+
+	public ArrayList<Nhanvien> getNhanVienList() {
+		ArrayList<Nhanvien> nhanviens = new ArrayList<Nhanvien>();
+		String hql = "select nv from NhanVien nv";
+		Query query = session.createQuery(hql);
+		nhanviens = (ArrayList<Nhanvien>) query.list();
+		return nhanviens;
 	}
 }

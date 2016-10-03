@@ -30,6 +30,16 @@ public class ManHinhChinhController {
         tabMainContent.getSelectionModel().select(tab);
 	}
 	@FXML
+    void btnQuanLyDonViTinhClick(ActionEvent event) throws IOException {
+		System.out.println("Clicked on button 'Quản lý đơn vị tính'!");       
+        Tab tab = new Tab();
+        tab.setText("Đơn vị tính");
+        Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/danhmuc/QuanLyDonViTinh.fxml"));
+        tab.setContent(root);
+        tabMainContent.getTabs().add(tab);
+        tabMainContent.getSelectionModel().select(tab);
+    }
+	@FXML
 	void btnKetThucClick(ActionEvent event) {
 		Stage primaryStage = MainApp.getPrimaryStage();
 		primaryStage.close();
