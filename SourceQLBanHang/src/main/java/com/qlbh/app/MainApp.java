@@ -10,9 +10,18 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
+	private static Stage primaryStage; // **Declare static Stage**
 
+    private void setPrimaryStage(Stage stage) {
+    	MainApp.primaryStage = stage;
+    }
+
+    static public Stage getPrimaryStage() {
+        return MainApp.primaryStage;
+    }
 	@Override
 	public void start(Stage primaryStage) {
+		setPrimaryStage(primaryStage); // **Set the Stage**
 		Parent root;
 		try {
 			root = FXMLLoader.load(getClass().getResource("../fxml/ManHinhChinh.fxml"));
@@ -24,8 +33,6 @@ public class MainApp extends Application {
 			// Set application icon
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/ic_store_white_24dp.png")));
 			primaryStage.show();
-			
-			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="app-wrapper" stylesheets="@../css/ManHinhChinh.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchorPaneMainApp" prefHeight="600.0" prefWidth="1000.0" styleClass="app-wrapper" stylesheets="@../css/ManHinhChinh.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.ManHinhChinhController">
    <children>
       <TabPane prefHeight="140.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -22,7 +22,7 @@
                               <Insets />
                            </opaqueInsets>
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="66.0" ripplerFill="#c98c8c" text="Kết thúc" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnKetThucClick" prefHeight="66.0" prefWidth="66.0" ripplerFill="#c98c8c" text="Kết thúc" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" fill="#e42525" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
@@ -218,7 +218,7 @@
                      <children>
                         <AnchorPane prefHeight="91.0" prefWidth="154.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Mua hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnMuaHangClick" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Mua hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z" fill="#3174d6" scaleX="1.4" scaleY="1.4" translateY="-2.0" />
                                  </graphic>
@@ -382,20 +382,7 @@
       </TabPane>
       <AnchorPane layoutX="76.0" layoutY="140.0" prefHeight="200.0" prefWidth="200.0" styleClass="content-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
          <children>
-            <TabPane layoutX="105.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <tabs>
-                <Tab text="Khách hàng">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
-                <Tab text="Nhà cung cấp">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                </Tab>
-              </tabs>
-            </TabPane>
+            <TabPane fx:id="tabMainContent" layoutX="105.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
