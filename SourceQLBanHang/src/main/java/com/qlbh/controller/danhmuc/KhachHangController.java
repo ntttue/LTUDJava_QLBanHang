@@ -30,10 +30,10 @@ public class KhachHangController {
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			System.out.println("+ Mở màn hình thêm khách hàng thành công");
+			System.out.println("+ Mở màn hình thêm khách hàng thành công :)");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("- Mở màn hình thêm khách hàng thất bại");
+			System.out.println("- Mở màn hình thêm khách hàng thất bại :(");
 			e.printStackTrace();
 		}
 	}
