@@ -1,0 +1,37 @@
+/*
+ * Line break code: &#10;
+ */
+.header-tab-group-wrapper {
+	-fx-padding: 3px;
+    -fx-border-insets: 3px;
+    -fx-background-insets: 3px;
+    -fx-border-color: #1976d2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+.header-tab {
+	-fx-padding: 0 1px 1px 1px;
+    -fx-border-insets: 0 1px 1px 1px;
+    -fx-background-insets: 0 1px 1px 1px;
+	-fx-border-color: #1976d2;
+    -fx-border-width: 0 1px 1px 1px;
+    -fx-border-radius: 0 0 3px 3px;
+    -fx-background-color: #f5f5f5;
+}
+.header-tab-button {
+	-fx-padding: 3px;
+    -fx-border-insets: 3px;
+    -fx-background-insets: 3px;
+}
+.content-wrapper {
+	-fx-padding: 1px;
+    -fx-border-insets: 1px;
+    -fx-background-insets: 1px;
+    -fx-border-color: #1976d2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-color: #f5f5f5;
+}
+.app-wrapper {
+	-fx-background-color: #f5f5f5;
+}
