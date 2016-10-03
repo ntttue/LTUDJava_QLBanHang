@@ -1,11 +1,11 @@
 package com.qlbh.app;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,9 +20,12 @@ public class MainApp extends Application {
 			primaryStage.setTitle("Phần mềm quản lý bán hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.setMaximized(true);
-//			primaryStage.setFullScreen(true);
 			primaryStage.setScene(scene);
+			// Set application icon
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/ic_store_white_24dp.png")));
 			primaryStage.show();
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
