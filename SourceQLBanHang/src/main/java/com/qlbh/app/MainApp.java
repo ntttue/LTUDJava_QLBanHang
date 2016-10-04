@@ -28,7 +28,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Phần mềm quản lý bán hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
-			primaryStage.setMaximized(true);
+//			primaryStage.setMaximized(true);
 			primaryStage.setScene(scene);
 			// Set application icon
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/ic_store_white_24dp.png")));

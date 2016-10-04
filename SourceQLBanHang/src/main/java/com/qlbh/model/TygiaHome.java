@@ -75,7 +75,10 @@ public class TygiaHome {
 			throw re;
 		}
 	}
-	
+	/**
+	 * Lấy danh sách tỷ giá trong CSDL
+	 * @return
+	 */
 	public List<Tygia> getTygias() {
 		String hql = "from Tygia";
 		Query query = session.createQuery(hql);

@@ -55,7 +55,7 @@ public class ManHinhChinhController {
 	 * Xử lý sự kiện khi bấm vào nút Khách Hàng => Thêm tab Khách hàng
 	 * @param event
 	 */
-	void btnKhachHangClick(ActionEvent event) {
+	void onButtonKhachHangClick(ActionEvent event) {
 		String title = "Khách hàng";
 		String fxmlPath = "../fxml/danhmuc/KhachHang.fxml";
 		// Kiểm tra xem tab Khách hàng đã đc thêm vào hay chưa, nếu đã thêm thì thoát
@@ -64,10 +64,40 @@ public class ManHinhChinhController {
 			return;
 		}
 		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabKhachHangAdded = -1;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabKhachHangAdded = tabMainContent.getSelectionModel().getSelectedIndex();
+//	        System.out.println("Add tab "+title+" succeed!");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+//			System.out.println("Add tab "+title+" failed!");
+			e.printStackTrace();
+		}
+	}
+	public static Integer tabTyGiaAdded = -1;
+	@FXML
+	void onButtonTyGiaClick(ActionEvent event) {
+		String title = "Tỷ giá";
+		String fxmlPath = "../fxml/danhmuc/TyGia.fxml";
+		if ( ManHinhChinhController.tabTyGiaAdded != -1 ) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTyGiaAdded);
+			return;
+		}
+		Tab tab = new Tab();
         tab.setText(title);
         tab.setOnClosed(new EventHandler<Event>() {
             public void handle(Event arg0) {
-            	ManHinhChinhController.tabKhachHangAdded = -1;
+            	ManHinhChinhController.tabTyGiaAdded = -1;
             }
         });
         Parent root;
@@ -76,11 +106,9 @@ public class ManHinhChinhController {
 			tab.setContent(root);
 	        tabMainContent.getTabs().add(tab);
 	        tabMainContent.getSelectionModel().select(tab);
-	        ManHinhChinhController.tabKhachHangAdded = tabMainContent.getSelectionModel().getSelectedIndex();
-//	        System.out.println("Add tab "+title+" succeed!");
+	        ManHinhChinhController.tabTyGiaAdded = tabMainContent.getSelectionModel().getSelectedIndex();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-//			System.out.println("Add tab "+title+" failed!");
 			e.printStackTrace();
 		}
 	}
