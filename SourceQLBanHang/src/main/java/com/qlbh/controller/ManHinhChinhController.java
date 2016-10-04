@@ -19,7 +19,6 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 	@FXML
 	void btnMuaHangClick(ActionEvent event) throws IOException {
-		System.out.println("Clicked on button 'Mua Hàng'!");       
         Tab tab = new Tab();
         tab.setText("Nhập hàng");
         Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
