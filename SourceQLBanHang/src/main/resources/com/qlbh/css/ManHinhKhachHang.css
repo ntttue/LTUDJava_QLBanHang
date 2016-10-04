@@ -1,0 +1,11 @@
+.content-wrapper {
+	-fx-background-color: #1976d2;
+}
+.header-tab-button-wrapper {
+    -fx-border-color: #f1f1f1;
+    -fx-border-width: 0 0 1px 0;
+}
+.decorde {
+	-fx-border-color: #80cbc4;
+    -fx-border-width: 0 2px 0 0;
+}
