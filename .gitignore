@@ -2,6 +2,8 @@
 /SourceQLBanHang/.idea/
 /SourceQLBanHang/QLBanHang.iml
 /SourceQLBanHang/src/main/resources/com/qlbh/.LCKhibernate.reveng.xml~
+/SourceQLBanHang/src/main/resources/hibernate.cfg.xml
+
 log4j-application.log
 
 

@@ -44,30 +44,21 @@ public class ManHinhChinhController {
 		Stage primaryStage = MainApp.getPrimaryStage();
 		primaryStage.close();
 	}
-	/**
-	 * Sử dụng để lưu giá trị Index của tab Khách hàng khi đã được thêm vào trong tabPane.
-	 * Nếu giá trị của nó là -1 thì nó chưa được thêm vào tabPane.
-	 * Nếu giá trị khác -1 thì đó là Index của tabKhachHang.
-	 */
-	public static Integer tabKhachHangAdded = -1;
+	public static Tab tabKhachHang = null;
 	@FXML
-	/**
-	 * Xử lý sự kiện khi bấm vào nút Khách Hàng => Thêm tab Khách hàng
-	 * @param event
-	 */
 	void onButtonKhachHangClick(ActionEvent event) {
 		String title = "Khách hàng";
 		String fxmlPath = "../fxml/danhmuc/KhachHang.fxml";
-		// Kiểm tra xem tab Khách hàng đã đc thêm vào hay chưa, nếu đã thêm thì thoát
-		if ( ManHinhChinhController.tabKhachHangAdded != -1 ) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhachHangAdded);
+		// Check tab KhachHang added or not? If added, switch to this tab
+		if ( ManHinhChinhController.tabKhachHang != null ) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhachHang);
 			return;
 		}
 		Tab tab = new Tab();
 		tab.setText(title);
 		tab.setOnClosed(new EventHandler<Event>() {
 			public void handle(Event arg0) {
-				ManHinhChinhController.tabKhachHangAdded = -1;
+				ManHinhChinhController.tabKhachHang = null;
 			}
 		});
 		Parent root;
@@ -76,28 +67,26 @@ public class ManHinhChinhController {
 			tab.setContent(root);
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
-			ManHinhChinhController.tabKhachHangAdded = tabMainContent.getSelectionModel().getSelectedIndex();
-//	        System.out.println("Add tab "+title+" succeed!");
+			ManHinhChinhController.tabKhachHang = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-//			System.out.println("Add tab "+title+" failed!");
 			e.printStackTrace();
 		}
 	}
-	public static Integer tabTyGiaAdded = -1;
+	public static Tab tabTyGia = null;
 	@FXML
 	void onButtonTyGiaClick(ActionEvent event) {
 		String title = "Tỷ giá";
 		String fxmlPath = "../fxml/danhmuc/TyGia.fxml";
-		if ( ManHinhChinhController.tabTyGiaAdded != -1 ) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTyGiaAdded);
+		if ( ManHinhChinhController.tabTyGia != null ) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTyGia);
 			return;
 		}
 		Tab tab = new Tab();
         tab.setText(title);
         tab.setOnClosed(new EventHandler<Event>() {
             public void handle(Event arg0) {
-            	ManHinhChinhController.tabTyGiaAdded = -1;
+            	ManHinhChinhController.tabTyGia = null;
             }
         });
         Parent root;
@@ -106,7 +95,7 @@ public class ManHinhChinhController {
 			tab.setContent(root);
 	        tabMainContent.getTabs().add(tab);
 	        tabMainContent.getSelectionModel().select(tab);
-	        ManHinhChinhController.tabTyGiaAdded = tabMainContent.getSelectionModel().getSelectedIndex();
+	        ManHinhChinhController.tabTyGia = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

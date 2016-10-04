@@ -2,6 +2,8 @@ package com.qlbh.controller.danhmuc;
 
 import java.util.List;
 
+import com.jfoenix.controls.JFXButton;
+import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.model.TygiaHome;
 import com.qlbh.pojo.Tygia;
 
@@ -12,22 +14,84 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.input.MouseButton;
 
 public class TyGiaController {
 	@FXML
 	private TableView<Tygia> tableTyGia;
+	@FXML
+	private JFXButton btnSua;
+	
+	@FXML
+	private JFXButton btnXoa;
+	
 	/**
 	 * Catch when FXML loaded
 	 */
 	@FXML
 	protected void initialize() {
+		this.addRowEvents();
 		this.loadTyGiaToTable();
+		this.setButtonControlsDisable(true);
+	}
+	private void addRowEvents() {
+		tableTyGia.setRowFactory(tv -> {
+		    TableRow<Tygia> row = new TableRow<>();
+		    row.setOnMouseClicked(event -> {
+		    	// No row selected when click
+		    	if ( row.isEmpty() ) {
+		    		onTableTyGiaMouseClick();
+		    	}
+		    	// Double click
+		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 ) {
+		        	Tygia clickedRow = row.getItem();
+		            onRowDoubleClick(clickedRow);
+		        }
+		    	// Single click
+		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ) { // And single click
+		        	Tygia clickedRow = row.getItem();
+		        	onRowSingleClick(clickedRow);
+		        }
+		    });
+		    return row ;
+		});
+	}
+	private void onRowDoubleClick(Tygia tyGia) {
+	    System.out.println("Double click");
+	    System.out.println(tyGia.getMa());
+	    this.setButtonControlsDisable(false);
+	}
+	private void onRowSingleClick(Tygia tyGia) {
+		System.out.println("Single click");
+	    System.out.println(tyGia.getMa());
+	    this.setButtonControlsDisable(false);
+	}
+	
+	private void onTableTyGiaMouseClick() {
+		System.out.println("onTableTyGiaMouseClick");
+		this.setButtonControlsDisable(true);
+		// Clear row selection
+		tableTyGia.getSelectionModel().clearSelection();
+	}
+	void setButtonControlsDisable(Boolean disable) {
+		btnSua.setDisable(disable);
+		btnXoa.setDisable(disable);
 	}
 	@FXML
-	void refreshTableData() {
+	void onRefreshTableDataClick() {
 		tableTyGia.setItems(this.getDSTyGia());
+	}
+	@FXML
+	void onButtonExitClick() {
+		ManHinhChinhController.tabTyGia.getTabPane().getTabs().remove(ManHinhChinhController.tabTyGia);
+		ManHinhChinhController.tabTyGia = null;
+	}
+	@FXML
+	void onButtonXuatClick() {
+		//ManHinhChinhController.tabTyGia.
 	}
 	/**
 	 * Get data for table TyGia

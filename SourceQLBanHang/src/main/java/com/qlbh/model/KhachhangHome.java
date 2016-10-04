@@ -1,14 +1,19 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.qlbh.pojo.Khachhang;
+import com.qlbh.util.HibernateUtil;
 
 /**
  * Home object for domain model class Khachhang.
@@ -22,6 +27,11 @@ public class KhachhangHome {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	Session session = HibernateUtil.getSessionFactory().openSession();
+	
+	public KhachhangHome() {
+		super();
+	}
 
 	public void persist(Khachhang transientInstance) {
 		log.debug("persisting Khachhang instance");
@@ -67,5 +77,14 @@ public class KhachhangHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	public List<Khachhang> getKhachHangs() {
+		String hql = "from Khachhang";
+		Query query = session.createQuery(hql);
+		List<Khachhang> khachHangs = query.list();
+		if (!khachHangs.isEmpty()) {
+			return khachHangs;
+		}
+		return null;
 	}
 }

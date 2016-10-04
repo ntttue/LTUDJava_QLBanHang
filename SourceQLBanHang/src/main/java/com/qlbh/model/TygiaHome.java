@@ -12,7 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.qlbh.pojo.Nguoidung;
 import com.qlbh.pojo.Tygia;
 import com.qlbh.util.HibernateUtil;
 
@@ -76,7 +75,7 @@ public class TygiaHome {
 		}
 	}
 	/**
-	 * Lấy danh sách tỷ giá trong CSDL
+	 * Get List TyGia
 	 * @return
 	 */
 	public List<Tygia> getTygias() {

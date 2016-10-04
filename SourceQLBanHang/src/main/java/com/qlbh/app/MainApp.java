@@ -31,7 +31,7 @@ public class MainApp extends Application {
 //			primaryStage.setMaximized(true);
 			primaryStage.setScene(scene);
 			// Set application icon
-			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/ic_store_white_24dp.png")));
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

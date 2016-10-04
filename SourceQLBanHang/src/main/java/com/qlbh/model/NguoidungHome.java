@@ -51,7 +51,7 @@ public class NguoidungHome extends AbstractDao {
 			System.out.println(nd.getTennd());
 			return nd;
 		}
-
+		
 		return null;
 	}
 }
