@@ -213,4 +213,11 @@ public class Nhanvien implements java.io.Serializable {
 		this.phieuxuats = phieuxuats;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.ten;
+	}
+
+	
 }

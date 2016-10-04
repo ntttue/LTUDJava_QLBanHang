@@ -5,13 +5,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.NhapHangController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.NhapHangController">
    <top>
       <BorderPane prefHeight="235.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <top>
-            <AnchorPane prefHeight="45.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnTaoMoi" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnTaoMoiClick" prefHeight="25.0" prefWidth="102.0" text="Tạo mới" AnchorPane.leftAnchor="10.0" />
+                  <Button fx:id="btnTaoMoi" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Tạo mới" AnchorPane.leftAnchor="10.0" />
                   <Button layoutX="365.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Đóng" />
                   <Button fx:id="btnLuu" layoutX="129.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Lưu và thêm" />
                   <Button fx:id="btnNapLai" layoutX="248.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Nạp lại" />

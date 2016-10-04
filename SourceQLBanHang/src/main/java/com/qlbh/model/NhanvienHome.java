@@ -2,6 +2,7 @@ package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -9,11 +10,15 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.qlbh.pojo.Bophan;
 import com.qlbh.pojo.Nhanvien;
+import com.qlbh.util.HibernateFactory;
 import com.qlbh.util.HibernateUtil;
+
 
 /**
  * Home object for domain model class Nhanvien.
@@ -29,8 +34,7 @@ public class NhanvienHome {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	private Session session = HibernateUtil.getSessionFactory().openSession();
-
+	
 	public void persist(Nhanvien transientInstance) {
 		log.debug("persisting Nhanvien instance");
 		try {
@@ -77,11 +81,18 @@ public class NhanvienHome {
 		}
 	}
 
-	public ArrayList<Nhanvien> getNhanVienList() {
-		ArrayList<Nhanvien> nhanviens = new ArrayList<Nhanvien>();
-		String hql = "select nv from NhanVien nv";
-		Query query = session.createQuery(hql);
-		nhanviens = (ArrayList<Nhanvien>) query.list();
+	public List<Nhanvien> getNhanVienList() {
+		Session session = HibernateFactory.openSession();
+		List<Nhanvien> nhanviens = null;
+		try {
+			String hql = "FROM Nhanvien";
+			Query query = session.createQuery(hql);
+			nhanviens = query.list();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		}finally {
+			session.close();
+		}
 		return nhanviens;
 	}
 }
