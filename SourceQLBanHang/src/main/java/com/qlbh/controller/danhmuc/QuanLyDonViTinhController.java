@@ -16,31 +16,26 @@ import javafx.stage.StageStyle;
 public class QuanLyDonViTinhController {
 
 	@FXML
-	private TableView<?> dgvDonViTinh;
+	private TableView<?> tableDonViTinh;
 
 	@FXML
 	private Button btnThem;
 
 	@FXML
-	private Button btnTaiLai;
-
-	@FXML
-	private Button btnCapNhat;
+	private Button btnSua;
 
 	@FXML
 	private Button btnXoa;
 
 	@FXML
-	void dgvDonViTinhClick(ActionEvent event) {
-
-	}
+	private Button btnNapLai;
 
 	@FXML
 	void btnThemClick(ActionEvent event) throws IOException {
 		System.out.println("Thêm đơn vị tính");
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemDonViTinh.fxml"));
-        //Fill stage with content
+		// Fill stage with content
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Thêm đơn vị tính");
@@ -49,7 +44,7 @@ public class QuanLyDonViTinhController {
 	}
 
 	@FXML
-	void btnCapNhatClick(ActionEvent event) {
+	void btnSuaClick(ActionEvent event) {
 
 	}
 
@@ -59,7 +54,7 @@ public class QuanLyDonViTinhController {
 	}
 
 	@FXML
-	void btnTaiLaiClick(ActionEvent event) {
+	void btnNapLaiClick(ActionEvent event) {
 
 	}
 
