@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Khachhang;
 import com.qlbh.util.DataAccessLayerException;
-import com.qlbh.util.HibernateUtil;
+
 
 /**
  * Home object for domain model class Khachhang.

@@ -14,7 +14,8 @@ import org.hibernate.Session;
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nguoidung;
 import com.qlbh.util.DataAccessLayerException;
-import com.qlbh.util.HibernateUtil;
+import com.qlbh.util.HibernateFactory;
+
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ import java.util.List;
 public class NguoidungHome extends AbstractDao {
 
 	final static Logger logger = Logger.getLogger(NguoidungHome.class);
-	Session session = HibernateUtil.getSessionFactory().openSession();
+	Session session = HibernateFactory.getSessionFactory().openSession();
 
 	public void create(Nguoidung nd) throws DataAccessLayerException {
 		super.saveOrUpdate(nd);

@@ -1,7 +1,6 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -13,11 +12,9 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import com.qlbh.pojo.Bophan;
 import com.qlbh.pojo.Nhanvien;
 import com.qlbh.util.HibernateFactory;
-import com.qlbh.util.HibernateUtil;
+
 
 
 /**

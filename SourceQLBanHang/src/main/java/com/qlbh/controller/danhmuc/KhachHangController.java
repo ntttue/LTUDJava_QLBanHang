@@ -173,6 +173,6 @@ public class KhachHangController {
 		
 		tableKhachHang.setItems(this.getDSKhachHang());
 		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colNguoiLienHe,
-				colDiaChi, colDienThoai, colEmail, colMaSoThue, colTenNganHang, colConQuanLy);
+				colDiaChi, colDienThoai, colEmail, colMaSoThue, colSoTaiKhoan, colTenNganHang, colConQuanLy);
 	}
 }
