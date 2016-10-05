@@ -14,4 +14,15 @@ public class ThemKhachHangController {
 		this.radioButtonKhachLe.setToggleGroup(group);
 		this.radioButtonDaiLy.setToggleGroup(group);
 	}
+	/*
+	 * // force the field to be numeric only
+    textField.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        }
+    });
+	 */
 }

@@ -43,3 +43,8 @@
 .app-wrapper {
 	-fx-background-color: #f5f5f5;
 }
+.button {
+	-fx-background-color: #4F95D2;
+	-fx-font-size: 14px;
+	-fx-text-fill: #fff;
+}
