@@ -27,7 +27,7 @@
                                     <SVGPath content="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" fill="#e42525" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="80.0" layoutY="7.0" prefHeight="66.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Thông tin" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="btnThongTin" alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="80.0" layoutY="7.0" onAction="#btnThongTinClick" prefHeight="66.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Thông tin" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" fill="#3174d6" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
