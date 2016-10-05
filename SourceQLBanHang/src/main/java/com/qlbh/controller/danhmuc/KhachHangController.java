@@ -19,9 +19,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,14 +32,60 @@ public class KhachHangController {
 	@FXML
 	private TableView<Khachhang> tableKhachHang;
 	@FXML
-	private JFXButton btnThemKhachHang;
+	private JFXButton btnThemKhachHang, btnSua, btnXoa;
 	/**
 	 * Catch when FXML loaded
 	 */
 	@FXML
 	protected void initialize() {
+		this.addRowEvents();
+		this.setButtonControlsDisable(true);
 		this.loadKhachHangToTable();
 	}
+	private void addRowEvents() {
+		tableKhachHang.setRowFactory(tv -> {
+		    TableRow<Khachhang> row = new TableRow<>();
+		    row.setOnMouseClicked(event -> {
+		    	// No row selected when click
+		    	if ( row.isEmpty() ) {
+		    		onTableTyGiaMouseClick();
+		    	}
+		    	// Double click
+		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 ) {
+		    		Khachhang clickedRow = row.getItem();
+		            onRowDoubleClick(clickedRow);
+		        }
+		    	// Single click
+		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ) {
+		    		Khachhang clickedRow = row.getItem();
+		        	onRowSingleClick(clickedRow);
+		        }
+		    });
+		    return row;
+		});
+	}
+	private void onRowDoubleClick(Khachhang tyGia) {
+	    System.out.println("Double click");
+	    System.out.println(tyGia.getMa());
+	    this.setButtonControlsDisable(false);
+	}
+	private void onRowSingleClick(Khachhang tyGia) {
+		System.out.println("Single click");
+	    System.out.println(tyGia.getMa());
+	    this.setButtonControlsDisable(false);
+	}
+	
+	private void onTableTyGiaMouseClick() {
+		System.out.println("onTableTyGiaMouseClick");
+		this.setButtonControlsDisable(true);
+		// Clear row selection
+		tableKhachHang.getSelectionModel().clearSelection();
+	}
+	void setButtonControlsDisable(Boolean disable) {
+		btnSua.setDisable(disable);
+		btnXoa.setDisable(disable);
+	}
+	
 	@FXML
 	void btnThemKhachHangClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
@@ -67,6 +115,10 @@ public class KhachHangController {
 		ManHinhChinhController.tabKhachHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhachHang);
 		ManHinhChinhController.tabKhachHang = null;
 	}
+	@FXML
+	void onButtonRefreshClick() {
+		tableKhachHang.setItems(this.getDSKhachHang());
+	}
 	/**
 	 * Get data for table KhachHang
 	 * @return
@@ -86,8 +138,6 @@ public class KhachHangController {
 		// Create column for table KhachHang
 		TableColumn<Khachhang, Number> colSTT = new TableColumn<Khachhang, Number>("#");
 		colSTT.setSortable(false);
-		colSTT.setResizable(false);
-		colSTT.setPrefWidth(50);
 		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableKhachHang.getItems().indexOf(column.getValue()) + 1));
 		
 		TableColumn<Khachhang, String> colMaKhachHang = new TableColumn<Khachhang, String>("Mã");

@@ -23,15 +23,10 @@ import com.qlbh.util.HibernateUtil;
 public class KhachhangHome extends AbstractDao {
 	final static Logger logger = Logger.getLogger(KhachhangHome.class);
 
-	/**
-	 * Finds all Events in the database.
-	 * 
-	 * @return
-	 */
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Khachhang.class);
 	}
-	public Khachhang find(Integer id) throws DataAccessLayerException {
+	public Khachhang findById(Integer id) throws DataAccessLayerException {
 		Khachhang kh = (Khachhang)super.find(Khachhang.class, id);
 		return kh;
 	}

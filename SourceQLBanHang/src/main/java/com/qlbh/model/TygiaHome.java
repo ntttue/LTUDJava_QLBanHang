@@ -10,7 +10,10 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.qlbh.model.common.AbstractDao;
+import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Tygia;
+import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateUtil;
 
 /**
@@ -19,22 +22,10 @@ import com.qlbh.util.HibernateUtil;
  * @author Hibernate Tools
  */
 @Stateless
-public class TygiaHome {
-
+public class TygiaHome extends AbstractDao {
 	private static final Logger logger = Logger.getLogger(TygiaHome.class);
-	Session session = HibernateUtil.getSessionFactory().openSession();
 
-	/**
-	 * Get List TyGia
-	 * @return
-	 */
-	public List<Tygia> getTygias() {
-		String hql = "from Tygia";
-		Query query = session.createQuery(hql);
-		List<Tygia> tygias = query.list();
-		if (!tygias.isEmpty()) {
-			return tygias;
-		}
-		return null;
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Tygia.class);
 	}
 }

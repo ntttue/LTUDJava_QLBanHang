@@ -93,9 +93,10 @@ public class TyGiaController {
 	 * Get data for table TyGia
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	private ObservableList<Tygia> getDSTyGia() {
 		TygiaHome tygiaHome = new TygiaHome();
-		List<Tygia> tygias = tygiaHome.getTygias();
+		List<Tygia> tygias = tygiaHome.findAll();
 		ObservableList<Tygia> oListTyGia = FXCollections.observableList(tygias);
 		return oListTyGia;
 	}
@@ -107,8 +108,8 @@ public class TyGiaController {
 		// Create column for table TyGia
 		TableColumn<Tygia, Number> colSTT = new TableColumn<Tygia, Number>("#");
 		colSTT.setSortable(false);
-		colSTT.setResizable(false);
-		colSTT.setPrefWidth(50);
+//		colSTT.setResizable(false);
+//		colSTT.setPrefWidth(50);
 		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableTyGia.getItems().indexOf(column.getValue()) + 1));
 		
 		TableColumn<Tygia, String> colMa = new TableColumn<Tygia, String>("Mã");
