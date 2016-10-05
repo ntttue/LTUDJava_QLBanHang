@@ -17,7 +17,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "chitietphieunhap", catalog = "qlbh")
 public class Chitietphieunhap implements java.io.Serializable {
-
+	
+	public static final String ID = "id";
+	public static final String MA_HANG_HOA = "hanghoa.getma";
+	public static final String TEN_HANG_HOA = "hanghoa.ten";
+	public static final String PHIEU_NHAP = "phieunhap";
+	public static final String SO_LUONG = "soluong";
+	public static final String DON_GIA = "dongia";
+	public static final String THANH_TIEN = "thanhtien";
+	public static final String GHI_CHU = "ghichu";
+	public static final String DON_VI = "donvi";
+	
 	private Integer id;
 	private Hanghoa hanghoa;
 	private Phieunhap phieunhap;
