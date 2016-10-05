@@ -30,6 +30,9 @@ public class ManHinhChinhController {
 	private JFXButton btnThongTin;
 
 	@FXML
+	private JFXButton btnThongTinTroGiup;
+
+	@FXML
 	void btnMuaHangClick(ActionEvent event) throws IOException {
 		Tab tab = new Tab();
 		tab.setText("Nhập hàng");
@@ -150,7 +153,26 @@ public class ManHinhChinhController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
+	@FXML
+	void btnThongTinTroGiupClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/ThongTin.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Thông tin");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
