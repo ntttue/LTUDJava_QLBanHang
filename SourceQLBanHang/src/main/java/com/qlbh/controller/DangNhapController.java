@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.qlbh.app.MainApp;
 import com.qlbh.model.NguoidungHome;
 import com.qlbh.pojo.Nguoidung;
 import javafx.event.ActionEvent;
@@ -25,8 +26,6 @@ public class DangNhapController {
 
 	@FXML
 	void btnDangNhapClick(ActionEvent event) {
-		System.out.println("You clicked me!");
-		System.out.println("com.qlbh.controller.DangNhapController.btnDangNhapClick()");
 		String tenDangNhap = this.txtTenDangNhap.getText();
 		String matKhau = this.txtMatKhau.getText();
 		Nguoidung nd = new Nguoidung();
@@ -34,13 +33,10 @@ public class DangNhapController {
 		nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
 
 		if (nd != null) {
-			JFXDialog dialog = new JFXDialog(stackPane, new Label("Hello " + nd.getTennd()),
-					JFXDialog.DialogTransition.CENTER);
-			dialog.show();
+			MainApp.setUserLogin(nd);
 		} else {
-			JFXDialog dialog = new JFXDialog(stackPane, new Label("Tên đăng nhập hoặc mật khẩu không chính xác!"),
-					JFXDialog.DialogTransition.CENTER);
-			dialog.show();
+			
 		}
+
 	}
 }
