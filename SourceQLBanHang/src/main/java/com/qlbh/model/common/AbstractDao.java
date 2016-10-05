@@ -44,7 +44,7 @@ public abstract class AbstractDao {
         }
     }
 
-    protected Object find(Class clazz, Long id) {
+    protected Object find(Class clazz, Integer id) {
         Object obj = null;
         try {
             startOperation();
