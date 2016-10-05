@@ -60,11 +60,9 @@ public class ManHinhChinhController {
 
 	@FXML
 	void btnKetThucClick(ActionEvent event) {
-		Stage primaryStage = MainApp.getPrimaryStage();
-		primaryStage.close();
+		MainApp.getPrimaryStage().close();
 	}
 	public static Tab tabKhachHang = null;
-
 	@FXML
 	void onButtonKhachHangClick(ActionEvent event) {
 		String title = "Khách hàng";

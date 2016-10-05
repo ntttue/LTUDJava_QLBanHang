@@ -71,23 +71,23 @@ public class KhachHangController {
 	 * Get data for table KhachHang
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	private ObservableList<Khachhang> getDSKhachHang() {
 		KhachhangHome khachhangHome = new KhachhangHome();
 		List<Khachhang> khachHangs = khachhangHome.findAll();
-		for ( Khachhang kh : khachHangs ) {
-			System.out.println(kh.getTen());
-		}
 		ObservableList<Khachhang> oListKhachHang = FXCollections.observableList(khachHangs);
 		return oListKhachHang;
 	}
 	/**
-	 * Load danh sách khách hàng vào tableView
+	 * Load list KhachHang to tableView
 	 */
 	@SuppressWarnings("unchecked")
 	void loadKhachHangToTable() {
 		// Create column for table KhachHang
 		TableColumn<Khachhang, Number> colSTT = new TableColumn<Khachhang, Number>("#");
 		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(50);
 		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableKhachHang.getItems().indexOf(column.getValue()) + 1));
 		
 		TableColumn<Khachhang, String> colMaKhachHang = new TableColumn<Khachhang, String>("Mã");
@@ -96,15 +96,33 @@ public class KhachHangController {
 		TableColumn<Khachhang, String> colTenKhachHang = new TableColumn<Khachhang, String>("Tên");
 		colTenKhachHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
 		
+		TableColumn<Khachhang, String> colNguoiLienHe = new TableColumn<Khachhang, String>("Người liên hệ");
+		colNguoiLienHe.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNguoilienhe()));
+		
 		TableColumn<Khachhang, String> colDiaChi = new TableColumn<Khachhang, String>("Địa chỉ");
 		colDiaChi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDiachi()));
+		
+		TableColumn<Khachhang, String> colDienThoai = new TableColumn<Khachhang, String>("Điện thoại");
+		colDienThoai.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDienthoai()));
+		
+		TableColumn<Khachhang, String> colEmail = new TableColumn<Khachhang, String>("Email");
+		colEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+		
+		TableColumn<Khachhang, String> colMaSoThue = new TableColumn<Khachhang, String>("Mã số thuế");
+		colMaSoThue.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMasothue()));
+		
+		TableColumn<Khachhang, String> colSoTaiKhoan = new TableColumn<Khachhang, String>("Số tài khoản");
+		colSoTaiKhoan.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTaikhoan()));
+		
+		TableColumn<Khachhang, String> colTenNganHang = new TableColumn<Khachhang, String>("Tên ngân hàng");
+		colTenNganHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNganhang()));
 		
 		TableColumn<Khachhang, Boolean> colConQuanLy = new TableColumn<Khachhang, Boolean>("Còn quản lý");
 		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
-//		this.getDSKhachHang();
 		tableKhachHang.setItems(this.getDSKhachHang());
-		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colDiaChi, colConQuanLy);
+		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colNguoiLienHe,
+				colDiaChi, colDienThoai, colEmail, colMaSoThue, colTenNganHang, colConQuanLy);
 	}
 }
