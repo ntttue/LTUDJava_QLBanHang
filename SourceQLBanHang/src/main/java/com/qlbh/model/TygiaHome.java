@@ -27,4 +27,7 @@ public class TygiaHome extends AbstractDao {
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Tygia.class);
 	}
+	public void saveOrUpdate(Tygia tyGia) {
+		super.saveOrUpdate(tyGia);
+	}
 }
