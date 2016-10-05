@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -9,56 +10,113 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="781.0" styleClass="mainFxmlClass" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.qlbh.controller.danhmuc.ThemKhachHangController">
 	<children>
-		<Pane layoutY="43.0" prefHeight="368.0" prefWidth="777.0" styleClass="paneInfor">
-			<children>
-				<Label layoutX="14.0" layoutY="46.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Mã khách hàng" />
-				<Label layoutX="14.0" layoutY="85.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Tên khách hàng" />
-				<Label layoutX="98.0" layoutY="49.0" prefHeight="18.0" prefWidth="12.0" styleClass="lbred" text="*" />
-				<Label layoutX="97.0" layoutY="85.0" prefHeight="18.0" prefWidth="12.0" styleClass="lbred" text="*" />
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="777.0" styleClass="lbHeader" text="Thông tin chung" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="126.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Địa chỉ" />
-            <Label layoutX="14.0" layoutY="169.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Mã số thuế" />
-            <Label layoutX="14.0" layoutY="210.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Email" />
-            <Label layoutX="14.0" layoutY="251.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Điện thoại" />
-            <Label layoutX="13.0" layoutY="291.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" />
-            <Label layoutX="13.0" layoutY="328.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text=" Chiếc khấu" />
-            <Label layoutX="414.0" layoutY="44.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Khu vực" />
-            <Label layoutX="463.0" layoutY="47.0" prefHeight="18.0" prefWidth="12.0" styleClass="lbred" text="*" />
-            <Label layoutX="414.0" layoutY="84.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Fax" />
-            <Label layoutX="414.0" layoutY="126.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Website" />
-            <Label layoutX="414.0" layoutY="171.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nhân hàng" />
-            <Label layoutX="414.0" layoutY="212.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nợ hiện tại" />
-            <Label layoutX="414.0" layoutY="254.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mobile" />
-            <Label layoutX="414.0" layoutY="291.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick  Skype" />
-            <Label layoutX="414.0" layoutY="329.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Yahoo" />
-            <TextField layoutX="128.0" layoutY="47.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="128.0" layoutY="86.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="128.0" layoutY="127.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="128.0" layoutY="172.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="128.0" layoutY="213.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="128.0" layoutY="252.0" prefHeight="25.0" prefWidth="260.0" />
-            <ComboBox layoutX="128.0" layoutY="292.0" prefHeight="25.0" prefWidth="260.0" />
-            <ComboBox layoutX="128.0" layoutY="330.0" prefHeight="25.0" prefWidth="260.0" />
-            <ComboBox layoutX="493.0" layoutY="44.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="288.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="249.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="208.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="163.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="122.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0" />
-            <TextField layoutX="493.0" layoutY="329.0" prefHeight="25.0" prefWidth="260.0" />
-			</children>
-		</Pane>
-		<JFXButton buttonType="RAISED" layoutX="496.0" layoutY="419.0" prefHeight="40.0" prefWidth="108.0" ripplerFill="#0bd3a1" styleClass="okButton" text="Thêm" />
-		<JFXButton buttonType="RAISED" layoutX="647.0" layoutY="419.0" prefHeight="40.0" prefWidth="116.0" ripplerFill="#d1260d" styleClass="cancelButton" text="Thoát" />
-      <JFXRadioButton layoutX="129.0" layoutY="13.0" text="Đại lý" />
-      <JFXRadioButton layoutX="280.0" layoutY="13.0" text="Khách lẻ" />
-      <Label layoutX="14.0" layoutY="6.0" prefHeight="27.0" prefWidth="102.0" styleClass="lbInfor" text="Loại khách hàng" />
+      <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="100.0" text="Loại khách hàng:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0" />
+            <Group AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXRadioButton fx:id="radioButtonKhachLe" text="Khách lẻ" />
+                  <JFXRadioButton fx:id="radioButtonDaiLy" layoutX="120.0" text="Đại lý" />
+               </children>
+            </Group>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="777.0" styleClass="lbHeader" text="Thông tin chung" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Điện thoại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Địa chỉ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Tên" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Mã" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ComboBox layoutY="286.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+                        <ComboBox layoutY="247.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <TextField layoutY="209.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <TextField layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <TextField layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                        <TextField layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <TextField layoutY="113.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <TextField layoutY="67.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Yahoo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick  Skype" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mobile" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nợ hiện tại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nhân hàng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Website" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Fax" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Khu vực" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                        <ComboBox prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton alignment="CENTER_RIGHT" graphicTextGap="25.0" layoutX="605.0" prefHeight="30.0" prefWidth="85.0" ripplerFill="#c98c8c" style="-fx-background-color: #e9ebee;" text="Lưu" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#30d740" />
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" graphicTextGap="15.0" layoutX="703.0" layoutY="8.0" prefHeight="30.0" prefWidth="85.0" ripplerFill="#9e6868" style="-fx-background-color: #e9ebee;" text="Đóng" wrapText="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <SVGPath content="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12zm8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8z" fill="#ed5b0e" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
 	</children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="app-wrapper" />
+   </styleClass>
 </AnchorPane>

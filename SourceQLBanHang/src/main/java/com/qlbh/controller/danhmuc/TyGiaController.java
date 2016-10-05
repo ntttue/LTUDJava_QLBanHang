@@ -23,11 +23,7 @@ public class TyGiaController {
 	@FXML
 	private TableView<Tygia> tableTyGia;
 	@FXML
-	private JFXButton btnSua;
-	
-	@FXML
-	private JFXButton btnXoa;
-	
+	private JFXButton btnSua, btnXoa;	
 	/**
 	 * Catch when FXML loaded
 	 */
@@ -51,12 +47,12 @@ public class TyGiaController {
 		            onRowDoubleClick(clickedRow);
 		        }
 		    	// Single click
-		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ) { // And single click
+		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ) {
 		        	Tygia clickedRow = row.getItem();
 		        	onRowSingleClick(clickedRow);
 		        }
 		    });
-		    return row ;
+		    return row;
 		});
 	}
 	private void onRowDoubleClick(Tygia tyGia) {
