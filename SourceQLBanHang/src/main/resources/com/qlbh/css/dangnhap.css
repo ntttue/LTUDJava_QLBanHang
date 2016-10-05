@@ -1,7 +1,7 @@
 .mainFxmlClass {
     -fx-background-color: #EDEDED;
     -fx-pref-width:  700.0px;
-    -fx-pref-height:  500.0px;
+    -fx-pref-height:  300.0px;
 }
 #paneImage{
     -fx-background-image:  url("../images/loginICon.png") ;
@@ -27,4 +27,9 @@
     -fx-pref-width:  225.0px;
     -fx-background-color: #817E7C;
     -fx-text-fill: #FEFFF3;
+}
+.lbred{
+    -fx-text-fill: red;
+    -fx-font-style: italic;
+    -fx-font-size: 11px;
 }
