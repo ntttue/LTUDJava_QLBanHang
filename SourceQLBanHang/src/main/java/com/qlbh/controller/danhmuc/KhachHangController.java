@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
+import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.model.KhachhangHome;
 import com.qlbh.pojo.Khachhang;
 
@@ -55,18 +56,23 @@ public class KhachHangController {
 	void btnSuaKhachHangClick() {
 		System.out.println("Button sửa clicked!");
 	}
+	@FXML
+	void onButtonExitClick() {
+		ManHinhChinhController.tabKhachHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhachHang);
+		ManHinhChinhController.tabKhachHang = null;
+	}
 	/**
-	 * Get data for table Khachhang
+	 * Get data for table KhachHang
 	 * @return
 	 */
-	private ObservableList<Khachhang> getDSKhachHang() {
+	private void getDSKhachHang() {
 		KhachhangHome khachhangHome = new KhachhangHome();
-		List<Khachhang> khachHangs = khachhangHome.findAll();
-		for ( Khachhang kh : khachHangs ) {
-			System.out.println(kh.getTen());
-		}
-		ObservableList<Khachhang> oListKhachHang = FXCollections.observableList(khachHangs);
-		return oListKhachHang;
+		List khachHangs = khachhangHome.findAll();
+//		for ( Khachhang kh : khachHangs ) {
+//			System.out.println(kh.getTen());
+//		}
+//		ObservableList<Khachhang> oListKhachHang = FXCollections.observableList(khachHangs);
+//		return oListKhachHang;
 	}
 	/**
 	 * Load danh sách khách hàng vào tableView
@@ -91,8 +97,8 @@ public class KhachHangController {
 		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
-//		this.getDSKhachHang();
-		tableKhachHang.setItems(this.getDSKhachHang());
+		this.getDSKhachHang();
+//		tableKhachHang.setItems(this.getDSKhachHang());
 		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colDiaChi, colConQuanLy);
 	}
 }
