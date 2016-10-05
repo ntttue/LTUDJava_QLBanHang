@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemKhachHangController">
+<AnchorPane id="AnchorPane" prefHeight="375.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemKhachHangController">
 	<children>
       <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -39,9 +39,8 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nợ hiện tại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Điện thoại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Địa chỉ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
@@ -59,23 +58,20 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField layoutY="209.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
-                        <TextField layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-                        <TextField layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                        <TextField layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-                        <TextField layoutY="113.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-                        <TextField layoutY="67.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
-                        <TextField layoutX="10.0" layoutY="219.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <TextField layoutX="20.0" layoutY="229.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+                        <TextField fx:id="numNoHienTai" layoutY="209.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <TextField fx:id="txtEmail" layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <TextField fx:id="txtMa" layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                        <TextField fx:id="numDienThoai" layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <TextField fx:id="txtDiaChi" layoutY="113.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <TextField fx:id="txtTen" layoutY="67.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                        <TextField fx:id="numGioiHanNo" layoutX="10.0" layoutY="219.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Yahoo" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick  Skype" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mobile" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nợ hiện tại" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nhân hàng" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick  Skype" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Ngân hàng" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
                         <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Website" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
                         <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Fax" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
                         <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Khu vực" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
@@ -83,18 +79,18 @@
                               <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
                            </graphic>
                         </Label>
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu (%)" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
-                        <TextField prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                        <TextField layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <TextField fx:id="txtSkype" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <TextField fx:id="txtNganHang" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <TextField fx:id="txtWebsite" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <TextField fx:id="numFax" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                        <TextField fx:id="txtMaSoThue" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <TextField fx:id="numChietKhau" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <ComboBox fx:id="cbxKhuVuc" layoutY="8.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -103,7 +99,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton graphicTextGap="15.0" layoutX="615.0" prefHeight="30.0" prefWidth="85.0" ripplerFill="#8b99c6" text="Lưu" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
+            <JFXButton graphicTextGap="15.0" layoutX="615.0" onAction="#onButtonLuuClick" prefHeight="30.0" prefWidth="85.0" ripplerFill="#8b99c6" text="Lưu" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
                <graphic>
                   <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="WHITE" />
                </graphic>
@@ -111,7 +107,7 @@
                   <Insets />
                </opaqueInsets>
             </JFXButton>
-            <JFXButton alignment="CENTER_RIGHT" graphicTextGap="8.0" layoutX="703.0" layoutY="8.0" prefHeight="30.0" prefWidth="85.0" ripplerFill="#9e6868" text="Đóng" wrapText="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.0">
+            <JFXButton alignment="CENTER_RIGHT" graphicTextGap="8.0" layoutX="703.0" layoutY="8.0" onAction="#onButtonDongClick" prefHeight="30.0" prefWidth="85.0" ripplerFill="#9e6868" text="Đóng" wrapText="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.0">
                <graphic>
                   <SVGPath content="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12zm8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8z" fill="#ed5b0e" />
                </graphic>

@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="200.0" styleClass="header-tab-button-wrapper" stylesheets="@../../css/ManHinhKhachHang.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" prefHeight="40.0" prefWidth="50.0" ripplerFill="#c98c8c" text="Thêm" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" onAction="#onButtonThemClick" prefHeight="40.0" prefWidth="50.0" ripplerFill="#c98c8c" text="Thêm" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <graphic>
                   <SVGPath content="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="WHITE" scaleX="0.8" scaleY="0.8" />
                </graphic>
