@@ -61,7 +61,7 @@ public class KhachHangController {
 	 */
 	private ObservableList<Khachhang> getDSKhachHang() {
 		KhachhangHome khachhangHome = new KhachhangHome();
-		List<Khachhang> khachHangs = khachhangHome.getKhachHangs();
+		List<Khachhang> khachHangs = khachhangHome.findAll();
 		for ( Khachhang kh : khachHangs ) {
 			System.out.println(kh.getTen());
 		}
@@ -92,7 +92,7 @@ public class KhachHangController {
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
 //		this.getDSKhachHang();
-//		tableKhachHang.setItems(this.getDSKhachHang());
+		tableKhachHang.setItems(this.getDSKhachHang());
 		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colDiaChi, colConQuanLy);
 	}
 }
