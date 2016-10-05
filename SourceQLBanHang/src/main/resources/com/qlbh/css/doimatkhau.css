@@ -19,22 +19,22 @@
     -fx-border-insets: 0.0px;
     -fx-border-width: 1.0px;
     -fx-border-radius: 3.0px;
-    width: 230.0px;
+    -fx-pref-width:  230.0px;
     -fx-background-color: #FBFBFB;
 }
 .okButton{
 	-fx-background-color: #e9ebee;
 	-fx-border-color: #DADADA;
 	-fx-border-radius: 3.0px;
-	With:105px;
-	Height: 40px;
+	-fx-pref-width: 105.0px;
+	-fx-pref-height:  40.0px;
 	-fx-graphic: url("../images/ok.png");
 }
 .cancelButton{
 	-fx-background-color: #e9ebee;
 	-fx-border-color: #DADADA;
-	With:105px;
-	Height: 40px;
+	-fx-pref-width: 105.0px;
+	-fx-pref-height: 40.0px;
 	-fx-border-radius: 2.0px;
 	-fx-graphic: url("../images/cancel.png");
 }

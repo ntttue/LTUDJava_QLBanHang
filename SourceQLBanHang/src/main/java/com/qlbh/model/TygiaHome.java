@@ -4,17 +4,16 @@ package com.qlbh.model;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.qlbh.pojo.Nguoidung;
+import com.qlbh.model.common.AbstractDao;
+import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Tygia;
-import com.qlbh.util.HibernateUtil;
+import com.qlbh.util.DataAccessLayerException;
 
 /**
  * Home object for domain model class Tygia.
@@ -22,70 +21,10 @@ import com.qlbh.util.HibernateUtil;
  * @author Hibernate Tools
  */
 @Stateless
-public class TygiaHome {
+public class TygiaHome extends AbstractDao {
+	private static final Logger logger = Logger.getLogger(TygiaHome.class);
 
-	private static final Log log = LogFactory.getLog(TygiaHome.class);
-
-	@PersistenceContext
-	private EntityManager entityManager;
-	Session session = HibernateUtil.getSessionFactory().openSession();
-
-	public void persist(Tygia transientInstance) {
-		log.debug("persisting Tygia instance");
-		try {
-			entityManager.persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
-	}
-
-	public void remove(Tygia persistentInstance) {
-		log.debug("removing Tygia instance");
-		try {
-			entityManager.remove(persistentInstance);
-			log.debug("remove successful");
-		} catch (RuntimeException re) {
-			log.error("remove failed", re);
-			throw re;
-		}
-	}
-
-	public Tygia merge(Tygia detachedInstance) {
-		log.debug("merging Tygia instance");
-		try {
-			Tygia result = entityManager.merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public Tygia findById(Integer id) {
-		log.debug("getting Tygia instance with id: " + id);
-		try {
-			Tygia instance = entityManager.find(Tygia.class, id);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
-	/**
-	 * Lấy danh sách tỷ giá trong CSDL
-	 * @return
-	 */
-	public List<Tygia> getTygias() {
-		String hql = "from Tygia";
-		Query query = session.createQuery(hql);
-		List<Tygia> tygias = query.list();
-		if (!tygias.isEmpty()) {
-			return tygias;
-		}
-		return null;
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Tygia.class);
 	}
 }

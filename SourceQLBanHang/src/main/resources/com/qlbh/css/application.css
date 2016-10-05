@@ -9,7 +9,7 @@
     -fx-border-insets: 0.0px;
     -fx-border-width: 1.0px;
     -fx-border-radius: 3.0px;
-    width: 230.0px;
+    -fx-pref-width:  230.0px;
     -fx-background-color: #FBFBFB;
 }
 .okButton{

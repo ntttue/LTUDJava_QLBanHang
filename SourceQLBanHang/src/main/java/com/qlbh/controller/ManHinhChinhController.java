@@ -1,6 +1,8 @@
 package com.qlbh.controller;
+
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
 
 import javafx.event.ActionEvent;
@@ -9,64 +11,85 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ManHinhChinhController {
 	@FXML
 	private TabPane tabMainContent;
 	@FXML
 	private AnchorPane anchorPaneMainApp;
+
+	@FXML
+	private JFXButton btnThongTin;
+
+	@FXML
+	private JFXButton btnThongTinTroGiup;
+
 	@FXML
 	void btnMuaHangClick(ActionEvent event) throws IOException {
-        Tab tab = new Tab();
-        tab.setText("Nhập hàng");
-        Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
-        tab.setContent(root);
-        tabMainContent.getTabs().add(tab);
-        tabMainContent.getSelectionModel().select(tab);
+		Tab tab = new Tab();
+		tab.setText("Nhập hàng");
+		Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
+		tab.setContent(root);
+		tabMainContent.getTabs().add(tab);
+		tabMainContent.getSelectionModel().select(tab);
 	}
+
+	public static Integer tabDonViTinhAdded = -1;
+
 	@FXML
-    void btnQuanLyDonViTinhClick(ActionEvent event) throws IOException {
-		System.out.println("Clicked on button 'Quản lý đơn vị tính'!");       
-        Tab tab = new Tab();
-        tab.setText("Đơn vị tính");
-        Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/danhmuc/QuanLyDonViTinh.fxml"));
-        tab.setContent(root);
-        tabMainContent.getTabs().add(tab);
-        tabMainContent.getSelectionModel().select(tab);
-    }
+	void btnQuanLyDonViTinhClick(ActionEvent event) throws IOException {
+		if (ManHinhChinhController.tabDonViTinhAdded != -1) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabDonViTinhAdded);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText("Đơn vị tính");
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabDonViTinhAdded = -1;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/danhmuc/QuanLyDonViTinh.fxml"));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabDonViTinhAdded = tabMainContent.getSelectionModel().getSelectedIndex();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@FXML
 	void btnKetThucClick(ActionEvent event) {
-		Stage primaryStage = MainApp.getPrimaryStage();
-		primaryStage.close();
+		MainApp.getPrimaryStage().close();
 	}
-	/**
-	 * Sử dụng để lưu giá trị Index của tab Khách hàng khi đã được thêm vào trong tabPane.
-	 * Nếu giá trị của nó là -1 thì nó chưa được thêm vào tabPane.
-	 * Nếu giá trị khác -1 thì đó là Index của tabKhachHang.
-	 */
-	public static Integer tabKhachHangAdded = -1;
+
+	public static Tab tabKhachHang = null;
+
 	@FXML
-	/**
-	 * Xử lý sự kiện khi bấm vào nút Khách Hàng => Thêm tab Khách hàng
-	 * @param event
-	 */
 	void onButtonKhachHangClick(ActionEvent event) {
 		String title = "Khách hàng";
 		String fxmlPath = "../fxml/danhmuc/KhachHang.fxml";
-		// Kiểm tra xem tab Khách hàng đã đc thêm vào hay chưa, nếu đã thêm thì thoát
-		if ( ManHinhChinhController.tabKhachHangAdded != -1 ) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhachHangAdded);
+		// Check tab KhachHang added or not? If added, switch to this tab
+		if (ManHinhChinhController.tabKhachHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhachHang);
 			return;
 		}
 		Tab tab = new Tab();
 		tab.setText(title);
 		tab.setOnClosed(new EventHandler<Event>() {
 			public void handle(Event arg0) {
-				ManHinhChinhController.tabKhachHangAdded = -1;
+				ManHinhChinhController.tabKhachHang = null;
 			}
 		});
 		Parent root;
@@ -75,40 +98,81 @@ public class ManHinhChinhController {
 			tab.setContent(root);
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
-			ManHinhChinhController.tabKhachHangAdded = tabMainContent.getSelectionModel().getSelectedIndex();
-//	        System.out.println("Add tab "+title+" succeed!");
+			ManHinhChinhController.tabKhachHang = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-//			System.out.println("Add tab "+title+" failed!");
 			e.printStackTrace();
 		}
 	}
-	public static Integer tabTyGiaAdded = -1;
+
+	public static Tab tabTyGia = null;
+
 	@FXML
 	void onButtonTyGiaClick(ActionEvent event) {
 		String title = "Tỷ giá";
 		String fxmlPath = "../fxml/danhmuc/TyGia.fxml";
-		if ( ManHinhChinhController.tabTyGiaAdded != -1 ) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTyGiaAdded);
+		if (ManHinhChinhController.tabTyGia != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTyGia);
 			return;
 		}
 		Tab tab = new Tab();
-        tab.setText(title);
-        tab.setOnClosed(new EventHandler<Event>() {
-            public void handle(Event arg0) {
-            	ManHinhChinhController.tabTyGiaAdded = -1;
-            }
-        });
-        Parent root;
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabTyGia = null;
+			}
+		});
+		Parent root;
 		try {
 			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
 			tab.setContent(root);
-	        tabMainContent.getTabs().add(tab);
-	        tabMainContent.getSelectionModel().select(tab);
-	        ManHinhChinhController.tabTyGiaAdded = tabMainContent.getSelectionModel().getSelectedIndex();
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabTyGia = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	void btnThongTinClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/ThongTin.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Thông tin");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnThongTinTroGiupClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/ThongTin.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Thông tin");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
