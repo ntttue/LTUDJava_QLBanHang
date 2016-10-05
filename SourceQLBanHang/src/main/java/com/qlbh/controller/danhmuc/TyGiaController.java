@@ -28,29 +28,45 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class TyGiaController {
-	private static Stage stageThemTyGia = null;
+	public static TyGiaController tyGiaController = null;
+	private Stage stageThemTyGia = null;
+	private Stage stageSuaTyGia = null;
 	@FXML
 	private TableView<Tygia> tableTyGia;
-	private static TableView<Tygia> staticTableTyGia;
 	@FXML
-	private JFXButton btnSua, btnXoa;	
+	private JFXButton btnSua, btnXoa;
 	/**
 	 * Catch when FXML loaded
 	 */
 	@FXML
 	protected void initialize() {
-		TyGiaController.staticTableTyGia = this.tableTyGia;
+		TyGiaController.tyGiaController = this;
 		this.addRowEvents();
 		this.loadTyGiaToTable();
 		this.setButtonControlsDisable(true);
 	}
-	public static void closeManHinhThemTyGia() {
-		if ( TyGiaController.stageThemTyGia != null ) {
-			TyGiaController.stageThemTyGia.close();
+	public TableView<Tygia> getTableTyGia() {
+		return this.tableTyGia;
+	}
+	public void closeManHinhThemTyGia() {
+		if ( this.stageThemTyGia != null ) {
+			this.stageThemTyGia.close();
 		}
 	}
+	public void closeManHinhSuaTyGia() {
+		if ( this.stageSuaTyGia != null ) {
+			this.stageSuaTyGia.close();
+		}
+	}
+	public void onTyGiaAdded() {
+		this.refreshTyGiaTableData();
+		this.closeManHinhThemTyGia();
+		this.getTableTyGia().requestFocus();
+		this.getTableTyGia().getSelectionModel().selectLast();
+		this.setButtonControlsDisable(false);
+	}
 	private void addRowEvents() {
-		TyGiaController.staticTableTyGia.setRowFactory(tv -> {
+		this.tableTyGia.setRowFactory(tv -> {
 		    TableRow<Tygia> row = new TableRow<>();
 		    row.setOnMouseClicked(event -> {
 		    	// No row selected when click
@@ -86,30 +102,31 @@ public class TyGiaController {
 		System.out.println("onTableTyGiaMouseClick");
 		this.setButtonControlsDisable(true);
 		// Clear row selection
-		TyGiaController.staticTableTyGia.getSelectionModel().clearSelection();
+		this.tableTyGia.getSelectionModel().clearSelection();
 	}
-	void setButtonControlsDisable(Boolean disable) {
+	public void setButtonControlsDisable(Boolean disable) {
 		btnSua.setDisable(disable);
 		btnXoa.setDisable(disable);
 	}
 	@FXML
-	void onRefreshTableDataClick() {
-		TyGiaController.refreshTyGiaTableData();
+	public void onRefreshTableDataClick() {
+		this.refreshTyGiaTableData();
+		this.setButtonControlsDisable(true);
 	}
-	public static void refreshTyGiaTableData() {
-		TyGiaController.staticTableTyGia.setItems(TyGiaController.getDSTyGia());
+	public void refreshTyGiaTableData() {
+		this.tableTyGia.setItems(this.getDSTyGia());
 	}
 	@FXML
-	void onButtonExitClick() {
+	public void onButtonExitClick() {
 		ManHinhChinhController.tabTyGia.getTabPane().getTabs().remove(ManHinhChinhController.tabTyGia);
 		ManHinhChinhController.tabTyGia = null;
 	}
 	@FXML
-	void onButtonXuatClick() {
+	public void onButtonXuatClick() {
 		//ManHinhChinhController.tabTyGia.
 	}
 	@FXML
-	void onButtonThemClick() {
+	public void onButtonThemClick() {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
@@ -122,7 +139,27 @@ public class TyGiaController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
 			primaryStage.show();
-			TyGiaController.stageThemTyGia = primaryStage;
+			this.stageThemTyGia = primaryStage;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	private void onButtonSuaClick() {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/SuaTyGia.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Sửa Tỷ giá");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+			primaryStage.show();
+			this.stageSuaTyGia = primaryStage;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,7 +170,7 @@ public class TyGiaController {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private static ObservableList<Tygia> getDSTyGia() {
+	private ObservableList<Tygia> getDSTyGia() {
 		TygiaHome tygiaHome = new TygiaHome();
 		List<Tygia> tygias = tygiaHome.findAll();
 		ObservableList<Tygia> oListTyGia = FXCollections.observableList(tygias);
@@ -143,7 +180,7 @@ public class TyGiaController {
 	 * Load list TyGia into tableTyGia
 	 */
 	@SuppressWarnings("unchecked")
-	void loadTyGiaToTable() {
+	private void loadTyGiaToTable() {
 		// Create column for table TyGia
 		TableColumn<Tygia, Number> colSTT = new TableColumn<Tygia, Number>("#");
 		colSTT.setSortable(false);
@@ -165,7 +202,17 @@ public class TyGiaController {
 		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
-		TyGiaController.staticTableTyGia.setItems(TyGiaController.getDSTyGia());
-		TyGiaController.staticTableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi, colConQuanLy);
+		this.tableTyGia.setItems(this.getDSTyGia());
+		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi, colConQuanLy);
+	}
+	@FXML
+	private void onButtonXoaClick() {
+		Tygia tyGia = this.tableTyGia.getSelectionModel().getSelectedItem();
+		if ( tyGia == null ) {
+			return;
+		}
+		TygiaHome tyGiaHome = new TygiaHome();
+		tyGiaHome.delete(tyGia);
+		this.refreshTyGiaTableData();
 	}
 }

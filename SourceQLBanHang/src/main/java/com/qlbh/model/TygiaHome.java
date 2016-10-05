@@ -5,13 +5,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
-import org.hibernate.Query;
-import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
-import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Tygia;
 import com.qlbh.util.DataAccessLayerException;
 
@@ -29,5 +25,8 @@ public class TygiaHome extends AbstractDao {
 	}
 	public void saveOrUpdate(Tygia tyGia) {
 		super.saveOrUpdate(tyGia);
+	}
+	public void delete(Tygia tyGia) {
+		super.delete(tyGia);
 	}
 }
