@@ -21,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -45,7 +47,10 @@ public class KhachHangController {
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Thêm khách hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
 			primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -58,6 +63,7 @@ public class KhachHangController {
 	}
 	@FXML
 	void onButtonExitClick() {
+		System.out.println("onButtonExitClick");
 		ManHinhChinhController.tabKhachHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhachHang);
 		ManHinhChinhController.tabKhachHang = null;
 	}
@@ -65,14 +71,14 @@ public class KhachHangController {
 	 * Get data for table KhachHang
 	 * @return
 	 */
-	private void getDSKhachHang() {
+	private ObservableList<Khachhang> getDSKhachHang() {
 		KhachhangHome khachhangHome = new KhachhangHome();
-		List khachHangs = khachhangHome.findAll();
-//		for ( Khachhang kh : khachHangs ) {
-//			System.out.println(kh.getTen());
-//		}
-//		ObservableList<Khachhang> oListKhachHang = FXCollections.observableList(khachHangs);
-//		return oListKhachHang;
+		List<Khachhang> khachHangs = khachhangHome.findAll();
+		for ( Khachhang kh : khachHangs ) {
+			System.out.println(kh.getTen());
+		}
+		ObservableList<Khachhang> oListKhachHang = FXCollections.observableList(khachHangs);
+		return oListKhachHang;
 	}
 	/**
 	 * Load danh sách khách hàng vào tableView
@@ -97,8 +103,8 @@ public class KhachHangController {
 		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
-		this.getDSKhachHang();
-//		tableKhachHang.setItems(this.getDSKhachHang());
+//		this.getDSKhachHang();
+		tableKhachHang.setItems(this.getDSKhachHang());
 		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colDiaChi, colConQuanLy);
 	}
 }

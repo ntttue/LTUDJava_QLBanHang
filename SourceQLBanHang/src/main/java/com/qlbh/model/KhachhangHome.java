@@ -31,4 +31,8 @@ public class KhachhangHome extends AbstractDao {
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Khachhang.class);
 	}
+	public Khachhang find(Integer id) throws DataAccessLayerException {
+		Khachhang kh = (Khachhang)super.find(Khachhang.class, id);
+		return kh;
+	}
 }
