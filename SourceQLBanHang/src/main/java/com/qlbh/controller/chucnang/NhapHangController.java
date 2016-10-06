@@ -153,9 +153,9 @@ public class NhapHangController {
 		Hanghoa hanghoa3 = new Hanghoa();
 		hanghoa3.setMa("MH00020");
 		hanghoa3.setTen("Máy sấy");
-		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 5, 20000000d, 100000000d, "", true, "002");
-		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 10000000d, 30000000d, "", true, "003");
-		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 20000000d, 20000000d, "", true, "004");
+		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 1, 1000000d, 1000000d, "", true, "002");
+		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 1000000d, 3000000d, "", true, "003");
+		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 2000000d, 2000000d, "", true, "004");
 		modelTableChiTiet = FXCollections.observableArrayList(chitietphieunhap, chitietphieunhap2, chitietphieunhap3);
 		tableChiTiet.setItems(modelTableChiTiet);
 	}
