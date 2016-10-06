@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.controller.common.DeleteDialogConfirmController;
 import com.qlbh.model.TygiaHome;
 import com.qlbh.pojo.Tygia;
 
@@ -123,6 +124,8 @@ public class TyGiaController {
 	}
 	@FXML
 	public void onButtonXuatClick() {
+		System.out.println("onButtonXuatClick");
+		DeleteDialogConfirmController.show();
 		//ManHinhChinhController.tabTyGia.
 	}
 	@FXML
