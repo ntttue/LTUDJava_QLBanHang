@@ -8,7 +8,7 @@ import com.qlbh.util.DataInputUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class ThemTyGiaController {
+public class SuaTyGiaController {
 	@FXML
 	private TextField txtMa, txtTen, numTyGiaQuyDoi;
 	@FXML
@@ -19,7 +19,7 @@ public class ThemTyGiaController {
 	}
 	@FXML
 	public void onButtonLuuClick() {
-		System.out.println("ThemTyGiaScreen: Clicked on button Lưu");
+		System.out.println("SuaTyGiaController: Clicked on button Lưu");
 		Tygia tyGia = new Tygia();
 		tyGia.setMa(this.txtMa.getText());
 		tyGia.setTen(this.txtTen.getText());
@@ -33,7 +33,7 @@ public class ThemTyGiaController {
 	}
 	@FXML
 	public void onButtonDongClick() {
-		System.out.println("ThemTyGiaScreen: Clicked on button Đóng");
-		TyGiaController.tyGiaController.closeManHinhThemTyGia();
+		System.out.println("SuaTyGiaController: Clicked on button Đóng");
+		TyGiaController.tyGiaController.closeManHinhSuaTyGia();
 	}
 }
