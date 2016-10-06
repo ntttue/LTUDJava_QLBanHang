@@ -32,37 +32,58 @@ public class ManHinhChinhController {
 	@FXML
 	private JFXButton btnThongTinTroGiup;
 
-	@FXML
-	void btnMuaHangClick(ActionEvent event) throws IOException {
-		Tab tab = new Tab();
-		tab.setText("Nhập hàng");
-		Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/chucnang/NhapHang.fxml"));
-		tab.setContent(root);
-		tabMainContent.getTabs().add(tab);
-		tabMainContent.getSelectionModel().select(tab);
-	}
-
-	public static Integer tabDonViTinhAdded = -1;
+	public static Tab tabNhapHang = null;
 
 	@FXML
-	void btnQuanLyDonViTinhClick(ActionEvent event) throws IOException {
-		if (ManHinhChinhController.tabDonViTinhAdded != -1) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabDonViTinhAdded);
+	void btnMuaHangClick(ActionEvent event) {
+		String title = "Nhập hàng";
+		String fxmlPath = "../fxml/chucnang/NhapHang.fxml";
+		if (ManHinhChinhController.tabNhapHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhapHang);
 			return;
 		}
 		Tab tab = new Tab();
-		tab.setText("Đơn vị tính");
+		tab.setText(title);
 		tab.setOnClosed(new EventHandler<Event>() {
 			public void handle(Event arg0) {
-				ManHinhChinhController.tabDonViTinhAdded = -1;
+				ManHinhChinhController.tabNhapHang = null;
 			}
 		});
 		try {
-			Parent root = (Parent) FXMLLoader.load(getClass().getResource("../fxml/danhmuc/QuanLyDonViTinh.fxml"));
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
 			tab.setContent(root);
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
-			ManHinhChinhController.tabDonViTinhAdded = tabMainContent.getSelectionModel().getSelectedIndex();
+			ManHinhChinhController.tabNhapHang = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabDonViTinh = null;
+
+	@FXML
+	void btnQuanLyDonViTinhClick(ActionEvent event) {
+		String title = "Đơn vị tính";
+		String fxmlPath = "../fxml/danhmuc/QuanLyDonViTinh.fxml";
+		if (ManHinhChinhController.tabDonViTinh != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabDonViTinh);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabDonViTinh = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabDonViTinh = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();

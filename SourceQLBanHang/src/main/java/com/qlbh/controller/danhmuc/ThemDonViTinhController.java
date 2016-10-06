@@ -14,22 +14,13 @@ import javafx.scene.control.Label;
 public class ThemDonViTinhController {
 
 	@FXML
-	private JFXButton btnCancel;
-
-	@FXML
-	private JFXButton btnSave;
+	private JFXButton btnSave, btnCancel;
 
 	@FXML
 	private Label lbValidate;
 
 	@FXML
-	private JFXTextField txtGhiChu;
-
-	@FXML
-	private JFXTextField txtMa;
-
-	@FXML
-	private JFXTextField txtTen;
+	private JFXTextField txtMa, txtTen, txtGhiChu;
 
 	final static Logger logger = Logger.getLogger(ThemDonViTinhController.class);
 
@@ -40,7 +31,7 @@ public class ThemDonViTinhController {
 			return;
 		}
 		Donvitinh dvt = new Donvitinh();
-		dvt.setMa(txtMa.getText());
+		dvt.setMa(this.txtMa.getText());
 		dvt.setTen(txtTen.getText());
 		dvt.setGhichu(txtGhiChu.getText());
 
@@ -59,7 +50,7 @@ public class ThemDonViTinhController {
 
 	@FXML
 	void btnCancelClick(ActionEvent event) {
-		
+		QuanLyDonViTinhController.quanLyDonViTinhController.closeThem();
 	}
 
 }

@@ -10,37 +10,48 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class QuanLyDonViTinhController {
-
+	public static QuanLyDonViTinhController quanLyDonViTinhController;
+	private Stage stageThem = null;
 	@FXML
 	private TableView<?> tableDonViTinh;
 
 	@FXML
-	private Button btnThem;
+	private Button btnThem, btnSua, btnXoa, btnNapLai;
 
 	@FXML
-	private Button btnSua;
+	protected void initialize() {
+		quanLyDonViTinhController = this;
+		btnSua.setDisable(true);
+		btnXoa.setDisable(true);
+	}
 
 	@FXML
-	private Button btnXoa;
-
-	@FXML
-	private Button btnNapLai;
-
-	@FXML
-	void btnThemClick(ActionEvent event) throws IOException {
-		System.out.println("Thêm đơn vị tính");
+	void btnThemClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemDonViTinh.fxml"));
-		// Fill stage with content
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Thêm đơn vị tính");
-		primaryStage.initStyle(StageStyle.UNIFIED);
-		primaryStage.show();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemDonViTinh.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Thêm đơn vị tính");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+			primaryStage.show();
+			stageThem = primaryStage;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	void closeThem() {
+		stageThem.close();
 	}
 
 	@FXML
