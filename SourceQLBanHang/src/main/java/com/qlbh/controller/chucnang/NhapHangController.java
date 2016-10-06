@@ -15,10 +15,12 @@ import com.qlbh.pojo.Phieunhap;
 import com.qlbh.render.combobox.MaNhaCungCapListCell;
 import com.qlbh.render.combobox.TenNhaCungCapListCell;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
@@ -119,30 +121,32 @@ public class NhapHangController {
 	
 	private void initTableView(){
 		//STT
-		TableColumn colSTT = new TableColumn<>("STT");
+		TableColumn<Chitietphieunhap, Number> colSTT = new TableColumn<Chitietphieunhap, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableChiTiet.getItems().indexOf(column.getValue()) + 1));
 		//Ma hang
-		TableColumn<Chitietphieunhap, Hanghoa> colMaHang = new TableColumn<>("Mã hàng");
-		colMaHang.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.MA_HANG_HOA));
+		TableColumn<Chitietphieunhap, String> colMaHang = new TableColumn<>("Mã hàng");
+		colMaHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
 		//Ten hang
-		TableColumn<Chitietphieunhap, Hanghoa> colTenHang = new TableColumn<>("Tên hàng");
-		colTenHang.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.TEN_HANG_HOA));
+		TableColumn<Chitietphieunhap, String> colTenHang = new TableColumn<>("Tên hàng");
+		colTenHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHanghoa().getTen()));
 		//Don vi
 		TableColumn<Chitietphieunhap, String> colDonVi = new TableColumn<>("Đơn vị");
-		colDonVi.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.DON_VI));
+		colDonVi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHanghoa().getDonvi()));
 		//So luong
-		TableColumn<Chitietphieunhap, Integer> colSoLuong = new TableColumn<>("Số lượng");
-		colSoLuong.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.SO_LUONG));
+		TableColumn<Chitietphieunhap, String> colSoLuong = new TableColumn<>("Số lượng");
+		colSoLuong.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSoluong().toString()));
 		//Don gia
-		TableColumn<Chitietphieunhap, Double> colDonGia = new TableColumn<>("Đơn giá");
-		colDonGia.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.DON_GIA));
+		TableColumn<Chitietphieunhap, String> colDonGia = new TableColumn<>("Đơn giá");
+		colDonGia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDongia().toString()));
 		//Thanh tien
-		TableColumn<Chitietphieunhap, Double> colThanhTien = new TableColumn<>("Thành tiền");
-		colThanhTien.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.THANH_TIEN));
+		TableColumn<Chitietphieunhap, String> colThanhTien = new TableColumn<>("Thành tiền");
+		colThanhTien.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getThanhtien().toString()));
 		//Ghi chu
 		TableColumn<Chitietphieunhap, String> colGhiChu = new TableColumn<>("Ghi chú");
-		colGhiChu.setCellValueFactory(new PropertyValueFactory<>(Chitietphieunhap.GHI_CHU));
+		colGhiChu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 		//Add column
-		tableChiTiet.getColumns().addAll(colMaHang, colTenHang, colSoLuong, colDonGia, colThanhTien, colGhiChu);
+		tableChiTiet.getColumns().addAll(colSTT, colMaHang, colTenHang, colSoLuong, colDonGia, colThanhTien, colGhiChu);
 		//set data
 		Hanghoa hanghoa = new Hanghoa();
 		hanghoa.setMa("MH00001");
@@ -153,9 +157,9 @@ public class NhapHangController {
 		Hanghoa hanghoa3 = new Hanghoa();
 		hanghoa3.setMa("MH00020");
 		hanghoa3.setTen("Máy sấy");
-		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 1, 1000000d, 1000000d, "", true, "002");
-		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 1000000d, 3000000d, "", true, "003");
-		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 2000000d, 2000000d, "", true, "004");
+		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 1, 1000000d, 1000000d, "Ghi chú 1", true, "002");
+		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 1000000d, 3000000d, "Ghi chú 2", true, "003");
+		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 2000000d, 2000000d, "Ghi chú 3", true, "004");
 		modelTableChiTiet = FXCollections.observableArrayList(chitietphieunhap, chitietphieunhap2, chitietphieunhap3);
 		tableChiTiet.setItems(modelTableChiTiet);
 	}

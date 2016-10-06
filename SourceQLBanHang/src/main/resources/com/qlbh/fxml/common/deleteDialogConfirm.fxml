@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -11,9 +13,16 @@
          <children>
             <JFXDialogLayout>
                <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delete confirm" />
+                     </children></AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing&#10;elit, seddo eiusmod tempor incididunt&#10;ut labore et dolore magna aliqua. Utenim ad&#10;minim veniam, quis nostrud exercitation ullamco&#10;laborisnisi ut aliquip ex ea commodo consequat." />
+                     </children></AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Delete confirm" />
                </children>
             </JFXDialogLayout>
          </children></JFXDialog>
