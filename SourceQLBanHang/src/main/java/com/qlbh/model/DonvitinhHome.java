@@ -1,28 +1,26 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
-import javax.ejb.Stateless;
+import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import javax.ejb.Stateless;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Donvitinh;
-
 import com.qlbh.util.DataAccessLayerException;
 
-/**
- * Home object for domain model class Donvitinh.
- * 
- * @see com.qlbh.model.Donvitinh
- * @author Hibernate Tools
- */
 @Stateless
 public class DonvitinhHome extends AbstractDao {
 
-	private static final Log log = LogFactory.getLog(DonvitinhHome.class);
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Donvitinh.class);
+	}
 
-	public void create(Donvitinh dvt) throws DataAccessLayerException {
+	public void saveOrUpdate(Donvitinh dvt) throws DataAccessLayerException {
 		super.saveOrUpdate(dvt);
+	}
+	
+	public void delete(Donvitinh dvt) throws DataAccessLayerException {
+		super.delete(dvt);
 	}
 }

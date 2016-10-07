@@ -37,7 +37,7 @@ public class ThemDonViTinhController {
 
 		DonvitinhHome dvth = new DonvitinhHome();
 		try {
-			dvth.create(dvt);
+			dvth.saveOrUpdate(dvt);
 			txtMa.clear();
 			txtTen.clear();
 			txtGhiChu.clear();
