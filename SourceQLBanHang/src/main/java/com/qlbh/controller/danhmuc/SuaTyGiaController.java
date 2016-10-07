@@ -13,6 +13,7 @@ public class SuaTyGiaController {
 	private TextField txtMa, txtTen, numTyGiaQuyDoi;
 	@FXML
 	private JFXCheckBox checkBoxConQuanLy;
+	private Tygia tygia;
 	@FXML
 	protected void initialize() {
 		DataInputUtils.setFloatOnlyForTextField(this.numTyGiaQuyDoi);
@@ -20,19 +21,24 @@ public class SuaTyGiaController {
 	@FXML
 	public void onButtonLuuClick() {
 		System.out.println("SuaTyGiaController: Clicked on button Lưu");
-		Tygia tyGia = new Tygia();
-		tyGia.setMa(this.txtMa.getText());
-		tyGia.setTen(this.txtTen.getText());
-		tyGia.setTygiaquydoi(Float.parseFloat(this.numTyGiaQuyDoi.getText()));
-		tyGia.setActivite(checkBoxConQuanLy.isSelected());
+		this.tygia.setMa(this.txtMa.getText());
+		this.tygia.setTen(this.txtTen.getText());
+		this.tygia.setTygiaquydoi(Float.parseFloat(this.numTyGiaQuyDoi.getText()));
+		this.tygia.setActivite(checkBoxConQuanLy.isSelected());
 		
 		TygiaHome tyGiaHome = new TygiaHome();
-		tyGiaHome.saveOrUpdate(tyGia);
-		
-		TyGiaController.tyGiaController.onTyGiaAdded();
+		tyGiaHome.update(this.tygia);
+		System.out.println("Luu TyGia: " + this.tygia.getId());
+		TyGiaController.tyGiaController.onTyGiaUpdated();
 	}
 	public void setTyGia(Tygia tygia) {
+		this.tygia = tygia;
 		System.out.println("setTyGia");
+		System.out.println("TyGia: " + tygia.getTen());
+		this.txtMa.setText(tygia.getMa());
+		this.txtTen.setText(tygia.getTen());
+		this.numTyGiaQuyDoi.setText(tygia.getTygiaquydoi().toString());
+		this.checkBoxConQuanLy.setSelected(tygia.getActivite());
 	}
 	@FXML
 	public void onButtonDongClick() {

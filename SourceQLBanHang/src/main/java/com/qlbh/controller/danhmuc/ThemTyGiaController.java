@@ -27,7 +27,7 @@ public class ThemTyGiaController {
 		tyGia.setActivite(checkBoxConQuanLy.isSelected());
 		
 		TygiaHome tyGiaHome = new TygiaHome();
-		tyGiaHome.saveOrUpdate(tyGia);
+		tyGiaHome.save(tyGia);
 		
 		TyGiaController.tyGiaController.onTyGiaAdded();
 	}

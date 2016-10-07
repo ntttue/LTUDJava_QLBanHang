@@ -66,6 +66,13 @@ public class TyGiaController {
 		this.getTableTyGia().getSelectionModel().selectLast();
 		this.setButtonControlsDisable(false);
 	}
+	public void onTyGiaUpdated() {
+		Integer index = this.tableTyGia.getSelectionModel().getSelectedIndex();
+		this.refreshTyGiaTableData();
+		this.closeManHinhSuaTyGia();
+		this.getTableTyGia().requestFocus();
+		this.getTableTyGia().getSelectionModel().select(index);
+	}
 	private void addRowEvents() {
 		this.tableTyGia.setRowFactory(tv -> {
 		    TableRow<Tygia> row = new TableRow<>();
@@ -92,6 +99,7 @@ public class TyGiaController {
 	    System.out.println("Double click");
 	    System.out.println(tyGia.getMa());
 	    this.setButtonControlsDisable(false);
+	    this.onButtonSuaClick();
 	}
 	private void onRowSingleClick(Tygia tyGia) {
 		System.out.println("Single click");
@@ -125,7 +133,6 @@ public class TyGiaController {
 	@FXML
 	public void onButtonXuatClick() {
 		System.out.println("onButtonXuatClick");
-		//ManHinhChinhController.tabTyGia.
 	}
 	public Tygia getSelectedTygia() {
 		return this.tableTyGia.getSelectionModel().getSelectedItem();
@@ -223,6 +230,7 @@ public class TyGiaController {
 		TygiaHome tyGiaHome = new TygiaHome();
 		tyGiaHome.delete(tyGia);
 		this.refreshTyGiaTableData();
+		this.setButtonControlsDisable(true);
 	}
 	@FXML
 	private void onButtonXoaClick() {

@@ -19,11 +19,35 @@ public abstract class AbstractDao {
     public AbstractDao() {
         HibernateFactory.buildIfNeeded();
     }
-
+    
     protected void saveOrUpdate(Object obj) {
+    	try {
+    		startOperation();
+    		session.saveOrUpdate(obj);
+    		tx.commit();
+    	} catch (HibernateException e) {
+    		handleException(e);
+    	} finally {
+    		HibernateFactory.close(session);
+    	}
+    }
+    
+    protected void update(Object obj) {
+    	try {
+    		startOperation();
+    		session.update(obj);
+    		tx.commit();
+    	} catch (HibernateException e) {
+    		handleException(e);
+    	} finally {
+    		HibernateFactory.close(session);
+    	}
+    }
+
+    protected void save(Object obj) {
         try {
             startOperation();
-            session.saveOrUpdate(obj);
+            session.save(obj);
             tx.commit();
         } catch (HibernateException e) {
             handleException(e);
