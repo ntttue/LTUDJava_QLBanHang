@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogConfirmController;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -195,5 +196,8 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-
+	@FXML
+	private void onButtonNhapDanhMucTuExcelClick() {
+		System.out.println("onButtonNhapDanhMucTuExcelClick");
+	}
 }

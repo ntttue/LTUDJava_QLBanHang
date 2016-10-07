@@ -108,7 +108,7 @@
                      <children>
                         <AnchorPane prefHeight="91.0" prefWidth="90.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="7.0" layoutX="14.0" layoutY="14.0" prefHeight="66.0" prefWidth="90.0" ripplerFill="#c98c8c" text="Nhập danh&#10;mục từ Excel" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="7.0" layoutX="14.0" layoutY="14.0" onAction="#onButtonNhapDanhMucTuExcelClick" prefHeight="66.0" prefWidth="90.0" ripplerFill="#c98c8c" text="Nhập danh&#10;mục từ Excel" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="-3.0" />
                                  </graphic>

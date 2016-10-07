@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.ManHinhChinhController;
-import com.qlbh.controller.common.DeleteDialogConfirmController;
+import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.TygiaHome;
 import com.qlbh.pojo.Tygia;
 
@@ -125,7 +125,6 @@ public class TyGiaController {
 	@FXML
 	public void onButtonXuatClick() {
 		System.out.println("onButtonXuatClick");
-		DeleteDialogConfirmController.show();
 		//ManHinhChinhController.tabTyGia.
 	}
 	@FXML
@@ -208,8 +207,7 @@ public class TyGiaController {
 		this.tableTyGia.setItems(this.getDSTyGia());
 		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi, colConQuanLy);
 	}
-	@FXML
-	private void onButtonXoaClick() {
+	private void deleteTyGia() {
 		Tygia tyGia = this.tableTyGia.getSelectionModel().getSelectedItem();
 		if ( tyGia == null ) {
 			return;
@@ -217,5 +215,13 @@ public class TyGiaController {
 		TygiaHome tyGiaHome = new TygiaHome();
 		tyGiaHome.delete(tyGia);
 		this.refreshTyGiaTableData();
+	}
+	@FXML
+	private void onButtonXoaClick() {
+		DialogConfirmController.show(
+				"Xóa tỷ giá?",
+				"Bạn có chắc muốn xóa tỷ giá này",
+				()-> this.deleteTyGia(),
+				null);
 	}
 }
