@@ -127,12 +127,16 @@ public class TyGiaController {
 		System.out.println("onButtonXuatClick");
 		//ManHinhChinhController.tabTyGia.
 	}
+	public Tygia getSelectedTygia() {
+		return this.tableTyGia.getSelectionModel().getSelectedItem();
+	}
 	@FXML
 	public void onButtonThemClick() {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemTyGia.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/ThemTyGia.fxml"));
+			root = loader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Thêm Tỷ giá");
 			primaryStage.initStyle(StageStyle.UNIFIED);
@@ -152,8 +156,12 @@ public class TyGiaController {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/SuaTyGia.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaTyGia.fxml"));
+			root = loader.load();
 			Scene scene = new Scene(root);
+			SuaTyGiaController controller = 
+				    loader.<SuaTyGiaController>getController();
+			controller.setTyGia(this.getSelectedTygia());
 			primaryStage.setTitle("Sửa Tỷ giá");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);

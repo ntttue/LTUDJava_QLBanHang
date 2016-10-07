@@ -31,6 +31,9 @@ public class SuaTyGiaController {
 		
 		TyGiaController.tyGiaController.onTyGiaAdded();
 	}
+	public void setTyGia(Tygia tygia) {
+		System.out.println("setTyGia");
+	}
 	@FXML
 	public void onButtonDongClick() {
 		System.out.println("SuaTyGiaController: Clicked on button Đóng");
