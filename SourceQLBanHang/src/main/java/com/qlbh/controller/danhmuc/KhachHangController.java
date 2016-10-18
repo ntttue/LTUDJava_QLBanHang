@@ -167,12 +167,8 @@ public class KhachHangController {
 		TableColumn<Khachhang, String> colTenNganHang = new TableColumn<Khachhang, String>("Tên ngân hàng");
 		colTenNganHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNganhang()));
 		
-		TableColumn<Khachhang, Boolean> colConQuanLy = new TableColumn<Khachhang, Boolean>("Còn quản lý");
-		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
-		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
-		
 		tableKhachHang.setItems(this.getDSKhachHang());
 		tableKhachHang.getColumns().addAll(colSTT, colMaKhachHang, colTenKhachHang, colNguoiLienHe,
-				colDiaChi, colDienThoai, colEmail, colMaSoThue, colSoTaiKhoan, colTenNganHang, colConQuanLy);
+				colDiaChi, colDienThoai, colEmail, colMaSoThue, colSoTaiKhoan, colTenNganHang);
 	}
 }

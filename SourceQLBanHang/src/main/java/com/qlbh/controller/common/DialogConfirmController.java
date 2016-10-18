@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -37,9 +38,11 @@ public class DialogConfirmController {
 		try {
 			root = FXMLLoader.load(getClass().getResource("../../fxml/common/DialogConfirm.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.initStyle(StageStyle.UNDECORATED);
+			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/warning.png")));
 			this.mainStage = primaryStage;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

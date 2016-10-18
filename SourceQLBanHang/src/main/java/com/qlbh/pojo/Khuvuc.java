@@ -105,5 +105,9 @@ public class Khuvuc implements java.io.Serializable {
 	public void setKhachhangs(Set<Khachhang> khachhangs) {
 		this.khachhangs = khachhangs;
 	}
-
+	
+	@Override
+    public String toString()  {
+        return this.ten;
+    }
 }

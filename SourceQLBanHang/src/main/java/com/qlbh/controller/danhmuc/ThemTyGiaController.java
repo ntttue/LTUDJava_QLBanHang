@@ -1,6 +1,5 @@
 package com.qlbh.controller.danhmuc;
 
-import com.jfoenix.controls.JFXCheckBox;
 import com.qlbh.model.TygiaHome;
 import com.qlbh.pojo.Tygia;
 import com.qlbh.util.DataInputUtils;
@@ -12,8 +11,6 @@ public class ThemTyGiaController {
 	@FXML
 	private TextField txtMa, txtTen, numTyGiaQuyDoi;
 	@FXML
-	private JFXCheckBox checkBoxConQuanLy;
-	@FXML
 	protected void initialize() {
 		DataInputUtils.setFloatOnlyForTextField(this.numTyGiaQuyDoi);
 	}
@@ -24,7 +21,7 @@ public class ThemTyGiaController {
 		tyGia.setMa(this.txtMa.getText());
 		tyGia.setTen(this.txtTen.getText());
 		tyGia.setTygiaquydoi(Float.parseFloat(this.numTyGiaQuyDoi.getText()));
-		tyGia.setActivite(checkBoxConQuanLy.isSelected());
+		tyGia.setActivite(true);
 		
 		TygiaHome tyGiaHome = new TygiaHome();
 		tyGiaHome.save(tyGia);

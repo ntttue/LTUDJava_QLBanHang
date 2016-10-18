@@ -220,6 +220,7 @@ public class TyGiaController {
 		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
 		
 		this.tableTyGia.setItems(this.getDSTyGia());
+//		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi);
 		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi, colConQuanLy);
 	}
 	private void deleteTyGia() {

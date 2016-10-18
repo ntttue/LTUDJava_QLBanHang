@@ -29,7 +29,11 @@ public class TygiaHome extends AbstractDao {
 	public void update(Tygia tyGia) {
 		super.update(tyGia);
 	}
-	public void delete(Tygia tyGia) {
+	public void deletePermanently(Tygia tyGia) {
 		super.delete(tyGia);
+	}
+	public void delete(Tygia tyGia) {
+		tyGia.setActivite(false);
+		super.update(tyGia);
 	}
 }
