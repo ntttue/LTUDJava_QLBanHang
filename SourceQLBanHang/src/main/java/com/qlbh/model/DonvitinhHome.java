@@ -20,7 +20,7 @@ public class DonvitinhHome extends AbstractDao {
 		super.save(dvt);
 	}
 
-	public void Update(Donvitinh dvt) {
+	public void update(Donvitinh dvt) {
 		super.update(dvt);
 	}
 
