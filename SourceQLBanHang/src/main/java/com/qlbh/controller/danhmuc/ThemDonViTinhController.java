@@ -34,14 +34,15 @@ public class ThemDonViTinhController {
 		dvt.setMa(this.txtMa.getText());
 		dvt.setTen(txtTen.getText());
 		dvt.setGhichu(txtGhiChu.getText());
-
+		dvt.setActivite(true);
 		DonvitinhHome dvth = new DonvitinhHome();
 		try {
-			dvth.saveOrUpdate(dvt);
+			dvth.save(dvt);
 			txtMa.clear();
 			txtTen.clear();
 			txtGhiChu.clear();
 			lbValidate.setText("");
+			QuanLyDonViTinhController.quanLyDonViTinhController.reload();
 		} catch (Exception ex) {
 			logger.error("This is error : " + ex.getMessage());
 		}

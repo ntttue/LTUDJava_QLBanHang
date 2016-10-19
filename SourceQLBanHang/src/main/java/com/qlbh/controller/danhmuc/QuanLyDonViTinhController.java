@@ -6,7 +6,6 @@ import java.util.List;
 import com.qlbh.model.DonvitinhHome;
 import com.qlbh.pojo.Donvitinh;
 
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -92,10 +91,6 @@ public class QuanLyDonViTinhController {
 		}
 	}
 
-	void closeThem() {
-		stageThem.close();
-	}
-
 	@FXML
 	void btnSuaClick(ActionEvent event) {
 
@@ -108,7 +103,15 @@ public class QuanLyDonViTinhController {
 
 	@FXML
 	void btnNapLaiClick(ActionEvent event) {
-
+		tableDonViTinh.setItems(getListDVT());
 	}
 
+	void closeThem() {
+		stageThem.close();
+		reload();
+	}
+	
+	void reload() {
+		tableDonViTinh.setItems(getListDVT());
+	}
 }

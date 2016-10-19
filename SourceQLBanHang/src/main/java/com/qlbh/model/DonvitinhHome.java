@@ -16,11 +16,16 @@ public class DonvitinhHome extends AbstractDao {
 		return super.findAll(Donvitinh.class);
 	}
 
-	public void saveOrUpdate(Donvitinh dvt) throws DataAccessLayerException {
-		super.saveOrUpdate(dvt);
+	public void save(Donvitinh dvt) {
+		super.save(dvt);
 	}
-	
-	public void delete(Donvitinh dvt) throws DataAccessLayerException {
-		super.delete(dvt);
+
+	public void Update(Donvitinh dvt) {
+		super.update(dvt);
+	}
+
+	public void delete(Donvitinh dvt) {
+		dvt.setActivite(false);
+		super.update(dvt);
 	}
 }
