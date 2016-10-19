@@ -6,7 +6,6 @@ import java.util.List;
 import com.qlbh.model.DonvitinhHome;
 import com.qlbh.pojo.Donvitinh;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
@@ -110,12 +108,8 @@ public class QuanLyDonViTinhController {
 		TableColumn<Donvitinh, String> ghichu = new TableColumn<Donvitinh, String>("Ghi chú");
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
-		TableColumn<Donvitinh, Boolean> activite = new TableColumn<Donvitinh, Boolean>("Còn quản lý");
-		activite.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
-		activite.setCellFactory(tc -> new CheckBoxTableCell<>());
-
 		this.tableDonViTinh.setItems(this.getListDVT());
-		this.tableDonViTinh.getColumns().addAll(id, ma, ten, ghichu, activite);
+		this.tableDonViTinh.getColumns().addAll(id, ma, ten, ghichu);
 	}
 
 	@FXML
@@ -168,7 +162,7 @@ public class QuanLyDonViTinhController {
 
 	@FXML
 	void btnNapLaiClick() {
-		tableDonViTinh.setItems(getListDVT());
+		reload();
 	}
 
 	void closeThem() {
