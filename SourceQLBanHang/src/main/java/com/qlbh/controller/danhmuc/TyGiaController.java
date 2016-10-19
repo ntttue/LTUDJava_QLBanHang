@@ -215,13 +215,8 @@ public class TyGiaController {
 		colTyGiaQuyDoi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTygiaquydoi().toString()));
 		colTyGiaQuyDoi.setStyle( "-fx-alignment: CENTER-RIGHT;"); // Set text align right for number
 		
-		TableColumn<Tygia, Boolean> colConQuanLy = new TableColumn<Tygia, Boolean>("Còn quản lý");
-		colConQuanLy.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getActivite()));
-		colConQuanLy.setCellFactory( tc -> new CheckBoxTableCell<>());
-		
 		this.tableTyGia.setItems(this.getDSTyGia());
-//		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi);
-		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi, colConQuanLy);
+		this.tableTyGia.getColumns().addAll(colSTT, colMa, colTen, colTyGiaQuyDoi);
 	}
 	private void deleteTyGia() {
 		Tygia tyGia = this.tableTyGia.getSelectionModel().getSelectedItem();
