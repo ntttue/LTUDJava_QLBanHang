@@ -3,6 +3,7 @@ package com.qlbh.controller.danhmuc;
 import java.io.IOException;
 import java.util.List;
 
+import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.DonvitinhHome;
 import com.qlbh.pojo.Donvitinh;
 
@@ -25,6 +26,7 @@ import javafx.stage.StageStyle;
 
 public class QuanLyDonViTinhController {
 	public static QuanLyDonViTinhController quanLyDonViTinhController;
+	DonvitinhHome dvtHome = new DonvitinhHome();
 	private Stage stageThem = null;
 	private Stage stageSua = null;
 	@FXML
@@ -88,7 +90,6 @@ public class QuanLyDonViTinhController {
 
 	@SuppressWarnings("unchecked")
 	private ObservableList<Donvitinh> getListDVT() {
-		DonvitinhHome dvtHome = new DonvitinhHome();
 		List<Donvitinh> listDVT = dvtHome.findAll();
 		ObservableList<Donvitinh> oListDVT = FXCollections.observableList(listDVT);
 		return oListDVT;
@@ -110,6 +111,14 @@ public class QuanLyDonViTinhController {
 
 		this.tableDonViTinh.setItems(this.getListDVT());
 		this.tableDonViTinh.getColumns().addAll(id, ma, ten, ghichu);
+	}
+
+	void deleteDonViTinh() {
+		Donvitinh dvt = tableDonViTinh.getSelectionModel().getSelectedItem();
+		if (dvt == null)
+			return;
+		dvtHome.delete(dvt);
+		reload();
 	}
 
 	@FXML
@@ -157,7 +166,8 @@ public class QuanLyDonViTinhController {
 
 	@FXML
 	void btnXoaClick() {
-
+		DialogConfirmController.show("Xóa đơn vị tính", "Bạn có chắc muốn xóa đơn vị tính này?",
+				() -> this.deleteDonViTinh(), null);
 	}
 
 	@FXML
