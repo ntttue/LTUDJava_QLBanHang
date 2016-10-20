@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.KhachhangHome;
 import com.qlbh.pojo.Khachhang;
 
@@ -120,8 +121,17 @@ public class KhachHangController {
 		}
 	}
 	@FXML
-	void btnSuaKhachHangClick() {
+	void onButtonSuaClick() {
 		System.out.println("Button sửa clicked!");
+	}
+	@FXML
+	void onButtonXoaClick() {
+		System.out.println("Button xóa clicked!");
+		DialogConfirmController.show(
+				"Xóa khách hàng?",
+				"Bạn có chắc muốn xóa khách hàng này",
+				()-> this.deleteKhachHang(),
+				null);
 	}
 	@FXML
 	void onButtonExitClick() {
@@ -131,7 +141,22 @@ public class KhachHangController {
 	}
 	@FXML
 	void onButtonRefreshClick() {
-		tableKhachHang.setItems(this.getDSKhachHang());
+		System.out.println("Button nạp lại clicked!");
+		this.refreshKhachHangTableData();
+		this.setButtonControlsDisable(true);
+	}
+	public void refreshKhachHangTableData() {
+		this.tableKhachHang.setItems(this.getDSKhachHang());
+	}
+	private void deleteKhachHang() {
+		Khachhang khachHang = this.tableKhachHang.getSelectionModel().getSelectedItem();
+		if ( khachHang == null ) {
+			return;
+		}
+		KhachhangHome khachHangHome = new KhachhangHome();
+		khachHangHome.delete(khachHang);
+		this.refreshKhachHangTableData();
+		this.setButtonControlsDisable(true);
 	}
 	/**
 	 * Get data for table KhachHang
