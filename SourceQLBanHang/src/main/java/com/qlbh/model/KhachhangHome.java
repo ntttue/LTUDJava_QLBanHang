@@ -10,6 +10,7 @@ import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Khachhang;
+import com.qlbh.pojo.Tygia;
 import com.qlbh.util.DataAccessLayerException;
 
 
@@ -29,5 +30,18 @@ public class KhachhangHome extends AbstractDao {
 	public Khachhang findById(Integer id) throws DataAccessLayerException {
 		Khachhang kh = (Khachhang)super.find(Khachhang.class, id);
 		return kh;
+	}
+	public void save(Khachhang khachHang) {
+		super.save(khachHang);
+	}
+	public void update(Khachhang khachHang) {
+		super.update(khachHang);
+	}
+	public void deletePermanently(Khachhang khachHang) {
+		super.delete(khachHang);
+	}
+	public void delete(Khachhang khachHang) {
+		khachHang.setActivite(false);
+		super.update(khachHang);
 	}
 }

@@ -9,7 +9,6 @@ import com.qlbh.model.KhachhangHome;
 import com.qlbh.pojo.Khachhang;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
@@ -29,6 +27,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class KhachHangController {
+	public static KhachHangController khachHangController = null;
+	private Stage stageThemKhachHang = null;
 	@FXML
 	private TableView<Khachhang> tableKhachHang;
 	@FXML
@@ -38,6 +38,7 @@ public class KhachHangController {
 	 */
 	@FXML
 	protected void initialize() {
+		KhachHangController.khachHangController = this;
 		this.addRowEvents();
 		this.setButtonControlsDisable(true);
 		this.loadKhachHangToTable();
@@ -85,6 +86,18 @@ public class KhachHangController {
 		btnSua.setDisable(disable);
 		btnXoa.setDisable(disable);
 	}
+	public void closeManHinhThemKhachHang() {
+		if ( this.stageThemKhachHang != null ) {
+			this.stageThemKhachHang.close();
+		}
+	}
+	public void onKhachHangAdded() {
+		this.onButtonRefreshClick();
+		this.closeManHinhThemKhachHang();
+		this.tableKhachHang.requestFocus();
+		this.tableKhachHang.getSelectionModel().selectLast();
+		this.setButtonControlsDisable(false);
+	}
 	
 	@FXML
 	void btnThemKhachHangClick(ActionEvent event) {
@@ -100,6 +113,7 @@ public class KhachHangController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
 			primaryStage.show();
+			this.stageThemKhachHang = primaryStage;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
