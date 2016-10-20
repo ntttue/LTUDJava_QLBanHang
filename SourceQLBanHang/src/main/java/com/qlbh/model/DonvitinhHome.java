@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Donvitinh;
 import com.qlbh.util.DataAccessLayerException;
@@ -12,6 +15,8 @@ import com.qlbh.util.DataAccessLayerException;
 @Stateless
 public class DonvitinhHome extends AbstractDao {
 
+	private static final Log log = LogFactory.getLog(DonvitinhHome.class);
+	
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Donvitinh.class);
 	}
@@ -20,7 +25,7 @@ public class DonvitinhHome extends AbstractDao {
 		super.save(dvt);
 	}
 
-	public void Update(Donvitinh dvt) {
+	public void update(Donvitinh dvt) {
 		super.update(dvt);
 	}
 

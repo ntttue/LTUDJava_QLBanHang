@@ -11,13 +11,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="300.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemDonViTinhController">
+<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="300.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemLoaiHangController">
 	<children>
 		<AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
 				<AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 					<children>
-						<Label alignment="CENTER" prefHeight="27.0" prefWidth="777.0" styleClass="lbHeader" text="Đơn vị tính" textFill="WHITE" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+						<Label alignment="CENTER" prefHeight="27.0" prefWidth="777.0" styleClass="lbHeader" text="Nhóm hàng" textFill="WHITE" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
 							<font>
 								<Font size="14.0" />
 							</font>

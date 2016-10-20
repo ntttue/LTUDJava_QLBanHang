@@ -4,13 +4,13 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.qlbh.model.DonvitinhHome;
-import com.qlbh.pojo.Donvitinh;
+import com.qlbh.model.LoaihangHome;
+import com.qlbh.pojo.Loaihang;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ThemDonViTinhController {
+public class ThemLoaiHangController {
 
 	@FXML
 	private JFXButton btnSave, btnCancel;
@@ -21,7 +21,7 @@ public class ThemDonViTinhController {
 	@FXML
 	private JFXTextField txtMa, txtTen, txtGhiChu;
 
-	final static Logger logger = Logger.getLogger(ThemDonViTinhController.class);
+	final static Logger logger = Logger.getLogger(ThemLoaiHangController.class);
 
 	@FXML
 	void btnSaveClick() {
@@ -29,19 +29,19 @@ public class ThemDonViTinhController {
 			lbValidate.setText("Vui lòng nhập Mã và Tên");
 			return;
 		}
-		Donvitinh dvt = new Donvitinh();
-		dvt.setMa(txtMa.getText());
-		dvt.setTen(txtTen.getText());
-		dvt.setGhichu(txtGhiChu.getText());
-		dvt.setActivite(true);
-		DonvitinhHome dvth = new DonvitinhHome();
+		Loaihang lh = new Loaihang();
+		lh.setMa(txtMa.getText());
+		lh.setTen(txtTen.getText());
+		lh.setGhichu(txtGhiChu.getText());
+		lh.setActivite(true);
+		LoaihangHome lhh = new LoaihangHome();
 		try {
-			dvth.save(dvt);
+			lhh.save(lh);
 			txtMa.clear();
 			txtTen.clear();
 			txtGhiChu.clear();
 			lbValidate.setText("");
-			QuanLyDonViTinhController.quanLyDonViTinhController.reload();
+			QuanLyLoaiHangController.quanLyLoaiHangController.reload();
 		} catch (Exception ex) {
 			logger.error("This is error : " + ex.getMessage());
 		}
@@ -50,7 +50,7 @@ public class ThemDonViTinhController {
 
 	@FXML
 	void btnCancelClick() {
-		QuanLyDonViTinhController.quanLyDonViTinhController.closeThem();
+		QuanLyLoaiHangController.quanLyLoaiHangController.closeThem();
 	}
 
 }

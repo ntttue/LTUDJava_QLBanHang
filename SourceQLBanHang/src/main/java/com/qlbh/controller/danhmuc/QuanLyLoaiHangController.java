@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import com.qlbh.controller.common.DialogConfirmController;
-import com.qlbh.model.DonvitinhHome;
-import com.qlbh.pojo.Donvitinh;
+import com.qlbh.model.LoaihangHome;
+import com.qlbh.pojo.Loaihang;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -24,37 +24,37 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class QuanLyDonViTinhController {
-	public static QuanLyDonViTinhController quanLyDonViTinhController;
-	DonvitinhHome dvtHome = new DonvitinhHome();
+public class QuanLyLoaiHangController {
+	public static QuanLyLoaiHangController quanLyLoaiHangController;
+	LoaihangHome lhHome = new LoaihangHome();
 	private Stage stageThem = null;
 	private Stage stageSua = null;
 	@FXML
-	private TableView<Donvitinh> tableDonViTinh;
+	private TableView<Loaihang> tableLoaiHang;
 
 	@FXML
 	private Button btnThem, btnSua, btnXoa, btnNapLai;
 
 	@FXML
 	protected void initialize() {
-		quanLyDonViTinhController = this;
-		loadListDonViTinh();
+		quanLyLoaiHangController = this;
+		loadListLoaiHang();
 		createRowsEvent();
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
 	}
 
 	private void createRowsEvent() {
-		tableDonViTinh.setRowFactory(tv -> {
-			TableRow<Donvitinh> row = new TableRow<>();
+		tableLoaiHang.setRowFactory(tv -> {
+			TableRow<Loaihang> row = new TableRow<>();
 			row.setOnMouseClicked(event -> {
 				if (row.isEmpty()) {
-					onTableDonViTinhMouseClick();
+					onTableLoaiHangMouseClick();
 				} else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-					Donvitinh clickedRow = row.getItem();
+					Loaihang clickedRow = row.getItem();
 					onRowDoubleClick(clickedRow);
 				} else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY) {
-					Donvitinh clickedRow = row.getItem();
+					Loaihang clickedRow = row.getItem();
 					onRowSingleClick(clickedRow);
 				}
 			});
@@ -62,62 +62,62 @@ public class QuanLyDonViTinhController {
 		});
 	}
 
-	private void onTableDonViTinhMouseClick() {
-		System.out.println("onTableDonViTinhMouseClick");
+	private void onTableLoaiHangMouseClick() {
+		System.out.println("onTableLoaiHangMouseClick");
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
-		tableDonViTinh.getSelectionModel().clearSelection();
+		tableLoaiHang.getSelectionModel().clearSelection();
 	}
 
-	private void onRowSingleClick(Donvitinh dvt) {
+	private void onRowSingleClick(Loaihang lh) {
 		System.out.println("Single click");
-		System.out.println(dvt.getMa());
+		System.out.println(lh.getMa());
 		btnSua.setDisable(false);
 		btnXoa.setDisable(false);
 	}
 
-	private void onRowDoubleClick(Donvitinh dvt) {
+	private void onRowDoubleClick(Loaihang lh) {
 		System.out.println("Double click");
-		System.out.println(dvt.getMa());
+		System.out.println(lh.getMa());
 		btnSua.setDisable(false);
 		btnXoa.setDisable(false);
 		btnSuaClick();
 	}
 
-	public Donvitinh getRowSelected() {
-		return tableDonViTinh.getSelectionModel().getSelectedItem();
+	public Loaihang getRowSelected() {
+		return tableLoaiHang.getSelectionModel().getSelectedItem();
 	}
 
 	@SuppressWarnings("unchecked")
-	private ObservableList<Donvitinh> getListDVT() {
-		List<Donvitinh> listDVT = dvtHome.findAll();
-		ObservableList<Donvitinh> oListDVT = FXCollections.observableList(listDVT);
-		return oListDVT;
+	private ObservableList<Loaihang> getListLH() {
+		List<Loaihang> listLH = lhHome.findAll();
+		ObservableList<Loaihang> oListLH = FXCollections.observableList(listLH);
+		return oListLH;
 	}
 
 	@SuppressWarnings("unchecked")
-	private void loadListDonViTinh() {
-		TableColumn<Donvitinh, String> id = new TableColumn<Donvitinh, String>("ID");
+	private void loadListLoaiHang() {
+		TableColumn<Loaihang, String> id = new TableColumn<Loaihang, String>("ID");
 		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
 
-		TableColumn<Donvitinh, String> ma = new TableColumn<Donvitinh, String>("Mã");
+		TableColumn<Loaihang, String> ma = new TableColumn<Loaihang, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
 
-		TableColumn<Donvitinh, String> ten = new TableColumn<Donvitinh, String>("Tên");
+		TableColumn<Loaihang, String> ten = new TableColumn<Loaihang, String>("Tên");
 		ten.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
 
-		TableColumn<Donvitinh, String> ghichu = new TableColumn<Donvitinh, String>("Ghi chú");
+		TableColumn<Loaihang, String> ghichu = new TableColumn<Loaihang, String>("Ghi chú");
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
-		this.tableDonViTinh.setItems(this.getListDVT());
-		this.tableDonViTinh.getColumns().addAll(id, ma, ten, ghichu);
+		this.tableLoaiHang.setItems(this.getListLH());
+		this.tableLoaiHang.getColumns().addAll(id, ma, ten, ghichu);
 	}
 
-	void deleteDonViTinh() {
-		Donvitinh dvt = tableDonViTinh.getSelectionModel().getSelectedItem();
-		if (dvt == null)
+	void deleteLoaiHang() {
+		Loaihang lh = tableLoaiHang.getSelectionModel().getSelectedItem();
+		if (lh == null)
 			return;
-		dvtHome.delete(dvt);
+		lhHome.delete(lh);
 		reload();
 	}
 
@@ -125,9 +125,9 @@ public class QuanLyDonViTinhController {
 	void btnThemClick() {
 		Stage primaryStage = new Stage();
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemDonViTinh.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemLoaiHang.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Thêm đơn vị tính");
+			primaryStage.setTitle("Thêm loại hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
@@ -145,12 +145,12 @@ public class QuanLyDonViTinhController {
 	void btnSuaClick() {
 		Stage primaryStage = new Stage();
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaDonViTinh.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaLoaiHang.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			SuaDonViTinhController controller = loader.<SuaDonViTinhController>getController();
-			controller.setDonViTinh(this.getRowSelected());
-			primaryStage.setTitle("Sửa đơn vị tính");
+			SuaLoaiHangController controller = loader.<SuaLoaiHangController>getController();
+			controller.setLoaiHang(this.getRowSelected());
+			primaryStage.setTitle("Sửa loại hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
@@ -166,8 +166,8 @@ public class QuanLyDonViTinhController {
 
 	@FXML
 	void btnXoaClick() {
-		DialogConfirmController.show("Xóa đơn vị tính", "Bạn có chắc muốn xóa đơn vị tính này?",
-				() -> this.deleteDonViTinh(), null);
+		DialogConfirmController.show("Xóa nhóm hàng", "Bạn có chắc muốn xóa nhóm hàng này?",
+				() -> this.deleteLoaiHang(), null);
 	}
 
 	@FXML
@@ -186,7 +186,7 @@ public class QuanLyDonViTinhController {
 	}
 
 	void reload() {
-		tableDonViTinh.setItems(getListDVT());
+		tableLoaiHang.setItems(getListLH());
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
 	}

@@ -1,27 +1,31 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 24/09/2016 4:41:13 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.qlbh.pojo.Loaihang" table="loaihang" catalog="qlbh" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <property name="ma" type="string">
-            <column name="ma" length="20" />
-        </property>
-        <property name="ten" type="string">
-            <column name="ten" />
-        </property>
-        <property name="activite" type="java.lang.Boolean">
-            <column name="activite" />
-        </property>
-        <set name="hanghoas" table="hanghoa" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="loaihangid" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Hanghoa" />
-        </set>
-    </class>
+ <class catalog="qlbh" name="com.qlbh.pojo.Loaihang" table="loaihang">
+  <id name="id" type="java.lang.Integer">
+   <column name="id"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="ma" type="string">
+   <column length="20" name="ma"/>
+  </property>
+  <property generated="never" lazy="false" name="ten" type="string">
+   <column name="ten"/>
+  </property>
+  <property lazy="false" name="ghichu" type="string">
+   <column name="ghichu"/>
+  </property>
+  <property generated="never" lazy="false" name="activite" type="java.lang.Boolean">
+   <column name="activite"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="hanghoas"
+   sort="unsorted" table="hanghoa">
+   <key>
+    <column name="loaihangid"/>
+   </key>
+   <one-to-many class="com.qlbh.pojo.Hanghoa"/>
+  </set>
+ </class>
 </hibernate-mapping>
