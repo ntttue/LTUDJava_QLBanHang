@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
-import com.qlbh.controller.common.DialogConfirmController;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -85,6 +84,35 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabDonViTinh = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabLoaiHang = null;
+
+	@FXML
+	void btnQuanLyLoaiHangClick(ActionEvent event) {
+		String title = "Nhóm hàng";
+		String fxmlPath = "../fxml/danhmuc/QuanLyLoaiHang.fxml";
+		if (ManHinhChinhController.tabLoaiHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabLoaiHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabLoaiHang = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabLoaiHang = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -196,6 +224,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
 	private void onButtonNhapDanhMucTuExcelClick() {
 		System.out.println("onButtonNhapDanhMucTuExcelClick");

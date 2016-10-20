@@ -22,15 +22,17 @@ public class Loaihang implements java.io.Serializable {
 	private Integer id;
 	private String ma;
 	private String ten;
+	private String ghichu;
 	private Boolean activite;
 	private Set<Hanghoa> hanghoas = new HashSet<Hanghoa>(0);
 
 	public Loaihang() {
 	}
 
-	public Loaihang(String ma, String ten, Boolean activite, Set<Hanghoa> hanghoas) {
+	public Loaihang(String ma, String ten, String ghichu, Boolean activite, Set<Hanghoa> hanghoas) {
 		this.ma = ma;
 		this.ten = ten;
+		this.ghichu = ghichu;
 		this.activite = activite;
 		this.hanghoas = hanghoas;
 	}
@@ -63,6 +65,15 @@ public class Loaihang implements java.io.Serializable {
 
 	public void setTen(String ten) {
 		this.ten = ten;
+	}
+	
+	@Column(name = "ghichu")
+	public String getGhichu() {
+		return this.ghichu;
+	}
+
+	public void setGhichu(String ghichu) {
+		this.ghichu = ghichu;
 	}
 
 	@Column(name = "activite")
