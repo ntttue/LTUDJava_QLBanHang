@@ -29,7 +29,7 @@ import javafx.stage.StageStyle;
 
 public class KhachHangController {
 	public static KhachHangController khachHangController = null;
-	private Stage stageThemKhachHang = null;
+	private Stage stageThemKhachHang = null, stageSuaKhachHang = null;
 	@FXML
 	private TableView<Khachhang> tableKhachHang;
 	@FXML
@@ -50,7 +50,7 @@ public class KhachHangController {
 		    row.setOnMouseClicked(event -> {
 		    	// No row selected when click
 		    	if ( row.isEmpty() ) {
-		    		onTableTyGiaMouseClick();
+		    		onTableKhachhangMouseClick();
 		    	}
 		    	// Double click
 		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 ) {
@@ -66,19 +66,15 @@ public class KhachHangController {
 		    return row;
 		});
 	}
-	private void onRowDoubleClick(Khachhang tyGia) {
-	    System.out.println("Double click");
-	    System.out.println(tyGia.getMa());
-	    this.setButtonControlsDisable(false);
+	private void onRowDoubleClick(Khachhang kh) {
+		this.setButtonControlsDisable(false);
+	    this.onButtonSuaClick();
 	}
-	private void onRowSingleClick(Khachhang tyGia) {
-		System.out.println("Single click");
-	    System.out.println(tyGia.getMa());
+	private void onRowSingleClick(Khachhang kh) {
 	    this.setButtonControlsDisable(false);
 	}
 	
-	private void onTableTyGiaMouseClick() {
-		System.out.println("onTableTyGiaMouseClick");
+	private void onTableKhachhangMouseClick() {
 		this.setButtonControlsDisable(true);
 		// Clear row selection
 		tableKhachHang.getSelectionModel().clearSelection();
@@ -92,12 +88,24 @@ public class KhachHangController {
 			this.stageThemKhachHang.close();
 		}
 	}
+	public void closeManHinhSuaKhachHang() {
+		if ( this.stageSuaKhachHang != null ) {
+			this.stageSuaKhachHang.close();
+		}
+	}
 	public void onKhachHangAdded() {
-		this.onButtonRefreshClick();
+		this.refreshKhachHangTableData();
 		this.closeManHinhThemKhachHang();
 		this.tableKhachHang.requestFocus();
 		this.tableKhachHang.getSelectionModel().selectLast();
 		this.setButtonControlsDisable(false);
+	}
+	public void onKhachHangUpdated() {
+		Integer index = this.tableKhachHang.getSelectionModel().getSelectedIndex();
+		this.refreshKhachHangTableData();
+		this.closeManHinhSuaKhachHang();
+		this.tableKhachHang.requestFocus();
+		this.tableKhachHang.getSelectionModel().select(index);
 	}
 	
 	@FXML
@@ -120,13 +128,35 @@ public class KhachHangController {
 			e.printStackTrace();
 		}
 	}
+	public Khachhang getSelectedKhachhang() {
+		return this.tableKhachHang.getSelectionModel().getSelectedItem();
+	}
 	@FXML
 	void onButtonSuaClick() {
-		System.out.println("Button sửa clicked!");
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaKhachHang.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			SuaKhachHangController controller = 
+				    loader.<SuaKhachHangController>getController();
+			controller.setKhachhang(this.getSelectedKhachhang());
+			primaryStage.setTitle("Sửa Khách hàng");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+			primaryStage.show();
+			this.stageSuaKhachHang = primaryStage;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	void onButtonXoaClick() {
-		System.out.println("Button xóa clicked!");
 		DialogConfirmController.show(
 				"Xóa khách hàng?",
 				"Bạn có chắc muốn xóa khách hàng này",
@@ -135,13 +165,11 @@ public class KhachHangController {
 	}
 	@FXML
 	void onButtonExitClick() {
-		System.out.println("onButtonExitClick");
 		ManHinhChinhController.tabKhachHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhachHang);
 		ManHinhChinhController.tabKhachHang = null;
 	}
 	@FXML
 	void onButtonRefreshClick() {
-		System.out.println("Button nạp lại clicked!");
 		this.refreshKhachHangTableData();
 		this.setButtonControlsDisable(true);
 	}
