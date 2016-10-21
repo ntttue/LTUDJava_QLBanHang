@@ -41,7 +41,7 @@ public class KhachhangHome extends AbstractDao {
 		super.delete(khachHang);
 	}
 	public void delete(Khachhang khachHang) {
-		khachHang.setActivite(false);
+		khachHang.setActivity(false);
 		super.update(khachHang);
 	}
 }

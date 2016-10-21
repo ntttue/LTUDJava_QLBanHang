@@ -36,7 +36,7 @@ public class LoaikhachhangHome extends AbstractDao {
 		super.delete(lkh);
 	}
 	public void delete(Loaikhachhang lkh) {
-		lkh.setActivite(false);
+		lkh.setActivity(false);
 		super.update(lkh);
 	}
 }

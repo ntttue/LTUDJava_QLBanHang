@@ -30,7 +30,7 @@ public class DonvitinhHome extends AbstractDao {
 	}
 
 	public void delete(Donvitinh dvt) {
-		dvt.setActivite(false);
+		dvt.setActivity(false);
 		super.update(dvt);
 	}
 }

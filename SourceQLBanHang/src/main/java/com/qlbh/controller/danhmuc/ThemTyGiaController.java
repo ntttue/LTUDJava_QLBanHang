@@ -21,7 +21,7 @@ public class ThemTyGiaController {
 		tyGia.setMa(this.txtMa.getText());
 		tyGia.setTen(this.txtTen.getText());
 		tyGia.setTygiaquydoi(Float.parseFloat(this.numTyGiaQuyDoi.getText()));
-		tyGia.setActivite(true);
+		tyGia.setActivity(true);
 		
 		TygiaHome tyGiaHome = new TygiaHome();
 		tyGiaHome.save(tyGia);

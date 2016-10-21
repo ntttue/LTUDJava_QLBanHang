@@ -33,7 +33,7 @@ public class KhuvucHome extends AbstractDao {
 		super.delete(khuVuc);
 	}
 	public void delete(Khuvuc khuVuc) {
-		khuVuc.setActivite(false);
+		khuVuc.setActivity(false);
 		super.update(khuVuc);
 	}
 }
