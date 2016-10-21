@@ -70,6 +70,13 @@ public class DialogConfirmController {
 		this.lblTitle.setText(DialogConfirmController.title);
 		this.lblContent.setText(DialogConfirmController.content);
 	}
+	/**
+	 * Show dialog confirm
+	 * @param title Main title of dialog
+	 * @param content Content to tell to user
+	 * @param runnableOK Callback function call when button OK click
+	 * @param runnableCancel Callback function call when button Cancel click
+	 */
 	public static void show(String title, String content, Runnable runnableOK, Runnable runnableCancel) {
 		if ( DialogConfirmController.instance == null ) {
 			DialogConfirmController.instance = new DialogConfirmController();

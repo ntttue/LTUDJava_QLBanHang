@@ -10,45 +10,27 @@ import com.qlbh.model.LoaikhachhangHome;
 import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Khuvuc;
 import com.qlbh.pojo.Loaikhachhang;
-import com.qlbh.util.DataInputUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
-public class ThemKhachHangController {
+public class SuaKhachHangController {
 	@FXML
 	private JFXRadioButton radioButtonKhachLe, radioButtonDaiLy;
 	@FXML
 	private TextField txtMa, txtTen, txtNguoiLienHe, txtDiaChi, numDienThoai, txtEmail, numNoHienTai, numGioiHanNo,
-	txtNganHang, txtSoTaiKhoan, txtMaSoThue, txtSkype, numChietKhau;
+	txtNganHang, txtMaSoThue, txtSkype, numChietKhau;
 	@FXML
 	private ComboBox<Khuvuc> cbxKhuVuc;
-	@FXML
-	private ComboBox<Loaikhachhang> cbxLoaiKhachHang;
+	private ToggleGroup groupLoaiKhachHang;
 	@FXML
 	protected void initialize() {
+		this.setGroupCheckBoxLoaiKH();
 		this.setcbxKhuVuc();
-		this.setcbxLoaiKhachHang();
-		DataInputUtils.setFloatOnlyForTextField(this.numNoHienTai);
-		DataInputUtils.setFloatOnlyForTextField(this.numGioiHanNo);
-		DataInputUtils.setIntegerOnlyForTextField(this.numChietKhau);
-		this.setTestData();
-	}
-	private void setTestData() {
-		txtMa.setText("KH0000");
-		txtTen.setText("Trần Văn Khánh");
-		txtNguoiLienHe.setText("Nguyễn Văn A");
-		txtDiaChi.setText("227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM");
-		numDienThoai.setText("0986543345");
-		txtEmail.setText("vana@gmail.com");
-		txtNganHang.setText("VietcomBank");
-		txtSoTaiKhoan.setText("KHONGBIET0021");
-		txtMaSoThue.setText("THUE0098EF");
-		txtSkype.setText("nickSkypeNè");
-		numChietKhau.setText("12");
 	}
 	@FXML
 	public void onButtonLuuClick() {
@@ -59,29 +41,23 @@ public class ThemKhachHangController {
 		khachHang.setDiachi(txtDiaChi.getText());
 		khachHang.setDienthoai(numDienThoai.getText());
 		khachHang.setEmail(txtEmail.getText());
-		
-		String textNoHienTai = numNoHienTai.getText();
-		if ( textNoHienTai == null || textNoHienTai.trim().isEmpty()) {
-			khachHang.setNohientai(BigDecimal.valueOf(0));
-		} else {
-			khachHang.setNohientai(BigDecimal.valueOf(Float.valueOf(textNoHienTai)));
-		}
-		
-		String textGioiHanNo = numGioiHanNo.getText();
-		if ( textGioiHanNo == null || textGioiHanNo.trim().isEmpty()) {
-			khachHang.setGioihanno(BigDecimal.valueOf(0));
-		} else {
-			khachHang.setGioihanno(BigDecimal.valueOf(Float.valueOf(textGioiHanNo)));
-		}
-		
+		khachHang.setNohientai(BigDecimal.valueOf(Float.valueOf(numNoHienTai.getText())));
+		khachHang.setGioihanno(BigDecimal.valueOf(Float.valueOf(numGioiHanNo.getText())));
 		khachHang.setNganhang(txtNganHang.getText());
-		khachHang.setTaikhoan(txtSoTaiKhoan.getText());
 		khachHang.setMasothue(txtMaSoThue.getText());
 		khachHang.setSkype(txtSkype.getText());
 		khachHang.setKhuvuc(cbxKhuVuc.getValue());
-		khachHang.setLoaikhachhang(cbxLoaiKhachHang.getValue());
-		khachHang.setActivite(true);
 		
+		
+		LoaikhachhangHome lkhHome = new LoaikhachhangHome();
+		Loaikhachhang lkh = null;
+		if ( radioButtonKhachLe.isSelected() ) {
+			lkh = lkhHome.findById(1);
+		}
+		if ( radioButtonDaiLy.isSelected() ) {
+			lkh = lkhHome.findById(2);
+		}
+		khachHang.setLoaikhachhang(lkh);
 		KhachhangHome khachHangHome = new KhachhangHome();
 		khachHangHome.save(khachHang);
 		KhachHangController.khachHangController.onKhachHangAdded();
@@ -97,19 +73,13 @@ public class ThemKhachHangController {
 		ObservableList<Khuvuc> oListKhuVuc = FXCollections.observableList(khuvucs);
 		return oListKhuVuc;
 	}
-	@SuppressWarnings("unchecked")
-	private ObservableList<Loaikhachhang> getDSLoaiKhachHang() {
-		LoaikhachhangHome lkhHome = new LoaikhachhangHome();
-		List<Loaikhachhang> lkhs = lkhHome.findAll();
-		ObservableList<Loaikhachhang> oListLKH = FXCollections.observableList(lkhs);
-		return oListLKH;
+	private void setGroupCheckBoxLoaiKH() {
+		this.groupLoaiKhachHang = new ToggleGroup();
+		this.radioButtonKhachLe.setToggleGroup(this.groupLoaiKhachHang);
+		this.radioButtonDaiLy.setToggleGroup(this.groupLoaiKhachHang);
 	}
 	private void setcbxKhuVuc() {
 		cbxKhuVuc.setItems(this.getDSKhuVuc());
 		//cbxKhuVuc.getSelectionModel().select(1);
-	}
-	private void setcbxLoaiKhachHang() {
-		cbxLoaiKhachHang.setItems(this.getDSLoaiKhachHang());
-		cbxLoaiKhachHang.getSelectionModel().select(0);
 	}
 }

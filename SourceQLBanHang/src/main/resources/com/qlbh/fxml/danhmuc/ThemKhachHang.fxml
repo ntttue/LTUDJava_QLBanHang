@@ -11,20 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="375.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemKhachHangController">
+<AnchorPane id="AnchorPane" prefHeight="365.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemKhachHangController">
 	<children>
-      <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Label prefHeight="25.0" prefWidth="100.0" text="Loại khách hàng:" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0" />
-            <Group AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <JFXRadioButton fx:id="radioButtonKhachLe" text="Khách lẻ" />
-                  <JFXRadioButton fx:id="radioButtonDaiLy" layoutX="120.0" text="Đại lý" />
-               </children>
-            </Group>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -54,6 +43,7 @@
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Điện thoại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nợ hiện tại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
@@ -65,30 +55,37 @@
                         <TextField fx:id="numDienThoai" layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <TextField fx:id="txtEmail" layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <TextField fx:id="numNoHienTai" layoutY="209.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <TextField fx:id="numGioiHanNo" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Skype" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-                        <Label layoutX="20.0" layoutY="114.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Ngân hàng" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
-                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Khu vực" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
+                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Loại KH" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                            <graphic>
                               <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
                            </graphic>
                         </Label>
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu (%)" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Khu vực" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="45.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="114.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Ngân hàng" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Số tài khoản" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Skype" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu (%)" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ComboBox fx:id="cbxKhuVuc" layoutY="8.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                        <TextField fx:id="txtNganHang" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
-                        <TextField fx:id="txtMaSoThue" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
-                        <TextField fx:id="txtSkype" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-                        <TextField fx:id="numChietKhau" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-                        <TextField fx:id="numGioiHanNo" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <ComboBox fx:id="cbxLoaiKhachHang" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                        <ComboBox fx:id="cbxKhuVuc" layoutY="8.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                        <TextField fx:id="txtNganHang" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                        <TextField fx:id="txtSoTaiKhoan" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+                        <TextField fx:id="txtMaSoThue" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                        <TextField fx:id="txtSkype" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+                        <TextField fx:id="numChietKhau" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                </children>

@@ -81,6 +81,24 @@ public abstract class AbstractDao {
         }
         return obj;
     }
+    protected Object findById(Class clazz, Integer id) {
+    	Object obj = null;
+        try {
+            startOperation();
+            Query query = session.createQuery("from " + clazz.getName() + " where id=:id");
+            query.setInteger("id", id);
+            List objects = query.list();
+            if ( objects.size() > 0 ) {
+            	obj = objects.get(0);
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            handleException(e);
+        } finally {
+            HibernateFactory.close(session);
+        }
+        return obj;
+    }
 
     protected List findAll(Class clazz) {
         List objects = null;
