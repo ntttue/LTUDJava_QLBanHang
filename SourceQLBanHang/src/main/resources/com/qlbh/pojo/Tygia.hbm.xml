@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/09/2016 4:41:13 PM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 21/10/2016 11:19:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Tygia" table="tygia" catalog="qlbh" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -17,8 +17,8 @@
         <property name="tygiaquydoi" type="java.lang.Float">
             <column name="tygiaquydoi" precision="4" scale="0" />
         </property>
-        <property name="activite" type="java.lang.Boolean">
-            <column name="activite" />
+        <property name="activity" type="java.lang.Boolean">
+            <column name="activity" />
         </property>
     </class>
 </hibernate-mapping>
