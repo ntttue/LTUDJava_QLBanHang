@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-21 09:08:54
+Date: 2016-10-21 20:34:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -207,6 +207,7 @@ DROP TABLE IF EXISTS `loaihang`;
 CREATE TABLE `loaihang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ghichu` text COLLATE utf8_unicode_ci,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
