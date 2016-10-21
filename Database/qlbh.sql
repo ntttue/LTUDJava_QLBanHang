@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50715
 Source Host           : localhost:3306
-Source Database       : qlbanhang
+Source Database       : qlbh
 
 Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-09-24 15:07:15
+Date: 2016-10-21 09:08:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,10 +24,10 @@ CREATE TABLE `bophan` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ghichu` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for chitietphieunhap
@@ -41,7 +41,7 @@ CREATE TABLE `chitietphieunhap` (
   `thanhtien` double DEFAULT NULL,
   `ghichu` longtext COLLATE utf8_unicode_ci,
   `phieunhapid` int(11) DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `chitietphieunhap_hanghoa_fkey` (`hanghoaid`),
@@ -62,7 +62,7 @@ CREATE TABLE `chitietphieuxuat` (
   `soluong` int(11) DEFAULT NULL,
   `dongia` double DEFAULT NULL,
   `thanhtien` double DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `chitietphieuxuat_hanghoa_fkey` (`hanghoaid`),
   KEY `chitietphieuxuat_phieuxuat_fkey` (`phieuxuatid`),
@@ -85,7 +85,7 @@ CREATE TABLE `congty` (
   `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `website` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `logo` text COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -98,7 +98,7 @@ CREATE TABLE `donvitinh` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ghichu` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -114,19 +114,21 @@ CREATE TABLE `hanghoa` (
   `loaihangid` int(11) DEFAULT NULL,
   `nhaccid` int(11) DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `donvi` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `donviid` int(11) DEFAULT NULL,
   `xuatxu` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `giamua` double DEFAULT NULL,
   `giabanle` double DEFAULT NULL,
   `giabansi` double DEFAULT NULL,
   `tonkho` int(11) DEFAULT NULL,
   `anh` text COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `hanghoa_khohang_fkey` (`khohangid`),
   KEY `hanghoa_nhomhang_fkey` (`nhomhangid`),
   KEY `hanghoa_loaihang_fkey` (`loaihangid`),
   KEY `hanghoa_nhacungcap_fkey` (`nhaccid`),
+  KEY `hanghoa_donvi_fkey` (`donviid`),
+  CONSTRAINT `hanghoa_donvi_fkey` FOREIGN KEY (`donviid`) REFERENCES `donvitinh` (`id`),
   CONSTRAINT `hanghoa_khohang_fkey` FOREIGN KEY (`khohangid`) REFERENCES `khohang` (`id`),
   CONSTRAINT `hanghoa_loaihang_fkey` FOREIGN KEY (`loaihangid`) REFERENCES `loaihang` (`id`),
   CONSTRAINT `hanghoa_nhacungcap_fkey` FOREIGN KEY (`nhaccid`) REFERENCES `nhacungcap` (`id`),
@@ -155,7 +157,7 @@ CREATE TABLE `khachhang` (
   `yahoo` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `skype` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `nguoilienhe` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `khachang_loaikh_fkey` (`loaikhid`),
   KEY `khachhang_khuvuc_fkey` (`khuvucid`),
@@ -178,11 +180,11 @@ CREATE TABLE `khohang` (
   `email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `fax` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `diengiai` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `khohang_nhanvien_fkey` (`nguoiqlid`),
   CONSTRAINT `khohang_nhanvien_fkey` FOREIGN KEY (`nguoiqlid`) REFERENCES `nhanvien` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for khuvuc
@@ -193,10 +195,10 @@ CREATE TABLE `khuvuc` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ghichu` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for loaihang
@@ -206,7 +208,7 @@ CREATE TABLE `loaihang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -219,7 +221,7 @@ CREATE TABLE `loaikhachhang` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `mota` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -236,13 +238,13 @@ CREATE TABLE `nguoidung` (
   `vaitroid` int(11) DEFAULT NULL,
   `nhanvienid` int(11) DEFAULT NULL,
   `diengiai` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nguoidung_vaitro_fkey` (`vaitroid`),
   KEY `nguoidung_nhanvien_fkey` (`nhanvienid`),
   CONSTRAINT `nguoidung_nhanvien_fkey` FOREIGN KEY (`nhanvienid`) REFERENCES `nhanvien` (`id`),
   CONSTRAINT `nguoidung_vaitro_fkey` FOREIGN KEY (`vaitroid`) REFERENCES `vaitro` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -263,11 +265,11 @@ CREATE TABLE `nhacungcap` (
   `nganhang` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `manguoilienhe` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `chucvu` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nhacungcap_khuvuc_fkey` (`khuvucid`),
   CONSTRAINT `nhacungcap_khuvuc_fkey` FOREIGN KEY (`khuvucid`) REFERENCES `khuvuc` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for nhanvien
@@ -285,11 +287,11 @@ CREATE TABLE `nhanvien` (
   `BoPhanId` int(11) DEFAULT NULL,
   `NguoiLienQuan` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `Luong` double(65,0) DEFAULT NULL,
-  `Activiti` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nhanvien_bophan_fkey` (`BoPhanId`),
   CONSTRAINT `nhanvien_bophan_fkey` FOREIGN KEY (`BoPhanId`) REFERENCES `bophan` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- ----------------------------
 -- Table structure for nhomhanghoa
@@ -300,7 +302,7 @@ CREATE TABLE `nhomhanghoa` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ghichu` longtext COLLATE utf8_unicode_ci,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -314,9 +316,12 @@ CREATE TABLE `phieunhap` (
   `nhaccid` int(11) DEFAULT NULL,
   `nhanviennhapid` int(11) DEFAULT NULL,
   `khoid` int(11) DEFAULT NULL,
+  `dienthoai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diachi` text COLLATE utf8_unicode_ci,
   `ngaynhap` date DEFAULT NULL,
+  `ghichu` text COLLATE utf8_unicode_ci,
   `tongtien` double DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `phieunhap_nhacungcap_fkey` (`nhaccid`),
   KEY `phieunhap_nhanvien_fkey` (`nhanviennhapid`),
@@ -339,8 +344,10 @@ CREATE TABLE `phieuxuat` (
   `nhanvienbanhangid` int(11) DEFAULT NULL,
   `ngaylap` date DEFAULT NULL,
   `khachhangid` int(11) DEFAULT NULL,
+  `dienthoai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tongtien` double DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `ghichu` text COLLATE utf8_unicode_ci,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `phieuxuat_khohang_fkey` (`khoid`),
   KEY `phieuxuat_nhanvien_fkey` (`nhanvienbanhangid`),
@@ -348,7 +355,7 @@ CREATE TABLE `phieuxuat` (
   CONSTRAINT `phieuxuat_khachhang_fkey` FOREIGN KEY (`khachhangid`) REFERENCES `khachhang` (`id`),
   CONSTRAINT `phieuxuat_khohang_fkey` FOREIGN KEY (`khoid`) REFERENCES `khohang` (`id`),
   CONSTRAINT `phieuxuat_nhanvien_fkey` FOREIGN KEY (`nhanvienbanhangid`) REFERENCES `nhanvien` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for tygia
@@ -358,7 +365,7 @@ CREATE TABLE `tygia` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `tygiaquydoi` float(4,0) DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -381,10 +388,9 @@ CREATE TABLE `vaitro` (
   `in` bit(1) DEFAULT NULL,
   `nhap` bit(1) DEFAULT NULL,
   `xuat` bit(1) DEFAULT NULL,
-  `activite` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`),
   KEY `vaitro_vaitro_fkey` (`vaitrochaid`),
   CONSTRAINT `vaitro_vaitro_fkey` FOREIGN KEY (`vaitrochaid`) REFERENCES `vaitro` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-SET FOREIGN_KEY_CHECKS=1;
