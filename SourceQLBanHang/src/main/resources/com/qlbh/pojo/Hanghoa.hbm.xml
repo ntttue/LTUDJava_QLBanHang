@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/10/2016 11:19:47 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 21/10/2016 11:56:07 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Hanghoa" table="hanghoa" catalog="qlbh" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
