@@ -1,40 +1,50 @@
-/*
- * Empty Stylesheet file.
- */
-
 .mainFxmlClass {
-
+    -fx-background-color: #FFFFFF;
 }
-#paneIcon{
-	 -fx-background-image:  url("../images/changePass.png") ;
-    -fx-background-size: cover;
+.paneInfo {
+    -fx-padding: 2px;
+    -fx-border-insets: 2px;
+    -fx-background-insets: 2px;
+	-fx-border-color: #1976d2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-background-color: #f5f5f5;
 }
-.lblTitle{
-	-fx-font: 16.0px Georgia, Serif;
-    -fx-text-fill: #333333;
-    -fx-font-weight: Bold;
+.lbHeader{
+    -fx-background-color: #4F95D2;
+    -fx-text-fill: #fff;
+    -fx-alignment: CENTER;
+    -fx-font-size: 20px;
 }
 .textField{
     -fx-border-color: #DADADA;
     -fx-border-insets: 0.0px;
     -fx-border-width: 1.0px;
     -fx-border-radius: 3.0px;
-    -fx-pref-width:  230.0px;
+    -fx-pref-width:  260.0px;
+    -fx-min-width: 260px;
+    -fx-max-width: 260px;
     -fx-background-color: #FBFBFB;
 }
-.okButton{
-	-fx-background-color: #e9ebee;
-	-fx-border-color: #DADADA;
-	-fx-border-radius: 3.0px;
-	-fx-pref-width: 105.0px;
-	-fx-pref-height:  40.0px;
-	-fx-graphic: url("../images/ok.png");
+.cbx{
+	 -fx-border-color: #DADADA;
+    -fx-border-insets: 0.0px;
+    -fx-border-width: 1.0px;
+    -fx-border-radius: 3.0px;
+    -fx-pref-width:  260.0px;
+    -fx-min-width: 260px;
+    -fx-max-width: 260px;
+    -fx-background-color: #FBFBFB;
+	-fx-pref-height: 31.0px;
 }
-.cancelButton{
-	-fx-background-color: #e9ebee;
-	-fx-border-color: #DADADA;
-	-fx-pref-width: 105.0px;
-	-fx-pref-height: 40.0px;
-	-fx-border-radius: 2.0px;
-	-fx-graphic: url("../images/cancel.png");
+.lbred{
+    -fx-text-fill: red;
+}
+.app-wrapper {
+	-fx-background-color: #f5f5f5;
+}
+.button {
+	-fx-background-color: #4F95D2;
+	-fx-font-size: 14px;
+	-fx-text-fill: #fff;
 }

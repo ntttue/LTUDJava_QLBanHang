@@ -2,8 +2,11 @@ package com.qlbh.controller;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.model.common.AbstractDao;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class ManHinhChinhController {
+	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
 	@FXML
 	private TabPane tabMainContent;
 	@FXML
@@ -228,5 +232,25 @@ public class ManHinhChinhController {
 	@FXML
 	private void onButtonNhapDanhMucTuExcelClick() {
 		System.out.println("onButtonNhapDanhMucTuExcelClick");
+	}
+
+	@FXML
+	void btnDoiMatKhauClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Đổi mật khẩu");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			logger.error("exeption open frmDoiMatKhau", e);
+			e.printStackTrace();
+		}
 	}
 }
