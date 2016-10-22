@@ -111,6 +111,21 @@ public class NhapHangController {
 		List<Nhacungcap> nhacungcaps = nhaCungCapHome.getNhaCungCapList();
 		cmbModelMaNhaCC = FXCollections.observableArrayList(nhacungcaps);
 		cmbMaNCC.setItems(cmbModelMaNhaCC);
+		StringConverter<Nhacungcap> converterMaNCC = new StringConverter<Nhacungcap>() {
+
+			@Override
+			public Nhacungcap fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String toString(Nhacungcap object) {
+				// TODO Auto-generated method stub
+				return object.getMa();
+			}
+		};
+		cmbMaNCC.setConverter(converterMaNCC);
 		cmbMaNCC.setButtonCell(new MaNhaCungCapListCell());
 		cmbMaNCC.setCellFactory(new Callback<ListView<Nhacungcap>, ListCell<Nhacungcap>>() {
 
@@ -129,6 +144,21 @@ public class NhapHangController {
 				return new TenNhaCungCapListCell();
 			}
 		});
+		StringConverter<Nhacungcap> converterTenNCC = new StringConverter<Nhacungcap>() {
+
+			@Override
+			public Nhacungcap fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String toString(Nhacungcap object) {
+				// TODO Auto-generated method stub
+				return object.getTen();
+			}
+		};
+		cmbTenNCC.setConverter(converterTenNCC);
 		cmbTenNCC.setPromptText("Chọn tên nhà cung cấp");
 	}
 
