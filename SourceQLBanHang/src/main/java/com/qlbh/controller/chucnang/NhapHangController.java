@@ -2,6 +2,8 @@ package com.qlbh.controller.chucnang;
 
 import java.util.List;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.qlbh.model.HanghoaHome;
 import com.qlbh.model.KhohangHome;
 import com.qlbh.model.NhacungcapHome;
@@ -15,6 +17,7 @@ import com.qlbh.pojo.Phieunhap;
 import com.qlbh.render.combobox.MaNhaCungCapListCell;
 import com.qlbh.render.combobox.TenNhaCungCapListCell;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.adapter.JavaBeanObjectPropertyBuilder;
@@ -22,9 +25,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
@@ -37,6 +41,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
@@ -50,7 +55,7 @@ public class NhapHangController {
 	private ObservableList<Hanghoa> cmbModelHangHoa;
 
 	@FXML
-	private Button btnLuu;
+    private JFXButton btnLuu;
 	@FXML
 	private ComboBox<Nhanvien> cmbNhanVien;
 	private ObservableList<Nhanvien> cmbModelNhanVien;
@@ -66,7 +71,9 @@ public class NhapHangController {
 	@FXML
 	private TextField txtThanhToan;
 	@FXML
-	private Button btnTaoMoi;
+	private JFXButton btnTaoMoi;
+	@FXML
+	private JFXButton btnDong;
 	@FXML
 	private TableView<Chitietphieunhap> tableChiTiet;
 	private ObservableList<Chitietphieunhap> modelTableChiTiet;
@@ -77,9 +84,11 @@ public class NhapHangController {
 	@FXML
 	private TextField txtMaPhieu;
 	@FXML
-	private Button btnNapLai;
+	private JFXButton btnNapLai;
 	@FXML
 	private DatePicker datePickerNhap;
+	@FXML
+	private JFXTextField txtDienThoai;
 
 	public NhapHangController() {
 		super();
@@ -111,6 +120,21 @@ public class NhapHangController {
 		List<Nhacungcap> nhacungcaps = nhaCungCapHome.getNhaCungCapList();
 		cmbModelMaNhaCC = FXCollections.observableArrayList(nhacungcaps);
 		cmbMaNCC.setItems(cmbModelMaNhaCC);
+		StringConverter<Nhacungcap> converterMaNCC = new StringConverter<Nhacungcap>() {
+
+			@Override
+			public Nhacungcap fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String toString(Nhacungcap object) {
+				// TODO Auto-generated method stub
+				return object.getMa();
+			}
+		};
+		cmbMaNCC.setConverter(converterMaNCC);
 		cmbMaNCC.setButtonCell(new MaNhaCungCapListCell());
 		cmbMaNCC.setCellFactory(new Callback<ListView<Nhacungcap>, ListCell<Nhacungcap>>() {
 
@@ -129,6 +153,21 @@ public class NhapHangController {
 				return new TenNhaCungCapListCell();
 			}
 		});
+		StringConverter<Nhacungcap> converterTenNCC = new StringConverter<Nhacungcap>() {
+
+			@Override
+			public Nhacungcap fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String toString(Nhacungcap object) {
+				// TODO Auto-generated method stub
+				return object.getTen();
+			}
+		};
+		cmbTenNCC.setConverter(converterTenNCC);
 		cmbTenNCC.setPromptText("Chọn tên nhà cung cấp");
 	}
 
@@ -146,6 +185,40 @@ public class NhapHangController {
 			@Override
 			public void changed(ObservableValue<? extends Nhacungcap> arg0, Nhacungcap arg1, Nhacungcap arg2) {
 				cmbMaNCC.setValue(arg2);
+			}
+		});
+
+		// listener button
+		btnTaoMoi.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				createNew();
+			}
+		});
+
+		btnLuu.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		btnNapLai.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				refresh();
+			}
+		});
+
+		btnDong.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				
 			}
 		});
 	}
@@ -196,7 +269,7 @@ public class NhapHangController {
 			@Override
 			public void handle(CellEditEvent<Chitietphieunhap, Hanghoa> event) {
 				event.getTableView().getItems().get(event.getTablePosition().getRow()).setHanghoa(event.getNewValue());
-				if(event.getTablePosition().getRow() == modelTableChiTiet.size() -1 ){
+				if (event.getTablePosition().getRow() == modelTableChiTiet.size() - 1) {
 					addRowTable();
 				}
 				tableChiTiet.refresh();
@@ -240,7 +313,7 @@ public class NhapHangController {
 			@Override
 			public void handle(CellEditEvent<Chitietphieunhap, Hanghoa> event) {
 				event.getTableView().getItems().get(event.getTablePosition().getRow()).setHanghoa(event.getNewValue());
-				if(event.getTablePosition().getRow() == modelTableChiTiet.size() -1 ){
+				if (event.getTablePosition().getRow() == modelTableChiTiet.size() - 1) {
 					addRowTable();
 				}
 				tableChiTiet.refresh();
@@ -252,7 +325,8 @@ public class NhapHangController {
 				cellData -> new SimpleStringProperty(cellData.getValue().getHanghoa().getDonvitinh().getTen()));
 		// So luong
 		TableColumn<Chitietphieunhap, String> colSoLuong = new TableColumn<>("Số lượng");
-		colSoLuong.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSoluong().toString()));
+		colSoLuong
+				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSoluong().toString()));
 		colSoLuong.setCellFactory(TextFieldTableCell.forTableColumn());
 		colSoLuong.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Chitietphieunhap, String>>() {
 
@@ -303,13 +377,45 @@ public class NhapHangController {
 		tableChiTiet.setItems(modelTableChiTiet);
 		addRowTable();
 	}
-	
+
 	private void addRowTable() {
 		Hanghoa hanghoa = new Hanghoa();
 		hanghoa.setMa("");
 		hanghoa.setTen("");
-		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 0, 0d, 0d, "...", true,"");
+		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 0, 0d, 0d, "", true, "");
 		tableChiTiet.getItems().add(chitietphieunhap);
+	}
+
+	private void createNew() {
+		cmbKho.setValue(null);
+		cmbMaNCC.setValue(null);
+		cmbNhanVien.setValue(null);
+		cmbTenNCC.setValue(null);
+		txtDiaChi.setText("");
+		txtGhiChu.setText("");
+		txtThanhToan.setText("0");
+		txtDienThoai.setText("");
+		txtMaPhieu.setText("");
+
+		modelTableChiTiet.clear();
+		addRowTable();
+		tableChiTiet.refresh();
+	}
+
+	private void refresh() {
+		cmbKho.setValue(null);
+		cmbMaNCC.setValue(null);
+		cmbNhanVien.setValue(null);
+		cmbTenNCC.setValue(null);
+		txtDiaChi.setText("");
+		txtGhiChu.setText("");
+		txtThanhToan.setText("0");
+		txtDienThoai.setText("");
+		txtMaPhieu.setText("");
+	}
+	
+	private void saveInputBill(){
+		
 	}
 
 }

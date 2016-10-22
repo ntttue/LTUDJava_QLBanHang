@@ -1,0 +1,22 @@
+.content-wrapper {
+	-fx-background-color: #1976d2;
+}
+.decorde {
+	-fx-border-color: #80cbc4;
+    -fx-border-width: 0 2px 0 0;
+}
+
+.paneInfo {
+    -fx-padding: 2px;
+    -fx-border-insets: 2px;
+    -fx-background-insets: 2px;
+	-fx-border-color: #1976d2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-background-color: #f5f5f5;
+}
+
+.textTotalPayment {
+	-fx-text-fill: rgb(255,0,0);
+	-fx-accent: red ;
+}

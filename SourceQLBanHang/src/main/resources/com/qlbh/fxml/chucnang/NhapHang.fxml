@@ -1,69 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.NhapHangController">
+<AnchorPane stylesheets="@../../css/ManHinhNhapHang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.NhapHangController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <BorderPane prefHeight="235.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-               <top>
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="1200.0" styleClass="content-wrapper" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="btnTaoMoi" alignment="CENTER" ripplerFill="#c98c8c" text="Tạo mới" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <SVGPath content="M17 10H7v2h10v-2zm2-7h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v2h7v-2z">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#f8f5f5" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </SVGPath>
+                     </graphic>
+                  </JFXButton>
+                  <AnchorPane prefHeight="200.0" prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="85.0" AnchorPane.topAnchor="2.0" />
+                  <JFXButton fx:id="btnLuu" alignment="CENTER" graphicTextGap="5.0" ripplerFill="#c98c8c" text="Lưu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="WHITE" />
+                     </graphic>
+                  </JFXButton>
+                  <AnchorPane prefHeight="200.0" prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="2.0" />
+                  <AnchorPane prefHeight="200.0" prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="245.0" AnchorPane.topAnchor="2.0" />
+                  <JFXButton fx:id="btnNapLai" alignment="CENTER" graphicTextGap="5.0" layoutX="172.0" layoutY="7.0" ripplerFill="#c98c8c" text="Nạp lại" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="165.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <SVGPath content="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill="WHITE" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnDong" alignment="CENTER" graphicTextGap="5.0" ripplerFill="#c98c8c" text="Đóng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <SVGPath content="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#ee4f4f" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="35.0" prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+               <children>
+                  <AnchorPane layoutX="88.0" layoutY="-1.0" prefHeight="200.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="btnTaoMoi" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="102.0" text="Tạo mới" AnchorPane.leftAnchor="10.0" />
-                        <Button layoutX="365.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Đóng" />
-                        <Button fx:id="btnLuu" layoutX="129.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Lưu và thêm" />
-                        <Button fx:id="btnNapLai" layoutX="248.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Nạp lại" />
+                        <Label layoutX="2.0" layoutY="26.0" prefHeight="17.0" prefWidth="53.0" text="Mã NNC" AnchorPane.leftAnchor="70.0" />
+                        <Label layoutX="-1.0" layoutY="61.0" prefHeight="17.0" prefWidth="53.0" text="Tên NNC" AnchorPane.leftAnchor="70.0" />
+                        <Label layoutX="-6.0" layoutY="96.0" prefHeight="17.0" prefWidth="53.0" text="Địa chỉ" AnchorPane.leftAnchor="70.0" />
+                        <Label layoutX="2.0" layoutY="141.0" prefHeight="17.0" prefWidth="53.0" text="Ghi chú" AnchorPane.leftAnchor="70.0" />
                      </children>
                   </AnchorPane>
-               </top>
-               <right>
-                  <AnchorPane prefHeight="192.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane layoutX="181.0" layoutY="9.0" prefHeight="200.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="49.0" prefHeight="17.0" prefWidth="53.0" text="Tên NNC" />
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="53.0" text="Mã NNC" />
-                        <Label layoutX="14.0" layoutY="83.0" prefHeight="17.0" prefWidth="53.0" text="Địa chỉ" />
-                        <Label layoutX="14.0" layoutY="144.0" prefHeight="17.0" prefWidth="53.0" text="Ghi chú" />
-                        <ComboBox fx:id="cmbTenNCC" layoutX="107.0" layoutY="45.0" prefHeight="25.0" prefWidth="540.0" />
-                        <TextField fx:id="txtDiaChi" layoutX="107.0" layoutY="80.0" prefHeight="25.0" prefWidth="540.0" />
-                        <TextArea fx:id="txtGhiChu" layoutX="107.0" layoutY="114.0" prefHeight="61.0" prefWidth="540.0" />
-                        <ComboBox fx:id="cmbMaNCC" layoutX="107.0" layoutY="10.0" prefHeight="25.0" prefWidth="539.0" />
-                        <ComboBox fx:id="cmbNhanVien" layoutX="775.0" layoutY="80.0" prefHeight="25.0" prefWidth="400.0" />
-                        <ComboBox fx:id="cmbKho" layoutX="775.0" layoutY="119.0" prefHeight="25.0" prefWidth="400.0" />
-                        <Label layoutX="703.0" layoutY="14.0" prefHeight="17.0" prefWidth="45.0" text="Phiếu" />
-                        <Label layoutX="703.0" layoutY="49.0" prefHeight="17.0" prefWidth="41.0" text="Ngày" />
-                        <Label layoutX="703.0" layoutY="83.0" text="Nhân viên" />
-                        <Label layoutX="703.0" layoutY="123.0" text="Kho nhập" />
-                        <TextField fx:id="txtMaPhieu" layoutX="775.0" layoutY="10.0" prefHeight="25.0" prefWidth="400.0" />
-                        <DatePicker fx:id="datePickerNhap" layoutX="775.0" layoutY="45.0" prefHeight="25.0" prefWidth="399.0" />
+                        <JFXComboBox fx:id="cmbMaNCC" layoutX="34.0" layoutY="15.0" prefHeight="25.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" />
+                        <JFXComboBox fx:id="cmbTenNCC" layoutX="53.0" layoutY="53.0" prefHeight="25.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" />
+                        <JFXTextField fx:id="txtDiaChi" layoutX="63.0" layoutY="93.0" maxWidth="300.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" />
+                        <JFXTextArea fx:id="txtGhiChu" layoutX="69.0" layoutY="137.0" maxWidth="300.0" minWidth="61.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" />
                      </children>
                   </AnchorPane>
-               </right>
-            </BorderPane>
-         </top>
-         <bottom>
-            <AnchorPane prefHeight="48.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="200.0" prefWidth="5.0" styleClass="decorde" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="5.0" />
+                  <AnchorPane layoutX="412.0" layoutY="11.0" prefHeight="200.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="555.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="55.0" layoutY="19.0" prefHeight="17.0" prefWidth="45.0" text="Phiếu" AnchorPane.leftAnchor="70.0" />
+                        <Label layoutX="68.0" layoutY="52.0" prefHeight="17.0" prefWidth="61.0" text="Điện thoại" AnchorPane.leftAnchor="70.0" />
+                        <Label layoutX="72.0" layoutY="94.0" prefHeight="17.0" prefWidth="41.0" text="Ngày" AnchorPane.leftAnchor="72.0" />
+                        <Label layoutX="71.0" layoutY="127.0" text="Nhân viên" AnchorPane.leftAnchor="71.0" />
+                        <Label layoutX="72.0" layoutY="163.0" text="Kho nhập" AnchorPane.leftAnchor="72.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="933.0" layoutY="7.0" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXTextField fx:id="txtMaPhieu" layoutX="10.0" layoutY="7.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                        <JFXTextField fx:id="txtDienThoai" layoutX="10.0" layoutY="38.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                        <DatePicker fx:id="datePickerNhap" layoutX="10.0" layoutY="90.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="220.0" />
+                        <JFXComboBox fx:id="cmbNhanVien" layoutX="36.0" layoutY="119.0" maxWidth="300.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                        <JFXComboBox fx:id="cmbKho" layoutX="32.0" layoutY="156.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="256.0">
+         <children>
+            <AnchorPane layoutY="-8.0" prefHeight="208.0" prefWidth="1200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0">
+               <children>
+                  <TableView fx:id="tableChiTiet" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy></TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="1200.0" styleClass="content-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <CheckBox layoutX="28.0" layoutY="16.0" mnemonicParsing="false" text="In sau khi lưu" AnchorPane.leftAnchor="10.0" />
                   <Label layoutX="882.0" layoutY="16.0" text="Thanh toán" />
-                  <TextField fx:id="txtThanhToan" alignment="CENTER_RIGHT" layoutX="951.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0" promptText="0">
+                  <TextField fx:id="txtThanhToan" alignment="CENTER_RIGHT" editable="false" layoutX="951.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0" promptText="Thành tiền" styleClass="textTotalPayment" AnchorPane.rightAnchor="20.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Microsoft YaHei Light" size="14.0" />
                      </font>
                   </TextField>
                </children>
             </AnchorPane>
-         </bottom>
-         <center>
-            <TableView fx:id="tableChiTiet" prefHeight="339.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </center>
-      </BorderPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

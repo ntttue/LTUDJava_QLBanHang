@@ -33,9 +33,12 @@ public class NguoidungHome extends AbstractDao {
 	public void create(Nguoidung nd) throws DataAccessLayerException {
 		super.saveOrUpdate(nd);
 	}
-
+	
 	public NguoidungHome() {
 		super();
+	}
+	public void saveOrUpdate(Nguoidung obj){
+		super.saveOrUpdate(obj);
 	}
 	//
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
