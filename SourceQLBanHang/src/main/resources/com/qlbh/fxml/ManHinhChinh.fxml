@@ -152,7 +152,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="362.0" layoutY="-2.0" prefHeight="89.0" prefWidth="385.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Kho hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnQuanLyKhoHangClick" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Kho hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>
