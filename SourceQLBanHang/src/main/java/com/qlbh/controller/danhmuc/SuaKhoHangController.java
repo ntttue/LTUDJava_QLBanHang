@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ThemKhoHangController {
+public class SuaKhoHangController {
 
 	@FXML
 	private JFXButton btnSave, btnCancel;
@@ -31,7 +31,9 @@ public class ThemKhoHangController {
 	@FXML
 	private JFXComboBox<Nhanvien> cmbNguoiQuanLy;
 
-	final static Logger logger = Logger.getLogger(ThemKhoHangController.class);
+	final static Logger logger = Logger.getLogger(SuaKhoHangController.class);
+
+	private Khohang kh;
 
 	private ObservableList<Nhanvien> getDSNhanVien() {
 		NhanvienHome nvh = new NhanvienHome();
@@ -50,38 +52,44 @@ public class ThemKhoHangController {
 		cmbNguoiQuanLy.getSelectionModel().select(0);
 	}
 
+	public void setKhoHang(Khohang kh) {
+		this.kh = kh;
+		txtMa.setText(kh.getMa());
+		txtTen.setText(kh.getTen());
+		if (kh.getNhanvien() != null) {
+			cmbNguoiQuanLy.getSelectionModel().select(kh.getNhanvien());
+		}
+		txtNguoiLienHe.setText(kh.getNguoilienhe());
+		txtDiaChi.setText(kh.getDiachi());
+		txtDienThoai.setText(kh.getDienthoai());
+		txtFax.setText(kh.getFax());
+		txtEmail.setText(kh.getEmail());
+		txtGhiChu.setText(kh.getDiengiai());
+	}
+
 	@FXML
 	void btnSaveClick() {
 		if (txtMa.getLength() == 0 || txtTen.getLength() == 0) {
 			lbValidate.setText("Vui lòng nhập Mã và Tên");
 			return;
 		}
-		Khohang kh = new Khohang();
 		kh.setMa(txtMa.getText());
 		kh.setTen(txtTen.getText());
-		if (cmbNguoiQuanLy.getValue().getId() != 0)
+		if (cmbNguoiQuanLy.getValue().getId() == 0) {
+			kh.setNhanvien(null);
+		} else {
 			kh.setNhanvien(cmbNguoiQuanLy.getValue());
+		}
 		kh.setNguoilienhe(txtNguoiLienHe.getText());
 		kh.setDiachi(txtDiaChi.getText());
 		kh.setDienthoai(txtDienThoai.getText());
 		kh.setFax(txtFax.getText());
 		kh.setEmail(txtEmail.getText());
 		kh.setDiengiai(txtGhiChu.getText());
-		kh.setActivity(true);
 		KhohangHome khh = new KhohangHome();
 		try {
-			khh.save(kh);
-			txtMa.clear();
-			txtTen.clear();
-			cmbNguoiQuanLy.getSelectionModel().select(0);
-			txtNguoiLienHe.clear();
-			txtDiaChi.clear();
-			txtDienThoai.clear();
-			txtFax.clear();
-			txtEmail.clear();
-			txtGhiChu.clear();
-			lbValidate.setText("");
-			QuanLyKhoHangController.quanLyKhoHangController.reload();
+			khh.update(kh);
+			QuanLyKhoHangController.quanLyKhoHangController.closeSua();
 		} catch (Exception ex) {
 			logger.error("This is error : " + ex.getMessage());
 		}
@@ -90,7 +98,6 @@ public class ThemKhoHangController {
 
 	@FXML
 	void btnCancelClick() {
-		QuanLyKhoHangController.quanLyKhoHangController.closeThem();
+		QuanLyKhoHangController.quanLyKhoHangController.closeSua();
 	}
-
 }
