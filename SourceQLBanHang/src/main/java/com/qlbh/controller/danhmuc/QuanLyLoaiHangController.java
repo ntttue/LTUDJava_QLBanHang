@@ -127,7 +127,7 @@ public class QuanLyLoaiHangController {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemLoaiHang.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Thêm loại hàng");
+			primaryStage.setTitle("Thêm nhóm hàng");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);

@@ -2,8 +2,12 @@ package com.qlbh.controller;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogController;
+import com.qlbh.model.common.AbstractDao;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -19,8 +23,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ManHinhChinhController {
+	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
 	@FXML
 	private TabPane tabMainContent;
 	@FXML
@@ -31,6 +37,9 @@ public class ManHinhChinhController {
 
 	@FXML
 	private JFXButton btnThongTinTroGiup;
+
+	@FXML
+	private AnchorPane anchorManHinhChinhRoot;
 
 	public static Tab tabNhapHang = null;
 
@@ -55,6 +64,35 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabNhapHang = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabKhoHang = null;
+
+	@FXML
+	void btnQuanLyKhoHangClick(ActionEvent event) {
+		String title = "Kho hàng";
+		String fxmlPath = "../fxml/danhmuc/QuanLyKhoHang.fxml";
+		if (ManHinhChinhController.tabKhoHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhoHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabKhoHang = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabKhoHang = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -185,6 +223,36 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabThuTien = null;
+
+	@FXML
+	void onButtonThuTienClick(ActionEvent event) {
+		String title = "Thu tiền";
+		String fxmlPath = "../fxml/chucnang/ThuTien.fxml";
+		if (ManHinhChinhController.tabThuTien != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabThuTien);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabThuTien = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabThuTien = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
@@ -228,5 +296,31 @@ public class ManHinhChinhController {
 	@FXML
 	private void onButtonNhapDanhMucTuExcelClick() {
 		System.out.println("onButtonNhapDanhMucTuExcelClick");
+	}
+
+	@FXML
+	void btnDoiMatKhauClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Đổi mật khẩu");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				public void handle(WindowEvent we) {
+					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+				}
+			});
+
+		} catch (IOException e) {
+			logger.error("exeption open frmDoiMatKhau", e);
+			e.printStackTrace();
+		}
 	}
 }
