@@ -152,7 +152,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="362.0" layoutY="-2.0" prefHeight="89.0" prefWidth="385.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Kho hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnQuanLyKhoHangClick" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Kho hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>
@@ -267,7 +267,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="390.0" prefHeight="91.0" prefWidth="154.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="12.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Thu tiền" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="12.0" layoutX="21.0" layoutY="21.0" onAction="#onButtonThuTienClick" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Thu tiền" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>

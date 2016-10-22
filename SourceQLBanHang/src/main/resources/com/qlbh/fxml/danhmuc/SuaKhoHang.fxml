@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="451.0" prefWidth="410.0"
+	stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.SuaKhoHangController">
+	<children>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			styleClass="paneInfo" AnchorPane.bottomAnchor="40.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<AnchorPane prefHeight="30.0" prefWidth="200.0"
+					AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+					AnchorPane.topAnchor="0.0">
+					<children>
+						<Label alignment="CENTER" prefHeight="27.0" prefWidth="777.0"
+							styleClass="lbHeader" text="Kho hàng" textFill="WHITE"
+							AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-2.0"
+							AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-2.0">
+							<font>
+								<Font size="14.0" />
+							</font>
+						</Label>
+					</children>
+				</AnchorPane>
+				<AnchorPane layoutX="15.0" layoutY="45.0" prefHeight="374.0"
+					prefWidth="410.0" AnchorPane.bottomAnchor="-3.0"
+					AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+					AnchorPane.topAnchor="40.0">
+					<children>
+						<AnchorPane prefHeight="200.0" prefWidth="120.0"
+							AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.topAnchor="0.0">
+							<children>
+								<Label layoutX="5.0" layoutY="280.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Ghi chú"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="290.0" />
+								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0"
+									styleClass="lbInfor" text="Tên" AnchorPane.leftAnchor="10.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+									<graphic>
+										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred"
+											text="(*)" />
+									</graphic>
+								</Label>
+								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0"
+									styleClass="lbInfor" text="Mã" AnchorPane.leftAnchor="10.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+									<graphic>
+										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred"
+											text="(*)" />
+									</graphic>
+								</Label>
+								<Label layoutX="9.0" layoutY="81.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Người quản lý"
+									AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="80.0" />
+								<Label layoutX="19.0" layoutY="91.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Người liên hệ"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="115.0" />
+								<Label layoutX="29.0" layoutY="101.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Địa chỉ"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="150.0" />
+								<Label layoutX="-156.0" layoutY="187.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Điện thoại"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="185.0" />
+								<Label layoutX="-133.0" layoutY="217.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Fax"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="220.0" />
+								<Label layoutX="9.0" layoutY="245.0" prefHeight="25.0"
+									prefWidth="102.0" styleClass="lbInfor" text="Email"
+									AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="255.0" />
+							</children>
+						</AnchorPane>
+						<AnchorPane layoutX="120.0" prefHeight="200.0"
+							prefWidth="280.0" AnchorPane.bottomAnchor="40.0"
+							AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
+							<children>
+								<JFXTextField fx:id="txtMa" layoutY="150.0"
+									prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+								<JFXTextField fx:id="txtTen" layoutY="113.0"
+									prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+								<JFXComboBox fx:id="cmbNguoiQuanLy" layoutX="8.0"
+									layoutY="94.0" prefHeight="25.0" prefWidth="264.0"
+									AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0"
+									AnchorPane.topAnchor="80.0" />
+								<JFXTextField fx:id="txtNguoiLienHe" layoutY="119.0"
+									maxWidth="280.0" minWidth="280.0" prefHeight="31.0" prefWidth="280.0"
+									AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+									AnchorPane.topAnchor="115.0" />
+								<JFXTextField fx:id="txtDiaChi" layoutY="150.0"
+									maxWidth="280.0" minWidth="280.0" prefHeight="31.0" prefWidth="280.0"
+									AnchorPane.topAnchor="150.0" />
+								<JFXTextField fx:id="txtDienThoai" layoutX="-6.0"
+									layoutY="181.0" maxWidth="280.0" minWidth="280.0" prefHeight="31.0"
+									prefWidth="280.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
+								<JFXTextField fx:id="txtFax" layoutX="-103.0"
+									layoutY="220.0" maxWidth="280.0" minWidth="280.0" prefHeight="31.0"
+									prefWidth="280.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+								<JFXTextField fx:id="txtEmail" layoutX="73.0"
+									layoutY="260.0" maxWidth="280.0" minWidth="280.0" prefHeight="31.0"
+									prefWidth="280.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
+								<JFXTextField fx:id="txtGhiChu" layoutY="286.0"
+									prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0"
+									AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="290.0" />
+							</children>
+						</AnchorPane>
+						<Label fx:id="lbValidate" layoutX="157.0" layoutY="42.0"
+							textFill="RED" AnchorPane.leftAnchor="128.0"
+							AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="330.0" />
+					</children>
+				</AnchorPane>
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="40.0" prefWidth="200.0"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0">
+			<children>
+				<JFXButton fx:id="btnSave" graphicTextGap="15.0" layoutX="615.0"
+					onAction="#btnSaveClick" prefHeight="30.0" prefWidth="85.0"
+					ripplerFill="#8b99c6" text="Lưu" AnchorPane.rightAnchor="100.0"
+					AnchorPane.topAnchor="5.0">
+					<graphic>
+						<SVGPath
+							content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
+							fill="WHITE" />
+					</graphic>
+					<opaqueInsets>
+						<Insets />
+					</opaqueInsets>
+				</JFXButton>
+				<JFXButton fx:id="btnCancel" alignment="CENTER_RIGHT"
+					graphicTextGap="8.0" layoutX="703.0" layoutY="8.0" onAction="#btnCancelClick"
+					prefHeight="30.0" prefWidth="85.0" ripplerFill="#9e6868" text="Đóng"
+					wrapText="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="5.0">
+					<graphic>
+						<SVGPath
+							content="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12zm8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8z"
+							fill="#ed5b0e" />
+					</graphic>
+				</JFXButton>
+			</children>
+		</AnchorPane>
+	</children>
+	<styleClass>
+		<String fx:value="mainFxmlClass" />
+		<String fx:value="app-wrapper" />
+	</styleClass>
+</AnchorPane>

@@ -64,6 +64,35 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+	
+	public static Tab tabKhoHang = null;
+
+	@FXML
+	void btnQuanLyKhoHangClick(ActionEvent event) {
+		String title = "Kho hàng";
+		String fxmlPath = "../fxml/danhmuc/QuanLyKhoHang.fxml";
+		if (ManHinhChinhController.tabKhoHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhoHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabKhoHang = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabKhoHang = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static Tab tabDonViTinh = null;
 
@@ -183,6 +212,35 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabTyGia = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static Tab tabThuTien = null;
+	@FXML
+	void onButtonThuTienClick(ActionEvent event) {
+		String title = "Thu tiền";
+		String fxmlPath = "../fxml/chucnang/ThuTien.fxml";
+		if (ManHinhChinhController.tabThuTien != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabThuTien);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabThuTien = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabThuTien = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
