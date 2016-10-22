@@ -29,7 +29,7 @@
                      </graphic>
                   </JFXButton>
                   <AnchorPane prefHeight="200.0" prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="85.0" AnchorPane.topAnchor="2.0" />
-                  <JFXButton alignment="CENTER" graphicTextGap="5.0" ripplerFill="#c98c8c" text="Lưu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="0.0">
+                  <JFXButton fx:id="btnLuu" alignment="CENTER" graphicTextGap="5.0" ripplerFill="#c98c8c" text="Lưu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="0.0">
                      <graphic>
                         <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="WHITE" />
                      </graphic>
@@ -79,7 +79,7 @@
                   <AnchorPane layoutX="933.0" layoutY="7.0" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <JFXTextField fx:id="txtMaPhieu" layoutX="10.0" layoutY="7.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
-                        <JFXTextField layoutX="10.0" layoutY="38.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+                        <JFXTextField fx:id="txtDienThoai" layoutX="10.0" layoutY="38.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
                         <DatePicker fx:id="datePickerNhap" layoutX="10.0" layoutY="90.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="220.0" />
                         <JFXComboBox fx:id="cmbNhanVien" layoutX="36.0" layoutY="119.0" maxWidth="300.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
                         <JFXComboBox fx:id="cmbKho" layoutX="32.0" layoutY="156.0" prefHeight="25.0" prefWidth="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
@@ -103,9 +103,9 @@
                <children>
                   <CheckBox layoutX="28.0" layoutY="16.0" mnemonicParsing="false" text="In sau khi lưu" AnchorPane.leftAnchor="10.0" />
                   <Label layoutX="882.0" layoutY="16.0" text="Thanh toán" />
-                  <TextField fx:id="txtThanhToan" alignment="CENTER_RIGHT" layoutX="951.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0" promptText="0" AnchorPane.rightAnchor="20.0">
+                  <TextField fx:id="txtThanhToan" alignment="CENTER_RIGHT" editable="false" layoutX="951.0" layoutY="10.0" prefHeight="25.0" prefWidth="235.0" promptText="Thành tiền" styleClass="textTotalPayment" AnchorPane.rightAnchor="20.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Microsoft YaHei Light" size="14.0" />
                      </font>
                   </TextField>
                </children>
