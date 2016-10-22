@@ -365,7 +365,7 @@ DROP TABLE IF EXISTS `tygia`;
 CREATE TABLE `tygia` (
   `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `tygiaquydoi` float(4,0) DEFAULT NULL,
+  `tygiaquydoi` DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
