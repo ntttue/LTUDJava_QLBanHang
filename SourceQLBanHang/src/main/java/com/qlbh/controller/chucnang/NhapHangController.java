@@ -17,6 +17,8 @@ import com.qlbh.render.combobox.TenNhaCungCapListCell;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.adapter.JavaBeanObjectPropertyBuilder;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,12 +27,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 public class NhapHangController {
 	
@@ -120,13 +126,80 @@ public class NhapHangController {
 	}
 	
 	private void initTableView(){
+		//set data
+		Hanghoa hanghoa = new Hanghoa();
+		hanghoa.setMa("MH00001");
+		hanghoa.setTen("Máy đông lạnh");
+		Hanghoa hanghoa2 = new Hanghoa();
+		hanghoa2.setMa("MH00010");
+		hanghoa2.setTen("Máy khoan");
+		Hanghoa hanghoa3 = new Hanghoa();
+		hanghoa3.setMa("MH00020");
+		hanghoa3.setTen("Máy sấy");
+		ObservableList<Hanghoa> hanghoaList = FXCollections.observableArrayList(hanghoa, hanghoa2, hanghoa3);
+		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 1, 1000000d, 1000000d, "Ghi chú 1", true, "002");
+		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 1000000d, 3000000d, "Ghi chú 2", true, "003");
+		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 2000000d, 2000000d, "Ghi chú 3", true, "004");
 		//STT
-		TableColumn<Chitietphieunhap, Number> colSTT = new TableColumn<Chitietphieunhap, Number>("#");
+		TableColumn<Chitietphieunhap, Number> colSTT = new TableColumn<Chitietphieunhap, Number>("STT");
 		colSTT.setSortable(false);
 		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableChiTiet.getItems().indexOf(column.getValue()) + 1));
 		//Ma hang
-		TableColumn<Chitietphieunhap, String> colMaHang = new TableColumn<>("Mã hàng");
-		colMaHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
+		TableColumn<Chitietphieunhap, Hanghoa> colMaHang = new TableColumn<>("Mã hàng");
+//		colMaHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
+		final StringConverter<Hanghoa> converter = new StringConverter<Hanghoa>() {
+			
+			@Override
+			public String toString(Hanghoa object) {
+				// TODO Auto-generated method stub
+				return object.getMa();
+			}
+			
+			@Override
+			public Hanghoa fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+		
+		colMaHang.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Chitietphieunhap,Hanghoa>, ObservableValue<Hanghoa>>() {
+
+			@Override
+			public ObservableValue<Hanghoa> call(CellDataFeatures<Chitietphieunhap, Hanghoa> param) {
+				// TODO Auto-generated method stub
+				try {
+					JavaBeanObjectPropertyBuilder<Hanghoa> builder = new JavaBeanObjectPropertyBuilder<>();
+					builder.bean(param.getValue());
+					builder.name("HangHoa");
+					return (ObservableValue<Hanghoa>)builder.build();
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+			}
+		});
+		
+		colMaHang.setCellFactory(new Callback<TableColumn<Chitietphieunhap,Hanghoa>, TableCell<Chitietphieunhap,Hanghoa>>() {
+
+			@Override
+			public TableCell<Chitietphieunhap, Hanghoa> call(TableColumn<Chitietphieunhap, Hanghoa> param) {
+				// TODO Auto-generated method stub
+				return new ComboBoxTableCell<Chitietphieunhap, Hanghoa>(converter, hanghoaList){
+
+					@Override
+					public void updateItem(Hanghoa hanghoa, boolean arg1) {
+						// TODO Auto-generated method stub
+						super.updateItem(hanghoa, arg1);
+						if(hanghoa != null){
+							setText(hanghoa.getMa());
+						}
+					}
+					
+				};
+			}
+		});
+		
 		//Ten hang
 		TableColumn<Chitietphieunhap, String> colTenHang = new TableColumn<>("Tên hàng");
 		colTenHang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHanghoa().getTen()));
@@ -147,19 +220,7 @@ public class NhapHangController {
 		colGhiChu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 		//Add column
 		tableChiTiet.getColumns().addAll(colSTT, colMaHang, colTenHang, colSoLuong, colDonGia, colThanhTien, colGhiChu);
-		//set data
-		Hanghoa hanghoa = new Hanghoa();
-		hanghoa.setMa("MH00001");
-		hanghoa.setTen("Máy đông lạnh");
-		Hanghoa hanghoa2 = new Hanghoa();
-		hanghoa2.setMa("MH00010");
-		hanghoa2.setTen("Máy khoan");
-		Hanghoa hanghoa3 = new Hanghoa();
-		hanghoa3.setMa("MH00020");
-		hanghoa3.setTen("Máy sấy");
-		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 1, 1000000d, 1000000d, "Ghi chú 1", true, "002");
-		Chitietphieunhap chitietphieunhap2 = new Chitietphieunhap(hanghoa2, new Phieunhap(), 3, 1000000d, 3000000d, "Ghi chú 2", true, "003");
-		Chitietphieunhap chitietphieunhap3 = new Chitietphieunhap(hanghoa3, new Phieunhap(), 1, 2000000d, 2000000d, "Ghi chú 3", true, "004");
+
 		modelTableChiTiet = FXCollections.observableArrayList(chitietphieunhap, chitietphieunhap2, chitietphieunhap3);
 		tableChiTiet.setItems(modelTableChiTiet);
 	}
