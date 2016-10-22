@@ -6,6 +6,8 @@ import com.qlbh.util.DataInputUtils;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ThemTyGiaController {
 	@FXML

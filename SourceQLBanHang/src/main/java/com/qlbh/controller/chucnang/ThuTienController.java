@@ -24,4 +24,16 @@ public class ThuTienController {
 	void onButtonTongHopCongNoClick(ActionEvent event) {
 		
 	}
+	@FXML
+	void onButtonXemClick(ActionEvent event) {
+		
+	}
+	@FXML
+	void onButtonLapPhieuThuClick(ActionEvent event) {
+		
+	}
+	@FXML
+	void onButtonExitClick(ActionEvent event) {
+		
+	}
 }
