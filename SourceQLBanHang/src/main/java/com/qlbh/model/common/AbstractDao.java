@@ -104,7 +104,7 @@ public abstract class AbstractDao {
         List objects = null;
         try {
             startOperation();
-            Query query = session.createQuery("from " + clazz.getName() + " where activite=true");
+            Query query = session.createQuery("from " + clazz.getName() + " where Activity=true");
             objects = query.list();
             tx.commit();
         } catch (HibernateException e) {

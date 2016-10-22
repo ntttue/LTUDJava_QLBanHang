@@ -36,7 +36,7 @@ public class LoaihangHome extends AbstractDao {
 	}
 
 	public void delete(Loaihang lh) {
-		lh.setActivite(false);
+		lh.setActivity(false);
 		super.update(lh);
 	}
 }

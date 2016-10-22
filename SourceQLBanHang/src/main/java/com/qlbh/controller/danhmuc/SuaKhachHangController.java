@@ -10,61 +10,92 @@ import com.qlbh.model.LoaikhachhangHome;
 import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Khuvuc;
 import com.qlbh.pojo.Loaikhachhang;
+import com.qlbh.util.DataInputUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 
 public class SuaKhachHangController {
+	private Khachhang khachHang;
 	@FXML
 	private JFXRadioButton radioButtonKhachLe, radioButtonDaiLy;
 	@FXML
 	private TextField txtMa, txtTen, txtNguoiLienHe, txtDiaChi, numDienThoai, txtEmail, numNoHienTai, numGioiHanNo,
-	txtNganHang, txtMaSoThue, txtSkype, numChietKhau;
+	txtNganHang, txtSoTaiKhoan, txtMaSoThue, txtSkype, numChietKhau;
 	@FXML
 	private ComboBox<Khuvuc> cbxKhuVuc;
-	private ToggleGroup groupLoaiKhachHang;
+	@FXML
+	private ComboBox<Loaikhachhang> cbxLoaiKhachHang;
 	@FXML
 	protected void initialize() {
-		this.setGroupCheckBoxLoaiKH();
 		this.setcbxKhuVuc();
+		this.setcbxLoaiKhachHang();
+		DataInputUtils.setFloatOnlyForTextField(this.numNoHienTai);
+		DataInputUtils.setFloatOnlyForTextField(this.numGioiHanNo);
+		DataInputUtils.setIntegerOnlyForTextField(this.numChietKhau);
+	}
+	public void setKhachhang(Khachhang kh) {
+		this.khachHang = kh;
+		this.setKhachHangData(kh);
+	}
+	private void setKhachHangData(Khachhang kh) {
+		txtMa.setText(kh.getMa());
+		txtTen.setText(kh.getTen());
+		txtNguoiLienHe.setText(kh.getNguoilienhe());
+		txtDiaChi.setText(kh.getDiachi());
+		numDienThoai.setText(kh.getDienthoai());
+		txtEmail.setText(kh.getEmail());
+		txtNganHang.setText(kh.getNganhang());
+		txtSoTaiKhoan.setText(kh.getTaikhoan());
+		txtMaSoThue.setText(kh.getMasothue());
+		txtSkype.setText(kh.getSkype());
+		numNoHienTai.setText(String.valueOf(kh.getNohientai()));
+		numGioiHanNo.setText(kh.getGioihanno().toString());
+		cbxLoaiKhachHang.getSelectionModel().select(kh.getLoaikhachhang());
+		if ( kh.getKhuvuc() != null ) {
+			cbxKhuVuc.getSelectionModel().select(kh.getKhuvuc());
+		}
 	}
 	@FXML
 	public void onButtonLuuClick() {
-		Khachhang khachHang = new Khachhang();
-		khachHang.setMa(txtMa.getText());
-		khachHang.setTen(txtTen.getText());
-		khachHang.setNguoilienhe(txtNguoiLienHe.getText());
-		khachHang.setDiachi(txtDiaChi.getText());
-		khachHang.setDienthoai(numDienThoai.getText());
-		khachHang.setEmail(txtEmail.getText());
-		khachHang.setNohientai(BigDecimal.valueOf(Float.valueOf(numNoHienTai.getText())));
-		khachHang.setGioihanno(BigDecimal.valueOf(Float.valueOf(numGioiHanNo.getText())));
-		khachHang.setNganhang(txtNganHang.getText());
-		khachHang.setMasothue(txtMaSoThue.getText());
-		khachHang.setSkype(txtSkype.getText());
-		khachHang.setKhuvuc(cbxKhuVuc.getValue());
+		this.khachHang.setMa(txtMa.getText());
+		this.khachHang.setTen(txtTen.getText());
+		this.khachHang.setNguoilienhe(txtNguoiLienHe.getText());
+		this.khachHang.setDiachi(txtDiaChi.getText());
+		this.khachHang.setDienthoai(numDienThoai.getText());
+		this.khachHang.setEmail(txtEmail.getText());
 		
+		String textNoHienTai = numNoHienTai.getText();
+		if ( textNoHienTai == null || textNoHienTai.trim().isEmpty()) {
+			this.khachHang.setNohientai(BigDecimal.valueOf(0.0));
+		} else {
+			this.khachHang.setNohientai(BigDecimal.valueOf(Float.valueOf(textNoHienTai)));
+		}
 		
-		LoaikhachhangHome lkhHome = new LoaikhachhangHome();
-		Loaikhachhang lkh = null;
-		if ( radioButtonKhachLe.isSelected() ) {
-			lkh = lkhHome.findById(1);
+		String textGioiHanNo = numGioiHanNo.getText();
+		if ( textGioiHanNo == null || textGioiHanNo.trim().isEmpty()) {
+			this.khachHang.setGioihanno(BigDecimal.valueOf(0.0));
+		} else {
+			this.khachHang.setGioihanno(BigDecimal.valueOf(Float.valueOf(textGioiHanNo)));
 		}
-		if ( radioButtonDaiLy.isSelected() ) {
-			lkh = lkhHome.findById(2);
-		}
-		khachHang.setLoaikhachhang(lkh);
+		
+		this.khachHang.setNganhang(txtNganHang.getText());
+		this.khachHang.setTaikhoan(txtSoTaiKhoan.getText());
+		this.khachHang.setMasothue(txtMaSoThue.getText());
+		this.khachHang.setSkype(txtSkype.getText());
+		this.khachHang.setKhuvuc(cbxKhuVuc.getValue());
+		this.khachHang.setLoaikhachhang(cbxLoaiKhachHang.getValue());
+		
 		KhachhangHome khachHangHome = new KhachhangHome();
-		khachHangHome.save(khachHang);
-		KhachHangController.khachHangController.onKhachHangAdded();
+		khachHangHome.update(this.khachHang);
+		KhachHangController.khachHangController.onKhachHangUpdated();
 	}
 	@FXML
 	public void onButtonDongClick() {
-		KhachHangController.khachHangController.closeManHinhThemKhachHang();
+		KhachHangController.khachHangController.closeManHinhSuaKhachHang();
 	}
 	@SuppressWarnings("unchecked")
 	private ObservableList<Khuvuc> getDSKhuVuc() {
@@ -73,13 +104,19 @@ public class SuaKhachHangController {
 		ObservableList<Khuvuc> oListKhuVuc = FXCollections.observableList(khuvucs);
 		return oListKhuVuc;
 	}
-	private void setGroupCheckBoxLoaiKH() {
-		this.groupLoaiKhachHang = new ToggleGroup();
-		this.radioButtonKhachLe.setToggleGroup(this.groupLoaiKhachHang);
-		this.radioButtonDaiLy.setToggleGroup(this.groupLoaiKhachHang);
+	@SuppressWarnings("unchecked")
+	private ObservableList<Loaikhachhang> getDSLoaiKhachHang() {
+		LoaikhachhangHome lkhHome = new LoaikhachhangHome();
+		List<Loaikhachhang> lkhs = lkhHome.findAll();
+		ObservableList<Loaikhachhang> oListLKH = FXCollections.observableList(lkhs);
+		return oListLKH;
 	}
 	private void setcbxKhuVuc() {
 		cbxKhuVuc.setItems(this.getDSKhuVuc());
 		//cbxKhuVuc.getSelectionModel().select(1);
+	}
+	private void setcbxLoaiKhachHang() {
+		cbxLoaiKhachHang.setItems(this.getDSLoaiKhachHang());
+		cbxLoaiKhachHang.getSelectionModel().select(0);
 	}
 }

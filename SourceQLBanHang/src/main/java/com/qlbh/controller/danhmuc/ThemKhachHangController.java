@@ -80,7 +80,7 @@ public class ThemKhachHangController {
 		khachHang.setSkype(txtSkype.getText());
 		khachHang.setKhuvuc(cbxKhuVuc.getValue());
 		khachHang.setLoaikhachhang(cbxLoaiKhachHang.getValue());
-		khachHang.setActivite(true);
+		khachHang.setActivity(true);
 		
 		KhachhangHome khachHangHome = new KhachhangHome();
 		khachHangHome.save(khachHang);

@@ -94,14 +94,10 @@ public class TyGiaController {
 		});
 	}
 	private void onRowDoubleClick(Tygia tyGia) {
-	    System.out.println("Double click");
-	    System.out.println(tyGia.getMa());
 	    this.setButtonControlsDisable(false);
 	    this.onButtonSuaClick();
 	}
 	private void onRowSingleClick(Tygia tyGia) {
-		System.out.println("Single click");
-	    System.out.println(tyGia.getMa());
 	    this.setButtonControlsDisable(false);
 	}
 	

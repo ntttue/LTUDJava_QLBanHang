@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/09/2016 4:41:13 PM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 21/10/2016 11:56:07 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Phieuxuat" table="phieuxuat" catalog="qlbh" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -24,19 +24,22 @@
             <column name="diachi" />
         </property>
         <property name="ngaygiao" type="date">
-            <column name="ngaygiao" length="0" />
+            <column name="ngaygiao" length="10" />
         </property>
         <property name="ngaylap" type="date">
-            <column name="ngaylap" length="0" />
+            <column name="ngaylap" length="10" />
+        </property>
+        <property name="dienthoai" type="string">
+            <column name="dienthoai" />
         </property>
         <property name="tongtien" type="java.lang.Double">
             <column name="tongtien" precision="22" scale="0" />
         </property>
-         <property name="ghichu" type="string">
-            <column name="ghichu" />
+        <property name="ghichu" type="string">
+            <column name="ghichu" length="65535" />
         </property>
-        <property name="activite" type="java.lang.Boolean">
-            <column name="activite" />
+        <property name="activity" type="java.lang.Boolean">
+            <column name="activity" />
         </property>
         <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
             <key>

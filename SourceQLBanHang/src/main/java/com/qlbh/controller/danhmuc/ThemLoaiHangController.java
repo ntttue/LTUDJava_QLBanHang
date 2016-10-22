@@ -33,7 +33,7 @@ public class ThemLoaiHangController {
 		lh.setMa(txtMa.getText());
 		lh.setTen(txtTen.getText());
 		lh.setGhichu(txtGhiChu.getText());
-		lh.setActivite(true);
+		lh.setActivity(true);
 		LoaihangHome lhh = new LoaihangHome();
 		try {
 			lhh.save(lh);

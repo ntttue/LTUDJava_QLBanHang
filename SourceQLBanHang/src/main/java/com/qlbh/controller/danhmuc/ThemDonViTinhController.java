@@ -33,7 +33,7 @@ public class ThemDonViTinhController {
 		dvt.setMa(txtMa.getText());
 		dvt.setTen(txtTen.getText());
 		dvt.setGhichu(txtGhiChu.getText());
-		dvt.setActivite(true);
+		dvt.setActivity(true);
 		DonvitinhHome dvth = new DonvitinhHome();
 		try {
 			dvth.save(dvt);
