@@ -1,14 +1,21 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.qlbh.pojo.Hanghoa;
+import com.qlbh.pojo.Nhanvien;
+import com.qlbh.util.HibernateFactory;
 
 /**
  * Home object for domain model class Hanghoa.
@@ -67,5 +74,20 @@ public class HanghoaHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<Hanghoa> getHangHoaList(){
+		Session session = HibernateFactory.openSession();
+		List<Hanghoa> hanghoas = null;
+		try {
+			String hql = "FROM Hanghoa Where activity = 1";
+			Query query = session.createQuery(hql);
+			hanghoas = query.list();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		}finally {
+			session.close();
+		}
+		return hanghoas;
 	}
 }

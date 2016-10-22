@@ -198,6 +198,12 @@ public class Khohang  implements java.io.Serializable {
         this.phieunhaps = phieunhaps;
     }
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ten;
+	}
+
 
 
 
