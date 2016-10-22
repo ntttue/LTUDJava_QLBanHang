@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="anchorPaneMainApp" prefHeight="600.0" prefWidth="1000.0" styleClass="app-wrapper" stylesheets="@../css/ManHinhChinh.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.ManHinhChinhController">
+<AnchorPane id="anchorPaneMainApp" fx:id="anchorManHinhChinhRoot" prefHeight="600.0" prefWidth="1000.0" styleClass="app-wrapper" stylesheets="@../css/ManHinhChinh.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.ManHinhChinhController">
    <children>
       <TabPane prefHeight="140.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>

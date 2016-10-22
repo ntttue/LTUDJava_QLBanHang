@@ -3,20 +3,34 @@ package com.qlbh.controller.hethong;
 import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXPasswordField;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogController;
 import com.qlbh.model.NguoidungHome;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class DoiMatKhauController {
+	@FXML
+	private StackPane stackPane = new StackPane();
 
 	@FXML
 	private JFXButton btnSave, btnCancel;
 
 	@FXML
 	private Label lbValidate;
+	@FXML
+	private AnchorPane root;
 
 	@FXML
 	private JFXPasswordField txtMatKhauCu, txtNhapLaiMatKhau, txtMatKhauMoi;
@@ -26,6 +40,7 @@ public class DoiMatKhauController {
 
 	@FXML
 	void btnSaveClick() {
+		System.out.println("save click");
 		if (txtMatKhauCu.getLength() == 0 || txtMatKhauMoi.getLength() == 0 || txtNhapLaiMatKhau.getLength() == 0) {
 			lbValidate.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 			return;
@@ -48,23 +63,24 @@ public class DoiMatKhauController {
 		}
 
 		try {
+			Stage stage = (Stage) btnCancel.getScene().getWindow();
 			MainApp.loginUser.setMatkhau(txtMatKhauMoi.getText());
 			nguoiDungHome.saveOrUpdate(MainApp.loginUser);
 			lbValidate.setText("");
-			// JFXDialog dialog = new JFXDialog(stackPane, new Label("Cập nhật
-			// mật khẩu thành công."),
-			// JFXDialog.DialogTransition.CENTER);
-			// dialog.show();
+			stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
 
 		} catch (Exception ex) {
-			logger.error("Cập nhật mật khẩu người dùng bị lỗi : " + ex.getMessage());
+			logger.error("Cập nhật mật khẩu người dùng bị lỗi : \n" + ex.getMessage());
 		}
 
 	}
 
 	@FXML
 	void btnCancelClick() {
-		// QuanLyDonViTinhController.quanLyDonViTinhController.closeThem();
+		System.out.println("click cancel");
+		Stage stage = (Stage) btnCancel.getScene().getWindow();
+		// do what you have to do
+		stage.close();
 	}
 
 }

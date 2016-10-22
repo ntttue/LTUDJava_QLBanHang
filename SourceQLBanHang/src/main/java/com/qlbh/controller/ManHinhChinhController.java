@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogController;
 import com.qlbh.model.common.AbstractDao;
 
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ManHinhChinhController {
 	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
@@ -35,6 +37,9 @@ public class ManHinhChinhController {
 
 	@FXML
 	private JFXButton btnThongTinTroGiup;
+
+	@FXML
+	private AnchorPane anchorManHinhChinhRoot;
 
 	public static Tab tabNhapHang = null;
 
@@ -64,7 +69,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabKhoHang = null;
 
 	@FXML
@@ -217,8 +222,9 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabThuTien = null;
+
 	@FXML
 	void onButtonThuTienClick(ActionEvent event) {
 		String title = "Thu tiền";
@@ -306,6 +312,12 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				public void handle(WindowEvent we) {
+					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+				}
+			});
+
 		} catch (IOException e) {
 			logger.error("exeption open frmDoiMatKhau", e);
 			e.printStackTrace();
