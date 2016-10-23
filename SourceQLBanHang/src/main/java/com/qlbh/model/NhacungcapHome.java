@@ -13,6 +13,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Khohang;
 import com.qlbh.pojo.Nhacungcap;
 import com.qlbh.util.HibernateFactory;
@@ -23,7 +24,7 @@ import com.qlbh.util.HibernateFactory;
  * @author Hibernate Tools
  */
 @Stateless
-public class NhacungcapHome {
+public class NhacungcapHome extends AbstractDao{
 
 	private static final Log log = LogFactory.getLog(NhacungcapHome.class);
 
@@ -80,7 +81,7 @@ public class NhacungcapHome {
 		Session session = HibernateFactory.openSession();
 		List<Nhacungcap> khohangs = null;
 		try {
-			String hql = "FROM Nhacungcap";
+			String hql = "FROM Nhacungcap Where Activity = true";
 			Query query = session.createQuery(hql);
 			khohangs = query.list();
 		} catch (HibernateException e) {

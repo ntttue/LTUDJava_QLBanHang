@@ -82,7 +82,7 @@ public class NhanvienHome {
 		Session session = HibernateFactory.openSession();
 		List<Nhanvien> nhanviens = null;
 		try {
-			String hql = "FROM Nhanvien";
+			String hql = "FROM Nhanvien Where Activity = true";
 			Query query = session.createQuery(hql);
 			nhanviens = query.list();
 		} catch (HibernateException e) {
