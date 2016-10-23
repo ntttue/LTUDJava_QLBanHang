@@ -39,8 +39,14 @@ public class BophanHome extends AbstractDao {
 		return false;
 	}
 
-	public void update(Bophan obj) {
-		super.update(obj);
+	public Boolean update(Bophan obj) {
+		try {
+			super.update(obj);
+			return true;
+		} catch (Exception e) {
+			logger.error("error in update bophan:  \n" + e.getMessage());
+		}
+		return false;
 	}
 
 	public void deletePermanently(Bophan obj) {

@@ -3,10 +3,13 @@ package com.qlbh.controller.danhmuc;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.BophanHome;
+import com.qlbh.model.NguoidungHome;
 import com.qlbh.pojo.Bophan;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -29,6 +32,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class DanhSachBoPhanController {
+	final static Logger logger = Logger.getLogger(DanhSachBoPhanController.class);
 	public static DanhSachBoPhanController boPhanController = null;
 	private Stage stageThemBoPhan = null;
 	private Stage stageSuaBoPhan = null;
@@ -173,29 +177,27 @@ public class DanhSachBoPhanController {
 
 	@FXML
 	private void onButtonSuaClick() {
-		// Stage primaryStage = new Stage();
-		// Parent root;
-		// try {
-		// FXMLLoader loader = new
-		// FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaBophan.fxml"));
-		// root = loader.load();
-		// Scene scene = new Scene(root);
-		// SuaBoPhanController controller =
-		// loader.<SuaBophanController>getController();
-		// controller.setBophan(this.getSelectedBophan());
-		// primaryStage.setTitle("Sửa Tỷ giá");
-		// primaryStage.initStyle(StageStyle.UNIFIED);
-		// primaryStage.initModality(Modality.APPLICATION_MODAL);
-		// primaryStage.setResizable(false);
-		// primaryStage.setScene(scene);
-		// primaryStage.getIcons().add(new
-		// Image(getClass().getResourceAsStream("../../images/appIcon.png")));
-		// primaryStage.show();
-		// this.stageSuaBophan = primaryStage;
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaBoPhanCongTy.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			SuaBoPhanCongTyController controller = loader.<SuaBoPhanCongTyController>getController();
+			controller.setBophan(this.getSelectedBophan());
+			primaryStage.setTitle("Sửa bộ phận công ty");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+			primaryStage.show();
+			this.stageSuaBoPhan = primaryStage;
+		} catch (IOException e) {
+			logger.error("onButtonSuaClick error\n " + e.getMessage());
+			e.printStackTrace();
+
+		}
 	}
 
 	/**

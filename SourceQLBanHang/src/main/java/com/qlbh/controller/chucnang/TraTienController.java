@@ -1,29 +1,9 @@
 package com.qlbh.controller.chucnang;
 
-import com.qlbh.render.combobox.DateOption;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 
-public class ThuTienController {
-	@FXML
-	ComboBox<DateOption> cbxTuyChonNgay;
-	@FXML
-	DatePicker dateNgayBatDau, dateNgayKetThuc;
-	@FXML
-	public void initialize() {
-		cbxTuyChonNgay.setItems(DateOption.getDateOptions());
-		cbxTuyChonNgay.getSelectionModel().select(0);
-	}
-	@FXML
-    void onSelectedItemChange(ActionEvent event) {
-		System.out.println("DateOption change");
-    }
-	private void setDatePeriod() {
-		
-	}
+public class TraTienController {
 	@FXML
 	void onButtonDSPhieuThuClick(ActionEvent event) {
 		
