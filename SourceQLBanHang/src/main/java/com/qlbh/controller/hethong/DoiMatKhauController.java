@@ -9,6 +9,7 @@ import com.qlbh.model.NguoidungHome;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -31,7 +32,10 @@ public class DoiMatKhauController {
 
 	@FXML
 	void btnSaveClick() {
-		System.out.println("save click");
+		this.savePass();
+	}
+
+	private void savePass() {
 		if (txtMatKhauCu.getLength() == 0 || txtMatKhauMoi.getLength() == 0 || txtNhapLaiMatKhau.getLength() == 0) {
 			lbValidate.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 			return;
@@ -41,14 +45,10 @@ public class DoiMatKhauController {
 			return;
 		}
 		if (!txtMatKhauMoi.getText().equals(txtNhapLaiMatKhau.getText())) {
-			System.out.println(txtMatKhauMoi.getText());
-			System.out.println(txtNhapLaiMatKhau.getText());
 			lbValidate.setText("Mật khẩu mới nhập lại không giống nhau.");
 			return;
 		}
 		if (!MainApp.loginUser.getMatkhau().equals(txtMatKhauCu.getText())) {
-			System.out.println(MainApp.loginUser.getMatkhau());
-			System.out.println(txtMatKhauCu.getText());
 			lbValidate.setText("Mật khẩu cũ nhập không đúng.");
 			return;
 		}
@@ -65,15 +65,27 @@ public class DoiMatKhauController {
 		} catch (Exception ex) {
 			logger.error("Cập nhật mật khẩu người dùng bị lỗi : \n" + ex.getMessage());
 		}
+	}
 
+	@FXML
+	void onKeyAction(KeyEvent e) {
+		if (e.getCode().toString().equals("ENTER")) {
+			this.savePass();
+		}
+		if (e.getCode().toString().equals("ESCAPE")) {
+			this.closeStage();
+		}
+	}
+
+	private void closeStage() {
+		System.out.println("click cancel");
+		Stage stage = (Stage) btnCancel.getScene().getWindow();
+		stage.close();
 	}
 
 	@FXML
 	void btnCancelClick() {
-		System.out.println("click cancel");
-		Stage stage = (Stage) btnCancel.getScene().getWindow();
-		// do what you have to do
-		stage.close();
+		this.closeStage();
 	}
 
 }
