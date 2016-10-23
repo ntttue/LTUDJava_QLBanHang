@@ -102,8 +102,10 @@ public class Loaikhachhang  implements java.io.Serializable {
         this.khachhangs = khachhangs;
     }
 
-
-
+    @Override
+    public String toString() {
+    	return this.ten;
+    }
 
 }
 
