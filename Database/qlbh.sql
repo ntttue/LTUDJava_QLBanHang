@@ -236,15 +236,15 @@ CREATE TABLE `nguoidung` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tennd` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `matkhau` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `vaitroid` int(11) DEFAULT NULL,
+  `roleid` int(11) DEFAULT NULL,
   `nhanvienid` int(11) DEFAULT NULL,
   `diengiai` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `nguoidung_vaitro_fkey` (`vaitroid`),
+  KEY `nguoidung_vaitro_fkey` (`roleid`),
   KEY `nguoidung_nhanvien_fkey` (`nhanvienid`),
   CONSTRAINT `nguoidung_nhanvien_fkey` FOREIGN KEY (`nhanvienid`) REFERENCES `nhanvien` (`id`),
-  CONSTRAINT `nguoidung_vaitro_fkey` FOREIGN KEY (`vaitroid`) REFERENCES `vaitro` (`id`)
+  CONSTRAINT `nguoidung_quyen_fkey` FOREIGN KEY (`roleid`) REFERENCES `quyen` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -372,26 +372,22 @@ CREATE TABLE `tygia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for vaitro
+-- Table structure for quyen
 -- ----------------------------
-DROP TABLE IF EXISTS `vaitro`;
-CREATE TABLE `vaitro` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `quyen`;
+CREATE TABLE `quyen` (
+  `id` int(11) NOT NULL,
   `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `diengiai` longtext COLLATE utf8_unicode_ci,
-  `vaitrochaid` int(11) DEFAULT NULL,
-  `truycap` bit(1) DEFAULT NULL,
-  `them` bit(1) DEFAULT NULL,
-  `xem` bit(1) DEFAULT NULL,
-  `xoa` bit(1) DEFAULT NULL,
-  `sua` bit(1) DEFAULT NULL,
-  `in` bit(1) DEFAULT NULL,
-  `nhap` bit(1) DEFAULT NULL,
-  `xuat` bit(1) DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ma` (`ma`),
-  KEY `vaitro_vaitro_fkey` (`vaitrochaid`),
-  CONSTRAINT `vaitro_vaitro_fkey` FOREIGN KEY (`vaitrochaid`) REFERENCES `vaitro` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of quyen
+-- ----------------------------
+INSERT INTO `quyen` VALUES ('1', 'admin', 'full quyen', '');
+INSERT INTO `quyen` VALUES ('2', 'quanly', null, '');
+INSERT INTO `quyen` VALUES ('3', 'nhanvien', null, '');
+
+
