@@ -42,8 +42,12 @@ public class ManHinhChinhController {
 	private AnchorPane anchorManHinhChinhRoot;
 
 	public void setStatus() {
-		String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
-		lblStatus.setText(status);
+		if (MainApp.loginUser != null) {
+			System.out.println(MainApp.loginUser.getQuyen().getTen());
+			String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
+			lblStatus.setText(status);
+		}
+
 	}
 
 	public static Tab tabNhapHang = null;
