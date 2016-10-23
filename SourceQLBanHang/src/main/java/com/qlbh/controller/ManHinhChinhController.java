@@ -232,6 +232,36 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabTraTien = null;
+	
+	@FXML
+	void onButtonTraTienClick(ActionEvent event) {
+		String title = "Trả tiền";
+		String fxmlPath = "../fxml/chucnang/TraTien.fxml";
+		if (ManHinhChinhController.tabTraTien != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTraTien);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabTraTien = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabTraTien = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static Tab tabThuTien = null;
 
 	@FXML
@@ -321,13 +351,12 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
-			// primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			// public void handle(WindowEvent we) {
-			// DialogController.show(anchorManHinhChinhRoot, null, "Thông báo",
-			// "Đổi mật khẩu thành công.");
-			// }
-			// });
-
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				public void handle(WindowEvent we) {
+					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+					primaryStage.close();
+				}
+			});
 		} catch (IOException e) {
 			logger.error("exeption open frmDoiMatKhau", e);
 			e.printStackTrace();
