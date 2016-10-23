@@ -22,7 +22,7 @@
     <mapping resource="com/qlbh/pojo/Nhanvien.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Nguoidung.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Nhacungcap.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Vaitro.hbm.xml"/>
+    <mapping resource="com/qlbh/pojo/Quyen.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Bophan.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Phieuxuat.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Hanghoa.hbm.xml"/>

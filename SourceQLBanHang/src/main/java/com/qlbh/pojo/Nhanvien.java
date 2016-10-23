@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/10/2016 11:56:07 PM by Hibernate Tools 4.3.1
+// Generated 23/10/2016 4:15:08 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -224,13 +224,6 @@ public class Nhanvien  implements java.io.Serializable {
     public void setPhieuxuats(Set<Phieuxuat> phieuxuats) {
         this.phieuxuats = phieuxuats;
     }
-
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return this.ten;
-	}
 
 
 

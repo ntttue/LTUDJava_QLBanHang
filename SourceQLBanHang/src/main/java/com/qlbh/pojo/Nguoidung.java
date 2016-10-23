@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 21/10/2016 11:56:07 PM by Hibernate Tools 4.3.1
+// Generated 23/10/2016 4:15:08 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -24,7 +24,7 @@ public class Nguoidung  implements java.io.Serializable {
 
      private Integer id;
      private Nhanvien nhanvien;
-     private Vaitro vaitro;
+     private Quyen quyen;
      private String mand;
      private String tennd;
      private String matkhau;
@@ -34,9 +34,9 @@ public class Nguoidung  implements java.io.Serializable {
     public Nguoidung() {
     }
 
-    public Nguoidung(Nhanvien nhanvien, Vaitro vaitro, String mand, String tennd, String matkhau, String diengiai, Boolean activity) {
+    public Nguoidung(Nhanvien nhanvien, Quyen quyen, String mand, String tennd, String matkhau, String diengiai, Boolean activity) {
        this.nhanvien = nhanvien;
-       this.vaitro = vaitro;
+       this.quyen = quyen;
        this.mand = mand;
        this.tennd = tennd;
        this.matkhau = matkhau;
@@ -67,13 +67,13 @@ public class Nguoidung  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vaitroid")
-    public Vaitro getVaitro() {
-        return this.vaitro;
+    @JoinColumn(name="roleid")
+    public Quyen getQuyen() {
+        return this.quyen;
     }
     
-    public void setVaitro(Vaitro vaitro) {
-        this.vaitro = vaitro;
+    public void setQuyen(Quyen quyen) {
+        this.quyen = quyen;
     }
 
     

@@ -3,28 +3,25 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23/10/2016 4:15:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.qlbh.pojo.Nhomhanghoa" table="nhomhanghoa" catalog="qlbh" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+    <class name="com.qlbh.pojo.Quyen" table="quyen" catalog="qlbh" optimistic-lock="version">
+        <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
-        <property name="ma" type="string">
-            <column name="ma" length="20" />
-        </property>
         <property name="ten" type="string">
             <column name="ten" />
         </property>
-        <property name="ghichu" type="string">
-            <column name="ghichu" />
+        <property name="diengiai" type="string">
+            <column name="diengiai" />
         </property>
         <property name="activity" type="java.lang.Boolean">
             <column name="activity" />
         </property>
-        <set name="hanghoas" table="hanghoa" inverse="true" lazy="true" fetch="select">
+        <set name="nguoidungs" table="nguoidung" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="nhomhangid" />
+                <column name="roleid" />
             </key>
-            <one-to-many class="com.qlbh.pojo.Hanghoa" />
+            <one-to-many class="com.qlbh.pojo.Nguoidung" />
         </set>
     </class>
 </hibernate-mapping>

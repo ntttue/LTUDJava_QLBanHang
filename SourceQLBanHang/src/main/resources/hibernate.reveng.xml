@@ -20,5 +20,5 @@
   <table-filter match-catalog="qlbh" match-name="phieunhap"/>
   <table-filter match-catalog="qlbh" match-name="phieuxuat"/>
   <table-filter match-catalog="qlbh" match-name="tygia"/>
-  <table-filter match-catalog="qlbh" match-name="vaitro"/>
+  <table-filter match-catalog="qlbh" match-name="quyen"/>
 </hibernate-reverse-engineering>
