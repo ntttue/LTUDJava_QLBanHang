@@ -1,6 +1,12 @@
 package com.qlbh.controller.chucnang;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -8,6 +14,7 @@ import com.qlbh.model.HanghoaHome;
 import com.qlbh.model.KhohangHome;
 import com.qlbh.model.NhacungcapHome;
 import com.qlbh.model.NhanvienHome;
+import com.qlbh.model.PhieunhapHome;
 import com.qlbh.pojo.Chitietphieunhap;
 import com.qlbh.pojo.Hanghoa;
 import com.qlbh.pojo.Khohang;
@@ -17,7 +24,6 @@ import com.qlbh.pojo.Phieunhap;
 import com.qlbh.render.combobox.MaNhaCungCapListCell;
 import com.qlbh.render.combobox.TenNhaCungCapListCell;
 
-import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.adapter.JavaBeanObjectPropertyBuilder;
@@ -51,11 +57,12 @@ public class NhapHangController {
 	private KhohangHome khoHangHome;
 	private NhacungcapHome nhaCungCapHome;
 	private HanghoaHome hangHoaHome;
+	private PhieunhapHome phieunhapHome;
 	private List<Hanghoa> hangHoaList;
 	private ObservableList<Hanghoa> cmbModelHangHoa;
 
 	@FXML
-    private JFXButton btnLuu;
+	private JFXButton btnLuu;
 	@FXML
 	private ComboBox<Nhanvien> cmbNhanVien;
 	private ObservableList<Nhanvien> cmbModelNhanVien;
@@ -106,6 +113,7 @@ public class NhapHangController {
 		khoHangHome = new KhohangHome();
 		nhaCungCapHome = new NhacungcapHome();
 		hangHoaHome = new HanghoaHome();
+		phieunhapHome = new PhieunhapHome();
 		// Load hàng hóa
 		hangHoaList = hangHoaHome.getHangHoaList();
 		// Load nhan vien
@@ -201,8 +209,7 @@ public class NhapHangController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-
+				saveInputBill();
 			}
 		});
 
@@ -218,7 +225,7 @@ public class NhapHangController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				
+
 			}
 		});
 	}
@@ -337,6 +344,7 @@ public class NhapHangController {
 				double dongia = chitiet.getDongia();
 				chitiet.setThanhtien(dongia * chitiet.getSoluong());
 				tableChiTiet.refresh();
+				updateTotal();
 			}
 		});
 		// Don gia
@@ -352,6 +360,7 @@ public class NhapHangController {
 				int soLuong = chitiet.getSoluong();
 				chitiet.setThanhtien(soLuong * chitiet.getDongia());
 				tableChiTiet.refresh();
+				updateTotal();
 			}
 		});
 		// Thanh tien
@@ -376,6 +385,14 @@ public class NhapHangController {
 		modelTableChiTiet = FXCollections.observableArrayList();
 		tableChiTiet.setItems(modelTableChiTiet);
 		addRowTable();
+	}
+	
+	private void updateTotal(){
+		double total = 0;
+		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
+			total += chitietphieunhap.getThanhtien();
+		}
+		txtThanhToan.setText(total + "");
 	}
 
 	private void addRowTable() {
@@ -413,9 +430,31 @@ public class NhapHangController {
 		txtDienThoai.setText("");
 		txtMaPhieu.setText("");
 	}
-	
-	private void saveInputBill(){
+
+	private void saveInputBill() {
+		LocalDate localDate = datePickerNhap.getValue();
+		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+		Date ngayNhap = Date.from(instant);
+		Phieunhap phieunhap = new Phieunhap();
+		phieunhap.setKhohang(cmbKho.getValue());
+		phieunhap.setNhanvien(cmbNhanVien.getValue());
+		phieunhap.setNhacungcap(cmbTenNCC.getValue());
+		phieunhap.setDiachi(txtDiaChi.getText());
+		phieunhap.setMa(txtMaPhieu.getText());
+		phieunhap.setDienthoai(txtDienThoai.getText());
+		phieunhap.setNgaynhap(ngayNhap);
+		phieunhap.setTongtien(Double.parseDouble(txtThanhToan.getText().trim()));
+		phieunhap.setActivity(true);
+		phieunhap.setChitietphieunhaps(getChiTietPhieuNhapList());
+		phieunhapHome.save(phieunhap);
 		
+	}
+	
+	private Set<Chitietphieunhap> getChiTietPhieuNhapList(){
+		modelTableChiTiet.remove(modelTableChiTiet.size() - 1);
+		Set<Chitietphieunhap> chitietphieunhaps = new HashSet<>();
+		chitietphieunhaps.addAll(modelTableChiTiet);
+		return chitietphieunhaps;
 	}
 
 }

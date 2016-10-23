@@ -2,6 +2,7 @@ package com.qlbh.app;
 
 import java.io.IOException;
 
+import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.pojo.Nguoidung;
 
 import javafx.application.Application;
@@ -35,8 +36,11 @@ public class MainApp extends Application {
 		MainApp.loginUser = nd;
 		MainApp.loginStage.close();
 		MainApp.mainStage.show();
+		MainApp.mhcController.setStatus();
 		MainApp.setPrimaryStage(MainApp.mainStage);
 	}
+
+	public static ManHinhChinhController mhcController;
 
 	public void initStage() {
 		Parent root;
@@ -50,8 +54,11 @@ public class MainApp extends Application {
 			loginStage.setScene(scene);
 			loginStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 
-			root = FXMLLoader.load(getClass().getResource("../fxml/ManHinhChinh.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/ManHinhChinh.fxml"));
+			root = loader.load();
 			scene = new Scene(root);
+			MainApp.mhcController = loader.<ManHinhChinhController>getController();
+
 			mainStage.setTitle("Phần mềm quản lý bán hàng");
 			mainStage.initStyle(StageStyle.UNIFIED);
 			mainStage.setMaximized(true);
@@ -73,6 +80,7 @@ public class MainApp extends Application {
 		} else {
 			MainApp.setPrimaryStage(MainApp.mainStage);
 			MainApp.mainStage.show();
+			MainApp.mhcController.setStatus();
 		}
 	}
 

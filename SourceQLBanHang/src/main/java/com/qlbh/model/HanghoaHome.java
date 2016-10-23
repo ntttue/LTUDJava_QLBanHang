@@ -80,7 +80,7 @@ public class HanghoaHome {
 		Session session = HibernateFactory.openSession();
 		List<Hanghoa> hanghoas = null;
 		try {
-			String hql = "FROM Hanghoa Where activity = 1";
+			String hql = "FROM Hanghoa Where Activity = true";
 			Query query = session.createQuery(hql);
 			hanghoas = query.list();
 		} catch (HibernateException e) {
