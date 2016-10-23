@@ -2,17 +2,10 @@ package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nguoidung;
 import com.qlbh.util.DataAccessLayerException;
@@ -77,6 +70,7 @@ public class NguoidungHome extends AbstractDao {
 			}
 		} catch (HibernateException e) {
 			handleException(e);
+			logger.error("error in findByUsenamePass:  \n" + e.getMessage());
 		} finally {
 			HibernateFactory.close(session);
 		}
