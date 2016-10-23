@@ -154,10 +154,10 @@ public class DanhSachBoPhanController {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/ThemBophan.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/ThemBoPhanCongTy.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Thêm Tỷ giá");
+			primaryStage.setTitle("Thêm bộ phận công ty");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);

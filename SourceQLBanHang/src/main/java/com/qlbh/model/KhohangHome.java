@@ -13,7 +13,6 @@ import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Khohang;
-import com.qlbh.pojo.Nhanvien;
 import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
@@ -44,7 +43,7 @@ public class KhohangHome extends AbstractDao {
 		kh.setActivity(false);
 		super.update(kh);
 	}
-	
+
 	public List<Khohang> getKhoHangList() {
 		Session session = HibernateFactory.openSession();
 		List<Khohang> nhanviens = null;
@@ -54,7 +53,7 @@ public class KhohangHome extends AbstractDao {
 			nhanviens = query.list();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return nhanviens;
