@@ -63,11 +63,10 @@ public class DoiMatKhauController {
 		}
 
 		try {
-			Stage stage = (Stage) btnCancel.getScene().getWindow();
 			MainApp.loginUser.setMatkhau(txtMatKhauMoi.getText());
 			nguoiDungHome.saveOrUpdate(MainApp.loginUser);
 			lbValidate.setText("");
-			stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+			DialogController.show(root, null, "Thông báo", "Đổi mật khẩu thành công.", true);
 
 		} catch (Exception ex) {
 			logger.error("Cập nhật mật khẩu người dùng bị lỗi : \n" + ex.getMessage());

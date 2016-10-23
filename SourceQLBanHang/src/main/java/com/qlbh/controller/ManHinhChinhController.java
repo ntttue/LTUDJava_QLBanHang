@@ -312,11 +312,11 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
-			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-				public void handle(WindowEvent we) {
-					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
-				}
-			});
+//			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//				public void handle(WindowEvent we) {
+//					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+//				}
+//			});
 
 		} catch (IOException e) {
 			logger.error("exeption open frmDoiMatKhau", e);
