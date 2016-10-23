@@ -82,6 +82,35 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabKhuVuc = null;
+
+	@FXML
+	void btnQuanLyKhuVucClick(ActionEvent event) {
+		String title = "Khu vực";
+		String fxmlPath = "../fxml/danhmuc/QuanLyKhuVuc.fxml";
+		if (ManHinhChinhController.tabKhuVuc != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhuVuc);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabKhuVuc = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabKhuVuc = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static Tab tabKhoHang = null;
 
 	@FXML
@@ -169,11 +198,6 @@ public class ManHinhChinhController {
 		}
 	}
 
-	@FXML
-	void btnKetThucClick(ActionEvent event) {
-		MainApp.getPrimaryStage().close();
-	}
-
 	public static Tab tabKhachHang = null;
 
 	@FXML
@@ -236,7 +260,7 @@ public class ManHinhChinhController {
 	}
 
 	public static Tab tabTraTien = null;
-	
+
 	@FXML
 	void onButtonTraTienClick(ActionEvent event) {
 		String title = "Trả tiền";
@@ -264,7 +288,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabThuTien = null;
 
 	@FXML
@@ -295,6 +319,11 @@ public class ManHinhChinhController {
 		}
 	}
 
+	@FXML
+	void btnKetThucClick(ActionEvent event) {
+		MainApp.getPrimaryStage().close();
+	}
+	
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
