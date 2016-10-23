@@ -18,28 +18,33 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class ManHinhChinhController {
 	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
+
 	@FXML
 	private TabPane tabMainContent;
+
 	@FXML
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin;
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan;
 
 	@FXML
-	private JFXButton btnThongTinTroGiup;
+	private Text lblStatus;
 
 	@FXML
 	private AnchorPane anchorManHinhChinhRoot;
 
-	@FXML
-	private JFXButton btnBoPhan;
+	public void setStatus() {
+		String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
+		lblStatus.setText(status);
+	}
 
 	public static Tab tabNhapHang = null;
 
