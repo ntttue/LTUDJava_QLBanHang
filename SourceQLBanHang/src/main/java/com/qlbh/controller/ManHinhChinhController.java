@@ -110,6 +110,35 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+	
+	public static Tab tabNhaCungCap = null;
+
+	@FXML
+	void btnQuanLyNhaCungCapClick(ActionEvent event) {
+		String title = "Nhà cung cấp";
+		String fxmlPath = "../fxml/danhmuc/QuanLyNhaCungCap.fxml";
+		if (ManHinhChinhController.tabNhaCungCap != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhaCungCap);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhaCungCap = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhaCungCap = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static Tab tabKhoHang = null;
 
