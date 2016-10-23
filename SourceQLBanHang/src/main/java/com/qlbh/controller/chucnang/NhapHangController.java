@@ -10,6 +10,8 @@ import java.util.Set;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.model.ChitietphieunhapHome;
 import com.qlbh.model.HanghoaHome;
 import com.qlbh.model.KhohangHome;
 import com.qlbh.model.NhacungcapHome;
@@ -59,6 +61,7 @@ public class NhapHangController {
 	private HanghoaHome hangHoaHome;
 	private PhieunhapHome phieunhapHome;
 	private List<Hanghoa> hangHoaList;
+	private ChitietphieunhapHome chitietphieunhapHome;
 	private ObservableList<Hanghoa> cmbModelHangHoa;
 
 	@FXML
@@ -114,6 +117,7 @@ public class NhapHangController {
 		nhaCungCapHome = new NhacungcapHome();
 		hangHoaHome = new HanghoaHome();
 		phieunhapHome = new PhieunhapHome();
+		chitietphieunhapHome = new ChitietphieunhapHome();
 		// Load hàng hóa
 		hangHoaList = hangHoaHome.getHangHoaList();
 		// Load nhan vien
@@ -225,7 +229,8 @@ public class NhapHangController {
 
 			@Override
 			public void handle(ActionEvent event) {
-
+				ManHinhChinhController.tabNhapHang.getTabPane().getTabs().remove(ManHinhChinhController.tabNhapHang);
+				ManHinhChinhController.tabNhapHang = null;
 			}
 		});
 	}
@@ -429,6 +434,9 @@ public class NhapHangController {
 		txtThanhToan.setText("0");
 		txtDienThoai.setText("");
 		txtMaPhieu.setText("");
+		if(!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()){
+			addRowTable();
+		}
 	}
 
 	private void saveInputBill() {
@@ -442,11 +450,17 @@ public class NhapHangController {
 		phieunhap.setDiachi(txtDiaChi.getText());
 		phieunhap.setMa(txtMaPhieu.getText());
 		phieunhap.setDienthoai(txtDienThoai.getText());
+		phieunhap.setGhichu(txtGhiChu.getText());
 		phieunhap.setNgaynhap(ngayNhap);
 		phieunhap.setTongtien(Double.parseDouble(txtThanhToan.getText().trim()));
 		phieunhap.setActivity(true);
 		phieunhap.setChitietphieunhaps(getChiTietPhieuNhapList());
 		phieunhapHome.save(phieunhap);
+		//Save chi tiet
+		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
+			chitietphieunhap.setPhieunhap(phieunhap);
+			chitietphieunhapHome.save(chitietphieunhap);
+		}
 		
 	}
 	
@@ -455,6 +469,11 @@ public class NhapHangController {
 		Set<Chitietphieunhap> chitietphieunhaps = new HashSet<>();
 		chitietphieunhaps.addAll(modelTableChiTiet);
 		return chitietphieunhaps;
+	}
+	
+	private void updatePhieuNhap(Phieunhap phieunhap){
+		phieunhapHome.update(phieunhap);
+		
 	}
 
 }

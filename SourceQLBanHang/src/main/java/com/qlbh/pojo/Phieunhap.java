@@ -179,9 +179,6 @@ public class Phieunhap  implements java.io.Serializable {
         this.chitietphieunhaps = chitietphieunhaps;
     }
 
-
-
-
 }
 
 

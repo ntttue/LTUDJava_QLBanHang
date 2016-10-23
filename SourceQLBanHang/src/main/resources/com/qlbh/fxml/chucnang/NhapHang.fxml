@@ -76,7 +76,7 @@
                         <Label layoutX="72.0" layoutY="163.0" text="Kho nhập" AnchorPane.leftAnchor="72.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="933.0" layoutY="7.0" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutX="933.0" layoutY="7.0" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <JFXTextField fx:id="txtMaPhieu" layoutX="10.0" layoutY="7.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />
                         <JFXTextField fx:id="txtDienThoai" layoutX="10.0" layoutY="38.0" maxWidth="72.0" minWidth="72.0" prefHeight="31.0" prefWidth="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="120.0" />

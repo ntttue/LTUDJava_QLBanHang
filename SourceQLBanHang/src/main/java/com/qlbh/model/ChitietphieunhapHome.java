@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Chitietphieunhap;
 
 /**
@@ -16,7 +17,7 @@ import com.qlbh.pojo.Chitietphieunhap;
  * @author Hibernate Tools
  */
 @Stateless
-public class ChitietphieunhapHome {
+public class ChitietphieunhapHome extends AbstractDao{
 
 	private static final Log log = LogFactory.getLog(ChitietphieunhapHome.class);
 
@@ -68,4 +69,16 @@ public class ChitietphieunhapHome {
 			throw re;
 		}
 	}
+	
+	
+	public Chitietphieunhap save(Chitietphieunhap chitietphieunhap){
+		super.save(chitietphieunhap);
+		return chitietphieunhap;
+	}
+	
+	public Chitietphieunhap update(Chitietphieunhap chitietphieunhap){
+		super.update(chitietphieunhap);
+		return chitietphieunhap;
+	}
+	
 }

@@ -70,8 +70,13 @@ public class PhieunhapHome extends AbstractDao{
 		}
 	}
 	
-	public int save(Phieunhap phieunhap){
+	public Phieunhap save(Phieunhap phieunhap){
 		super.save(phieunhap);
-		return phieunhap.getId();
+		return phieunhap;
+	}
+	
+	public Phieunhap update(Phieunhap phieunhap){
+		super.update(phieunhap);
+		return phieunhap;
 	}
 }

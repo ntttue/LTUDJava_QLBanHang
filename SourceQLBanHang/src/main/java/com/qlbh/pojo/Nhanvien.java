@@ -226,7 +226,10 @@ public class Nhanvien  implements java.io.Serializable {
     }
 
 
-
+	@Override
+	public String toString() {
+		return this.ten;
+	}
 
 }
 
