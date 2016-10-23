@@ -41,6 +41,9 @@ public class ManHinhChinhController {
 	@FXML
 	private AnchorPane anchorManHinhChinhRoot;
 
+	@FXML
+	private JFXButton btnBoPhan;
+
 	public static Tab tabNhapHang = null;
 
 	@FXML
@@ -312,14 +315,46 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
-//			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//				public void handle(WindowEvent we) {
-//					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
-//				}
-//			});
+			// primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			// public void handle(WindowEvent we) {
+			// DialogController.show(anchorManHinhChinhRoot, null, "Thông báo",
+			// "Đổi mật khẩu thành công.");
+			// }
+			// });
 
 		} catch (IOException e) {
 			logger.error("exeption open frmDoiMatKhau", e);
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabBoPhan = null;
+
+	@FXML
+	void btnBoPhanClick(ActionEvent event) {
+		String title = "DS bộ phận";
+		String fxmlPath = "../fxml/danhmuc/DanhSachBoPhan.fxml";
+		if (ManHinhChinhController.tabBoPhan != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabBoPhan);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabBoPhan = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabBoPhan = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("exeption open tabBoPhan", e);
 			e.printStackTrace();
 		}
 	}

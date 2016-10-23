@@ -1,71 +1,44 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Bophan;
+import com.qlbh.util.DataAccessLayerException;
 
 /**
  * Home object for domain model class Bophan.
+ * 
  * @see com.qlbh.model.Bophan
  * @author Hibernate Tools
  */
 @Stateless
-public class BophanHome {
+public class BophanHome extends AbstractDao {
+	private static final Logger logger = Logger.getLogger(BophanHome.class);
 
-	private static final Log log = LogFactory.getLog(BophanHome.class);
-
-	@PersistenceContext
-	private EntityManager entityManager;
-
-	public void persist(Bophan transientInstance) {
-		log.debug("persisting Bophan instance");
-		try {
-			entityManager.persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Bophan.class);
 	}
 
-	public void remove(Bophan persistentInstance) {
-		log.debug("removing Bophan instance");
-		try {
-			entityManager.remove(persistentInstance);
-			log.debug("remove successful");
-		} catch (RuntimeException re) {
-			log.error("remove failed", re);
-			throw re;
-		}
+	public void save(Bophan obj) {
+		super.save(obj);
 	}
 
-	public Bophan merge(Bophan detachedInstance) {
-		log.debug("merging Bophan instance");
-		try {
-			Bophan result = entityManager.merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
+	public void update(Bophan obj) {
+		super.update(obj);
 	}
 
-	public Bophan findById(Integer id) {
-		log.debug("getting Bophan instance with id: " + id);
-		try {
-			Bophan instance = entityManager.find(Bophan.class, id);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
+	public void deletePermanently(Bophan obj) {
+		super.delete(obj);
+	}
+
+	public void delete(Bophan obj) {
+		obj.setActivity(false);
+		super.update(obj);
 	}
 }
