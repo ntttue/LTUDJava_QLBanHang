@@ -98,7 +98,7 @@
                      <children>
                         <AnchorPane layoutX="104.0" prefHeight="85.0" prefWidth="260.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Khu vực" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnQuanLyKhuVucClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Khu vực" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>
