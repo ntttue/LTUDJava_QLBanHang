@@ -8,8 +8,10 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nguoidung;
@@ -26,36 +28,58 @@ import java.util.List;
  */
 @Stateless
 public class NguoidungHome extends AbstractDao {
-
+	private Session session;
 	final static Logger logger = Logger.getLogger(NguoidungHome.class);
-	Session session = HibernateFactory.getSessionFactory().openSession();
 
 	public void create(Nguoidung nd) throws DataAccessLayerException {
 		super.saveOrUpdate(nd);
 	}
-	
+
 	public NguoidungHome() {
 		super();
 	}
-	public void saveOrUpdate(Nguoidung obj){
+
+	public void saveOrUpdate(Nguoidung obj) {
 		super.saveOrUpdate(obj);
 	}
-	//
-	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
-		Nguoidung nd = new Nguoidung();
-		String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";
-		// String hql = "from Nguoidung";
 
-		Query query = session.createQuery(hql);
-		query.setParameter("tennd", tenDangNhap);
-		query.setParameter("matkhau", matKhau);
-		List<Nguoidung> ds = query.list();
-		if (!ds.isEmpty()) {
-			nd = ds.get(0);
-			System.out.println(nd.getTennd());
-			return nd;
+	//
+	// public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
+	// Nguoidung nd = new Nguoidung();
+	// String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau =
+	// :matkhau";
+	// // String hql = "from Nguoidung";
+	//
+	// Query query = session.createQuery(hql);
+	// query.setParameter("tennd", tenDangNhap);
+	// query.setParameter("matkhau", matKhau);
+	// List<Nguoidung> ds = query.list();
+	// if (!ds.isEmpty()) {
+	// nd = ds.get(0);
+	// return nd;
+	// }
+	//
+	// return null;
+	// }
+	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
+		Nguoidung nd = null;
+		try {
+			session = HibernateFactory.getSessionFactory().openSession();
+			// startOperation();
+			String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";
+			Query query = session.createQuery(hql);
+			query.setParameter("tennd", tenDangNhap);
+			query.setParameter("matkhau", matKhau);
+			List<Nguoidung> ds = query.list();
+			if (!ds.isEmpty()) {
+				nd = new Nguoidung();
+				nd = ds.get(0);
+			}
+		} catch (HibernateException e) {
+			handleException(e);
+		} finally {
+			HibernateFactory.close(session);
 		}
-		
-		return null;
+		return nd;
 	}
 }
