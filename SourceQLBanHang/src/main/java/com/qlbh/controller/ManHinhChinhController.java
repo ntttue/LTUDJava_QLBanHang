@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogController;
+import com.qlbh.controller.hethong.DoiMatKhauController;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -22,6 +24,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ManHinhChinhController {
 	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
@@ -342,8 +345,10 @@ public class ManHinhChinhController {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			root = loader.load();
 			Scene scene = new Scene(root);
+			DoiMatKhauController doiMatKhauCtrl = loader.<DoiMatKhauController>getController();
 			primaryStage.setTitle("Đổi mật khẩu");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
@@ -353,8 +358,10 @@ public class ManHinhChinhController {
 			primaryStage.show();
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
-					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
-					primaryStage.close();
+					if ( doiMatKhauCtrl.isDoiMatKhauThanhCong() ) {
+						DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+						primaryStage.close();
+					}
 				}
 			});
 		} catch (IOException e) {

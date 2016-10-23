@@ -29,13 +29,14 @@ public class DoiMatKhauController {
 	
 	private NguoidungHome nguoiDungHome = new NguoidungHome();
 	final static Logger logger = Logger.getLogger(DoiMatKhauController.class);
-
+	private boolean doiMatKhauThanhCong = false;
 	@FXML
 	void btnSaveClick() {
 		this.savePass();
 	}
 
 	private void savePass() {
+		this.setDoiMatKhauThanhCong(false);
 		if (txtMatKhauCu.getLength() == 0 || txtMatKhauMoi.getLength() == 0 || txtNhapLaiMatKhau.getLength() == 0) {
 			lbValidate.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 			return;
@@ -57,10 +58,9 @@ public class DoiMatKhauController {
 			MainApp.loginUser.setMatkhau(txtMatKhauMoi.getText());
 			nguoiDungHome.saveOrUpdate(MainApp.loginUser);
 			lbValidate.setText("");
+			this.setDoiMatKhauThanhCong(true);
 			Stage stage = (Stage) btnCancel.getScene().getWindow();
 			stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
-			// DialogController.show(root, null, "Thông báo", "Đổi mật khẩu
-			// thành công.", true);
 
 		} catch (Exception ex) {
 			logger.error("Cập nhật mật khẩu người dùng bị lỗi : \n" + ex.getMessage());
@@ -86,6 +86,14 @@ public class DoiMatKhauController {
 	@FXML
 	void btnCancelClick() {
 		this.closeStage();
+	}
+
+	public boolean isDoiMatKhauThanhCong() {
+		return doiMatKhauThanhCong;
+	}
+
+	private void setDoiMatKhauThanhCong(boolean doiMatKhauThanhCong) {
+		this.doiMatKhauThanhCong = doiMatKhauThanhCong;
 	}
 
 }
