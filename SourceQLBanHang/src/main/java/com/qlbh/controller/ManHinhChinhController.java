@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
-import com.qlbh.controller.common.DialogController;
-import com.qlbh.model.common.AbstractDao;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -23,7 +21,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 
 public class ManHinhChinhController {
 	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
