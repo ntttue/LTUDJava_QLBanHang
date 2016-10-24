@@ -7,6 +7,7 @@ import java.util.List;
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
+import com.qlbh.controller.common.Display;
 import com.qlbh.model.NhanvienHome;
 import com.qlbh.pojo.Nhanvien;
 
@@ -174,29 +175,26 @@ public class DanhSachNhanVienController {
 
 	@FXML
 	private void onButtonSuaClick() {
-		// Stage primaryStage = new Stage();
-		// Parent root;
-		// try {
-		// FXMLLoader loader = new
-		// FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaNhanVien.fxml"));
-		// root = loader.load();
-		// Scene scene = new Scene(root);
-		// SuaNhanVienController controller =
-		// loader.<SuaNhanVienController>getController();
-		// controller.setNhanVien(this.getSelectedNhanVien());
-		// primaryStage.setTitle("Sửa Tỷ giá");
-		// primaryStage.initStyle(StageStyle.UNIFIED);
-		// primaryStage.initModality(Modality.APPLICATION_MODAL);
-		// primaryStage.setResizable(false);
-		// primaryStage.setScene(scene);
-		// primaryStage.getIcons().add(new
-		// Image(getClass().getResourceAsStream("../../images/appIcon.png")));
-		// primaryStage.show();
-		// this.stageSuaNhanVien = primaryStage;
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaNhanVien.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			SuaNhanVienController controller = loader.<SuaNhanVienController>getController();
+			controller.setNhanVien(this.getSelectedNhanVien());
+			primaryStage.setTitle("Sửa thông tin nhân viên");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+			primaryStage.show();
+			this.stageSuaNhanVien = primaryStage;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -241,10 +239,9 @@ public class DanhSachNhanVienController {
 		TableColumn<Nhanvien, String> colSDT = new TableColumn<Nhanvien, String>("SDT");
 		colSDT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDienThoai()));
 
-		DecimalFormat dFormat = new DecimalFormat("####,###,###");
 		TableColumn<Nhanvien, String> colLuong = new TableColumn<Nhanvien, String>("Lương");
 		colLuong.setCellValueFactory(
-				cellData -> new SimpleStringProperty(dFormat.format(cellData.getValue().getLuong())));
+				cellData -> new SimpleStringProperty(Display.formatMoney((cellData.getValue().getLuong()))));
 
 		TableColumn<Nhanvien, String> colDiaChi = new TableColumn<Nhanvien, String>("Địa chỉ");
 		colDiaChi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDiaChi()));

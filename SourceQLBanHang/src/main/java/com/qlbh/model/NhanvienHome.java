@@ -36,7 +36,7 @@ public class NhanvienHome extends AbstractDao {
 	 * */
 	public Boolean saveReturnObj(Nhanvien obj) {
 		Integer result = super.saveReturnID(obj);
-		
+		System.out.println(result);
 		if (result != null) {
 			return true;
 		}
