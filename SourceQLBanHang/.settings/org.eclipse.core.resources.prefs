@@ -11,11 +11,9 @@ encoding//src/main/java/com/qlbh/controller/danhmuc/DanhSachBoPhanController.jav
 encoding//src/main/java/com/qlbh/controller/danhmuc/KhachHangController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/QuanLyDonViTinhController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/QuanLyKhoHangController.java=UTF-8
-encoding//src/main/java/com/qlbh/controller/danhmuc/QuanLyKhuVucController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/QuanLyLoaiHangController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/ThemDonViTinhController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/ThemKhoHangController.java=UTF-8
-encoding//src/main/java/com/qlbh/controller/danhmuc/ThemKhuVucController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/ThemLoaiHangController.java=UTF-8
 encoding//src/main/java/com/qlbh/controller/danhmuc/TyGiaController.java=UTF-8
 encoding//src/main/java/com/qlbh/model/QuyenHome.java=UTF-8

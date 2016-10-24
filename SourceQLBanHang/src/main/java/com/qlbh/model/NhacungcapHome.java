@@ -4,8 +4,6 @@ package com.qlbh.model;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,69 +12,39 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
-import com.qlbh.pojo.Khohang;
+
 import com.qlbh.pojo.Nhacungcap;
+import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
 /**
  * Home object for domain model class Nhacungcap.
+ * 
  * @see com.qlbh.model.Nhacungcap
  * @author Hibernate Tools
  */
 @Stateless
-public class NhacungcapHome extends AbstractDao{
+public class NhacungcapHome extends AbstractDao {
 
 	private static final Log log = LogFactory.getLog(NhacungcapHome.class);
 
-	@PersistenceContext
-	private EntityManager entityManager;
-
-	public void persist(Nhacungcap transientInstance) {
-		log.debug("persisting Nhacungcap instance");
-		try {
-			entityManager.persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Nhacungcap.class);
 	}
 
-	public void remove(Nhacungcap persistentInstance) {
-		log.debug("removing Nhacungcap instance");
-		try {
-			entityManager.remove(persistentInstance);
-			log.debug("remove successful");
-		} catch (RuntimeException re) {
-			log.error("remove failed", re);
-			throw re;
-		}
+	public void save(Nhacungcap ncc) {
+		super.save(ncc);
 	}
 
-	public Nhacungcap merge(Nhacungcap detachedInstance) {
-		log.debug("merging Nhacungcap instance");
-		try {
-			Nhacungcap result = entityManager.merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
+	public void update(Nhacungcap ncc) {
+		super.update(ncc);
 	}
 
-	public Nhacungcap findById(Integer id) {
-		log.debug("getting Nhacungcap instance with id: " + id);
-		try {
-			Nhacungcap instance = entityManager.find(Nhacungcap.class, id);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
+	public void delete(Nhacungcap ncc) {
+		ncc.setActivity(false);
+		super.update(ncc);
 	}
-	
+
 	public List<Nhacungcap> getNhaCungCapList() {
 		Session session = HibernateFactory.openSession();
 		List<Nhacungcap> khohangs = null;
@@ -86,7 +54,7 @@ public class NhacungcapHome extends AbstractDao{
 			khohangs = query.list();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return khohangs;

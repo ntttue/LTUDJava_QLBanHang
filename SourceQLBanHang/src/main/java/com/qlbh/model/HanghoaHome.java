@@ -13,7 +13,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Hanghoa;
+import com.qlbh.pojo.Khohang;
 import com.qlbh.pojo.Nhanvien;
 import com.qlbh.util.HibernateFactory;
 
@@ -23,7 +25,7 @@ import com.qlbh.util.HibernateFactory;
  * @author Hibernate Tools
  */
 @Stateless
-public class HanghoaHome {
+public class HanghoaHome extends AbstractDao{
 
 	private static final Log log = LogFactory.getLog(HanghoaHome.class);
 
@@ -89,5 +91,51 @@ public class HanghoaHome {
 			session.close();
 		}
 		return hanghoas;
+	}
+	
+	public Hanghoa layHangHoaTheoKho(int id, int khoId){
+		Session session = HibernateFactory.openSession();
+		Hanghoa hanghoa = null;
+		try {
+			String hql = "FROM Hanghoa Where id = :id and khohangid = :khoid and Activity = true";
+			Query query = session.createQuery(hql);
+			query.setParameter("id", id);
+			query.setParameter("khoid", khoId);
+			hanghoa = (Hanghoa) query.uniqueResult();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		}finally {
+			session.close();
+		}
+		return hanghoa;
+	}
+	
+	public void themSoLuongHangHoa(Hanghoa hanghoa,int khoid, int soLuong){
+		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
+		System.err.println(hangHoaResult.getId() + "");
+		if(hangHoaResult == null){
+			Khohang khohang = new KhohangHome().getKhoHang(khoid);
+			hanghoa.setKhohang(khohang);
+			hanghoa.setId(0);
+			hanghoa.setTonkho(soLuong);
+			super.save(hanghoa);
+			return;
+		}
+		hangHoaResult.setTonkho(hanghoa.getTonkho() + soLuong);
+		super.update(hanghoa);
+	}
+	
+	public void giamSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong){
+		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
+		if(hangHoaResult == null){
+			Khohang khohang = new KhohangHome().getKhoHang(khoid);
+			hanghoa.setKhohang(khohang);
+			hanghoa.setId(0);
+			hanghoa.setTonkho(soLuong);
+			super.save(hanghoa);
+			return;
+		}
+		hangHoaResult.setTonkho(hanghoa.getTonkho() -  soLuong);
+		super.update(hanghoa);
 	}
 }

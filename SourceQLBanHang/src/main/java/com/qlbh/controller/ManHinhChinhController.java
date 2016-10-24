@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.controller.hethong.DoiMatKhauController;
-
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -105,6 +104,35 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabKhuVuc = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabNhaCungCap = null;
+
+	@FXML
+	void btnQuanLyNhaCungCapClick(ActionEvent event) {
+		String title = "Nhà cung cấp";
+		String fxmlPath = "../fxml/danhmuc/QuanLyNhaCungCap.fxml";
+		if (ManHinhChinhController.tabNhaCungCap != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhaCungCap);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhaCungCap = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhaCungCap = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -323,7 +351,7 @@ public class ManHinhChinhController {
 	void btnKetThucClick(ActionEvent event) {
 		MainApp.getPrimaryStage().close();
 	}
-	
+
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
@@ -387,7 +415,7 @@ public class ManHinhChinhController {
 			primaryStage.show();
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
-					if ( doiMatKhauCtrl.isDoiMatKhauThanhCong() ) {
+					if (doiMatKhauCtrl.isDoiMatKhauThanhCong()) {
 						DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
 						primaryStage.close();
 					}
@@ -426,6 +454,37 @@ public class ManHinhChinhController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("exeption open tabBoPhan", e);
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabNhanVien = null;
+
+	@FXML
+	void btnNhanVienClick(ActionEvent event) {
+		String title = "DS Nhân viên";
+		String fxmlPath = "../fxml/danhmuc/DanhSachNhanVien.fxml";
+		if (ManHinhChinhController.tabNhanVien != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhanVien);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhanVien = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhanVien = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("exeption open tabNhanVien", e);
 			e.printStackTrace();
 		}
 	}

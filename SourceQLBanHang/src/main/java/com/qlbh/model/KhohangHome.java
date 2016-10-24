@@ -43,6 +43,10 @@ public class KhohangHome extends AbstractDao {
 		kh.setActivity(false);
 		super.update(kh);
 	}
+	
+	public Khohang getKhoHang(int id){
+		return (Khohang) super.find(Khohang.class, id);
+	}
 
 	public List<Khohang> getKhoHangList() {
 		Session session = HibernateFactory.openSession();
