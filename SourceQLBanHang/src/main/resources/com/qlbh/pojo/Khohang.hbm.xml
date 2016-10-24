@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23/10/2016 4:15:09 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/10/2016 12:14:33 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.qlbh.pojo.Khohang" table="khohang" catalog="qlbh" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
+        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select">
             <column name="nguoiqlid" />
         </many-to-one>
         <property name="ma" type="string">

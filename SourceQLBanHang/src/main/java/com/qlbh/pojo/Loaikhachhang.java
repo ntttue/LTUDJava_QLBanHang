@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 23/10/2016 4:15:08 PM by Hibernate Tools 4.3.1
+// Generated 25/10/2016 12:14:32 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -102,10 +102,8 @@ public class Loaikhachhang  implements java.io.Serializable {
         this.khachhangs = khachhangs;
     }
 
-    @Override
-    public String toString() {
-    	return this.ten;
-    }
+
+
 
 }
 

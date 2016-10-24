@@ -30,7 +30,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class DanhSachNhanVienController {
-	public static DanhSachNhanVienController NhanVienController = null;
+	public static DanhSachNhanVienController nhanVienController = null;
 	private Stage stageThemNhanVien = null;
 	private Stage stageSuaNhanVien = null;
 	@FXML
@@ -43,7 +43,7 @@ public class DanhSachNhanVienController {
 	 */
 	@FXML
 	protected void initialize() {
-		DanhSachNhanVienController.NhanVienController = this;
+		DanhSachNhanVienController.nhanVienController = this;
 		this.addRowEvents();
 		this.loadNhanVienToTable();
 		this.setButtonControlsDisable(true);
@@ -158,7 +158,7 @@ public class DanhSachNhanVienController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/ThemNhanVien.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Thêm Tỷ giá");
+			primaryStage.setTitle("Thêm nhân viên");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);

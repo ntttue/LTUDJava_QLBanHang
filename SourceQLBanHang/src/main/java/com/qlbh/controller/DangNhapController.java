@@ -46,7 +46,7 @@ public class DangNhapController {
 		Nguoidung nd = new Nguoidung();
 		NguoidungHome ndHome = new NguoidungHome();
 		nd = ndHome.findByUsenamePass(tenDangNhap, matKhau);
-
+		
 		if (nd != null) {
 			MainApp.setUserLogin(nd);
 		} else {

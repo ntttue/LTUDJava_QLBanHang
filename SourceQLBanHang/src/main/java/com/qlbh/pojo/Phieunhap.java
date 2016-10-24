@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 23/10/2016 4:15:08 PM by Hibernate Tools 4.3.1
+// Generated 25/10/2016 12:14:32 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -178,6 +178,9 @@ public class Phieunhap  implements java.io.Serializable {
     public void setChitietphieunhaps(Set<Chitietphieunhap> chitietphieunhaps) {
         this.chitietphieunhaps = chitietphieunhaps;
     }
+
+
+
 
 }
 
