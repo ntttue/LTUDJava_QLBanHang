@@ -6,7 +6,8 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
-
+import com.qlbh.controller.common.DialogController;
+import com.qlbh.controller.hethong.DoiMatKhauController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ManHinhChinhController {
 	final static Logger logger = Logger.getLogger(ManHinhChinhController.class);
@@ -73,6 +75,64 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabNhapHang = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabKhuVuc = null;
+
+	@FXML
+	void btnQuanLyKhuVucClick(ActionEvent event) {
+		String title = "Khu vực";
+		String fxmlPath = "../fxml/danhmuc/QuanLyKhuVuc.fxml";
+		if (ManHinhChinhController.tabKhuVuc != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabKhuVuc);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabKhuVuc = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabKhuVuc = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabNhaCungCap = null;
+
+	@FXML
+	void btnQuanLyNhaCungCapClick(ActionEvent event) {
+		String title = "Nhà cung cấp";
+		String fxmlPath = "../fxml/danhmuc/QuanLyNhaCungCap.fxml";
+		if (ManHinhChinhController.tabNhaCungCap != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhaCungCap);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhaCungCap = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhaCungCap = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -166,11 +226,6 @@ public class ManHinhChinhController {
 		}
 	}
 
-	@FXML
-	void btnKetThucClick(ActionEvent event) {
-		MainApp.getPrimaryStage().close();
-	}
-
 	public static Tab tabKhachHang = null;
 
 	@FXML
@@ -233,7 +288,7 @@ public class ManHinhChinhController {
 	}
 
 	public static Tab tabTraTien = null;
-	
+
 	@FXML
 	void onButtonTraTienClick(ActionEvent event) {
 		String title = "Trả tiền";
@@ -261,7 +316,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabThuTien = null;
 
 	@FXML
@@ -290,6 +345,11 @@ public class ManHinhChinhController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	void btnKetThucClick(ActionEvent event) {
+		MainApp.getPrimaryStage().close();
 	}
 
 	@FXML
@@ -342,8 +402,10 @@ public class ManHinhChinhController {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/hethong/DoiMatKhau.fxml"));
+			root = loader.load();
 			Scene scene = new Scene(root);
+			DoiMatKhauController doiMatKhauCtrl = loader.<DoiMatKhauController>getController();
 			primaryStage.setTitle("Đổi mật khẩu");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
@@ -353,8 +415,10 @@ public class ManHinhChinhController {
 			primaryStage.show();
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
-					DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
-					primaryStage.close();
+					if (doiMatKhauCtrl.isDoiMatKhauThanhCong()) {
+						DialogController.show(anchorManHinhChinhRoot, null, "Thông báo", "Đổi mật khẩu thành công.");
+						primaryStage.close();
+					}
 				}
 			});
 		} catch (IOException e) {
@@ -390,6 +454,37 @@ public class ManHinhChinhController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("exeption open tabBoPhan", e);
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabNhanVien = null;
+
+	@FXML
+	void btnNhanVienClick(ActionEvent event) {
+		String title = "DS Nhân viên";
+		String fxmlPath = "../fxml/danhmuc/DanhSachNhanVien.fxml";
+		if (ManHinhChinhController.tabNhanVien != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhanVien);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhanVien = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhanVien = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("exeption open tabNhanVien", e);
 			e.printStackTrace();
 		}
 	}

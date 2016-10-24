@@ -1,8 +1,13 @@
 package com.qlbh.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 public class DataInputUtils {
 	/**
@@ -89,5 +94,29 @@ public class DataInputUtils {
 	            }
 	        }
 	    });
+	}
+	
+	/**
+	 * 
+	 * @param datePicker
+	 * @param format
+	 */
+	public static void formatDatePicker(DatePicker datePicker, String format) {
+		datePicker.setConverter(new StringConverter<LocalDate>() {
+			DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
+			@Override
+			public String toString(LocalDate localDate) {
+				if (localDate == null)
+					return "";
+				return dateTimeFormatter.format(localDate);
+			}
+			@Override
+			public LocalDate fromString(String dateString) {
+				if (dateString == null || dateString.trim().isEmpty()) {
+					return null;
+				}
+				return LocalDate.parse(dateString, dateTimeFormatter);
+			}
+		});
 	}
 }

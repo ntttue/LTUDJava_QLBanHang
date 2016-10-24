@@ -4,18 +4,16 @@ package com.qlbh.model;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nhanvien;
+import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
-
-
 
 /**
  * Home object for domain model class Nhanvien.
@@ -24,58 +22,67 @@ import com.qlbh.util.HibernateFactory;
  * @author Hibernate Tools
  */
 @Stateless
-public class NhanvienHome {
+public class NhanvienHome extends AbstractDao {
 
-	private static final Log log = LogFactory.getLog(NhanvienHome.class);
+	private static final Logger logger = Logger.getLogger(NhanvienHome.class);
+	private Session session;
 
-	@PersistenceContext
-	private EntityManager entityManager;
-
-	
-	public void persist(Nhanvien transientInstance) {
-		log.debug("persisting Nhanvien instance");
-		try {
-			entityManager.persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Nhanvien.class);
 	}
 
-	public void remove(Nhanvien persistentInstance) {
-		log.debug("removing Nhanvien instance");
-		try {
-			entityManager.remove(persistentInstance);
-			log.debug("remove successful");
-		} catch (RuntimeException re) {
-			log.error("remove failed", re);
-			throw re;
+	// public void save(Nhanvien obj) {
+	// super.save(obj);
+	// }
+	public Boolean saveReturnObj(Nhanvien obj) {
+		Integer result = super.saveReturnID(obj);
+		System.out.println(result);
+		if (result != null) {
+			return true;
 		}
+		return false;
 	}
 
-	public Nhanvien merge(Nhanvien detachedInstance) {
-		log.debug("merging Nhanvien instance");
+	public Boolean update(Nhanvien obj) {
 		try {
-			Nhanvien result = entityManager.merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
+			super.update(obj);
+			return true;
+		} catch (Exception e) {
+			logger.error("error in update Nhanvien:  \n" + e.getMessage());
 		}
+		return false;
 	}
 
-	public Nhanvien findById(Integer id) {
-		log.debug("getting Nhanvien instance with id: " + id);
+	public void deletePermanently(Nhanvien obj) {
+		super.delete(obj);
+	}
+
+	public void delete(Nhanvien obj) {
+		obj.setActivity(false);
+		super.update(obj);
+	}
+
+	public Nhanvien findByMa(String ma) {
+		Nhanvien bp = null;
 		try {
-			Nhanvien instance = entityManager.find(Nhanvien.class, id);
-			log.debug("get successful");
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
+			session = HibernateFactory.getSessionFactory().openSession();
+			// startOperation();
+			String hql = "from Nhanvien bp where bp.ma = :ma and activity = true";
+			Query query = session.createQuery(hql);
+			query.setParameter("ma", ma);
+			List<Nhanvien> ds = query.list();
+			if (!ds.isEmpty()) {
+				bp = new Nhanvien();
+				bp = ds.get(0);
+				System.out.println(bp.getTen());
+			}
+		} catch (HibernateException e) {
+			handleException(e);
+			logger.error("error in findByMa:  \n" + e.getMessage());
+		} finally {
+			HibernateFactory.close(session);
 		}
+		return bp;
 	}
 
 	public List<Nhanvien> getNhanVienList() {
@@ -87,7 +94,7 @@ public class NhanvienHome {
 			nhanviens = query.list();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return nhanviens;
