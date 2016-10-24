@@ -20,10 +20,15 @@ public class ThuTienController {
 
 	@FXML
 	public void initialize() {
+		// Set data for comboBox
 		cbxTuyChonNgay.setItems(DateOption.getDateOptions());
+		// Select first option
+		cbxTuyChonNgay.getSelectionModel().select(0);
+		// Set format of date for two DatePicker
 		DataInputUtils.formatDatePicker(dateNgayBatDau, "dd/MM/yyyy");
 		DataInputUtils.formatDatePicker(dateNgayKetThuc, "dd/MM/yyyy");
-		cbxTuyChonNgay.getSelectionModel().select(0);
+		// Set initial date as a first option
+		this.setDatePeriod();
 	}
 
 	@FXML
@@ -36,7 +41,10 @@ public class ThuTienController {
 		DateOption selectedDateOption = cbxTuyChonNgay.getValue();
 		LocalDate localdateBegin = selectedDateOption.getBeginDate().toInstant().atZone(ZoneId.systemDefault())
 				.toLocalDate();
+		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault())
+				.toLocalDate();
 		dateNgayBatDau.setValue(localdateBegin);
+		dateNgayKetThuc.setValue(localdateEnd);
 	}
 
 	@FXML
