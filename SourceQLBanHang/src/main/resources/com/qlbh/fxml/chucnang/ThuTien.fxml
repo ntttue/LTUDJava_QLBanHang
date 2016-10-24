@@ -114,7 +114,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-table-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TableView fx:id="tableThuTien" prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
          </children></AnchorPane>
    </children>

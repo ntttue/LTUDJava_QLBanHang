@@ -1,13 +1,10 @@
 package com.qlbh.render.combobox;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,21 +28,36 @@ public class DateOption {
 			case 2:
 				return this.getThisWeekOption();
 			case 3:
-				return new DateOption("Tháng này", new Date(), new Date());
+				return this.getThisMonthOption();
 		}
 		return null;
 	}
 	public DateOption getThisWeekOption() {
+		// Reference link: http://stackoverflow.com/questions/22890644/get-current-week-start-and-end-date-in-java-monday-to-sunday
 		// Get calendar set to current date and time
         Calendar c = GregorianCalendar.getInstance();
         // Set the calendar to Monday of the current week
         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-//        System.out.println("Current week = " + Calendar.DAY_OF_WEEK);
-        // Get dates of the current week starting on Monday
+        // System.out.println("Current week = " + Calendar.DAY_OF_WEEK);
+        // Get dates of the current week starting on Monday        
         Date beginDate = c.getTime();
         c.add(Calendar.DATE, 6);
         Date endDate = c.getTime();
         return new DateOption("Tuần này", beginDate, endDate);
+	}
+	
+	public DateOption getThisMonthOption() {
+		// Reference link: http://stackoverflow.com/questions/3083781/start-and-end-date-of-a-current-month
+		// Get calendar set to current date and time
+        Calendar c = GregorianCalendar.getInstance();
+        // Set the calendar to Monday of the current week
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        System.out.println("Current week = " + Calendar.DAY_OF_MONTH);
+        // Get dates of the current week starting on Monday
+        Date beginDate = c.getTime();
+        c.add(Calendar.DATE, c.getActualMaximum(Calendar.DAY_OF_MONTH) - 1);
+        Date endDate = c.getTime();        
+        return new DateOption("Tháng này", beginDate, endDate);
 	}
 	
 	@Override
