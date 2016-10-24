@@ -63,6 +63,7 @@ public class NhapHangController {
 	private List<Hanghoa> hangHoaList;
 	private ChitietphieunhapHome chitietphieunhapHome;
 	private ObservableList<Hanghoa> cmbModelHangHoa;
+	private Phieunhap phieunhap;
 
 	@FXML
 	private JFXButton btnLuu;
@@ -391,10 +392,10 @@ public class NhapHangController {
 		tableChiTiet.setItems(modelTableChiTiet);
 		addRowTable();
 	}
-	
-	private void updateTotal(){
+
+	private void updateTotal() {
 		double total = 0;
-		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
+		for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
 			total += chitietphieunhap.getThanhtien();
 		}
 		txtThanhToan.setText(total + "");
@@ -409,6 +410,7 @@ public class NhapHangController {
 	}
 
 	private void createNew() {
+		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
 		cmbNhanVien.setValue(null);
@@ -425,6 +427,7 @@ public class NhapHangController {
 	}
 
 	private void refresh() {
+		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
 		cmbNhanVien.setValue(null);
@@ -434,7 +437,7 @@ public class NhapHangController {
 		txtThanhToan.setText("0");
 		txtDienThoai.setText("");
 		txtMaPhieu.setText("");
-		if(!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()){
+		if (!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()) {
 			addRowTable();
 		}
 	}
@@ -443,7 +446,10 @@ public class NhapHangController {
 		LocalDate localDate = datePickerNhap.getValue();
 		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 		Date ngayNhap = Date.from(instant);
-		Phieunhap phieunhap = new Phieunhap();
+		if(phieunhap == null){
+			phieunhap = new Phieunhap();
+			phieunhap.setId(0);
+		}
 		phieunhap.setKhohang(cmbKho.getValue());
 		phieunhap.setNhanvien(cmbNhanVien.getValue());
 		phieunhap.setNhacungcap(cmbTenNCC.getValue());
@@ -455,25 +461,42 @@ public class NhapHangController {
 		phieunhap.setTongtien(Double.parseDouble(txtThanhToan.getText().trim()));
 		phieunhap.setActivity(true);
 		phieunhap.setChitietphieunhaps(getChiTietPhieuNhapList());
-		phieunhapHome.save(phieunhap);
-		//Save chi tiet
-		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
-			chitietphieunhap.setPhieunhap(phieunhap);
-			chitietphieunhapHome.save(chitietphieunhap);
+		if (phieunhap.getId() == 0) {
+			phieunhapHome.save(phieunhap);
+			// Save chi tiet
+			for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
+				chitietphieunhap.setPhieunhap(phieunhap);
+				chitietphieunhapHome.save(chitietphieunhap);
+				hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa() , phieunhap.getKhohang().getId(), chitietphieunhap.getSoluong());
+			}
+		} else {
+			updatePhieuNhap(phieunhap);
 		}
-		
+
 	}
-	
-	private Set<Chitietphieunhap> getChiTietPhieuNhapList(){
+
+	private Set<Chitietphieunhap> getChiTietPhieuNhapList() {
 		modelTableChiTiet.remove(modelTableChiTiet.size() - 1);
 		Set<Chitietphieunhap> chitietphieunhaps = new HashSet<>();
 		chitietphieunhaps.addAll(modelTableChiTiet);
 		return chitietphieunhaps;
 	}
-	
-	private void updatePhieuNhap(Phieunhap phieunhap){
+
+	private void updatePhieuNhap(Phieunhap phieunhap) {
 		phieunhapHome.update(phieunhap);
-		
+		for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
+			chitietphieunhapHome.update(chitietphieunhap);
+			Chitietphieunhap chitiet = chitietphieunhapHome.findById(chitietphieunhap.getId());
+			int newValue = chitietphieunhap.getSoluong();
+			int oldValue = chitiet.getSoluong();
+			if (chitiet != null) {
+				if (newValue >= oldValue) {
+					hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa() , phieunhap.getKhohang().getId(), newValue - oldValue);
+				} else {
+					hangHoaHome.giamSoLuongHangHoa(chitietphieunhap.getHanghoa() , phieunhap.getKhohang().getId(), newValue - oldValue);
+				}
+			}
+		}
 	}
 
 }
