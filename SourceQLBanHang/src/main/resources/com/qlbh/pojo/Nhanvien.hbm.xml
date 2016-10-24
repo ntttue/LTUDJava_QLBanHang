@@ -3,67 +3,73 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23/10/2016 4:15:09 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.qlbh.pojo.Nhanvien" table="nhanvien" catalog="qlbh" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="bophan" class="com.qlbh.pojo.Bophan" fetch="select">
-            <column name="BoPhanId" />
-        </many-to-one>
-        <property name="ma" type="string">
-            <column name="Ma" length="20" not-null="true" />
-        </property>
-        <property name="ten" type="string">
-            <column name="Ten" />
-        </property>
-        <property name="diaChi" type="string">
-            <column name="DiaChi" />
-        </property>
-        <property name="gioiTinh" type="java.lang.Boolean">
-            <column name="GioiTinh" />
-        </property>
-        <property name="chucVu" type="string">
-            <column name="ChucVu" />
-        </property>
-        <property name="email" type="string">
-            <column name="Email" />
-        </property>
-        <property name="dienThoai" type="string">
-            <column name="DienThoai" />
-        </property>
-        <property name="nguoiLienQuan" type="string">
-            <column name="NguoiLienQuan" />
-        </property>
-        <property name="luong" type="java.lang.Double">
-            <column name="Luong" precision="65" scale="0" />
-        </property>
-        <property name="activity" type="java.lang.Boolean">
-            <column name="activity" />
-        </property>
-        <set name="khohangs" table="khohang" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nguoiqlid" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Khohang" />
-        </set>
-        <set name="phieunhaps" table="phieunhap" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nhanviennhapid" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Phieunhap" />
-        </set>
-        <set name="nguoidungs" table="nguoidung" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nhanvienid" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Nguoidung" />
-        </set>
-        <set name="phieuxuats" table="phieuxuat" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nhanvienbanhangid" />
-            </key>
-            <one-to-many class="com.qlbh.pojo.Phieuxuat" />
-        </set>
-    </class>
+	<class name="com.qlbh.pojo.Nhanvien" table="nhanvien" catalog="qlbh"
+		optimistic-lock="version">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="bophan" class="com.qlbh.pojo.Bophan"
+			lazy="false" fetch="select">
+			<column name="BoPhanId" />
+		</many-to-one>
+		<property name="ma" type="string">
+			<column name="Ma" length="20" not-null="true" />
+		</property>
+		<property name="ten" type="string">
+			<column name="Ten" />
+		</property>
+		<property name="diaChi" type="string">
+			<column name="DiaChi" />
+		</property>
+		<property name="gioiTinh" type="java.lang.Boolean">
+			<column name="GioiTinh" />
+		</property>
+		<property name="chucVu" type="string">
+			<column name="ChucVu" />
+		</property>
+		<property name="email" type="string">
+			<column name="Email" />
+		</property>
+		<property name="dienThoai" type="string">
+			<column name="DienThoai" />
+		</property>
+		<property name="nguoiLienQuan" type="string">
+			<column name="NguoiLienQuan" />
+		</property>
+		<property name="luong" type="java.lang.Double">
+			<column name="Luong" precision="65" scale="0" />
+		</property>
+		<property name="activity" type="java.lang.Boolean">
+			<column name="activity" />
+		</property>
+		<set name="khohangs" table="khohang" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="nguoiqlid" />
+			</key>
+			<one-to-many class="com.qlbh.pojo.Khohang" />
+		</set>
+		<set name="phieunhaps" table="phieunhap" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="nhanviennhapid" />
+			</key>
+			<one-to-many class="com.qlbh.pojo.Phieunhap" />
+		</set>
+		<set name="nguoidungs" table="nguoidung" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="nhanvienid" />
+			</key>
+			<one-to-many class="com.qlbh.pojo.Nguoidung" />
+		</set>
+		<set name="phieuxuats" table="phieuxuat" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="nhanvienbanhangid" />
+			</key>
+			<one-to-many class="com.qlbh.pojo.Phieuxuat" />
+		</set>
+	</class>
 </hibernate-mapping>

@@ -1,6 +1,7 @@
 package com.qlbh.controller.danhmuc;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
@@ -36,6 +37,7 @@ public class DanhSachNhanVienController {
 	private TableView<Nhanvien> tableNhanVien;
 	@FXML
 	private JFXButton btnSua, btnXoa;
+
 	/**
 	 * Catch when FXML loaded
 	 */
@@ -46,19 +48,23 @@ public class DanhSachNhanVienController {
 		this.loadNhanVienToTable();
 		this.setButtonControlsDisable(true);
 	}
+
 	public TableView<Nhanvien> getTableNhanVien() {
 		return this.tableNhanVien;
 	}
+
 	public void closeManHinhThemNhanVien() {
-		if ( this.stageThemNhanVien != null ) {
+		if (this.stageThemNhanVien != null) {
 			this.stageThemNhanVien.close();
 		}
 	}
+
 	public void closeManHinhSuaNhanVien() {
-		if ( this.stageSuaNhanVien != null ) {
+		if (this.stageSuaNhanVien != null) {
 			this.stageSuaNhanVien.close();
 		}
 	}
+
 	public void onNhanVienAdded() {
 		this.refreshNhanVienTableData();
 		this.closeManHinhThemNhanVien();
@@ -66,6 +72,7 @@ public class DanhSachNhanVienController {
 		this.getTableNhanVien().getSelectionModel().selectLast();
 		this.setButtonControlsDisable(false);
 	}
+
 	public void onNhanVienUpdated() {
 		Integer index = this.tableNhanVien.getSelectionModel().getSelectedIndex();
 		this.refreshNhanVienTableData();
@@ -73,66 +80,76 @@ public class DanhSachNhanVienController {
 		this.getTableNhanVien().requestFocus();
 		this.getTableNhanVien().getSelectionModel().select(index);
 	}
+
 	private void addRowEvents() {
 		this.tableNhanVien.setRowFactory(tv -> {
-		    TableRow<Nhanvien> row = new TableRow<>();
-		    row.setOnMouseClicked(event -> {
-		    	// No row selected when click
-		    	if ( row.isEmpty() ) {
-		    		onTableNhanVienMouseClick();
-		    	}
-		    	// Double click
-		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2 ) {
-		        	Nhanvien clickedRow = row.getItem();
-		            onRowDoubleClick(clickedRow);
-		        }
-		    	// Single click
-		    	else if ( ! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ) {
-		        	Nhanvien clickedRow = row.getItem();
-		        	onRowSingleClick(clickedRow);
-		        }
-		    });
-		    return row;
+			TableRow<Nhanvien> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				// No row selected when click
+				if (row.isEmpty()) {
+					onTableNhanVienMouseClick();
+				}
+				// Double click
+				else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+					Nhanvien clickedRow = row.getItem();
+					onRowDoubleClick(clickedRow);
+				}
+				// Single click
+				else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY) {
+					Nhanvien clickedRow = row.getItem();
+					onRowSingleClick(clickedRow);
+				}
+			});
+			return row;
 		});
 	}
+
 	private void onRowDoubleClick(Nhanvien obj) {
-	    this.setButtonControlsDisable(false);
-	    this.onButtonSuaClick();
+		this.setButtonControlsDisable(false);
+		this.onButtonSuaClick();
 	}
+
 	private void onRowSingleClick(Nhanvien obj) {
-	    this.setButtonControlsDisable(false);
+		this.setButtonControlsDisable(false);
 	}
-	
+
 	private void onTableNhanVienMouseClick() {
 		System.out.println("onTableNhanVienMouseClick");
 		this.setButtonControlsDisable(true);
 		// Clear row selection
 		this.tableNhanVien.getSelectionModel().clearSelection();
 	}
+
 	public void setButtonControlsDisable(Boolean disable) {
 		btnSua.setDisable(disable);
 		btnXoa.setDisable(disable);
 	}
+
 	@FXML
 	public void onRefreshTableDataClick() {
 		this.refreshNhanVienTableData();
 		this.setButtonControlsDisable(true);
 	}
+
 	public void refreshNhanVienTableData() {
 		this.tableNhanVien.setItems(this.getDSNhanVien());
 	}
+
 	@FXML
 	public void onButtonExitClick() {
 		ManHinhChinhController.tabNhanVien.getTabPane().getTabs().remove(ManHinhChinhController.tabNhanVien);
 		ManHinhChinhController.tabNhanVien = null;
 	}
+
 	@FXML
 	public void onButtonXuatClick() {
 		System.out.println("onButtonXuatClick");
 	}
+
 	public Nhanvien getSelectedNhanVien() {
 		return this.tableNhanVien.getSelectionModel().getSelectedItem();
 	}
+
 	@FXML
 	public void onButtonThemClick() {
 		Stage primaryStage = new Stage();
@@ -154,32 +171,37 @@ public class DanhSachNhanVienController {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
 	private void onButtonSuaClick() {
-//		Stage primaryStage = new Stage();
-//		Parent root;
-//		try {
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaNhanVien.fxml"));
-//			root = loader.load();
-//			Scene scene = new Scene(root);
-//			SuaNhanVienController controller = 
-//				    loader.<SuaNhanVienController>getController();
-//			controller.setNhanVien(this.getSelectedNhanVien());
-//			primaryStage.setTitle("Sửa Tỷ giá");
-//			primaryStage.initStyle(StageStyle.UNIFIED);
-//			primaryStage.initModality(Modality.APPLICATION_MODAL);
-//			primaryStage.setResizable(false);
-//			primaryStage.setScene(scene);
-//			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/appIcon.png")));
-//			primaryStage.show();
-//			this.stageSuaNhanVien = primaryStage;
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// Stage primaryStage = new Stage();
+		// Parent root;
+		// try {
+		// FXMLLoader loader = new
+		// FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaNhanVien.fxml"));
+		// root = loader.load();
+		// Scene scene = new Scene(root);
+		// SuaNhanVienController controller =
+		// loader.<SuaNhanVienController>getController();
+		// controller.setNhanVien(this.getSelectedNhanVien());
+		// primaryStage.setTitle("Sửa Tỷ giá");
+		// primaryStage.initStyle(StageStyle.UNIFIED);
+		// primaryStage.initModality(Modality.APPLICATION_MODAL);
+		// primaryStage.setResizable(false);
+		// primaryStage.setScene(scene);
+		// primaryStage.getIcons().add(new
+		// Image(getClass().getResourceAsStream("../../images/appIcon.png")));
+		// primaryStage.show();
+		// this.stageSuaNhanVien = primaryStage;
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 	}
+
 	/**
 	 * Get data for table NhanVien
+	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -189,6 +211,7 @@ public class DanhSachNhanVienController {
 		ObservableList<Nhanvien> oListNhanVien = FXCollections.observableList(nhanViens);
 		return oListNhanVien;
 	}
+
 	/**
 	 * Load list NhanVien into tableNhanVien
 	 */
@@ -197,26 +220,49 @@ public class DanhSachNhanVienController {
 		// Create column for table NhanVien
 		TableColumn<Nhanvien, Number> colSTT = new TableColumn<Nhanvien, Number>("#");
 		colSTT.setSortable(false);
-//		colSTT.setResizable(false);
-//		colSTT.setPrefWidth(50);
-		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableNhanVien.getItems().indexOf(column.getValue()) + 1));
-		
+		 colSTT.setResizable(false);
+		 colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableNhanVien.getItems().indexOf(column.getValue()) + 1));
+
 		TableColumn<Nhanvien, String> colMa = new TableColumn<Nhanvien, String>("Mã");
 		colMa.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
-		
+
 		TableColumn<Nhanvien, String> colTen = new TableColumn<Nhanvien, String>("Tên");
 		colTen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
-		
-//		TableColumn<Nhanvien, String> colNhanVienQuyDoi = new TableColumn<NhanVien, String>("Tỷ giá quy đổi");
-//		colNhanVienQuyDoi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNhanVienquydoi().toString()));
-//		colNhanVienQuyDoi.setStyle( "-fx-alignment: CENTER-RIGHT;"); // Set text align right for number
-		
+
+		TableColumn<Nhanvien, String> colGioiTinh = new TableColumn<Nhanvien, String>("Giới tính");
+		colGioiTinh.setCellValueFactory(
+				cellData -> new SimpleStringProperty(cellData.getValue().getGioiTinh() == false ? "Nữ" : "Nam"));
+
+		TableColumn<Nhanvien, String> colEmail = new TableColumn<Nhanvien, String>("Email");
+		colEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+
+		TableColumn<Nhanvien, String> colSDT = new TableColumn<Nhanvien, String>("SDT");
+		colSDT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDienThoai()));
+
+		DecimalFormat dFormat = new DecimalFormat("####,###,###.00");
+		TableColumn<Nhanvien, String> colLuong = new TableColumn<Nhanvien, String>("Lương");
+		colLuong.setCellValueFactory(
+				cellData -> new SimpleStringProperty(dFormat.format(cellData.getValue().getLuong())));
+
+		TableColumn<Nhanvien, String> colDiaChi = new TableColumn<Nhanvien, String>("Địa chỉ");
+		colDiaChi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDiaChi()));
+
+		TableColumn<Nhanvien, String> colChucVu = new TableColumn<Nhanvien, String>("Chức vụ");
+		colChucVu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getChucVu()));
+
+		TableColumn<Nhanvien, String> colBoPhan = new TableColumn<Nhanvien, String>("Bộ phận");
+		colBoPhan.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBophan().getTen()));
+
 		this.tableNhanVien.setItems(this.getDSNhanVien());
-		this.tableNhanVien.getColumns().addAll(colSTT, colMa, colTen);
+		this.tableNhanVien.getColumns().addAll(colSTT, colMa, colTen, colGioiTinh, colEmail, colSDT, colLuong,
+				colChucVu, colBoPhan,colDiaChi);
 	}
+
 	private void deleteNhanVien() {
 		Nhanvien NhanVien = this.tableNhanVien.getSelectionModel().getSelectedItem();
-		if ( NhanVien == null ) {
+		if (NhanVien == null) {
 			return;
 		}
 		NhanvienHome nhanVienHome = new NhanvienHome();
@@ -224,12 +270,10 @@ public class DanhSachNhanVienController {
 		this.refreshNhanVienTableData();
 		this.setButtonControlsDisable(true);
 	}
+
 	@FXML
 	private void onButtonXoaClick() {
-		DialogConfirmController.show(
-				"Xóa tỷ giá?",
-				"Bạn có chắc muốn xóa tỷ giá này",
-				()-> this.deleteNhanVien(),
+		DialogConfirmController.show("Xóa tỷ giá?", "Bạn có chắc muốn xóa tỷ giá này", () -> this.deleteNhanVien(),
 				null);
 	}
 }
