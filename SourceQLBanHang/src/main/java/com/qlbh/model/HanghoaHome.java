@@ -112,7 +112,6 @@ public class HanghoaHome extends AbstractDao{
 	
 	public void themSoLuongHangHoa(Hanghoa hanghoa,int khoid, int soLuong){
 		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
-		System.err.println(hangHoaResult.getId() + "");
 		if(hangHoaResult == null){
 			Khohang khohang = new KhohangHome().getKhoHang(khoid);
 			hanghoa.setKhohang(khohang);
@@ -121,8 +120,8 @@ public class HanghoaHome extends AbstractDao{
 			super.save(hanghoa);
 			return;
 		}
-		hangHoaResult.setTonkho(hanghoa.getTonkho() + soLuong);
-		super.update(hanghoa);
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() + soLuong);
+		super.update(hangHoaResult);
 	}
 	
 	public void giamSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong){
@@ -135,7 +134,7 @@ public class HanghoaHome extends AbstractDao{
 			super.save(hanghoa);
 			return;
 		}
-		hangHoaResult.setTonkho(hanghoa.getTonkho() -  soLuong);
-		super.update(hanghoa);
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
+		super.update(hangHoaResult);
 	}
 }
