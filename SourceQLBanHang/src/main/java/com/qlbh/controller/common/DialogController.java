@@ -88,6 +88,7 @@ public class DialogController {
 		button.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				root.getChildren().remove(stackPane);
 				dialog.close();
 			}
 		});

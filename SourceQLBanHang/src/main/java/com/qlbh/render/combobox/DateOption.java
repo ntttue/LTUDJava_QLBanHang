@@ -1,10 +1,7 @@
 package com.qlbh.render.combobox;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -16,22 +13,20 @@ public class DateOption {
 	static final Integer THANG_NAY = 3;
 	private Date beginDate, endDate;
 	private String name;
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
-	private Calendar calendar = new GregorianCalendar(2013,1,28,13,24,56);
 	public DateOption(String name, Date beginDate, Date endDate) {
 		this.name = name;
-		this.beginDate = beginDate;
-		this.endDate = endDate;
+		this.setBeginDate(beginDate);
+		this.setEndDate(endDate);
 	}
 	public DateOption() {}
 	public DateOption getDateOption(Integer id) {
 		switch(id) {
 			case 1:
-				return new DateOption("Hôm nay", calendar.getTime(), calendar.getTime());
+				return new DateOption("Hôm nay", new Date(), new Date());
 			case 2:
-				return new DateOption("Tuần này", calendar.getTime(), calendar.getTime());
+				return new DateOption("Tuần này", new Date(), new Date());
 			case 3:
-				return new DateOption("Tháng này", calendar.getTime(), calendar.getTime());
+				return new DateOption("Tháng này", new Date(), new Date());
 		}
 		return null;
 	}
@@ -47,5 +42,17 @@ public class DateOption {
 		);
 		ObservableList<DateOption> oDateOptions = FXCollections.observableList(dateOptions);
 		return oDateOptions;
+	}
+	public Date getBeginDate() {
+		return beginDate;
+	}
+	private void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	private void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 }
