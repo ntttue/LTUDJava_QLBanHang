@@ -3,7 +3,7 @@ package com.qlbh.controller.common;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-public class checkValid {
+public class CheckValid {
 	public static boolean isValidEmailAddress(String email) {
 		boolean result = true;
 		try {

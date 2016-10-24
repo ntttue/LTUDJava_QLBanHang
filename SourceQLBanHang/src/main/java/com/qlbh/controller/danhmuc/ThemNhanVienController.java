@@ -8,7 +8,7 @@ import javax.mail.internet.InternetAddress;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.qlbh.controller.common.DialogController;
-import com.qlbh.controller.common.checkValid;
+import com.qlbh.controller.common.CheckValid;
 import com.qlbh.model.BophanHome;
 import com.qlbh.model.KhachhangHome;
 import com.qlbh.model.NhanvienHome;
@@ -124,16 +124,16 @@ public class ThemNhanVienController {
 			return;
 		}
 		if (this.numDienThoai.getText().trim().length() != 0
-				&& !checkValid.isValidPhoneNumber(this.numDienThoai.getText())) {
+				&& !CheckValid.isValidPhoneNumber(this.numDienThoai.getText())) {
 			this.lblError.setText("SDT nhập không đúng định dạng.");
 			return;
 		}
-		if (this.txtEmail.getText().trim().length() != 0 && !checkValid.isValidEmailAddress(this.txtEmail.getText())) {
+		if (this.txtEmail.getText().trim().length() != 0 && !CheckValid.isValidEmailAddress(this.txtEmail.getText())) {
 			System.out.println(this.txtEmail.getText().trim());
 			this.lblError.setText("Email nhập không đúng định dạng.");
 			return;
 		}
-		if (this.numLuong.getText().trim().length() != 0 && !checkValid.isNumeric(this.numLuong.getText())) {
+		if (this.numLuong.getText().trim().length() != 0 && !CheckValid.isNumeric(this.numLuong.getText())) {
 			this.lblError.setText("Lương nhập không phải là số.");
 			return;
 		}
@@ -143,7 +143,7 @@ public class ThemNhanVienController {
 		if (nhanVienHome.saveReturnObj(nv)) {
 			DanhSachNhanVienController.nhanVienController.onNhanVienAdded();
 		} else {
-			DialogController.show(root, null, "Thông báo", "Thêm bộ phận không thành công. Vui lòng thử lại.", false);
+			DialogController.show(root, null, "Thông báo", "Thêm nhân viên không thành công. Vui lòng thử lại.", false);
 		}
 
 	}
