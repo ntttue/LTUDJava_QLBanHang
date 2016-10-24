@@ -1,5 +1,6 @@
 package com.qlbh.controller.chucnang;
 
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -18,6 +19,7 @@ import com.qlbh.model.NhacungcapHome;
 import com.qlbh.model.NhanvienHome;
 import com.qlbh.model.PhieunhapHome;
 import com.qlbh.pojo.Chitietphieunhap;
+import com.qlbh.pojo.Donvitinh;
 import com.qlbh.pojo.Hanghoa;
 import com.qlbh.pojo.Khohang;
 import com.qlbh.pojo.Nhacungcap;
@@ -63,6 +65,8 @@ public class NhapHangController {
 	private List<Hanghoa> hangHoaList;
 	private ChitietphieunhapHome chitietphieunhapHome;
 	private ObservableList<Hanghoa> cmbModelHangHoa;
+	private Phieunhap phieunhap;
+	private final DecimalFormat doubleFormat = new DecimalFormat("#");
 
 	@FXML
 	private JFXButton btnLuu;
@@ -354,7 +358,8 @@ public class NhapHangController {
 		});
 		// Don gia
 		TableColumn<Chitietphieunhap, String> colDonGia = new TableColumn<>("Đơn giá");
-		colDonGia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDongia().toString()));
+		colDonGia.setCellValueFactory(
+				cellData -> new SimpleStringProperty(doubleFormat.format(cellData.getValue().getDongia())));
 		colDonGia.setCellFactory(TextFieldTableCell.forTableColumn());
 		colDonGia.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Chitietphieunhap, String>>() {
 
@@ -370,8 +375,8 @@ public class NhapHangController {
 		});
 		// Thanh tien
 		TableColumn<Chitietphieunhap, String> colThanhTien = new TableColumn<>("Thành tiền");
-		colThanhTien.setCellValueFactory(
-				cellData -> new SimpleStringProperty(cellData.getValue().getThanhtien().toString()));
+		colThanhTien.setCellValueFactory(cellData -> new SimpleStringProperty(
+				doubleFormat.format(cellData.getValue().getThanhtien())));
 		// Ghi chu
 		TableColumn<Chitietphieunhap, String> colGhiChu = new TableColumn<>("Ghi chú");
 		colGhiChu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
@@ -385,30 +390,35 @@ public class NhapHangController {
 			}
 		});
 		// Add column
-		tableChiTiet.getColumns().addAll(colSTT, colMaHang, colTenHang, colSoLuong, colDonGia, colThanhTien, colGhiChu);
+		tableChiTiet.getColumns().addAll(colSTT, colMaHang, colTenHang, colDonVi, colSoLuong, colDonGia, colThanhTien,
+				colGhiChu);
 		tableChiTiet.setEditable(true);
 		modelTableChiTiet = FXCollections.observableArrayList();
 		tableChiTiet.setItems(modelTableChiTiet);
 		addRowTable();
 	}
-	
-	private void updateTotal(){
+
+	private void updateTotal() {
 		double total = 0;
-		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
+		for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
 			total += chitietphieunhap.getThanhtien();
 		}
-		txtThanhToan.setText(total + "");
+		txtThanhToan.setText(doubleFormat.format(total));
 	}
 
 	private void addRowTable() {
+		Donvitinh donvitinh = new Donvitinh();
+		donvitinh.setTen("");
 		Hanghoa hanghoa = new Hanghoa();
 		hanghoa.setMa("");
 		hanghoa.setTen("");
+		hanghoa.setDonvitinh(donvitinh);
 		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 0, 0d, 0d, "", true, "");
 		tableChiTiet.getItems().add(chitietphieunhap);
 	}
 
 	private void createNew() {
+		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
 		cmbNhanVien.setValue(null);
@@ -425,6 +435,7 @@ public class NhapHangController {
 	}
 
 	private void refresh() {
+		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
 		cmbNhanVien.setValue(null);
@@ -434,7 +445,7 @@ public class NhapHangController {
 		txtThanhToan.setText("0");
 		txtDienThoai.setText("");
 		txtMaPhieu.setText("");
-		if(!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()){
+		if (!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()) {
 			addRowTable();
 		}
 	}
@@ -443,7 +454,10 @@ public class NhapHangController {
 		LocalDate localDate = datePickerNhap.getValue();
 		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 		Date ngayNhap = Date.from(instant);
-		Phieunhap phieunhap = new Phieunhap();
+		if (phieunhap == null) {
+			phieunhap = new Phieunhap();
+			phieunhap.setId(0);
+		}
 		phieunhap.setKhohang(cmbKho.getValue());
 		phieunhap.setNhanvien(cmbNhanVien.getValue());
 		phieunhap.setNhacungcap(cmbTenNCC.getValue());
@@ -455,25 +469,45 @@ public class NhapHangController {
 		phieunhap.setTongtien(Double.parseDouble(txtThanhToan.getText().trim()));
 		phieunhap.setActivity(true);
 		phieunhap.setChitietphieunhaps(getChiTietPhieuNhapList());
-		phieunhapHome.save(phieunhap);
-		//Save chi tiet
-		for(Chitietphieunhap chitietphieunhap : modelTableChiTiet){
-			chitietphieunhap.setPhieunhap(phieunhap);
-			chitietphieunhapHome.save(chitietphieunhap);
+		if (phieunhap.getId() == 0) {
+			phieunhapHome.save(phieunhap);
+			// Save chi tiet
+			for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
+				chitietphieunhap.setPhieunhap(phieunhap);
+				chitietphieunhapHome.save(chitietphieunhap);
+				hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
+						chitietphieunhap.getSoluong());
+			}
+		} else {
+			updatePhieuNhap(phieunhap);
 		}
-		
+
 	}
-	
-	private Set<Chitietphieunhap> getChiTietPhieuNhapList(){
+
+	private Set<Chitietphieunhap> getChiTietPhieuNhapList() {
 		modelTableChiTiet.remove(modelTableChiTiet.size() - 1);
 		Set<Chitietphieunhap> chitietphieunhaps = new HashSet<>();
 		chitietphieunhaps.addAll(modelTableChiTiet);
 		return chitietphieunhaps;
 	}
-	
-	private void updatePhieuNhap(Phieunhap phieunhap){
+
+	private void updatePhieuNhap(Phieunhap phieunhap) {
 		phieunhapHome.update(phieunhap);
-		
+		for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
+			chitietphieunhapHome.update(chitietphieunhap);
+			Chitietphieunhap chitiet = chitietphieunhapHome.findById(chitietphieunhap.getId());
+			int newValue = chitietphieunhap.getSoluong();
+			int oldValue = chitiet.getSoluong();
+			if (chitiet != null) {
+				if (newValue >= oldValue) {
+					hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
+							newValue - oldValue);
+				} else {
+					hangHoaHome.giamSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
+							newValue - oldValue);
+				}
+			}
+		}
 	}
 
 }
