@@ -220,8 +220,8 @@ public class DanhSachNhanVienController {
 		// Create column for table NhanVien
 		TableColumn<Nhanvien, Number> colSTT = new TableColumn<Nhanvien, Number>("#");
 		colSTT.setSortable(false);
-		 colSTT.setResizable(false);
-		 colSTT.setPrefWidth(30);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
 		colSTT.setCellValueFactory(
 				column -> new ReadOnlyObjectWrapper<Number>(tableNhanVien.getItems().indexOf(column.getValue()) + 1));
 
@@ -241,7 +241,7 @@ public class DanhSachNhanVienController {
 		TableColumn<Nhanvien, String> colSDT = new TableColumn<Nhanvien, String>("SDT");
 		colSDT.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDienThoai()));
 
-		DecimalFormat dFormat = new DecimalFormat("####,###,###.00");
+		DecimalFormat dFormat = new DecimalFormat("####,###,###");
 		TableColumn<Nhanvien, String> colLuong = new TableColumn<Nhanvien, String>("Lương");
 		colLuong.setCellValueFactory(
 				cellData -> new SimpleStringProperty(dFormat.format(cellData.getValue().getLuong())));
@@ -257,7 +257,7 @@ public class DanhSachNhanVienController {
 
 		this.tableNhanVien.setItems(this.getDSNhanVien());
 		this.tableNhanVien.getColumns().addAll(colSTT, colMa, colTen, colGioiTinh, colEmail, colSDT, colLuong,
-				colChucVu, colBoPhan,colDiaChi);
+				colChucVu, colBoPhan, colDiaChi);
 	}
 
 	private void deleteNhanVien() {

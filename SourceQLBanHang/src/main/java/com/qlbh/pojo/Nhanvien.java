@@ -25,6 +25,7 @@ public class Nhanvien implements java.io.Serializable {
 
 	private Integer id;
 	private Bophan bophan;
+	//Nhân viên quản lý
 	private Nhanvien nhanvien;
 	private String ma;
 	private String ten;

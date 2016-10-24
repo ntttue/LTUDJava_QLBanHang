@@ -2,9 +2,13 @@ package com.qlbh.controller.danhmuc;
 
 import java.util.List;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.controller.common.checkValid;
 import com.qlbh.model.BophanHome;
 import com.qlbh.model.KhachhangHome;
 import com.qlbh.model.NhanvienHome;
@@ -119,6 +123,20 @@ public class ThemNhanVienController {
 			this.lblError.setText("Mã nhân viên đã tồn tại. Vui lòng nhập lại.");
 			return;
 		}
+		if (this.numDienThoai.getText().trim().length() != 0
+				&& !checkValid.isValidPhoneNumber(this.numDienThoai.getText())) {
+			this.lblError.setText("SDT nhập không đúng định dạng.");
+			return;
+		}
+		if (this.txtEmail.getText().trim().length() != 0 && !checkValid.isValidEmailAddress(this.txtEmail.getText())) {
+			System.out.println(this.txtEmail.getText().trim());
+			this.lblError.setText("Email nhập không đúng định dạng.");
+			return;
+		}
+		if (this.numLuong.getText().trim().length() != 0 && !checkValid.isNumeric(this.numLuong.getText())) {
+			this.lblError.setText("Lương nhập không phải là số.");
+			return;
+		}
 		Nhanvien nv = this.getDataFromForm();
 		nv.setActivity(true);
 
@@ -141,7 +159,7 @@ public class ThemNhanVienController {
 		nv.setChucVu(this.txtChucVu.getText());
 		nv.setLuong(this.getLuong());
 		if (this.cbxNhanVienQL.getValue().getId() != 0)
-//			nv.setNhanvienQL(this.cbxNhanVienQL.getValue());
+			nv.setNhanvien(this.cbxNhanVienQL.getValue());
 		nv.setBophan(this.cbxBoPhan.getValue());
 		return nv;
 	}
@@ -153,4 +171,5 @@ public class ThemNhanVienController {
 		}
 		return luong;
 	}
+
 }
