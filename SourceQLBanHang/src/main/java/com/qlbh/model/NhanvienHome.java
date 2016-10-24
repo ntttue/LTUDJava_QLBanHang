@@ -31,9 +31,9 @@ public class NhanvienHome extends AbstractDao {
 		return super.findAll(Nhanvien.class);
 	}
 
-	// public void save(Nhanvien obj) {
-	// super.save(obj);
-	// }
+	/*
+	 * save checksave
+	 * */
 	public Boolean saveReturnObj(Nhanvien obj) {
 		Integer result = super.saveReturnID(obj);
 		System.out.println(result);
@@ -63,7 +63,7 @@ public class NhanvienHome extends AbstractDao {
 	}
 
 	public Nhanvien findByMa(String ma) {
-		Nhanvien bp = null;
+		Nhanvien nv = null;
 		try {
 			session = HibernateFactory.getSessionFactory().openSession();
 			// startOperation();
@@ -72,9 +72,9 @@ public class NhanvienHome extends AbstractDao {
 			query.setParameter("ma", ma);
 			List<Nhanvien> ds = query.list();
 			if (!ds.isEmpty()) {
-				bp = new Nhanvien();
-				bp = ds.get(0);
-				System.out.println(bp.getTen());
+				nv = new Nhanvien();
+				nv = ds.get(0);
+				System.out.println(nv.getTen());
 			}
 		} catch (HibernateException e) {
 			handleException(e);
@@ -82,7 +82,7 @@ public class NhanvienHome extends AbstractDao {
 		} finally {
 			HibernateFactory.close(session);
 		}
-		return bp;
+		return nv;
 	}
 
 	public List<Nhanvien> getNhanVienList() {

@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" onKeyPressed="#onKeyAction" prefHeight="455.0" prefWidth="430.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.ThemNhanVienController">
+<AnchorPane id="AnchorPane" fx:id="root" onKeyPressed="#onKeyAction" prefHeight="455.0" prefWidth="430.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.SuaNhanVienController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -49,7 +49,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField fx:id="txtMa" layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                        <TextField fx:id="txtMa" disable="true" layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
                         <TextField fx:id="txtTen" layoutY="67.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
                         <JFXRadioButton fx:id="radioButtonNam" layoutY="87.0" text="Nam" AnchorPane.topAnchor="85.0" />
                         <JFXRadioButton fx:id="radioButtonNu" layoutX="150.0" layoutY="87.0" text="Nữ" AnchorPane.topAnchor="85.0" />
