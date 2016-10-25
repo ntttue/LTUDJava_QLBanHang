@@ -20,7 +20,6 @@ public abstract class AbstractDao {
 	private Session session;
 	private Transaction tx;
 	final static Logger logger = Logger.getLogger(AbstractDao.class);
-	public static NhatkyHome nhatkyHome = new NhatkyHome();
 
 	public AbstractDao() {
 		HibernateFactory.buildIfNeeded();
@@ -43,9 +42,6 @@ public abstract class AbstractDao {
 			startOperation();
 			session.update(obj);
 			tx.commit();
-			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
-				this.saveNhatKy(obj.getClass().toString(), "Sửa");
-			}
 		} catch (HibernateException e) {
 			handleException(e);
 		} finally {
@@ -58,9 +54,6 @@ public abstract class AbstractDao {
 			startOperation();
 			session.save(obj);
 			tx.commit();
-			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
-				this.saveNhatKy(obj.getClass().toString(), "Thêm");
-			}
 		} catch (HibernateException e) {
 			handleException(e);
 		} finally {
@@ -74,10 +67,6 @@ public abstract class AbstractDao {
 			startOperation();
 			Integer resultID = (Integer) session.save(obj);
 			tx.commit();
-			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
-				this.saveNhatKy(obj.getClass().toString(), "Thêm");
-			}
-
 			return resultID;
 		} catch (HibernateException e) {
 			handleException(e);

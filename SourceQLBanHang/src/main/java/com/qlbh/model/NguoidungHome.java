@@ -25,7 +25,7 @@ public class NguoidungHome extends AbstractDao {
 	final static Logger logger = Logger.getLogger(NguoidungHome.class);
 
 	public void create(Nguoidung nd) throws DataAccessLayerException {
-		super.saveOrUpdate(nd);
+		super.save(nd);
 	}
 
 	public NguoidungHome() {

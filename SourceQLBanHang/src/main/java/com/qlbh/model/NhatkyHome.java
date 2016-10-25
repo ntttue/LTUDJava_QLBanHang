@@ -39,7 +39,6 @@ public class NhatkyHome extends AbstractDao {
 	}
 
 	public void delete(Nhatky obj) {
-		System.out.println("delete nhật ký hệ thống");
 		obj.setActivity(false);
 		obj.setNgay(null);
 		super.update(obj);
