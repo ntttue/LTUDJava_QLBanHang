@@ -34,5 +34,6 @@
 		<mapping resource="com/qlbh/pojo/Chitietphieunhap.hbm.xml" />
 		<mapping resource="com/qlbh/pojo/Loaihang.hbm.xml" />
 		<mapping resource="com/qlbh/pojo/Nhanvien.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Nhatky.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
