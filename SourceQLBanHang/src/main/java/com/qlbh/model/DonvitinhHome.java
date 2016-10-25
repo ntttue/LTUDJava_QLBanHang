@@ -16,21 +16,24 @@ import com.qlbh.util.DataAccessLayerException;
 public class DonvitinhHome extends AbstractDao {
 
 	private static final Log log = LogFactory.getLog(DonvitinhHome.class);
-	
+
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Donvitinh.class);
 	}
 
 	public void save(Donvitinh dvt) {
 		super.save(dvt);
+		super.saveNhatKy("Đơn vị tính", "Thêm");
 	}
 
 	public void update(Donvitinh dvt) {
 		super.update(dvt);
+		super.saveNhatKy("Đơn vị tính", "Cập nhật");
 	}
 
 	public void delete(Donvitinh dvt) {
 		dvt.setActivity(false);
 		super.update(dvt);
+		super.saveNhatKy("Đơn vị tính", "Xóa");
 	}
 }
