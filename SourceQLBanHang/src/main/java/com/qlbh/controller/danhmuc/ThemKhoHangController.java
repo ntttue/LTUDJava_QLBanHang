@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.qlbh.controller.common.CheckValid;
 import com.qlbh.model.KhohangHome;
 import com.qlbh.model.NhanvienHome;
 import com.qlbh.pojo.Khohang;
@@ -56,6 +57,22 @@ public class ThemKhoHangController {
 			lbValidate.setText("Vui lòng nhập Mã và Tên");
 			return;
 		}
+
+		if (txtDienThoai.getText().isEmpty() == false && CheckValid.isValidPhoneNumber(txtDienThoai.getText()) == true) {
+			lbValidate.setText("Số điện thoại không hợp lệ");
+			return;
+		}
+
+		if (txtFax.getText().isEmpty() == false && CheckValid.isValidPhoneNumber(txtFax.getText()) == true) {
+			lbValidate.setText("Số fax không hợp lệ");
+			return;
+		}
+
+		if (txtEmail.getText().isEmpty() == false && CheckValid.isValidEmailAddress(txtEmail.getText()) == false) {
+			lbValidate.setText("Email không hợp lệ");
+			return;
+		}
+
 		Khohang kh = new Khohang();
 		kh.setMa(txtMa.getText());
 		kh.setTen(txtTen.getText());
