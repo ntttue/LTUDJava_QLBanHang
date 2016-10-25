@@ -34,15 +34,18 @@ public class NhacungcapHome extends AbstractDao {
 
 	public void save(Nhacungcap ncc) {
 		super.save(ncc);
+		super.saveNhatKy("Nhà cung cấp", "Thêm");
 	}
 
 	public void update(Nhacungcap ncc) {
 		super.update(ncc);
+		super.saveNhatKy("Nhà cung cấp", "Cập nhật");
 	}
 
 	public void delete(Nhacungcap ncc) {
 		ncc.setActivity(false);
 		super.update(ncc);
+		super.saveNhatKy("Nhà cung cấp", "Xóa");
 	}
 
 	public List<Nhacungcap> getNhaCungCapList() {
