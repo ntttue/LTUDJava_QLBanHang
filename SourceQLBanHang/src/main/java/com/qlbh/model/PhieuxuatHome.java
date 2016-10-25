@@ -1,6 +1,7 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -28,22 +29,25 @@ public class PhieuxuatHome extends AbstractDao {
 	private Session session;
 
 	public List findAll() throws DataAccessLayerException {
-//		 System.out.println("find all");
 		 return super.findAll(Phieuxuat.class);
-//		try {
-//			session = HibernateFactory.getSessionFactory().openSession();
-//			// startOperation();
-//			String hql = "from "+Phieuxuat.class+" where activity = true";
-//			Query query = session.createQuery(hql);
-//			List<Phieuxuat> ds = query.list();
-//			return ds;
-//		} catch (HibernateException e) {
-//			handleException(e);
-//			logger.error("error in findFirst:  \n" + e.getMessage());
-//		} finally {
-//			HibernateFactory.close(session);
-//		}
-//		return null;
+	}
+	
+	public List getDataInPeriodTime(Date beginDay, Date enđDay) throws DataAccessLayerException {
+		try {
+			session = HibernateFactory.getSessionFactory().openSession();
+			String hql = "from "+Phieuxuat.class.getName()+" where activity = true and (ngaygiao BETWEEN :beginDay AND :enđDay)";
+			Query query = session.createQuery(hql);
+			query.setDate("beginDay", beginDay);
+			query.setDate("enđDay", enđDay);
+			List<Phieuxuat> ds = query.list();
+			return ds;
+		} catch (HibernateException e) {
+			handleException(e);
+			logger.error("error in findFirst:  \n" + e.getMessage());
+		} finally {
+			HibernateFactory.close(session);
+		}
+		return null;
 	}
 
 	public void save(Phieuxuat phieuXuat) {

@@ -74,7 +74,7 @@ public class TraTienController {
 		
 	}
 	@FXML
-	void onButtonLapPhieuThuClick(ActionEvent event) {
+	void onButtonXoaClick(ActionEvent event) {
 		
 	}
 	@FXML
