@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="365.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.SuaKhachHangController">
+<AnchorPane id="AnchorPane" prefHeight="335.0" prefWidth="800.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.SuaKhachHangController">
 	<children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -43,7 +43,6 @@
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Điện thoại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Email" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nợ hiện tại" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
@@ -55,7 +54,6 @@
                         <TextField fx:id="numDienThoai" layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <TextField fx:id="txtEmail" layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <TextField fx:id="numNoHienTai" layoutY="209.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-                        <TextField fx:id="numGioiHanNo" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="0.0">
@@ -74,7 +72,7 @@
                         <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Số tài khoản" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
                         <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Mã số thuế" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <Label prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Nick Skype" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
-                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Chiếc khấu (%)" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Giới hạn nợ" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -85,7 +83,7 @@
                         <TextField fx:id="txtSoTaiKhoan" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
                         <TextField fx:id="txtMaSoThue" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <TextField fx:id="txtSkype" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
-                        <TextField fx:id="numChietKhau" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <TextField fx:id="numGioiHanNo" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -94,6 +92,15 @@
       </AnchorPane>
       <AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
+            <AnchorPane prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fx:id="txtInputValidate" fill="#e40c0c" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
             <JFXButton graphicTextGap="15.0" layoutX="615.0" onAction="#onButtonLuuClick" prefHeight="30.0" prefWidth="85.0" ripplerFill="#8b99c6" text="Lưu" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
                <graphic>
                   <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="WHITE" />

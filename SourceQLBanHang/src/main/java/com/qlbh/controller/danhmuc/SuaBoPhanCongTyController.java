@@ -3,10 +3,7 @@ package com.qlbh.controller.danhmuc;
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.model.BophanHome;
-import com.qlbh.model.TygiaHome;
 import com.qlbh.pojo.Bophan;
-import com.qlbh.pojo.Tygia;
-import com.qlbh.util.DataInputUtils;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

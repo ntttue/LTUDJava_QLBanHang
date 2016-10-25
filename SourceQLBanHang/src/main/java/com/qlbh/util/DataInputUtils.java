@@ -1,7 +1,10 @@
 package com.qlbh.util;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import org.apache.log4j.Logger;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 public class DataInputUtils {
+	final static Logger logger = Logger.getLogger(DataInputUtils.class);
 	/**
 	 * Set text input only is float value, switch split character between dot and comma by set value of useDot
 	 * Allow format: 123,45 or 123.45
@@ -118,5 +122,71 @@ public class DataInputUtils {
 				return LocalDate.parse(dateString, dateTimeFormatter);
 			}
 		});
+	}
+	//--------------------------------------------------------------------------------------------------
+	/**
+	 * 
+	 * @param text
+	 * @return true: input empty
+	 */
+	public static boolean isEmpty(TextField textField) {
+		if ( textField.getText() == null || textField.getText().trim().isEmpty() || textField.getLength() == 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isEmpty(String value) {
+		if ( value == null || value.trim().isEmpty() ) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static String getStringFromTextField(TextField textField) {
+		if ( ! DataInputUtils.isEmpty(textField) ) {
+			return textField.getText();
+		}
+		return "";
+	}
+	
+	public static Integer getIntegerFromTextField(TextField textField) {
+		if ( ! DataInputUtils.isEmpty(textField) ) {
+			try {
+				return Integer.valueOf(textField.getText());
+			} catch(Exception ex) {
+				logger.error("Lấy giá trị số nguyên từ giá trị của textfield bị lỗi: \n" + ex.getMessage());
+				return 0;
+			}
+		}
+		return 0;
+	}
+	
+	public static Float getFloatFromTextField(TextField textField) {
+		if ( ! DataInputUtils.isEmpty(textField) ) {
+			try {
+				return Float.valueOf(textField.getText());
+			} catch(Exception ex) {
+				logger.error("Lấy giá trị số float từ giá trị của textfield bị lỗi: \n" + ex.getMessage());
+				return Float.valueOf(0);
+			}
+		}
+		return Float.valueOf(0);
+	}
+	
+	public static BigDecimal getBigDecimalFromTextField(TextField textField) {
+		return BigDecimal.valueOf(DataInputUtils.getFloatFromTextField(textField));
+	}
+	
+	/**
+	 * Catch the case String value is null
+	 * @param value
+	 * @return
+	 */
+	public static String getStringValue(String value) {
+		if ( DataInputUtils.isEmpty(value) ) {
+			return "";
+		}
+		return value;
 	}
 }

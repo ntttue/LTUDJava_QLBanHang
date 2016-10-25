@@ -11,12 +11,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
 
 public class ThuTienController {
 	@FXML
 	ComboBox<DateOption> cbxTuyChonNgay;
 	@FXML
 	DatePicker dateNgayBatDau, dateNgayKetThuc;
+	@FXML
+	TableView<?> tableThuTien;
 
 	@FXML
 	public void initialize() {
@@ -27,22 +30,21 @@ public class ThuTienController {
 		// Set format of date for two DatePicker
 		DataInputUtils.formatDatePicker(dateNgayBatDau, "dd/MM/yyyy");
 		DataInputUtils.formatDatePicker(dateNgayKetThuc, "dd/MM/yyyy");
+		dateNgayBatDau.setShowWeekNumbers(false);
+		dateNgayKetThuc.setShowWeekNumbers(false);
 		// Set initial date as a first option
 		this.setDatePeriod();
 	}
 
 	@FXML
 	void onSelectedItemChange(ActionEvent event) {
-		System.out.println("DateOption change");
 		this.setDatePeriod();
 	}
 
 	private void setDatePeriod() {
 		DateOption selectedDateOption = cbxTuyChonNgay.getValue();
-		LocalDate localdateBegin = selectedDateOption.getBeginDate().toInstant().atZone(ZoneId.systemDefault())
-				.toLocalDate();
-		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault())
-				.toLocalDate();
+		LocalDate localdateBegin = selectedDateOption.getBeginDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		dateNgayBatDau.setValue(localdateBegin);
 		dateNgayKetThuc.setValue(localdateEnd);
 	}
@@ -74,8 +76,10 @@ public class ThuTienController {
 
 	@FXML
 	void onButtonXemClick(ActionEvent event) {
-
+		
 	}
+	
+	
 
 	@FXML
 	void onButtonLapPhieuThuClick(ActionEvent event) {

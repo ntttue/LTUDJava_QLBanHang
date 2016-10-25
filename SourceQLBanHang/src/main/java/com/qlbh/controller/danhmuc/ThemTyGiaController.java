@@ -6,23 +6,29 @@ import com.qlbh.util.DataInputUtils;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.scene.text.Text;
 
 public class ThemTyGiaController {
 	@FXML
 	private TextField txtMa, txtTen, numTyGiaQuyDoi;
+	@FXML
+	private Text txtInputValidate;
 	@FXML
 	protected void initialize() {
 		DataInputUtils.setFloatOnlyForTextField(this.numTyGiaQuyDoi);
 	}
 	@FXML
 	public void onButtonLuuClick() {
-		System.out.println("ThemTyGiaScreen: Clicked on button Lưu");
+		// Check validate
+		if ( DataInputUtils.isEmpty(txtMa) || DataInputUtils.isEmpty(txtTen) || DataInputUtils.isEmpty(numTyGiaQuyDoi) ) {
+			txtInputValidate.setText("Vui lòng điền đủ các mục (*)");
+			return;
+		}
+		txtInputValidate.setText("");
 		Tygia tyGia = new Tygia();
-		tyGia.setMa(this.txtMa.getText());
-		tyGia.setTen(this.txtTen.getText());
-		tyGia.setTygiaquydoi(Float.parseFloat(this.numTyGiaQuyDoi.getText()));
+		tyGia.setMa(DataInputUtils.getStringFromTextField(txtMa));
+		tyGia.setTen(DataInputUtils.getStringFromTextField(txtTen));
+		tyGia.setTygiaquydoi(DataInputUtils.getFloatFromTextField(numTyGiaQuyDoi));
 		tyGia.setActivity(true);
 		
 		TygiaHome tyGiaHome = new TygiaHome();
@@ -32,7 +38,6 @@ public class ThemTyGiaController {
 	}
 	@FXML
 	public void onButtonDongClick() {
-		System.out.println("ThemTyGiaScreen: Clicked on button Đóng");
 		TyGiaController.tyGiaController.closeManHinhThemTyGia();
 	}
 }

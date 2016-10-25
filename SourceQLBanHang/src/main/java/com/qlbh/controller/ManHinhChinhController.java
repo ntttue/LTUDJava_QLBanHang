@@ -35,7 +35,7 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang;
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong;
 
 	@FXML
 	private Text lblStatus;
@@ -514,6 +514,37 @@ public class ManHinhChinhController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("exeption open tabNhanVien", e);
+			e.printStackTrace();
+		}
+	}
+
+	public static Tab tabNhatKy = null;
+
+	@FXML
+	void btnNhatKyHeThongClick(ActionEvent event) {
+		String title = "Nhật ký hệ thống";
+		String fxmlPath = "../fxml/hethong/NhatKyHeThong.fxml";
+		if (ManHinhChinhController.tabNhatKy != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhatKy);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabNhatKy = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabNhatKy = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error("exeption open tabNhatKyHeThong", e);
 			e.printStackTrace();
 		}
 	}

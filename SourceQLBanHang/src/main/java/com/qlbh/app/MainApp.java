@@ -1,6 +1,7 @@
 package com.qlbh.app;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.pojo.Nguoidung;
@@ -73,6 +74,11 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		/**
+		 * Set calendar begin day to Monday
+		 * http://stackoverflow.com/questions/269486/how-to-specify-firstdayofweek-for-java-util-calendar-using-a-jvm-argument
+		 */
+		Locale.setDefault(new Locale ("en", "GB"));
 		this.initStage();
 		if (MainApp.loginUser == null) {
 			MainApp.setPrimaryStage(MainApp.loginStage);
