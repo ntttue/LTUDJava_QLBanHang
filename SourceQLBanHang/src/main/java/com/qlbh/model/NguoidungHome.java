@@ -26,6 +26,7 @@ public class NguoidungHome extends AbstractDao {
 
 	public void create(Nguoidung nd) throws DataAccessLayerException {
 		super.save(nd);
+		super.saveNhatKy("Người dùng", "Thêm");
 	}
 
 	public NguoidungHome() {
@@ -34,6 +35,7 @@ public class NguoidungHome extends AbstractDao {
 
 	public void update(Nguoidung obj) {
 		super.update(obj);
+		super.saveNhatKy("Người dùng", "Cập nhật");
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
