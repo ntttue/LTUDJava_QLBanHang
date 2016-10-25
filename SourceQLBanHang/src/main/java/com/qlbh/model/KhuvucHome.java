@@ -32,21 +32,25 @@ public class KhuvucHome extends AbstractDao {
 
 	public void save(Khuvuc khuVuc) {
 		super.save(khuVuc);
+		super.saveNhatKy("Khu vực", "Thêm");
 	}
 
 	public void update(Khuvuc khuVuc) {
 		super.update(khuVuc);
+		super.saveNhatKy("Khu vực", "Cập nhật");
 	}
 
 	public void deletePermanently(Khuvuc khuVuc) {
 		super.delete(khuVuc);
+		super.saveNhatKy("Khu vực", "Xóa");
 	}
 
 	public void delete(Khuvuc khuVuc) {
 		khuVuc.setActivity(false);
 		super.update(khuVuc);
+		super.saveNhatKy("Khu vực", "Xóa");
 	}
-	
+
 	public List<Khuvuc> getKhuVucList() {
 		Session session = HibernateFactory.openSession();
 		List<Khuvuc> khuvucs = null;
@@ -56,7 +60,7 @@ public class KhuvucHome extends AbstractDao {
 			khuvucs = query.list();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return khuvucs;
