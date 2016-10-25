@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.password">1234</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qlbh?useUnicode=yes&amp;characterEncoding=UTF-8</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.search.autoregister_listeners">true</property>
-    <property name="hibernate.validator.apply_to_ddl">false</property>
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.format_sql">true</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="com/qlbh/pojo/Loaikhachhang.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Khohang.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Chitietphieuxuat.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Tygia.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Nguoidung.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Hanghoa.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Nhacungcap.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Keeplogged.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Phieuxuat.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Donvitinh.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Bophan.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Khachhang.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Quyen.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Phieunhap.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Congty.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Khuvuc.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Nhomhanghoa.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Chitietphieunhap.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Loaihang.hbm.xml"/>
-    <mapping resource="com/qlbh/pojo/Nhanvien.hbm.xml"/>
-  </session-factory>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">1234</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qlbh?useUnicode=yes&amp;characterEncoding=UTF-8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.search.autoregister_listeners">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+		<mapping resource="com/qlbh/pojo/Loaikhachhang.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Khohang.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Chitietphieuxuat.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Tygia.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Nguoidung.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Hanghoa.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Nhacungcap.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Keeplogged.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Phieuxuat.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Donvitinh.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Bophan.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Khachhang.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Quyen.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Phieunhap.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Congty.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Khuvuc.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Nhomhanghoa.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Chitietphieunhap.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Loaihang.hbm.xml" />
+		<mapping resource="com/qlbh/pojo/Nhanvien.hbm.xml" />
+	</session-factory>
 </hibernate-configuration>

@@ -2,21 +2,15 @@ package com.qlbh.controller.danhmuc;
 
 import java.util.List;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
+import com.qlbh.controller.common.CheckValid;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.controller.common.Display;
-import com.qlbh.controller.common.CheckValid;
 import com.qlbh.model.BophanHome;
-import com.qlbh.model.KhachhangHome;
 import com.qlbh.model.NhanvienHome;
 import com.qlbh.pojo.Bophan;
-import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Nhanvien;
-import com.qlbh.pojo.Tygia;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
