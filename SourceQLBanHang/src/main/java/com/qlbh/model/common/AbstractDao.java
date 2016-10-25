@@ -1,5 +1,6 @@
 package com.qlbh.model.common;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,7 +9,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.qlbh.app.MainApp;
 import com.qlbh.model.NhatkyHome;
+import com.qlbh.pojo.Keeplogged;
+import com.qlbh.pojo.Nhatky;
 import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
@@ -16,28 +20,32 @@ public abstract class AbstractDao {
 	private Session session;
 	private Transaction tx;
 	final static Logger logger = Logger.getLogger(AbstractDao.class);
+	public static NhatkyHome nhatkyHome = new NhatkyHome();
 
 	public AbstractDao() {
 		HibernateFactory.buildIfNeeded();
 	}
 
-	protected void saveOrUpdate(Object obj) {
-		try {
-			startOperation();
-			session.saveOrUpdate(obj);
-			tx.commit();
-		} catch (HibernateException e) {
-			handleException(e);
-		} finally {
-			HibernateFactory.close(session);
-		}
-	}
+	// protected void saveOrUpdate(Object obj) {
+	// try {
+	// startOperation();
+	// session.saveOrUpdate(obj);
+	// tx.commit();
+	// } catch (HibernateException e) {
+	// handleException(e);
+	// } finally {
+	// HibernateFactory.close(session);
+	// }
+	// }
 
 	protected void update(Object obj) {
 		try {
 			startOperation();
 			session.update(obj);
 			tx.commit();
+			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
+				this.saveNhatKy(obj.getClass().toString(), "Sửa");
+			}
 		} catch (HibernateException e) {
 			handleException(e);
 		} finally {
@@ -50,6 +58,9 @@ public abstract class AbstractDao {
 			startOperation();
 			session.save(obj);
 			tx.commit();
+			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
+				this.saveNhatKy(obj.getClass().toString(), "Thêm");
+			}
 		} catch (HibernateException e) {
 			handleException(e);
 		} finally {
@@ -63,6 +74,10 @@ public abstract class AbstractDao {
 			startOperation();
 			Integer resultID = (Integer) session.save(obj);
 			tx.commit();
+			if (obj.getClass() != Nhatky.class && obj.getClass() != Keeplogged.class) {
+				this.saveNhatKy(obj.getClass().toString(), "Thêm");
+			}
+
 			return resultID;
 		} catch (HibernateException e) {
 			handleException(e);
@@ -157,5 +172,16 @@ public abstract class AbstractDao {
 	protected void startOperation() throws HibernateException {
 		session = HibernateFactory.openSession();
 		tx = session.beginTransaction();
+	}
+
+	public void saveNhatKy(String table, String hanhDong) {
+		System.out.println("save nhật ký");
+		Nhatky nk = new Nhatky();
+		nk.setActivity(true);
+		nk.setBang(table);
+		nk.setHanhdong(hanhDong);
+		nk.setNgay(new Date());
+		nk.setNguoidung(MainApp.loginUser.getMand() + " - " + MainApp.loginUser.getTennd());
+		this.save(nk);
 	}
 }
