@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-25 18:53:00
+Date: 2016-10-26 02:29:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,17 +27,14 @@ CREATE TABLE `nhatky` (
   `ngay` datetime DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of nhatky
 -- ----------------------------
-INSERT INTO `nhatky` VALUES ('1', 'admin', 'NhanVien', 'Them', '2016-10-25 15:09:04', '');
-INSERT INTO `nhatky` VALUES ('2', 'admin', 'NhanVien', 'Them', '2016-10-25 15:09:04', '');
-INSERT INTO `nhatky` VALUES ('5', 'abc', 'abc', 'abc', '2016-10-25 18:26:12', '');
-INSERT INTO `nhatky` VALUES ('6', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:32:27', '');
-INSERT INTO `nhatky` VALUES ('7', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:43:38', '');
-INSERT INTO `nhatky` VALUES ('8', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:43:58', '');
-INSERT INTO `nhatky` VALUES ('9', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:44:50', '');
-INSERT INTO `nhatky` VALUES ('10', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:51:28', '');
-INSERT INTO `nhatky` VALUES ('11', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-25 18:51:58', '');
+INSERT INTO `nhatky` VALUES ('38', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 02:08:29', '');
+INSERT INTO `nhatky` VALUES ('39', 'ND0002 - ntttue', 'Bộ phận công ty', 'Xóa', '2016-10-26 02:08:37', '');
+INSERT INTO `nhatky` VALUES ('40', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 02:11:05', '');
+INSERT INTO `nhatky` VALUES ('41', 'ND0002 - ntttue', 'Đơn vị tính', 'Thêm', '2016-10-26 02:11:24', '');
+INSERT INTO `nhatky` VALUES ('42', 'ND0002 - ntttue', 'Đơn vị tính', 'Cập nhật', '2016-10-26 02:11:45', '');
+INSERT INTO `nhatky` VALUES ('43', 'ND0002 - ntttue', 'Đơn vị tính', 'Xóa', '2016-10-26 02:12:12', '');
