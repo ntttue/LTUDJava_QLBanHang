@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.qlbh.model.NhatkyHome;
 import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
@@ -96,7 +97,7 @@ public abstract class AbstractDao {
 		}
 		return obj;
 	}
-	
+
 	protected Integer getLastID(Class clazz) {
 		Integer lastID = null;
 		try {
@@ -104,7 +105,7 @@ public abstract class AbstractDao {
 			Query query = session.createQuery("select distinct max(id) from " + clazz.getName());
 			List objects = query.list();
 			Object a = query.getFirstResult();
-			lastID = (Integer)query.getFirstResult();
+			lastID = (Integer) query.getFirstResult();
 			tx.commit();
 		} catch (HibernateException e) {
 			handleException(e);

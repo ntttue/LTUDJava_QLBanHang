@@ -32,8 +32,8 @@ public class NguoidungHome extends AbstractDao {
 		super();
 	}
 
-	public void saveOrUpdate(Nguoidung obj) {
-		super.saveOrUpdate(obj);
+	public void update(Nguoidung obj) {
+		super.update(obj);
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
