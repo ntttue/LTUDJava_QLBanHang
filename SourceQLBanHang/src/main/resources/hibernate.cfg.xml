@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.connection.password">1234</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qlbh?useUnicode=yes&amp;characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -33,5 +33,6 @@
     <mapping resource="com/qlbh/pojo/Donvitinh.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Nhomhanghoa.hbm.xml"/>
     <mapping resource="com/qlbh/pojo/Khachhang.hbm.xml"/>
+    <mapping resource="com/qlbh/pojo/Keeplogged.hbm.xml" />
   </session-factory>
 </hibernate-configuration>
