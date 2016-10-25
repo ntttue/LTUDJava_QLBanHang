@@ -196,7 +196,7 @@
                                     <SVGPath content="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z" fill="#3174d6" scaleX="1.4" scaleY="1.4" translateY="-2.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="80.0" layoutY="7.0" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Bán hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="btnBanHang" alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="80.0" layoutY="7.0" onAction="#btnBanHangOnClick" prefHeight="66.0" prefWidth="70.0" ripplerFill="#c98c8c" text="Bán hàng" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" fill="#3174d6" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
