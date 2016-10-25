@@ -9,12 +9,10 @@
 			<column name="id" />
 			<generator class="identity" />
 		</id>
-		<many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien"
-			fetch="select" lazy="false">
+		<many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
 			<column name="nhanvienid" />
 		</many-to-one>
-		<many-to-one name="quyen" class="com.qlbh.pojo.Quyen"
-			fetch="select" lazy="false">
+		<many-to-one name="quyen" class="com.qlbh.pojo.Quyen" fetch="select" lazy="false">
 			<column name="roleid" />
 		</many-to-one>
 		<property name="mand" type="string">
