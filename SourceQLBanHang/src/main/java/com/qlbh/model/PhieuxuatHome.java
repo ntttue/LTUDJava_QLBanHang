@@ -48,18 +48,22 @@ public class PhieuxuatHome extends AbstractDao {
 
 	public void save(Phieuxuat phieuXuat) {
 		super.save(phieuXuat);
+		super.saveNhatKy("Phiếu xuất", "Thêm");
 	}
 
 	public void update(Phieuxuat phieuXuat) {
 		super.update(phieuXuat);
+		super.saveNhatKy("Phiếu xuất", "Cập nhật");
 	}
 
 	public void deletePermanently(Phieuxuat phieuXuat) {
 		super.delete(phieuXuat);
+		super.saveNhatKy("Phiếu xuất", "Xóa");
 	}
 
 	public void delete(Phieuxuat phieuXuat) {
 		phieuXuat.setActivity(false);
 		super.update(phieuXuat);
+		super.saveNhatKy("Phiếu xuất", "Xóa");
 	}
 }
