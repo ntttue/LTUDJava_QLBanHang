@@ -33,11 +33,11 @@ public class NhanvienHome extends AbstractDao {
 
 	/*
 	 * save checksave
-	 * */
+	 */
 	public Boolean saveReturnObj(Nhanvien obj) {
 		Integer result = super.saveReturnID(obj);
-		System.out.println(result);
 		if (result != null) {
+			super.saveNhatKy("Nhân viên", "Thêm");
 			return true;
 		}
 		return false;
@@ -46,6 +46,7 @@ public class NhanvienHome extends AbstractDao {
 	public Boolean update(Nhanvien obj) {
 		try {
 			super.update(obj);
+			super.saveNhatKy("Nhân viên", "Cập nhật");
 			return true;
 		} catch (Exception e) {
 			logger.error("error in update Nhanvien:  \n" + e.getMessage());
@@ -55,11 +56,13 @@ public class NhanvienHome extends AbstractDao {
 
 	public void deletePermanently(Nhanvien obj) {
 		super.delete(obj);
+		super.saveNhatKy("Nhân viên", "Xóa");
 	}
 
 	public void delete(Nhanvien obj) {
 		obj.setActivity(false);
 		super.update(obj);
+		super.saveNhatKy("Nhân viên", "Xóa");
 	}
 
 	public Nhanvien findByMa(String ma) {
