@@ -96,6 +96,23 @@ public abstract class AbstractDao {
 		}
 		return obj;
 	}
+	
+	protected Integer getLastID(Class clazz) {
+		Integer lastID = null;
+		try {
+			startOperation();
+			Query query = session.createQuery("select distinct max(id) from " + clazz.getName());
+			List objects = query.list();
+			Object a = query.getFirstResult();
+			lastID = (Integer)query.getFirstResult();
+			tx.commit();
+		} catch (HibernateException e) {
+			handleException(e);
+		} finally {
+			HibernateFactory.close(session);
+		}
+		return lastID;
+	}
 
 	protected Object findById(Class clazz, Integer id) {
 		Object obj = null;

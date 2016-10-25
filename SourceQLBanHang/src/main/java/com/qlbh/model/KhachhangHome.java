@@ -44,4 +44,8 @@ public class KhachhangHome extends AbstractDao {
 		khachHang.setActivity(false);
 		super.update(khachHang);
 	}
+	
+	public String getNewID() {
+		return "KH" + (super.getLastID(Khachhang.class)+1);
+	}
 }

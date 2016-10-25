@@ -201,8 +201,7 @@ CREATE TABLE `khachhang` (
 -- ----------------------------
 -- Records of khachhang
 -- ----------------------------
-INSERT INTO `khachhang` VALUES ('1', 'NV0001', NULL, NULL, NULL, 'ntttue', '391 Trần Phú', NULL, '01699952101', 'ntttue.gl@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO `khachhang` VALUES ('2', '1', NULL, NULL, NULL, '1', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, TRUE);
+INSERT  INTO `khachhang`(`id`,`ma`,`makh`,`loaikhid`,`khuvucid`,`ten`,`diachi`,`masothue`,`dienthoai`,`email`,`taikhoan`,`nganhang`,`gioihanno`,`nohientai`,`yahoo`,`skype`,`nguoilienhe`,`activity`) VALUES (1,'KH00001',NULL,1,1,'Trần Văn Khánh','227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM','THUE0098EF','0986543345','vana@gmail.com','KHONGBIET0021','VietcomBank','0.0000000000','0.0000000000',NULL,'nickSkypeNè','Nguyễn Văn A',TRUE),(2,'KH00002',NULL,1,1,'','227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM','THUE0098EF','0986543345','vana@gmail.com','KHONGBIET0021','VietcomBank','0.0000000000','0.0000000000',NULL,'nickSkypeNè','Nguyễn Văn A',TRUE),(3,'KH00003',NULL,1,1,'','227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM','THUE0098EF','0986543345','vana@gmail.com','KHONGBIET0021','VietcomBank','0.0000000000','0.0000000000',NULL,'nickSkypeNè','Nguyễn Văn A',TRUE),(4,'KH00004',NULL,1,1,'Trần Văn Khánh','','','','','','','0.0000000000','0.0000000000',NULL,'','',TRUE);
 
 -- ----------------------------
 -- Table structure for khohang
@@ -246,7 +245,7 @@ CREATE TABLE `khuvuc` (
 -- ----------------------------
 -- Records of khuvuc
 -- ----------------------------
-INSERT INTO `khuvuc`(`id`,`ma`,`ten`,`ghichu`,`activity`) VALUES (1,'MB','Miền Bắc','Khu vực miền Bắc',TRUE),(2,'MN','Miền Nam','Khu vực miền Nam',TRUE);
+INSERT INTO `khuvuc`(`id`,`ma`,`ten`,`ghichu`,`activity`) VALUES (1,'MB','Miền Bắc','Khu vực miền Bắc',TRUE),(2,'MN','Miền Nam','Khu vực miền Nam',TRUE),(3,'MT','Miền Trung','Khu vực miền Trung',TRUE);
 -- ----------------------------
 -- Table structure for loaihang
 -- ----------------------------

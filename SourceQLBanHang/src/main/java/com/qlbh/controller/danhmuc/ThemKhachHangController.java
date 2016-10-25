@@ -1,6 +1,5 @@
 package com.qlbh.controller.danhmuc;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import com.jfoenix.controls.JFXRadioButton;
@@ -17,13 +16,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class ThemKhachHangController {
+	private KhachhangHome khachHangHome = new KhachhangHome();
 	@FXML
 	private JFXRadioButton radioButtonKhachLe, radioButtonDaiLy;
 	@FXML
 	private TextField txtMa, txtTen, txtNguoiLienHe, txtDiaChi, numDienThoai, txtEmail, numNoHienTai, numGioiHanNo,
-	txtNganHang, txtSoTaiKhoan, txtMaSoThue, txtSkype, numChietKhau;
+	txtNganHang, txtSoTaiKhoan, txtMaSoThue, txtSkype;
+	@FXML
+	private Text txtInputValidate;
 	@FXML
 	private ComboBox<Khuvuc> cbxKhuVuc;
 	@FXML
@@ -34,11 +37,10 @@ public class ThemKhachHangController {
 		this.setcbxLoaiKhachHang();
 		DataInputUtils.setFloatOnlyForTextField(this.numNoHienTai);
 		DataInputUtils.setFloatOnlyForTextField(this.numGioiHanNo);
-		DataInputUtils.setIntegerOnlyForTextField(this.numChietKhau);
 		this.setTestData();
 	}
 	private void setTestData() {
-		txtMa.setText("KH0000");
+		txtMa.setText(khachHangHome.getNewID());
 		txtTen.setText("Trần Văn Khánh");
 		txtNguoiLienHe.setText("Nguyễn Văn A");
 		txtDiaChi.setText("227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM");
@@ -48,41 +50,35 @@ public class ThemKhachHangController {
 		txtSoTaiKhoan.setText("KHONGBIET0021");
 		txtMaSoThue.setText("THUE0098EF");
 		txtSkype.setText("nickSkypeNè");
-		numChietKhau.setText("12");
 	}
 	@FXML
 	public void onButtonLuuClick() {
+		// Check validate
+		if (DataInputUtils.isEmpty(txtMa) || DataInputUtils.isEmpty(txtTen)) {
+			txtInputValidate.setText("Vui lòng điền đủ thông tin trong các mục (*)");
+			return;
+		}
+		txtInputValidate.setText("");
 		Khachhang khachHang = new Khachhang();
-		khachHang.setMa(txtMa.getText());
-		khachHang.setTen(txtTen.getText());
-		khachHang.setNguoilienhe(txtNguoiLienHe.getText());
-		khachHang.setDiachi(txtDiaChi.getText());
-		khachHang.setDienthoai(numDienThoai.getText());
-		khachHang.setEmail(txtEmail.getText());
+		khachHang.setMa(DataInputUtils.getStringFromTextField(txtMa));
+		khachHang.setTen(DataInputUtils.getStringFromTextField(txtTen));
+		khachHang.setNguoilienhe(DataInputUtils.getStringFromTextField(txtNguoiLienHe));
+		khachHang.setDiachi(DataInputUtils.getStringFromTextField(txtDiaChi));
+		khachHang.setDienthoai(DataInputUtils.getStringFromTextField(numDienThoai));
+		khachHang.setEmail(DataInputUtils.getStringFromTextField(txtEmail));		
+		khachHang.setNganhang(DataInputUtils.getStringFromTextField(txtNganHang));
+		khachHang.setTaikhoan(DataInputUtils.getStringFromTextField(txtSoTaiKhoan));
+		khachHang.setMasothue(DataInputUtils.getStringFromTextField(txtMaSoThue));
+		khachHang.setSkype(DataInputUtils.getStringFromTextField(txtSkype));
+
+		khachHang.setGioihanno(DataInputUtils.getBigDecimalFromTextField(numGioiHanNo));
+		khachHang.setNohientai(DataInputUtils.getBigDecimalFromTextField(numNoHienTai));
 		
-		String textNoHienTai = numNoHienTai.getText();
-		if ( textNoHienTai == null || textNoHienTai.trim().isEmpty()) {
-			khachHang.setNohientai(BigDecimal.valueOf(0));
-		} else {
-			khachHang.setNohientai(BigDecimal.valueOf(Float.valueOf(textNoHienTai)));
-		}
-		
-		String textGioiHanNo = numGioiHanNo.getText();
-		if ( textGioiHanNo == null || textGioiHanNo.trim().isEmpty()) {
-			khachHang.setGioihanno(BigDecimal.valueOf(0));
-		} else {
-			khachHang.setGioihanno(BigDecimal.valueOf(Float.valueOf(textGioiHanNo)));
-		}
-		
-		khachHang.setNganhang(txtNganHang.getText());
-		khachHang.setTaikhoan(txtSoTaiKhoan.getText());
-		khachHang.setMasothue(txtMaSoThue.getText());
-		khachHang.setSkype(txtSkype.getText());
 		khachHang.setKhuvuc(cbxKhuVuc.getValue());
 		khachHang.setLoaikhachhang(cbxLoaiKhachHang.getValue());
+		
 		khachHang.setActivity(true);
 		
-		KhachhangHome khachHangHome = new KhachhangHome();
 		khachHangHome.save(khachHang);
 		KhachHangController.khachHangController.onKhachHangAdded();
 	}
@@ -106,7 +102,7 @@ public class ThemKhachHangController {
 	}
 	private void setcbxKhuVuc() {
 		cbxKhuVuc.setItems(this.getDSKhuVuc());
-		//cbxKhuVuc.getSelectionModel().select(1);
+		cbxKhuVuc.getSelectionModel().select(0);
 	}
 	private void setcbxLoaiKhachHang() {
 		cbxLoaiKhachHang.setItems(this.getDSLoaiKhachHang());
