@@ -35,7 +35,7 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnNhatKyHeThong;
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong;
 
 	@FXML
 	private Text lblStatus;
@@ -79,6 +79,35 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+	
+	public static Tab tabBanHang = null;
+	
+	@FXML
+    void btnBanHangOnClick(ActionEvent event) {
+		String title = "Bán hàng";
+		String fxmlPath = "../fxml/chucnang/XuatHang.fxml";
+		if (ManHinhChinhController.tabBanHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabBanHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabBanHang = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabBanHang = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 
 	public static Tab tabKhuVuc = null;
 

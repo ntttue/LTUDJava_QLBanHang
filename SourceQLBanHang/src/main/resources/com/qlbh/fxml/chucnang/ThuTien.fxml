@@ -86,10 +86,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                <children>
-                  <ComboBox fx:id="cbxTuyChonNgay" cacheShape="false" onAction="#onSelectedItemChange" prefWidth="103.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0" />
-                  <DatePicker fx:id="dateNgayBatDau" editable="false" layoutX="22.0" layoutY="3.0" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="3.0" />
-                  <DatePicker fx:id="dateNgayKetThuc" editable="false" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="3.0" />
-                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ComboBox fx:id="cbxTuyChonNgay" cacheShape="false" onAction="#onDateOptionChange" prefWidth="103.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker fx:id="dateNgayBatDau" editable="false" layoutX="22.0" layoutY="3.0" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker fx:id="dateNgayKetThuc" editable="false" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="3.0" />
+                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <children>
                         <JFXButton alignment="CENTER" onAction="#onButtonXemClick" ripplerFill="#c98c8c" text="Xem" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <graphic>

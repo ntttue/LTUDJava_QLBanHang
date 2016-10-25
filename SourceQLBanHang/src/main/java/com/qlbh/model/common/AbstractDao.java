@@ -154,6 +154,7 @@ public abstract class AbstractDao {
 		try {
 			startOperation();
 			Query query = session.createQuery("from " + clazz.getName() + " where Activity=true");
+			System.out.println(query.getQueryString());
 			objects = query.list();
 			tx.commit();
 		} catch (HibernateException e) {

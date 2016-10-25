@@ -8,10 +8,10 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="hanghoa" class="com.qlbh.pojo.Hanghoa" fetch="select">
+        <many-to-one name="hanghoa" class="com.qlbh.pojo.Hanghoa" fetch="select" lazy="false">
             <column name="hanghoaid" />
         </many-to-one>
-        <many-to-one name="phieuxuat" class="com.qlbh.pojo.Phieuxuat" fetch="select">
+        <many-to-one name="phieuxuat" class="com.qlbh.pojo.Phieuxuat" fetch="select" lazy="false">
             <column name="phieuxuatid" />
         </many-to-one>
         <property name="ma" type="string">

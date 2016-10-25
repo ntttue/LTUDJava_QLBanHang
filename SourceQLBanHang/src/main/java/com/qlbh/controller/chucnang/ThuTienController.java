@@ -2,15 +2,23 @@ package com.qlbh.controller.chucnang;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 
 import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.model.PhieuxuatHome;
+import com.qlbh.pojo.Phieuxuat;
 import com.qlbh.render.combobox.DateOption;
 import com.qlbh.util.DataInputUtils;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class ThuTienController {
@@ -19,7 +27,7 @@ public class ThuTienController {
 	@FXML
 	DatePicker dateNgayBatDau, dateNgayKetThuc;
 	@FXML
-	TableView<?> tableThuTien;
+	TableView<Phieuxuat> tableThuTien;
 
 	@FXML
 	public void initialize() {
@@ -34,10 +42,12 @@ public class ThuTienController {
 		dateNgayKetThuc.setShowWeekNumbers(false);
 		// Set initial date as a first option
 		this.setDatePeriod();
+		// Load table PhieuXuat
+		this.loadTableThuTien();
 	}
 
 	@FXML
-	void onSelectedItemChange(ActionEvent event) {
+	void onDateOptionChange(ActionEvent event) {
 		this.setDatePeriod();
 	}
 
@@ -47,6 +57,41 @@ public class ThuTienController {
 		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		dateNgayBatDau.setValue(localdateBegin);
 		dateNgayKetThuc.setValue(localdateEnd);
+	}
+	
+	/**
+	 * Get data for table TyGia
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	private ObservableList<Phieuxuat> getDSPhieuXuat() {
+		PhieuxuatHome phieuxuatHome = new PhieuxuatHome();
+		List<Phieuxuat> phieuxuats = phieuxuatHome.findAll();
+		ObservableList<Phieuxuat> oListPhieuXuat = FXCollections.observableList(phieuxuats);
+		return oListPhieuXuat;
+	}
+	/**
+	 * Load list TyGia into tableTyGia
+	 */
+	@SuppressWarnings("unchecked")
+	private void loadTableThuTien() {
+		// Create column for table PhieuXuat
+		TableColumn<Phieuxuat, Number> colSTT = new TableColumn<>("#");
+		colSTT.setSortable(false);
+		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableThuTien.getItems().indexOf(column.getValue()) + 1));
+		
+		TableColumn<Phieuxuat, String> colMa = new TableColumn<>("Mã");
+		colMa.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
+		
+//		TableColumn<Tygia, String> colTen = new TableColumn<Tygia, String>("Tên");
+//		colTen.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
+//		
+//		TableColumn<Tygia, String> colTyGiaQuyDoi = new TableColumn<Tygia, String>("Tỷ giá quy đổi");
+//		colTyGiaQuyDoi.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTygiaquydoi().toString()));
+//		colTyGiaQuyDoi.setStyle( "-fx-alignment: CENTER-RIGHT;"); // Set text align right for number
+		
+		this.tableThuTien.setItems(this.getDSPhieuXuat());
+		this.tableThuTien.getColumns().addAll(colSTT, colMa);
 	}
 
 	@FXML
@@ -79,8 +124,6 @@ public class ThuTienController {
 		
 	}
 	
-	
-
 	@FXML
 	void onButtonLapPhieuThuClick(ActionEvent event) {
 
