@@ -13,6 +13,7 @@ import com.qlbh.util.DataAccessLayerException;
 
 /**
  * Home object for domain model class Tygia.
+ * 
  * @see com.qlbh.model.Tygia
  * @author Hibernate Tools
  */
@@ -23,17 +24,25 @@ public class TygiaHome extends AbstractDao {
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Tygia.class);
 	}
+
 	public void save(Tygia tyGia) {
 		super.save(tyGia);
+		super.saveNhatKy("Tỷ giá", "Thêm");
 	}
+
 	public void update(Tygia tyGia) {
 		super.update(tyGia);
+		super.saveNhatKy("Tỷ giá", "Cập nhật");
 	}
+
 	public void deletePermanently(Tygia tyGia) {
 		super.delete(tyGia);
+		super.saveNhatKy("Tỷ giá", "Xóa");
 	}
+
 	public void delete(Tygia tyGia) {
 		tyGia.setActivity(false);
 		super.update(tyGia);
+		super.saveNhatKy("Tỷ giá", "Xóa");
 	}
 }

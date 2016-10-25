@@ -20,11 +20,13 @@ import com.qlbh.pojo.Phieunhap;
 public class PhieunhapHome extends AbstractDao {
 	public Phieunhap save(Phieunhap phieunhap){
 		super.save(phieunhap);
+		super.saveNhatKy("Phiếu nhập", "Thêm");
 		return phieunhap;
 	}
 	
 	public Phieunhap update(Phieunhap phieunhap){
 		super.update(phieunhap);
+		super.saveNhatKy("Phiếu nhập", "Cập nhật");
 		return phieunhap;
 	}
 }

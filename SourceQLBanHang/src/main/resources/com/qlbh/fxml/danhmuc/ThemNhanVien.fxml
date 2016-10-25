@@ -57,9 +57,9 @@
                         <TextField fx:id="numDienThoai" layoutY="100.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
                         <TextField fx:id="txtEmail" layoutY="178.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0" />
                         <TextField fx:id="txtChucVu" layoutY="210.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+                        <TextField fx:id="numLuong" layoutX="10.0" layoutY="230.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                         <ComboBox fx:id="cbxBoPhan" layoutY="221.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="290.0" />
                         <ComboBox fx:id="cbxNhanVienQL" layoutY="255.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="325.0" />
-                        <TextField fx:id="numLuong" layoutX="10.0" layoutY="230.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="255.0" />
                      </children>
                   </AnchorPane>
                </children>

@@ -27,12 +27,9 @@ public class BophanHome extends AbstractDao {
 		return super.findAll(Bophan.class);
 	}
 
-	// public void save(Bophan obj) {
-	// super.save(obj);
-	// }
 	public Boolean saveReturnObj(Bophan obj) {
 		Integer result = super.saveReturnID(obj);
-		System.out.println(result);
+		super.saveNhatKy("Bộ phận công ty", "Thêm");
 		if (result != null) {
 			return true;
 		}
@@ -42,6 +39,7 @@ public class BophanHome extends AbstractDao {
 	public Boolean update(Bophan obj) {
 		try {
 			super.update(obj);
+			super.saveNhatKy("Bộ phận công ty", "Cập nhật");
 			return true;
 		} catch (Exception e) {
 			logger.error("error in update bophan:  \n" + e.getMessage());
@@ -54,6 +52,7 @@ public class BophanHome extends AbstractDao {
 	}
 
 	public void delete(Bophan obj) {
+		super.saveNhatKy("Bộ phận công ty", "Xóa");
 		obj.setActivity(false);
 		super.update(obj);
 	}

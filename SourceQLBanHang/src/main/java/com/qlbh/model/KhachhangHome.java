@@ -13,7 +13,6 @@ import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Tygia;
 import com.qlbh.util.DataAccessLayerException;
 
-
 /**
  * Home object for domain model class Khachhang.
  * 
@@ -27,25 +26,33 @@ public class KhachhangHome extends AbstractDao {
 	public List findAll() throws DataAccessLayerException {
 		return super.findAll(Khachhang.class);
 	}
+
 	public Khachhang findById(Integer id) throws DataAccessLayerException {
-		Khachhang kh = (Khachhang)super.find(Khachhang.class, id);
+		Khachhang kh = (Khachhang) super.find(Khachhang.class, id);
 		return kh;
 	}
+
 	public void save(Khachhang khachHang) {
 		super.save(khachHang);
+		super.saveNhatKy("Khách hàng", "Thêm");
 	}
+
 	public void update(Khachhang khachHang) {
 		super.update(khachHang);
+		super.saveNhatKy("Khách hàng", "Cập nhật");
 	}
+
 	public void deletePermanently(Khachhang khachHang) {
 		super.delete(khachHang);
 	}
+
 	public void delete(Khachhang khachHang) {
 		khachHang.setActivity(false);
 		super.update(khachHang);
+		super.saveNhatKy("Khách hàng", "Xóa");
 	}
-	
+
 	public String getNewID() {
-		return "KH" + (super.getLastID(Khachhang.class)+1);
+		return "KH" + (super.getLastID(Khachhang.class) + 1);
 	}
 }

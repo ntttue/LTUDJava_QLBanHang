@@ -21,11 +21,12 @@ import com.qlbh.util.HibernateFactory;
 
 /**
  * Home object for domain model class Hanghoa.
+ * 
  * @see com.qlbh.model.Hanghoa
  * @author Hibernate Tools
  */
 @Stateless
-public class HanghoaHome extends AbstractDao{
+public class HanghoaHome extends AbstractDao {
 
 	private static final Log log = LogFactory.getLog(HanghoaHome.class);
 
@@ -77,8 +78,8 @@ public class HanghoaHome extends AbstractDao{
 			throw re;
 		}
 	}
-	
-	public List<Hanghoa> getHangHoaList(){
+
+	public List<Hanghoa> getHangHoaList() {
 		Session session = HibernateFactory.openSession();
 		List<Hanghoa> hanghoas = null;
 		try {
@@ -87,13 +88,13 @@ public class HanghoaHome extends AbstractDao{
 			hanghoas = query.list();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return hanghoas;
 	}
-	
-	public Hanghoa layHangHoaTheoKho(int id, int khoId){
+
+	public Hanghoa layHangHoaTheoKho(int id, int khoId) {
 		Session session = HibernateFactory.openSession();
 		Hanghoa hanghoa = null;
 		try {
@@ -104,37 +105,39 @@ public class HanghoaHome extends AbstractDao{
 			hanghoa = (Hanghoa) query.uniqueResult();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return hanghoa;
 	}
-	
-	public void themSoLuongHangHoa(Hanghoa hanghoa,int khoid, int soLuong){
+
+	public void themSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong) {
 		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
-		if(hangHoaResult == null){
+		if (hangHoaResult == null) {
 			Khohang khohang = new KhohangHome().getKhoHang(khoid);
 			hanghoa.setKhohang(khohang);
 			hanghoa.setId(0);
 			hanghoa.setTonkho(soLuong);
 			super.save(hanghoa);
+			super.saveNhatKy("Hàng hóa", "Thêm số lượng");
 			return;
 		}
 		hangHoaResult.setTonkho(hangHoaResult.getTonkho() + soLuong);
 		super.update(hangHoaResult);
 	}
-	
-	public void giamSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong){
+
+	public void giamSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong) {
 		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
-		if(hangHoaResult == null){
+		if (hangHoaResult == null) {
 			Khohang khohang = new KhohangHome().getKhoHang(khoid);
 			hanghoa.setKhohang(khohang);
 			hanghoa.setId(0);
 			hanghoa.setTonkho(soLuong);
 			super.save(hanghoa);
+			super.saveNhatKy("Hàng hóa", "Giảm số lượng");
 			return;
 		}
-		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() - soLuong);
 		super.update(hangHoaResult);
 	}
 }

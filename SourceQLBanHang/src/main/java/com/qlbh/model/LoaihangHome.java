@@ -29,14 +29,17 @@ public class LoaihangHome extends AbstractDao {
 
 	public void save(Loaihang lh) {
 		super.save(lh);
+		super.saveNhatKy("Loại hoàng hóa", "Thêm");
 	}
 
 	public void update(Loaihang lh) {
 		super.update(lh);
+		super.saveNhatKy("Loại hoàng hóa", "Cập nhật");
 	}
 
 	public void delete(Loaihang lh) {
 		lh.setActivity(false);
 		super.update(lh);
+		super.saveNhatKy("Loại hoàng hóa", "Xóa");
 	}
 }

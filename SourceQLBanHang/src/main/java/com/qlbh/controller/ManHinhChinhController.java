@@ -45,7 +45,6 @@ public class ManHinhChinhController {
 
 	public void setStatus() {
 		if (MainApp.loginUser != null) {
-			System.out.println(MainApp.loginUser.getQuyen().getTen());
 			String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
 			lblStatus.setText(status);
 		}

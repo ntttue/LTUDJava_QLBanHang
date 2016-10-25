@@ -33,18 +33,21 @@ public class KhohangHome extends AbstractDao {
 
 	public void save(Khohang kh) {
 		super.save(kh);
+		super.saveNhatKy("Kho hàng", "Thêm");
 	}
 
 	public void update(Khohang kh) {
 		super.update(kh);
+		super.saveNhatKy("Kho hàng", "Cập nhật");
 	}
 
 	public void delete(Khohang kh) {
 		kh.setActivity(false);
 		super.update(kh);
+		super.saveNhatKy("Kho hàng", "Xóa");
 	}
-	
-	public Khohang getKhoHang(int id){
+
+	public Khohang getKhoHang(int id) {
 		return (Khohang) super.find(Khohang.class, id);
 	}
 
@@ -52,7 +55,7 @@ public class KhohangHome extends AbstractDao {
 		Session session = HibernateFactory.openSession();
 		List<Khohang> nhanviens = null;
 		try {
-			String hql = "FROM Khohang";
+			String hql = "FROM Khohang where activity = true";
 			Query query = session.createQuery(hql);
 			nhanviens = query.list();
 		} catch (HibernateException e) {

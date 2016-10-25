@@ -1,5 +1,7 @@
 package com.qlbh.controller;
 
+import java.util.Date;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
@@ -7,8 +9,10 @@ import com.jfoenix.controls.JFXTextField;
 import com.qlbh.app.MainApp;
 import com.qlbh.model.KeepLoggedHome;
 import com.qlbh.model.NguoidungHome;
+import com.qlbh.model.NhatkyHome;
 import com.qlbh.pojo.Keeplogged;
 import com.qlbh.pojo.Nguoidung;
+import com.qlbh.pojo.Nhatky;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,6 +71,7 @@ public class DangNhapController {
 				keepLogged.setActivity(true);
 				keepHome.save(keepLogged);
 			}
+			this.saveNhatKy(nd);
 			MainApp.setUserLogin(nd);
 		} else {
 			this.lblError.setText("Tên đăng nhập hoặc mật khẩu không đúng.");
@@ -80,5 +85,16 @@ public class DangNhapController {
 			this.txtTenDangNhap.setText(keepLogged.getUsename());
 			this.txtMatKhau.setText(keepLogged.getPass());
 		}
+	}
+
+	private void saveNhatKy(Nguoidung nd) {
+		NhatkyHome nhatkyHome = new NhatkyHome();
+		Nhatky nhatky = new Nhatky();
+		nhatky.setActivity(true);
+		nhatky.setHanhdong("Đăng nhập");
+		nhatky.setNguoidung(nd.getMand() + " - " + nd.getTennd());
+		nhatky.setBang("Người dùng");
+		nhatky.setNgay(new Date());
+		nhatkyHome.save(nhatky);
 	}
 }

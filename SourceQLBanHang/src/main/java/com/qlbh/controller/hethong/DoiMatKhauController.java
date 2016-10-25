@@ -26,10 +26,11 @@ public class DoiMatKhauController {
 	private AnchorPane root;
 	@FXML
 	private JFXPasswordField txtMatKhauCu, txtNhapLaiMatKhau, txtMatKhauMoi;
-	
+
 	private NguoidungHome nguoiDungHome = new NguoidungHome();
 	final static Logger logger = Logger.getLogger(DoiMatKhauController.class);
 	private boolean doiMatKhauThanhCong = false;
+
 	@FXML
 	void btnSaveClick() {
 		this.savePass();
@@ -56,7 +57,7 @@ public class DoiMatKhauController {
 
 		try {
 			MainApp.loginUser.setMatkhau(txtMatKhauMoi.getText());
-			nguoiDungHome.saveOrUpdate(MainApp.loginUser);
+			nguoiDungHome.update(MainApp.loginUser);
 			lbValidate.setText("");
 			this.setDoiMatKhauThanhCong(true);
 			Stage stage = (Stage) btnCancel.getScene().getWindow();
