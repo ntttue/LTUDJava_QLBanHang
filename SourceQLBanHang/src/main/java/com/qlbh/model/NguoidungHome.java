@@ -36,30 +36,12 @@ public class NguoidungHome extends AbstractDao {
 		super.saveOrUpdate(obj);
 	}
 
-	//
-	// public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
-	// Nguoidung nd = new Nguoidung();
-	// String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau =
-	// :matkhau";
-	// // String hql = "from Nguoidung";
-	//
-	// Query query = session.createQuery(hql);
-	// query.setParameter("tennd", tenDangNhap);
-	// query.setParameter("matkhau", matKhau);
-	// List<Nguoidung> ds = query.list();
-	// if (!ds.isEmpty()) {
-	// nd = ds.get(0);
-	// return nd;
-	// }
-	//
-	// return null;
-	// }
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
 		Nguoidung nd = null;
 		try {
 			session = HibernateFactory.getSessionFactory().openSession();
 			// startOperation();
-			String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau";
+			String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau and activity = true";
 			Query query = session.createQuery(hql);
 			query.setParameter("tennd", tenDangNhap);
 			query.setParameter("matkhau", matKhau);
