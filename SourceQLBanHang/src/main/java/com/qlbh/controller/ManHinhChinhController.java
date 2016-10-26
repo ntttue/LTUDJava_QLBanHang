@@ -9,6 +9,8 @@ import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.controller.hethong.BackupDataController;
 import com.qlbh.controller.hethong.DoiMatKhauController;
+import com.qlbh.controller.hethong.RestoreDataController;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -409,7 +411,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
@@ -594,21 +596,34 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
-			// primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			// public void handle(WindowEvent we) {
-			// if (doiMatKhauCtrl.isDoiMatKhauThanhCong()) {
-			// DialogController.show(anchorManHinhChinhRoot, null, "Thông báo",
-			// "Sao lưu dữ liệu thành công.");
-			// primaryStage.close();
-			// }
-			// }
-			// });
 		} catch (IOException e) {
 			logger.error("exeption open frmBackupData", e);
 			e.printStackTrace();
 		}
 	}
-	
+
+	@FXML
+	void btnPhucHoiClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/hethong/RestoreData.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			RestoreDataController restoreDataCtrl = loader.<RestoreDataController>getController();
+			primaryStage.setTitle("Phục hồi dữ liệu đã sao lưu");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			logger.error("exeption open frmBackupData", e);
+			e.printStackTrace();
+		}
+	}
+
 	public static Tab tabHangHoa = null;
 
 	@FXML
