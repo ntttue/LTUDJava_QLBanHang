@@ -140,6 +140,35 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabTonKho = null;
+
+	@FXML
+	void btnTonKhoClick(ActionEvent event) {
+		String title = "Tồn kho";
+		String fxmlPath = "../fxml/chucnang/TonKho.fxml";
+		if (ManHinhChinhController.tabTonKho != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTonKho);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabTonKho = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabTonKho = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static Tab tabKhuVuc = null;
 
 	@FXML

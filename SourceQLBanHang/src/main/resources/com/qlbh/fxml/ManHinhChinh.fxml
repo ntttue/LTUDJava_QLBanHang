@@ -213,7 +213,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="155.0" layoutY="3.0" prefHeight="85.0" prefWidth="170.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Tồn kho" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="21.0" layoutY="21.0" onAction="#btnTonKhoClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Tồn kho" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>
