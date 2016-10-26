@@ -68,7 +68,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="410.0" layoutY="2.0" prefHeight="89.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="75.0" ripplerFill="#c98c8c" text="Sao lưu" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="btnBackUp" alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" layoutX="21.0" layoutY="21.0" onAction="#btnBackUpClick" prefHeight="66.0" prefWidth="75.0" ripplerFill="#c98c8c" text="Sao lưu" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-2 16c-2.05 0-3.81-1.24-4.58-3h1.71c.63.9 1.68 1.5 2.87 1.5 1.93 0 3.5-1.57 3.5-3.5S13.93 9.5 12 9.5c-1.35 0-2.52.78-3.1 1.9l1.6 1.6h-4V9l1.3 1.3C8.69 8.92 10.23 8 12 8c2.76 0 5 2.24 5 5s-2.24 5-5 5z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="2.0" />
                                  </graphic>

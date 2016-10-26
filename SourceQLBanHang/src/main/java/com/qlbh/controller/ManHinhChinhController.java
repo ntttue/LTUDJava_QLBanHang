@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.controller.hethong.BackupDataController;
 import com.qlbh.controller.hethong.DoiMatKhauController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -35,7 +36,7 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong;
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong, btnBackup;
 
 	@FXML
 	private Text lblStatus;
@@ -79,11 +80,11 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabBanHang = null;
-	
+
 	@FXML
-    void btnBanHangOnClick(ActionEvent event) {
+	void btnBanHangOnClick(ActionEvent event) {
 		String title = "Bán hàng";
 		String fxmlPath = "../fxml/chucnang/XuatHang.fxml";
 		if (ManHinhChinhController.tabBanHang != null) {
@@ -107,7 +108,7 @@ public class ManHinhChinhController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
 	public static Tab tabKhuVuc = null;
 
@@ -544,6 +545,37 @@ public class ManHinhChinhController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error("exeption open tabNhatKyHeThong", e);
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnBackUpClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/hethong/BackupData.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			BackupDataController backUpDataCtrl = loader.<BackupDataController>getController();
+			primaryStage.setTitle("Sao lưu dữ liệu");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+			// primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			// public void handle(WindowEvent we) {
+			// if (doiMatKhauCtrl.isDoiMatKhauThanhCong()) {
+			// DialogController.show(anchorManHinhChinhRoot, null, "Thông báo",
+			// "Sao lưu dữ liệu thành công.");
+			// primaryStage.close();
+			// }
+			// }
+			// });
+		} catch (IOException e) {
+			logger.error("exeption open frmBackupData", e);
 			e.printStackTrace();
 		}
 	}
