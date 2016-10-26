@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.common.DialogController;
+//import com.qlbh.pojo.InforConfig;
+import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +79,6 @@ public class BackupDataController {
 	private String getPath() {
 		String path = this.txtDuongDan.getText() + "\\" + this.txtTenFile.getText();
 		path = path.replace("\\", "\\\\");
-		System.out.println(path);
 		return path;
 	}
 
@@ -91,6 +92,8 @@ public class BackupDataController {
 			// "root", "--password=" + "1234", "qlbh", "-r",
 			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
 			// };
+//			InforConfig config = new InforConfig();
+//			config = HibernateFactory.getInforConfig();
 			String[] executeCmd = new String[] { "mysqldump", "--user=" + "root", "--password=" + "1234", "qlbh", "-r",
 					this.getPath() };
 			Process runtimeProcess;

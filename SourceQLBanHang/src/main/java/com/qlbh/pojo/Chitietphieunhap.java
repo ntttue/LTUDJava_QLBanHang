@@ -1,5 +1,5 @@
 package com.qlbh.pojo;
-// Generated 25/10/2016 12:14:32 AM by Hibernate Tools 4.3.1
+// Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
