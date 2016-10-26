@@ -3,6 +3,7 @@ package com.qlbh.controller.danhmuc;
 import java.io.IOException;
 import java.util.List;
 
+import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.LoaihangHome;
 import com.qlbh.pojo.Loaihang;
@@ -173,6 +174,12 @@ public class QuanLyLoaiHangController {
 	@FXML
 	void btnNapLaiClick() {
 		reload();
+	}
+	
+	@FXML
+	void btnCloseClick() {
+		ManHinhChinhController.tabLoaiHang.getTabPane().getTabs().remove(ManHinhChinhController.tabLoaiHang);
+		ManHinhChinhController.tabLoaiHang = null;
 	}
 
 	void closeThem() {
