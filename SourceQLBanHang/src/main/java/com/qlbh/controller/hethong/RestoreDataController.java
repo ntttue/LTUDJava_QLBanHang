@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.pojo.InforConfig;
+import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -83,13 +85,12 @@ public class RestoreDataController {
 				lblError.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 				return;
 			}
-			// String[] executeCmd = new String[] { "mysql", "--user=" + "root",
-			// "--password=" + "1234", "qlbh", "-e",
-			// " source " +
-			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
-			// };
-			String[] executeCmd = new String[] { "mysql", "--user=" + "root", "--password=" + "1234", "quanlybanhang",
-					"-e", " source " + this.getPath() };
+
+			InforConfig config = new InforConfig();
+			config = HibernateFactory.getInforConfig();
+			System.out.println(config);
+			String[] executeCmd = new String[] { "mysql", "--user=" + config.getUser(),
+					"--password=" + config.getPass(), config.getDbname(), "-e", " source " + this.getPath() };
 			Process runtimeProcess;
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();
