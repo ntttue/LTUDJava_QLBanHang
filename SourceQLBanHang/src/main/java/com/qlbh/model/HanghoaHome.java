@@ -15,6 +15,7 @@ import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Hanghoa;
+import com.qlbh.pojo.Khachhang;
 import com.qlbh.pojo.Khohang;
 import com.qlbh.pojo.Nhanvien;
 import com.qlbh.util.HibernateFactory;
@@ -168,5 +169,11 @@ public class HanghoaHome extends AbstractDao {
 		Hanghoa hangHoaResult = layHangHoa(hanghoa.getId());
 		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
 		super.update(hangHoaResult);
+	}
+	
+	public void delete(Hanghoa hanghoa) {
+		hanghoa.setActivity(false);
+		super.update(hanghoa);
+		super.saveNhatKy("Hàng hóa", "Xóa");
 	}
 }
