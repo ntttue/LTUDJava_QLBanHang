@@ -75,14 +75,6 @@ public class TonKhoController {
 		TableColumn<Hanghoa, String> ten = new TableColumn<Hanghoa, String>("Tên hàng");
 		ten.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
 
-		TableColumn<Hanghoa, String> kho = new TableColumn<Hanghoa, String>("Kho hàng");
-		kho.setCellValueFactory(cellData -> {
-			if (cellData.getValue().getKhohang() == null) {
-				return new SimpleStringProperty("");
-			}
-			return new SimpleStringProperty(cellData.getValue().getKhohang().getTen());
-		});
-
 		TableColumn<Hanghoa, String> dv = new TableColumn<Hanghoa, String>("Đơn vị");
 		dv.setCellValueFactory(cellData -> {
 			if (cellData.getValue().getDonvitinh() == null) {
@@ -102,7 +94,15 @@ public class TonKhoController {
 			return new SimpleStringProperty(cellData.getValue().getNhomhanghoa().getTen());
 		});
 
+		TableColumn<Hanghoa, String> kho = new TableColumn<Hanghoa, String>("Kho hàng");
+		kho.setCellValueFactory(cellData -> {
+			if (cellData.getValue().getKhohang() == null) {
+				return new SimpleStringProperty("");
+			}
+			return new SimpleStringProperty(cellData.getValue().getKhohang().getTen());
+		});
+
 		tableTonKho.setItems(this.getListHangHoa(khoId));
-		tableTonKho.getColumns().addAll(id, ma, ten, kho, dv, sl, nh);
+		tableTonKho.getColumns().addAll(id, ma, ten, dv, sl, nh, kho);
 	}
 }
