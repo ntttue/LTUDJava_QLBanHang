@@ -84,6 +84,12 @@ public class ThemNguoiDungController {
 			return;
 		}
 
+		NguoidungHome ndh = new NguoidungHome();
+		if (ndh.findByTennd(txtTen.getText()) == false) {
+			lbValidate.setText("Tên người dùng đã tồn tại");
+			return;
+		}
+
 		Nguoidung nd = new Nguoidung();
 		nd.setNhanvien(cmbNhanVien.getValue());
 		nd.setTennd(txtTen.getText());
@@ -91,7 +97,7 @@ public class ThemNguoiDungController {
 		nd.setQuyen(cmbQuyen.getValue());
 		nd.setDiengiai(txtGhiChu.getText());
 		nd.setActivity(true);
-		NguoidungHome ndh = new NguoidungHome();
+
 		try {
 			ndh.create(nd);
 			cmbNhanVien.getSelectionModel().select(0);
