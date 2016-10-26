@@ -69,7 +69,7 @@ public class HanghoaHome extends AbstractDao{
 	public Hanghoa findById(Integer id) {
 		log.debug("getting Hanghoa instance with id: " + id);
 		try {
-			Hanghoa instance = entityManager.find(Hanghoa.class, id);
+			Hanghoa instance = (Hanghoa) super.find(Hanghoa.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {
@@ -110,6 +110,22 @@ public class HanghoaHome extends AbstractDao{
 		return hanghoa;
 	}
 	
+	public Hanghoa layHangHoa(int id){
+		Session session = HibernateFactory.openSession();
+		Hanghoa hanghoa = null;
+		try {
+			String hql = "FROM Hanghoa Where id = :id and Activity = true";
+			Query query = session.createQuery(hql);
+			query.setParameter("id", id);
+			hanghoa = (Hanghoa) query.uniqueResult();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		}finally {
+			session.close();
+		}
+		return hanghoa;
+	}
+	
 	public void themSoLuongHangHoa(Hanghoa hanghoa,int khoid, int soLuong){
 		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
 		if(hangHoaResult == null){
@@ -134,6 +150,18 @@ public class HanghoaHome extends AbstractDao{
 			super.save(hanghoa);
 			return;
 		}
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
+		super.update(hangHoaResult);
+	}
+	
+	public void themSoLuongHangHoa(Hanghoa hanghoa, int soLuong){
+		Hanghoa hangHoaResult =layHangHoa(hanghoa.getId());
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() + soLuong);
+		super.update(hangHoaResult);
+	}
+	
+	public void giamSoLuongHangHoa(Hanghoa hanghoa, int soLuong){
+		Hanghoa hangHoaResult = layHangHoa(hanghoa.getId());
 		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
 		super.update(hangHoaResult);
 	}

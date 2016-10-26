@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.qlbh.model.common.AbstractDao;
+import com.qlbh.pojo.Chitietphieunhap;
 import com.qlbh.pojo.Chitietphieuxuat;
 
 /**
@@ -16,7 +18,7 @@ import com.qlbh.pojo.Chitietphieuxuat;
  * @author Hibernate Tools
  */
 @Stateless
-public class ChitietphieuxuatHome {
+public class ChitietphieuxuatHome extends AbstractDao{
 
 	private static final Log log = LogFactory.getLog(ChitietphieuxuatHome.class);
 
@@ -67,5 +69,15 @@ public class ChitietphieuxuatHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public Chitietphieuxuat save(Chitietphieuxuat chitietphieuxuat){
+		super.save(chitietphieuxuat);
+		return chitietphieuxuat;
+	}
+	
+	public Chitietphieuxuat update(Chitietphieuxuat chitietphieuxuat){
+		super.update(chitietphieuxuat);
+		return chitietphieuxuat;
 	}
 }
