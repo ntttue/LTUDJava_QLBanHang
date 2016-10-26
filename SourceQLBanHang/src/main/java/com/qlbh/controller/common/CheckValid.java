@@ -17,7 +17,10 @@ public class CheckValid {
 
 	public static boolean isValidPhoneNumber(String phoneNo) {
 		// validate phone numbers of format "1234567890"
-		if (phoneNo.matches("^[\\w.-]+$"))
+		String phoneRegEx = "^[0-9\\-]*$";
+		if (phoneNo.length() < 5)
+			return false;
+		if (phoneNo.matches(phoneRegEx))
 			return true;
 		// validating phone number with -, . or spaces
 		else if (phoneNo.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}"))
@@ -31,7 +34,6 @@ public class CheckValid {
 		// return false if nothing matches the input
 		else
 			return false;
-
 	}
 
 	public static boolean isNumeric(String str) {
