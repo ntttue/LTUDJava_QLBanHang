@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="181.0" prefWidth="391.0" stylesheets="@../../css/thembophancongty.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Label id="lblTitle" alignment="CENTER" prefHeight="46.0" prefWidth="391.0" style="-fx-background-color: #4F95D2;" styleClass="lblTitle" text="THÔNG TIN LIÊN HỆ" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="65.0" layoutY="60.0" text="Nguyễn Thanh Nhàn">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="79.0" text="Trần Văn Trãi">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="99.0" text="Phạm Chung Tú">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="119.0" text="Nguyễn Thị Trí Tuệ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="205.0" layoutY="60.0" text=" 012 022 900 07">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="79.0" text="016 747 778 24">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="99.0" text="012 939 467 67">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="209.0" layoutY="119.0" text="016 999 521 01">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="156.0" layoutY="143.0" text=" Hỗ trợ 24/7" textFill="#ee0d0d">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+	</children>
+	
+</AnchorPane>
