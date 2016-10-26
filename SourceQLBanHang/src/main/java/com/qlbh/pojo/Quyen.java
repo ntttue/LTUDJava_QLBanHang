@@ -93,7 +93,10 @@ public class Quyen  implements java.io.Serializable {
         this.nguoidungs = nguoidungs;
     }
 
-
+    @Override
+	public String toString() {
+		return this.getTen();
+	}
 
 
 }
