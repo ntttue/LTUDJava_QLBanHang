@@ -824,4 +824,44 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML
+	void btnCapNhatClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/CapNhat.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Cập nhật");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnDangKyClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/DangKy.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Đăng ký");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -318,12 +318,12 @@
                         </AnchorPane>
                         <AnchorPane layoutX="255.0" prefHeight="85.0" prefWidth="255.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Đăng ký" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="14.0" layoutX="21.0" layoutY="21.0" onAction="#btnDangKyClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Đăng ký" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#3174d6" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="100.0" layoutY="14.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Cập nhật" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="100.0" layoutY="14.0" onAction="#btnCapNhatClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Cập nhật" textFill="#3c0982" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="-3.0" />
                                  </graphic>
