@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.controller.common.Display;
 import com.qlbh.model.PhieuxuatHome;
 import com.qlbh.pojo.Phieuxuat;
 import com.qlbh.render.combobox.DateOption;
@@ -59,10 +60,15 @@ public class ThuTienController {
 
 	private void setDatePeriod() {
 		DateOption selectedDateOption = cbxTuyChonNgay.getValue();
-		LocalDate localdateBegin = selectedDateOption.getBeginDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		dateNgayBatDau.setValue(localdateBegin);
-		dateNgayKetThuc.setValue(localdateEnd);
+		if ( selectedDateOption.getBeginDate() != null && selectedDateOption.getEndDate() != null ) {
+			LocalDate localdateBegin = selectedDateOption.getBeginDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			dateNgayBatDau.setValue(localdateBegin);
+			dateNgayKetThuc.setValue(localdateEnd);
+		} else {
+			dateNgayBatDau.setValue(null);
+			dateNgayKetThuc.setValue(null);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -111,14 +117,19 @@ public class ThuTienController {
 		colTenKho.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKhohang().getTen()));
 		
 		TableColumn<Phieuxuat, String> colTongTien = new TableColumn<>("Tổng tiền");
-		colTongTien.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTongtien().toString()));
+		colTongTien.setCellValueFactory(cellData -> new SimpleStringProperty(Display.formatMoney(cellData.getValue().getTongtien())));
 		
 		TableColumn<Phieuxuat, String> colGhiChu = new TableColumn<>("Ghi chú");
 		colGhiChu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 		
-		Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
+		if ( dateNgayBatDau.getValue() == null || dateNgayKetThuc.getValue() == null ) {
+			this.tableThuTien.setItems(this.getDSPhieuXuat());
+		} else {
+			Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+			Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+			this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
+		}
+		
 		this.tableThuTien.getColumns().addAll(colSTT, colMa, colNgayLap, colNgayGiao, colMaNV, colTenNV, colMaKH, colTenKH, colMaKho, colTenKho, colTongTien, colGhiChu);
 	}
 
@@ -149,9 +160,13 @@ public class ThuTienController {
 
 	@FXML
 	void onButtonXemClick(ActionEvent event) {
-		Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
+		if ( dateNgayBatDau.getValue() == null || dateNgayKetThuc.getValue() == null ) {
+			this.tableThuTien.setItems(this.getDSPhieuXuat());
+		} else {
+			Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+			Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+			this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
+		}
 	}
 	
 	@FXML

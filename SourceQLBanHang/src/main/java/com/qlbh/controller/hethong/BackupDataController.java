@@ -1,60 +1,110 @@
 package com.qlbh.controller.hethong;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.log4j.Logger;
 
+import com.jfoenix.controls.JFXButton;
+import com.qlbh.controller.common.DialogController;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public class BackupDataController {
 	private static final Logger logger = Logger.getLogger(BackupDataController.class);
 
 	@FXML
+	private JFXButton btnDong, btnThucHien, btnOpenFile;
+	@FXML
+	private AnchorPane root;
+	@FXML
+	private Label lblError;
+	@FXML
+	private TextField txtTenFile, txtDuongDan;
+
+	@FXML
 	protected void initialize() {
-		this.restoreDB();
+		String pattern = "ddMMyyyy";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		// formatting
+		this.txtTenFile.setText("data" + format.format(new Date()) + ".sql");
+	}
+
+	@FXML
+	void btnThucHienClick(ActionEvent event) {
+		this.backupDB();
+	}
+
+	@FXML
+	void btnDongClick(ActionEvent event) {
+		this.closeStage();
+	}
+
+	@FXML
+	void onKeyAction(KeyEvent e) {
+		if (e.getCode().toString().equals("ENTER")) {
+			this.backupDB();
+		}
+		if (e.getCode().toString().equals("ESCAPE")) {
+			this.closeStage();
+		}
+	}
+
+	@FXML
+	void btnOpenFileClick(ActionEvent event) {
+		DirectoryChooser fx = new DirectoryChooser();
+		fx.setInitialDirectory(new File("F:\\backup"));
+		File path = fx.showDialog(null);
+		if (path != null) {
+			this.txtDuongDan.setText(path.getPath());
+		}
+	}
+
+	private void closeStage() {
+		System.out.println("click cancel");
+		Stage stage = (Stage) btnDong.getScene().getWindow();
+		stage.close();
+	}
+
+	private String getPath() {
+		String path = this.txtDuongDan.getText() + "\\" + this.txtTenFile.getText();
+		path = path.replace("\\", "\\\\");
+		System.out.println(path);
+		return path;
 	}
 
 	public void backupDB() {
-		Process p = null;
 		try {
-			String[] comm = new String[4];
-			comm[0] = "C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysqldump";
-			comm[1] = "-u " + "root@localhost";
-			;
-			comm[2] = "-p " + "1234" + " " + "qlbh";
-			comm[3] = "-r D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\backup.sql";
-			// change the dbpass and dbname with your dbpass and dbname
-			Process runtimeProcess = Runtime.getRuntime().exec(comm);
-			int processComplete = runtimeProcess.waitFor();
-
-			if (processComplete == 0) {
-				System.out.println("Backup taken successfully");
-			} else {
-				System.out.println("Could not take mysql backup");
+			if (txtTenFile.getLength() == 0 || txtDuongDan.getLength() == 0) {
+				lblError.setText("Vui lòng điền đủ thông tin trong các mục (*)");
+				return;
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public boolean restoreDB() {
-		String[] executeCmd = new String[] { "mysql", "--user=" + "root", "--password=" + "1234", "qlbh", "-e",
-				" source " + "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\qlbh20161026.sql" };
-		Process runtimeProcess;
-		try {
+			// String[] executeCmd = new String[] { "mysqldump", "--user=" +
+			// "root", "--password=" + "1234", "qlbh", "-r",
+			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
+			// };
+			String[] executeCmd = new String[] { "mysqldump", "--user=" + "root", "--password=" + "1234", "qlbh", "-r",
+					this.getPath() };
+			Process runtimeProcess;
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();
 			if (processComplete == 0) {
-				System.out.println("Backup restored successfully");
-				return true;
+				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu thành công.");
 			} else {
-				System.out.println("Could not restore the backup");
+				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
 			}
-		} catch (
-
-		Exception ex) {
-			ex.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("Backup data error \n" + e.getMessage());
+			DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
 		}
-		return false;
 	}
-
 }
