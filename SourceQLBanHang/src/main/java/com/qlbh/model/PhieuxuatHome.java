@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -12,6 +13,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
+import com.qlbh.pojo.Phieunhap;
 import com.qlbh.pojo.Keeplogged;
 import com.qlbh.pojo.Phieuxuat;
 import com.qlbh.util.DataAccessLayerException;
@@ -24,7 +26,9 @@ import com.qlbh.util.HibernateFactory;
  * @author Hibernate Tools
  */
 @Stateless
-public class PhieuxuatHome extends AbstractDao {
+public class PhieuxuatHome extends AbstractDao{
+
+
 	private static final Logger logger = Logger.getLogger(PhieuxuatHome.class);
 	private Session session;
 

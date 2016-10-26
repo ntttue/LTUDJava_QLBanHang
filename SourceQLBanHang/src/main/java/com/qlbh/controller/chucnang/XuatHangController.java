@@ -225,7 +225,7 @@ public class XuatHangController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				saveInputBill();
+				saveOutputBill();
 			}
 		});
 
@@ -357,7 +357,12 @@ public class XuatHangController {
 			@Override
 			public void handle(CellEditEvent<Chitietphieuxuat, String> event) {
 				Chitietphieuxuat chitiet = event.getTableView().getItems().get(event.getTablePosition().getRow());
-				chitiet.setSoluong(Integer.parseInt(event.getNewValue().trim()));
+				int soluong = Integer.parseInt(event.getNewValue().trim());
+				if(soluong > chitiet.getHanghoa().getTonkho()){
+					tableChiTiet.refresh();
+					return;
+				}
+				chitiet.setSoluong(soluong);
 				double dongia = chitiet.getDongia();
 				chitiet.setThanhtien(dongia * chitiet.getSoluong());
 				tableChiTiet.refresh();
@@ -457,7 +462,7 @@ public class XuatHangController {
 		}
 	}
 
-	private void saveInputBill() {
+	private void saveOutputBill() {
 		LocalDate localDate = datePickerNhap.getValue();
 		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 		Date ngayNhap = Date.from(instant);
@@ -476,16 +481,15 @@ public class XuatHangController {
 		phieuxuat.setTongtien(Double.parseDouble(txtThanhToan.getText().trim()));
 		phieuxuat.setActivity(true);
 		if (phieuxuat.getId() == 0) {
-//			phieunhapHome.save(phieunhap);
-//			// Save chi tiet
-//			for (Chitietphieunhap chitietphieunhap : modelTableChiTiet) {
-//				chitietphieunhap.setPhieunhap(phieunhap);
-//				chitietphieunhapHome.save(chitietphieunhap);
-//				hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
-//						chitietphieunhap.getSoluong());
-//			}
+			phieuxuatHome.save(phieuxuat);
+			// Save chi tiet
+			for (Chitietphieuxuat chitietphieuxuat : modelTableChiTiet) {
+				chitietphieuxuat.setPhieuxuat(phieuxuat);
+				chitietphieuxuatHome.save(chitietphieuxuat);
+				hangHoaHome.giamSoLuongHangHoa(chitietphieuxuat.getHanghoa(), chitietphieuxuat.getSoluong());
+			}
 		} else {
-//			updatePhieuNhap(phieunhap);
+			updatePhieuXuat(phieuxuat);
 		}
 
 	}
@@ -497,23 +501,21 @@ public class XuatHangController {
 		return chitietphieunhaps;
 	}
 
-	private void updatePhieuNhap(Phieunhap phieunhap) {
-//		phieunhapHome.update(phieunhap);
-//		for (Chitietphieuxuat chitietphieunhap : modelTableChiTiet) {
-//			chitietphieunhapHome.update(chitietphieunhap);
-//			Chitietphieunhap chitiet = chitietphieunhapHome.findById(chitietphieunhap.getId());
-//			int newValue = chitietphieunhap.getSoluong();
-//			int oldValue = chitiet.getSoluong();
-//			if (chitiet != null) {
-//				if (newValue >= oldValue) {
-//					hangHoaHome.themSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
-//							newValue - oldValue);
-//				} else {
-//					hangHoaHome.giamSoLuongHangHoa(chitietphieunhap.getHanghoa(), phieunhap.getKhohang().getId(),
-//							newValue - oldValue);
-//				}
-//			}
-//		}
+	private void updatePhieuXuat(Phieuxuat phieuxuat) {
+		phieuxuatHome.update(phieuxuat);
+		for (Chitietphieuxuat chitietphieuxuat : modelTableChiTiet) {
+			chitietphieuxuatHome.update(chitietphieuxuat);
+			Chitietphieuxuat chitiet = chitietphieuxuatHome.findById(chitietphieuxuat.getId());
+			int newValue = chitietphieuxuat.getSoluong();
+			int oldValue = chitiet.getSoluong();
+			if (chitiet != null) {
+				if (newValue >= oldValue) {
+					hangHoaHome.giamSoLuongHangHoa(chitietphieuxuat.getHanghoa(),newValue - oldValue);
+				} else {
+					hangHoaHome.themSoLuongHangHoa(chitietphieuxuat.getHanghoa(), newValue - oldValue);
+				}
+			}
+		}
 	}
 
 }
