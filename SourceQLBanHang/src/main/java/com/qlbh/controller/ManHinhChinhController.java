@@ -652,4 +652,16 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	void btnHuongDanClick(ActionEvent event){
+		Runtime rt = Runtime.getRuntime();
+		String url = "http://stackoverflow.com";
+		try {
+			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
