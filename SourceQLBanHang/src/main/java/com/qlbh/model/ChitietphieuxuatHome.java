@@ -25,11 +25,12 @@ import com.qlbh.util.HibernateFactory;
 
 /**
  * Home object for domain model class Chitietphieuxuat.
+ * 
  * @see com.qlbh.model.Chitietphieuxuat
  * @author Hibernate Tools
  */
 @Stateless
-public class ChitietphieuxuatHome extends AbstractDao{
+public class ChitietphieuxuatHome extends AbstractDao {
 
 	private static final Log log = LogFactory.getLog(ChitietphieuxuatHome.class);
 
@@ -81,68 +82,70 @@ public class ChitietphieuxuatHome extends AbstractDao{
 			throw re;
 		}
 	}
-	
-	public List<Chitietphieuxuat> layDSChiTietTheoMaPhieuId(int id){
-			Session session = HibernateFactory.openSession();
-			List<Chitietphieuxuat> loaiHangs = null;
-			try {
-				String hql = "FROM Chiettietphieuxuat Where phieuxuatid = :id and Activity = true";
-				Query query = session.createQuery(hql);
-				query.setParameter("id", id);
-				loaiHangs = query.list();
-			} catch (HibernateException e) {
-				System.err.println(e);
-			} finally {
-				session.close();
-			}
+
+	public List<Chitietphieuxuat> layDSChiTietTheoMaPhieuId(int id) {
+		Session session = HibernateFactory.openSession();
+		List<Chitietphieuxuat> loaiHangs = new ArrayList<>();
+		try {
+			String hql = "FROM Chitietphieuxuat Where phieuxuatid = :id and Activity = true";
+			Query query = session.createQuery(hql);
+			query.setParameter("id", id);
+			loaiHangs = query.list();
+			System.out.println(loaiHangs.size());
 			return loaiHangs;
+		} catch (HibernateException e) {
+			System.err.println(e);
+		} finally {
+			session.close();
+		}
+		return null;
 	}
-	
-	
-	public Chitietphieuxuat save(Chitietphieuxuat chitietphieuxuat){
+
+	public Chitietphieuxuat save(Chitietphieuxuat chitietphieuxuat) {
 		super.save(chitietphieuxuat);
 		return chitietphieuxuat;
 	}
-	
-	public Chitietphieuxuat update(Chitietphieuxuat chitietphieuxuat){
+
+	public Chitietphieuxuat update(Chitietphieuxuat chitietphieuxuat) {
 		super.update(chitietphieuxuat);
 		return chitietphieuxuat;
 	}
-	
-	public ArrayList<BaoCaoBanHang> LayBaoCaoBanHang(int khoId, Date dateFrom, Date dateTo){
+
+	public ArrayList<BaoCaoBanHang> LayBaoCaoBanHang(int khoId, Date dateFrom, Date dateTo) {
 		ArrayList<BaoCaoBanHang> baoCaoBanHangs = new ArrayList<>();
 		ArrayList<Chitietphieuxuat> chitietphieuxuats = new ArrayList<>();
 		ArrayList<Integer> idList = new PhieuxuatHome().getPhieuXuatIdListByDate(khoId, dateFrom, dateTo);
-		for(Integer id : idList){
+		for (Integer id : idList) {
 			List<Chitietphieuxuat> chitietphieuxuats2 = layDSChiTietTheoMaPhieuId(id);
-			if(!chitietphieuxuats2.isEmpty()){
+			if (chitietphieuxuats2 != null) {
 				chitietphieuxuats.addAll(chitietphieuxuats2);
 			}
 		}
-		//Gom dữ liệu
-		for(Chitietphieuxuat chitietphieuxuat : chitietphieuxuats){
+		System.out.println(chitietphieuxuats.size());
+		// Gom dữ liệu
+		for (Chitietphieuxuat chitietphieuxuat : chitietphieuxuats) {
 			boolean isNew = true;
 			Hanghoa hanghoa = chitietphieuxuat.getHanghoa();
-			for(BaoCaoBanHang baoCaoBanHang : baoCaoBanHangs){
-				if(baoCaoBanHang.getHanghoa().getId() == hanghoa.getId()){
+			for (BaoCaoBanHang baoCaoBanHang : baoCaoBanHangs) {
+				if (baoCaoBanHang.getHanghoa().getId() == hanghoa.getId()) {
 					isNew = false;
 					baoCaoBanHang.setSoLuongXuat(baoCaoBanHang.getSoLuongXuat() + chitietphieuxuat.getSoluong());
 					baoCaoBanHang.setDoanhSoBan(baoCaoBanHang.getDoanhSoBan() + chitietphieuxuat.getThanhtien());
 				}
 			}
-			if(isNew){
+			if (isNew) {
 				BaoCaoBanHang banHang = new BaoCaoBanHang();
 				banHang.setHanghoa(hanghoa);
 				banHang.setSoLuongXuat(chitietphieuxuat.getSoluong());
 				banHang.setDoanhSoBan(chitietphieuxuat.getThanhtien());
 			}
 		}
-		
-		for(BaoCaoBanHang banHang : baoCaoBanHangs){
+
+		for (BaoCaoBanHang banHang : baoCaoBanHangs) {
 			banHang.setThanhTienNhap(banHang.getSoLuongXuat() * banHang.getHanghoa().getGiamua());
 			banHang.setChenhLech(banHang.getDoanhSoBan() - banHang.getThanhTienNhap());
 		}
-		
+		System.out.println(baoCaoBanHangs.size());
 		return baoCaoBanHangs;
 	}
 }
