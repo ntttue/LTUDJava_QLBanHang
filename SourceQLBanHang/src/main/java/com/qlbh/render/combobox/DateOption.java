@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DateOption {
+	static final Integer TAT_CA = 0;
 	static final Integer HOM_NAY = 1;
 	static final Integer TUAN_NAY = 2;
 	static final Integer THANG_NAY = 3;
@@ -24,6 +25,8 @@ public class DateOption {
 	public DateOption() {}
 	public DateOption getDateOption(Integer id) {
 		switch(id) {
+			case 0:
+				return new DateOption("Tất cả", null, null);
 			case 1:
 				return new DateOption("Hôm nay", new Date(), new Date());
 			case 2:
@@ -81,6 +84,7 @@ public class DateOption {
 	}
 	public static ObservableList<DateOption> getDateOptions() {
 		List<DateOption> dateOptions = Arrays.asList(
+			new DateOption().getDateOption(DateOption.TAT_CA),
 			new DateOption().getDateOption(DateOption.HOM_NAY),
 			new DateOption().getDateOption(DateOption.TUAN_NAY),
 			new DateOption().getDateOption(DateOption.THANG_NAY),

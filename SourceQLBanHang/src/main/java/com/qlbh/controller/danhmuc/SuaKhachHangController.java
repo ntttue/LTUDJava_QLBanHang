@@ -1,8 +1,11 @@
 package com.qlbh.controller.danhmuc;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import com.jfoenix.controls.JFXRadioButton;
+import com.qlbh.controller.common.Display;
 import com.qlbh.model.KhachhangHome;
 import com.qlbh.model.KhuvucHome;
 import com.qlbh.model.LoaikhachhangHome;
@@ -53,8 +56,12 @@ public class SuaKhachHangController {
 		txtSoTaiKhoan.setText(DataInputUtils.getStringValue(kh.getTaikhoan()));
 		txtMaSoThue.setText(DataInputUtils.getStringValue(kh.getMasothue()));
 		txtSkype.setText(DataInputUtils.getStringValue(kh.getSkype()));
-		numNoHienTai.setText(kh.getNohientai().toPlainString());
-		numGioiHanNo.setText(kh.getGioihanno().toPlainString());
+		
+		BigDecimal noHienTai = kh.getNohientai().setScale(2, RoundingMode.HALF_UP);
+		numNoHienTai.setText(Display.formatMoney(noHienTai));
+		BigDecimal gioiHanNo = kh.getGioihanno().setScale(2, RoundingMode.HALF_UP);
+		numGioiHanNo.setText(Display.formatMoney(gioiHanNo));
+		
 		if ( kh.getLoaikhachhang() != null ) {
 			cbxLoaiKhachHang.getSelectionModel().select(kh.getLoaikhachhang());
 		}
