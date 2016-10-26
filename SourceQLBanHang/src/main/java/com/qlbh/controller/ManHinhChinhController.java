@@ -285,21 +285,21 @@ public class ManHinhChinhController {
 		}
 	}
 
-	public static Tab tabLoaiHang = null;
+	public static Tab tabNhomHangHoa = null;
 
 	@FXML
 	void btnQuanLyLoaiHangClick(ActionEvent event) {
-		String title = "Nhóm hàng";
-		String fxmlPath = "../fxml/danhmuc/QuanLyLoaiHang.fxml";
-		if (ManHinhChinhController.tabLoaiHang != null) {
-			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabLoaiHang);
+		String title = "Nhóm hàng hóa";
+		String fxmlPath = "../fxml/danhmuc/QuanLyNhomHangHoa.fxml";
+		if (ManHinhChinhController.tabNhomHangHoa != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabNhomHangHoa);
 			return;
 		}
 		Tab tab = new Tab();
 		tab.setText(title);
 		tab.setOnClosed(new EventHandler<Event>() {
 			public void handle(Event arg0) {
-				ManHinhChinhController.tabLoaiHang = null;
+				ManHinhChinhController.tabNhomHangHoa = null;
 			}
 		});
 		try {
@@ -307,7 +307,7 @@ public class ManHinhChinhController {
 			tab.setContent(root);
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
-			ManHinhChinhController.tabLoaiHang = tab;
+			ManHinhChinhController.tabNhomHangHoa = tab;
 
 		} catch (IOException e) {
 			e.printStackTrace();

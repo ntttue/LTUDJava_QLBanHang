@@ -4,13 +4,13 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.qlbh.model.LoaihangHome;
-import com.qlbh.pojo.Loaihang;
+import com.qlbh.model.NhomhanghoaHome;
+import com.qlbh.pojo.Nhomhanghoa;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ThemLoaiHangController {
+public class ThemNhomHangHoaController {
 
 	@FXML
 	private JFXButton btnSave, btnCancel;
@@ -21,7 +21,7 @@ public class ThemLoaiHangController {
 	@FXML
 	private JFXTextField txtMa, txtTen, txtGhiChu;
 
-	final static Logger logger = Logger.getLogger(ThemLoaiHangController.class);
+	final static Logger logger = Logger.getLogger(ThemNhomHangHoaController.class);
 
 	@FXML
 	void btnSaveClick() {
@@ -29,19 +29,19 @@ public class ThemLoaiHangController {
 			lbValidate.setText("Vui lòng nhập Mã và Tên");
 			return;
 		}
-		Loaihang lh = new Loaihang();
-		lh.setMa(txtMa.getText());
-		lh.setTen(txtTen.getText());
-		lh.setGhichu(txtGhiChu.getText());
-		lh.setActivity(true);
-		LoaihangHome lhh = new LoaihangHome();
+		Nhomhanghoa nhh = new Nhomhanghoa();
+		nhh.setMa(txtMa.getText());
+		nhh.setTen(txtTen.getText());
+		nhh.setGhichu(txtGhiChu.getText());
+		nhh.setActivity(true);
+		NhomhanghoaHome nhhh = new NhomhanghoaHome();
 		try {
-			lhh.save(lh);
+			nhhh.save(nhh);
 			txtMa.clear();
 			txtTen.clear();
 			txtGhiChu.clear();
 			lbValidate.setText("");
-			QuanLyLoaiHangController.quanLyLoaiHangController.reload();
+			QuanLyNhomHangHoaController.quanLyNhomHangHoaController.reload();
 		} catch (Exception ex) {
 			logger.error("This is error : " + ex.getMessage());
 		}
@@ -50,7 +50,7 @@ public class ThemLoaiHangController {
 
 	@FXML
 	void btnCancelClick() {
-		QuanLyLoaiHangController.quanLyLoaiHangController.closeThem();
+		QuanLyNhomHangHoaController.quanLyNhomHangHoaController.closeThem();
 	}
 
 }

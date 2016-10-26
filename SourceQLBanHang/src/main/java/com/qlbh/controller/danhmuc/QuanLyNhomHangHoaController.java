@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
-import com.qlbh.model.LoaihangHome;
-import com.qlbh.pojo.Donvitinh;
-import com.qlbh.pojo.Loaihang;
+import com.qlbh.model.NhomhanghoaHome;
+import com.qlbh.pojo.Bophan;
+import com.qlbh.pojo.Nhomhanghoa;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,37 +27,37 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class QuanLyLoaiHangController {
-	public static QuanLyLoaiHangController quanLyLoaiHangController;
-	LoaihangHome lhHome = new LoaihangHome();
+public class QuanLyNhomHangHoaController {
+	public static QuanLyNhomHangHoaController quanLyNhomHangHoaController;
+	NhomhanghoaHome nhhHome = new NhomhanghoaHome();
 	private Stage stageThem = null;
 	private Stage stageSua = null;
 	@FXML
-	private TableView<Loaihang> tableLoaiHang;
+	private TableView<Nhomhanghoa> tableNhomHangHoa;
 
 	@FXML
 	private Button btnThem, btnSua, btnXoa, btnNapLai;
 
 	@FXML
 	protected void initialize() {
-		quanLyLoaiHangController = this;
-		loadListLoaiHang();
+		quanLyNhomHangHoaController = this;
+		loadListNhomHangHoa();
 		createRowsEvent();
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
 	}
 
 	private void createRowsEvent() {
-		tableLoaiHang.setRowFactory(tv -> {
-			TableRow<Loaihang> row = new TableRow<>();
+		tableNhomHangHoa.setRowFactory(tv -> {
+			TableRow<Nhomhanghoa> row = new TableRow<>();
 			row.setOnMouseClicked(event -> {
 				if (row.isEmpty()) {
-					onTableLoaiHangMouseClick();
+					onTableNhomHangHoaMouseClick();
 				} else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-					Loaihang clickedRow = row.getItem();
+					Nhomhanghoa clickedRow = row.getItem();
 					onRowDoubleClick(clickedRow);
 				} else if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY) {
-					Loaihang clickedRow = row.getItem();
+					Nhomhanghoa clickedRow = row.getItem();
 					onRowSingleClick(clickedRow);
 				}
 			});
@@ -65,69 +65,70 @@ public class QuanLyLoaiHangController {
 		});
 	}
 
-	private void onTableLoaiHangMouseClick() {
-		System.out.println("onTableLoaiHangMouseClick");
+	private void onTableNhomHangHoaMouseClick() {
+		System.out.println("onTableNhomHangHoaMouseClick");
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
-		tableLoaiHang.getSelectionModel().clearSelection();
+		tableNhomHangHoa.getSelectionModel().clearSelection();
 	}
 
-	private void onRowSingleClick(Loaihang lh) {
+	private void onRowSingleClick(Nhomhanghoa nhh) {
 		System.out.println("Single click");
-		System.out.println(lh.getMa());
+		System.out.println(nhh.getMa());
 		btnSua.setDisable(false);
 		btnXoa.setDisable(false);
 	}
 
-	private void onRowDoubleClick(Loaihang lh) {
+	private void onRowDoubleClick(Nhomhanghoa nhh) {
 		System.out.println("Double click");
-		System.out.println(lh.getMa());
+		System.out.println(nhh.getMa());
 		btnSua.setDisable(false);
 		btnXoa.setDisable(false);
 		btnSuaClick();
 	}
 
-	public Loaihang getRowSelected() {
-		return tableLoaiHang.getSelectionModel().getSelectedItem();
+	public Nhomhanghoa getRowSelected() {
+		return tableNhomHangHoa.getSelectionModel().getSelectedItem();
 	}
 
 	@SuppressWarnings("unchecked")
-	private ObservableList<Loaihang> getListLH() {
-		List<Loaihang> listLH = lhHome.findAll();
-		ObservableList<Loaihang> oListLH = FXCollections.observableList(listLH);
-		return oListLH;
+	private ObservableList<Nhomhanghoa> getListNHH() {
+		List<Nhomhanghoa> listNHH = nhhHome.findAll();
+		ObservableList<Nhomhanghoa> oListNHH = FXCollections.observableList(listNHH);
+		return oListNHH;
 	}
 
 	@SuppressWarnings("unchecked")
-	private void loadListLoaiHang() {
-		// TableColumn<Loaihang, String> id = new TableColumn<Loaihang,
+	private void loadListNhomHangHoa() {
+		// TableColumn<Nhomhanghoa, String> id = new TableColumn<Nhomhanghoa,
 		// String>("ID");
 		// id.setCellValueFactory(cellData -> new
 		// SimpleStringProperty(cellData.getValue().getId().toString()));
-		TableColumn<Loaihang, Number> colSTT = new TableColumn<Loaihang, Number>("#");
+		TableColumn<Nhomhanghoa, Number> colSTT = new TableColumn<Nhomhanghoa, Number>("#");
 		colSTT.setSortable(false);
-		colSTT.setResizable(false);
-		colSTT.setPrefWidth(30);
-		colSTT.setCellValueFactory(
-				column -> new ReadOnlyObjectWrapper<Number>(tableLoaiHang.getItems().indexOf(column.getValue()) + 1));
-		TableColumn<Loaihang, String> ma = new TableColumn<Loaihang, String>("Mã");
+		colSTT.setCellValueFactory(column -> new ReadOnlyObjectWrapper<Number>(
+				tableNhomHangHoa.getItems().indexOf(column.getValue()) + 1));
+		colSTT.setMaxWidth(70);
+		colSTT.setMinWidth(70);
+
+		TableColumn<Nhomhanghoa, String> ma = new TableColumn<Nhomhanghoa, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
 
-		TableColumn<Loaihang, String> ten = new TableColumn<Loaihang, String>("Tên");
+		TableColumn<Nhomhanghoa, String> ten = new TableColumn<Nhomhanghoa, String>("Tên");
 		ten.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTen()));
 
-		TableColumn<Loaihang, String> ghichu = new TableColumn<Loaihang, String>("Ghi chú");
+		TableColumn<Nhomhanghoa, String> ghichu = new TableColumn<Nhomhanghoa, String>("Ghi chú");
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
-		this.tableLoaiHang.setItems(this.getListLH());
-		this.tableLoaiHang.getColumns().addAll(colSTT, ma, ten, ghichu);
+		tableNhomHangHoa.setItems(this.getListNHH());
+		tableNhomHangHoa.getColumns().addAll(colSTT, ma, ten, ghichu);
 	}
 
-	void deleteLoaiHang() {
-		Loaihang lh = tableLoaiHang.getSelectionModel().getSelectedItem();
-		if (lh == null)
+	void deleteNhomHangHoa() {
+		Nhomhanghoa nhh = tableNhomHangHoa.getSelectionModel().getSelectedItem();
+		if (nhh == null)
 			return;
-		lhHome.delete(lh);
+		nhhHome.delete(nhh);
 		reload();
 	}
 
@@ -135,9 +136,9 @@ public class QuanLyLoaiHangController {
 	void btnThemClick() {
 		Stage primaryStage = new Stage();
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemLoaiHang.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../../fxml/danhmuc/ThemNhomHangHoa.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Thêm nhóm hàng");
+			primaryStage.setTitle("Thêm nhóm hàng hóa");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
@@ -155,12 +156,12 @@ public class QuanLyLoaiHangController {
 	void btnSuaClick() {
 		Stage primaryStage = new Stage();
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaLoaiHang.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaNhomHangHoa.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			SuaLoaiHangController controller = loader.<SuaLoaiHangController>getController();
-			controller.setLoaiHang(this.getRowSelected());
-			primaryStage.setTitle("Sửa loại hàng");
+			SuaNhomHangHoaController controller = loader.<SuaNhomHangHoaController>getController();
+			controller.setNhomHangHoa(this.getRowSelected());
+			primaryStage.setTitle("Sửa nhóm hàng hóa");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
@@ -176,8 +177,8 @@ public class QuanLyLoaiHangController {
 
 	@FXML
 	void btnXoaClick() {
-		DialogConfirmController.show("Xóa nhóm hàng", "Bạn có chắc muốn xóa nhóm hàng này?",
-				() -> this.deleteLoaiHang(), null);
+		DialogConfirmController.show("Xóa nhóm hàng hóa", "Bạn có chắc muốn xóa nhóm hàng hóa này?",
+				() -> this.deleteNhomHangHoa(), null);
 	}
 
 	@FXML
@@ -187,8 +188,8 @@ public class QuanLyLoaiHangController {
 
 	@FXML
 	void btnCloseClick() {
-		ManHinhChinhController.tabLoaiHang.getTabPane().getTabs().remove(ManHinhChinhController.tabLoaiHang);
-		ManHinhChinhController.tabLoaiHang = null;
+		ManHinhChinhController.tabNhomHangHoa.getTabPane().getTabs().remove(ManHinhChinhController.tabNhomHangHoa);
+		ManHinhChinhController.tabNhomHangHoa = null;
 	}
 
 	void closeThem() {
@@ -202,7 +203,7 @@ public class QuanLyLoaiHangController {
 	}
 
 	void reload() {
-		tableLoaiHang.setItems(getListLH());
+		tableNhomHangHoa.setItems(getListNHH());
 		btnSua.setDisable(true);
 		btnXoa.setDisable(true);
 	}

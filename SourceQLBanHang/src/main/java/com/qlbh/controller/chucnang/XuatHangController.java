@@ -247,8 +247,8 @@ public class XuatHangController {
 
 			@Override
 			public void handle(ActionEvent event) {
-				ManHinhChinhController.tabNhapHang.getTabPane().getTabs().remove(ManHinhChinhController.tabNhapHang);
-				ManHinhChinhController.tabNhapHang = null;
+				ManHinhChinhController.tabBanHang.getTabPane().getTabs().remove(ManHinhChinhController.tabBanHang);
+				ManHinhChinhController.tabBanHang = null;
 			}
 		});
 	}
