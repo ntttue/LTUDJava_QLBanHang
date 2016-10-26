@@ -1,28 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/10/2016 6:19:57 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-	<class name="com.qlbh.pojo.Nhatky" table="nhatky" catalog="qlbh"
-		optimistic-lock="version">
-		<id name="id" type="java.lang.Integer">
-			<column name="id" />
-			<generator class="identity" />
-		</id>
-		<property name="nguoidung" type="string">
-			<column name="nguoidung" />
-		</property>
-		<property name="bang" type="string">
-			<column name="bang" />
-		</property>
-		<property name="hanhdong" type="string">
-			<column name="hanhdong" />
-		</property>
-		<property name="ngay" type="timestamp">
-			<column name="ngay" length="19" />
-		</property>
-		<property name="activity" type="java.lang.Boolean">
-			<column name="activity" />
-		</property>
-	</class>
+    <class name="com.qlbh.pojo.Nhatky" table="nhatky" catalog="qlbh" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nguoidung" type="string">
+            <column name="nguoidung" />
+        </property>
+        <property name="bang" type="string">
+            <column name="bang" />
+        </property>
+        <property name="hanhdong" type="string">
+            <column name="hanhdong" />
+        </property>
+        <property name="ngay" type="timestamp">
+            <column name="ngay" length="19" />
+        </property>
+        <property name="activity" type="java.lang.Boolean">
+            <column name="activity" />
+        </property>
+    </class>
 </hibernate-mapping>

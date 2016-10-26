@@ -1,52 +1,51 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/10/2016 12:14:33 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-	<class name="com.qlbh.pojo.Phieuxuat" table="phieuxuat" catalog="qlbh"
-		optimistic-lock="version">
-		<id name="id" type="java.lang.Integer">
-			<column name="id" />
-			<generator class="identity" />
-		</id>
-		<many-to-one name="khachhang" class="com.qlbh.pojo.Khachhang" lazy="false" fetch="select">
-			<column name="khachhangid" />
-		</many-to-one>
-		<many-to-one name="khohang" class="com.qlbh.pojo.Khohang" lazy="false" fetch="select">
-			<column name="khoid" />
-		</many-to-one>
-		<many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" lazy="false" fetch="select">
-			<column name="nhanvienbanhangid" />
-		</many-to-one>
-		<property name="ma" type="string">
-			<column name="ma" length="20" />
-		</property>
-		<property name="diachi" type="string">
-			<column name="diachi" />
-		</property>
-		<property name="ngaygiao" type="date">
-			<column name="ngaygiao" length="10" />
-		</property>
-		<property name="ngaylap" type="date">
-			<column name="ngaylap" length="10" />
-		</property>
-		<property name="dienthoai" type="string">
-			<column name="dienthoai" />
-		</property>
-		<property name="tongtien" type="java.lang.Double">
-			<column name="tongtien" precision="22" scale="0" />
-		</property>
-		<property name="ghichu" type="string">
-			<column name="ghichu" length="65535" />
-		</property>
-		<property name="activity" type="java.lang.Boolean">
-			<column name="activity" />
-		</property>
-		<set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" fetch="select">
-			<key>
-				<column name="phieuxuatid" />
-			</key>
-			<one-to-many class="com.qlbh.pojo.Chitietphieuxuat" />
-		</set>
-	</class>
+    <class name="com.qlbh.pojo.Phieuxuat" table="phieuxuat" catalog="qlbh" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="khachhang" class="com.qlbh.pojo.Khachhang" fetch="select">
+            <column name="khachhangid" />
+        </many-to-one>
+        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
+            <column name="khoid" />
+        </many-to-one>
+        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select">
+            <column name="nhanvienbanhangid" />
+        </many-to-one>
+        <property name="ma" type="string">
+            <column name="ma" length="20" />
+        </property>
+        <property name="diachi" type="string">
+            <column name="diachi" />
+        </property>
+        <property name="ngaygiao" type="date">
+            <column name="ngaygiao" length="10" />
+        </property>
+        <property name="ngaylap" type="date">
+            <column name="ngaylap" length="10" />
+        </property>
+        <property name="dienthoai" type="string">
+            <column name="dienthoai" />
+        </property>
+        <property name="tongtien" type="java.lang.Double">
+            <column name="tongtien" precision="22" scale="0" />
+        </property>
+        <property name="ghichu" type="string">
+            <column name="ghichu" length="65535" />
+        </property>
+        <property name="activity" type="java.lang.Boolean">
+            <column name="activity" />
+        </property>
+        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="phieuxuatid" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Chitietphieuxuat" />
+        </set>
+    </class>
 </hibernate-mapping>

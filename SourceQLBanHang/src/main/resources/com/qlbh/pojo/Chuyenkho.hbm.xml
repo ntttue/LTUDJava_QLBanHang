@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qlbh.pojo.Chuyenkho" table="chuyenkho" catalog="qlbh" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="khohangByKhochuyenid" class="com.qlbh.pojo.Khohang" fetch="select">
+            <column name="khochuyenid" />
+        </many-to-one>
+        <many-to-one name="khohangByKhonhanid" class="com.qlbh.pojo.Khohang" fetch="select">
+            <column name="khonhanid" />
+        </many-to-one>
+        <many-to-one name="nhanvienByNguoichuyenid" class="com.qlbh.pojo.Nhanvien" fetch="select">
+            <column name="nguoichuyenid" />
+        </many-to-one>
+        <many-to-one name="nhanvienByNguoinhanid" class="com.qlbh.pojo.Nhanvien" fetch="select">
+            <column name="nguoinhanid" />
+        </many-to-one>
+        <property name="ghichu" type="string">
+            <column name="ghichu" length="65535" />
+        </property>
+        <property name="ma" type="string">
+            <column name="ma" />
+        </property>
+        <property name="phieuchuyentay" type="string">
+            <column name="phieuchuyentay" />
+        </property>
+        <property name="ngay" type="date">
+            <column name="ngay" length="10" />
+        </property>
+        <property name="activity" type="java.lang.Boolean">
+            <column name="activity" />
+        </property>
+        <set name="chitietchuyenkhos" table="chitietchuyenkho" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="chuyenkhoid" />
+            </key>
+            <one-to-many class="com.qlbh.pojo.Chitietchuyenkho" />
+        </set>
+    </class>
+</hibernate-mapping>
