@@ -55,6 +55,7 @@ public class QuanLyHangHoaController {
 	 */
 	@FXML
 	protected void initialize() {
+		initTabel();
 	}
 	
 	
@@ -108,15 +109,15 @@ public class QuanLyHangHoaController {
 	@FXML
 	void onButtonXoaClick() {
 		DialogConfirmController.show(
-				"Xóa khách hàng?",
-				"Bạn có chắc muốn xóa khách hàng này",
+				"Xóa hàng hóa?",
+				"Bạn có chắc muốn xóa hàng hóa này",
 				()-> this.delete(),
 				null);
 	}
 	@FXML
 	void onButtonExitClick() {
-		ManHinhChinhController.tabKhachHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhachHang);
-		ManHinhChinhController.tabKhachHang = null;
+		ManHinhChinhController.tabHangHoa.getTabPane().getTabs().remove(ManHinhChinhController.tabHangHoa);
+		ManHinhChinhController.tabHangHoa = null;
 	}
 	@FXML
 	void onButtonRefreshClick() {
@@ -141,7 +142,7 @@ public class QuanLyHangHoaController {
 	
 	private void initTabel(){
 		modelTabel = FXCollections.observableArrayList(hanghoaHome.getHangHoaList());
-		TableColumn<Hanghoa, Number> colSTT = new TableColumn<Hanghoa, Number>("#");
+		TableColumn<Hanghoa, Number> colSTT = new TableColumn<Hanghoa, Number>("STT");
 		colSTT.setSortable(false);
 		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(table.getItems().indexOf(column.getValue()) + 1));
 		
