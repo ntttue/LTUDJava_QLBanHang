@@ -3,16 +3,17 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/10/2016 12:14:33 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-	<class name="com.qlbh.pojo.Nguoidung" table="nguoidung" catalog="qlbh"
-		optimistic-lock="version">
+	<class name="com.qlbh.pojo.Nguoidung" table="nguoidung" catalog="qlbh" optimistic-lock="version">
 		<id name="id" type="java.lang.Integer">
 			<column name="id" />
 			<generator class="identity" />
 		</id>
-		<many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
+		<many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien"
+			fetch="select" lazy="false">
 			<column name="nhanvienid" />
 		</many-to-one>
-		<many-to-one name="quyen" class="com.qlbh.pojo.Quyen" fetch="select" lazy="false">
+		<many-to-one name="quyen" class="com.qlbh.pojo.Quyen"
+			fetch="select" lazy="false">
 			<column name="roleid" />
 		</many-to-one>
 		<property name="mand" type="string">

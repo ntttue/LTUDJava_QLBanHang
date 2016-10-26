@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-23 15:27:35
+Date: 2016-10-26 09:41:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,11 +27,21 @@ CREATE TABLE `bophan` (
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of bophan
 -- ----------------------------
+INSERT INTO `bophan` VALUES ('1', 'GD', 'Giám Đốc', 'Giám đốc công ty', '');
+INSERT INTO `bophan` VALUES ('2', 'KD', 'Phòng kinh doanh', 'Phòng kinh doanh', '');
+INSERT INTO `bophan` VALUES ('3', 'KT', 'Phòng kế toán', 'Phòng kế toán', '');
+INSERT INTO `bophan` VALUES ('4', 'KTH', 'Phòng Kỹ Thuật', 'Phòng Kỹ Thuật', '');
+INSERT INTO `bophan` VALUES ('22', 'Test', 'tesst', '123', '\0');
+INSERT INTO `bophan` VALUES ('26', '1', '1', '1', '\0');
+INSERT INTO `bophan` VALUES ('27', '1', 'Nhân sự', 'Bộ phận nhân sự', '');
+INSERT INTO `bophan` VALUES ('28', '2', '2', '2', '\0');
+INSERT INTO `bophan` VALUES ('29', '2', '2222', '1222222', '\0');
+INSERT INTO `bophan` VALUES ('30', 'BH', 'Bộ phận bán hàng', 'Bộ phận bán hàng', '');
 
 -- ----------------------------
 -- Table structure for chitietphieunhap
@@ -116,11 +126,12 @@ CREATE TABLE `donvitinh` (
   `ghichu` longtext COLLATE utf8_unicode_ci,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of donvitinh
 -- ----------------------------
+INSERT INTO `donvitinh` VALUES ('1', 'KG', 'kilogam', 'Kilogam', '\0');
 
 -- ----------------------------
 -- Table structure for hanghoa
@@ -160,6 +171,23 @@ CREATE TABLE `hanghoa` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for keeplogged
+-- ----------------------------
+DROP TABLE IF EXISTS `keeplogged`;
+CREATE TABLE `keeplogged` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usename` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of keeplogged
+-- ----------------------------
+INSERT INTO `keeplogged` VALUES ('10', 'ntttue', '1111', '');
+
+-- ----------------------------
 -- Table structure for khachhang
 -- ----------------------------
 DROP TABLE IF EXISTS `khachhang`;
@@ -187,11 +215,13 @@ CREATE TABLE `khachhang` (
   KEY `khachhang_khuvuc_fkey` (`khuvucid`),
   CONSTRAINT `khachang_loaikh_fkey` FOREIGN KEY (`loaikhid`) REFERENCES `loaikhachhang` (`id`),
   CONSTRAINT `khachhang_khuvuc_fkey` FOREIGN KEY (`khuvucid`) REFERENCES `khuvuc` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of khachhang
 -- ----------------------------
+INSERT INTO `khachhang` VALUES ('1', 'NV0001', null, null, null, 'ntttue', '391 Trần Phú', null, '01699952101', 'ntttue.gl@gmail.com', null, null, null, null, null, null, null, '');
+INSERT INTO `khachhang` VALUES ('2', '1', null, null, null, '1', '', null, '', '', null, null, null, null, null, null, null, '');
 
 -- ----------------------------
 -- Table structure for khohang
@@ -212,7 +242,7 @@ CREATE TABLE `khohang` (
   PRIMARY KEY (`id`),
   KEY `khohang_nhanvien_fkey` (`nguoiqlid`),
   CONSTRAINT `khohang_nhanvien_fkey` FOREIGN KEY (`nguoiqlid`) REFERENCES `nhanvien` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of khohang
@@ -230,7 +260,7 @@ CREATE TABLE `khuvuc` (
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ma` (`ma`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of khuvuc
@@ -289,11 +319,13 @@ CREATE TABLE `nguoidung` (
   KEY `nguoidung_nhanvien_fkey` (`nhanvienid`),
   CONSTRAINT `nguoidung_nhanvien_fkey` FOREIGN KEY (`nhanvienid`) REFERENCES `nhanvien` (`id`),
   CONSTRAINT `nguoidung_quyen_fkey` FOREIGN KEY (`roleid`) REFERENCES `quyen` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of nguoidung
 -- ----------------------------
+INSERT INTO `nguoidung` VALUES ('ND0001', '2', '1', '1', '1', '3', null, '');
+INSERT INTO `nguoidung` VALUES ('ND0002', '3', 'ntttue', '1111', '1', '5', null, '');
 
 -- ----------------------------
 -- Table structure for nhacungcap
@@ -338,17 +370,93 @@ CREATE TABLE `nhanvien` (
   `Email` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `DienThoai` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `BoPhanId` int(11) DEFAULT NULL,
-  `NguoiLienQuan` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `NguoiQuanLyID` int(11) DEFAULT NULL,
   `Luong` double(65,0) DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nhanvien_bophan_fkey` (`BoPhanId`),
-  CONSTRAINT `nhanvien_bophan_fkey` FOREIGN KEY (`BoPhanId`) REFERENCES `bophan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+  KEY `NguoiQuanLyID` (`NguoiQuanLyID`),
+  CONSTRAINT `nhanvien_bophan_fkey` FOREIGN KEY (`BoPhanId`) REFERENCES `bophan` (`id`),
+  CONSTRAINT `nhanvien_nhanvienql_fkey` FOREIGN KEY (`NguoiQuanLyID`) REFERENCES `nhanvien` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- ----------------------------
 -- Records of nhanvien
 -- ----------------------------
+INSERT INTO `nhanvien` VALUES ('3', '1', 'Nguyễn Thị Trí Tuệ', '391 trần phú', '\0', 'Tổng giám đốc', 'ntttue.gl@gmail.com', '01699952101', '1', '9', '20000000', '');
+INSERT INTO `nhanvien` VALUES ('4', 'ntttue', 'ntttue', '392 NVC', '', 'Phó Tổng giám đốc', 'ntttue.gl@gmail.com', '01699952101', '1', '3', '20000000', '\0');
+INSERT INTO `nhanvien` VALUES ('5', 'NV01', 'Trần văn Trãi', '', '', '', 'ntttue.gl@gmail.com', '', '1', '3', '0', '');
+INSERT INTO `nhanvien` VALUES ('6', 'NV02', 'Nguyễn Thanh Nhàn', '', '', '', 'ntnhan@gmail.com', '', '1', null, '0', '');
+INSERT INTO `nhanvien` VALUES ('7', 'NV03', 'Phạm Chung Tú', '', '', '', 'pctu@gmail.com', '1699952101', '1', null, '0', '');
+INSERT INTO `nhanvien` VALUES ('8', 'NV04', 'Hồ Tuấn Thanh', '', '', '', '', '', '1', '3', '50000000', '');
+INSERT INTO `nhanvien` VALUES ('9', 'NV05', 'Lê Ngọc Thành', '', '', '', '', '01699952101', '1', null, '0', '');
+INSERT INTO `nhanvien` VALUES ('10', 'NV06', 'Trần Trung Kiên', '', '', '', 'ttkien@gmail.com', '01699952101', '1', null, '20000', '');
+INSERT INTO `nhanvien` VALUES ('11', 'NV07', 'Lê Ngọc Sơn', '', '', '', 'lnson@gmail.com', '01699952101', '1', null, '100000', '');
+INSERT INTO `nhanvien` VALUES ('12', 'NV08', 'Lương Vĩ Minh', '', '', '', '', '', '1', null, '40000000', '');
+INSERT INTO `nhanvien` VALUES ('13', 'NV09', 'Trần Đang Thư', '227 Nguyễn Văn Cừ', '\0', 'Kế toán trưởng', 'tdthu@gmail.com', '01699952101', '3', '3', '100000000', '');
+INSERT INTO `nhanvien` VALUES ('14', 'NV010', 'Lâm Như Quỳnh', '227 Nguyễn Văn Cừ', '\0', 'Thư ký', 'lnquyanh@gmail.com', '01699952101', '3', '3', '20000000', '');
+INSERT INTO `nhanvien` VALUES ('15', 'NV11', 'Lâm Tâm Như', '227 Nguyễn Văn Cừ', '\0', 'Nhân viên bán hàng', 'ltnhu@gmail.com', '01699952101', '2', '3', '200000000', '');
+INSERT INTO `nhanvien` VALUES ('16', 'NV012', 'Triệu Vi', '227 Nguyễn Văn Cừ', '\0', 'nhân viên bán hàng', 'tvi@gmail.com', '01699952101', '2', '3', '20000000', '');
+INSERT INTO `nhanvien` VALUES ('17', 'NV013', 'Hồ Trung Dũng', '227 Nguyễn Văn Cừ', '', 'Nhân viên ', 'htdung@gmail.com', '01699952101', '2', '3', '2000000', '');
+INSERT INTO `nhanvien` VALUES ('18', 'NV014', 'Đàm Vĩnh Hưng', '', '', '', '', '', '1', null, '0', '');
+INSERT INTO `nhanvien` VALUES ('19', 'NV015', 'Mỹ Tâm', '', '\0', '', '', '', '2', '3', '0', '');
+INSERT INTO `nhanvien` VALUES ('20', 'NV016', 'Lê Cát Trọng Lý', '', '\0', '', '', '', '2', '3', '0', '');
+INSERT INTO `nhanvien` VALUES ('22', 'test1', 'test1', '', '', '', '', '', '1', '3', '0', '');
+
+-- ----------------------------
+-- Table structure for nhatky
+-- ----------------------------
+DROP TABLE IF EXISTS `nhatky`;
+CREATE TABLE `nhatky` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nguoidung` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bang` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hanhdong` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngay` datetime DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of nhatky
+-- ----------------------------
+INSERT INTO `nhatky` VALUES ('38', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 02:08:29', '');
+INSERT INTO `nhatky` VALUES ('39', 'ND0002 - ntttue', 'Bộ phận công ty', 'Xóa', '2016-10-26 02:08:37', '');
+INSERT INTO `nhatky` VALUES ('40', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 02:11:05', '');
+INSERT INTO `nhatky` VALUES ('41', 'ND0002 - ntttue', 'Đơn vị tính', 'Thêm', '2016-10-26 02:11:24', '');
+INSERT INTO `nhatky` VALUES ('42', 'ND0002 - ntttue', 'Đơn vị tính', 'Cập nhật', '2016-10-26 02:11:45', '');
+INSERT INTO `nhatky` VALUES ('43', 'ND0002 - ntttue', 'Đơn vị tính', 'Xóa', '2016-10-26 02:12:12', '');
+INSERT INTO `nhatky` VALUES ('44', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 02:31:32', '');
+INSERT INTO `nhatky` VALUES ('45', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:21:40', '');
+INSERT INTO `nhatky` VALUES ('46', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:23:11', '');
+INSERT INTO `nhatky` VALUES ('47', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:23:24', '');
+INSERT INTO `nhatky` VALUES ('48', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:26:23', '');
+INSERT INTO `nhatky` VALUES ('49', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:27:59', '');
+INSERT INTO `nhatky` VALUES ('50', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:32:08', '');
+INSERT INTO `nhatky` VALUES ('51', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:35:07', '');
+INSERT INTO `nhatky` VALUES ('52', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:39:28', '');
+INSERT INTO `nhatky` VALUES ('53', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:40:09', '');
+INSERT INTO `nhatky` VALUES ('54', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:40:24', '');
+INSERT INTO `nhatky` VALUES ('55', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:41:12', '');
+INSERT INTO `nhatky` VALUES ('56', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:45:08', '');
+INSERT INTO `nhatky` VALUES ('57', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:47:02', '');
+INSERT INTO `nhatky` VALUES ('58', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:47:49', '');
+INSERT INTO `nhatky` VALUES ('59', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:49:25', '');
+INSERT INTO `nhatky` VALUES ('60', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:50:28', '');
+INSERT INTO `nhatky` VALUES ('61', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:52:35', '');
+INSERT INTO `nhatky` VALUES ('62', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:53:25', '');
+INSERT INTO `nhatky` VALUES ('63', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:55:17', '');
+INSERT INTO `nhatky` VALUES ('64', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:55:46', '');
+INSERT INTO `nhatky` VALUES ('65', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:56:16', '');
+INSERT INTO `nhatky` VALUES ('66', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 03:59:03', '');
+INSERT INTO `nhatky` VALUES ('67', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:03:50', '');
+INSERT INTO `nhatky` VALUES ('68', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:17:21', '');
+INSERT INTO `nhatky` VALUES ('69', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:19:15', '');
+INSERT INTO `nhatky` VALUES ('70', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:26:40', '');
+INSERT INTO `nhatky` VALUES ('71', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:33:43', '');
+INSERT INTO `nhatky` VALUES ('72', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:34:29', '');
+INSERT INTO `nhatky` VALUES ('73', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:37:16', '');
+INSERT INTO `nhatky` VALUES ('74', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:37:38', '');
 
 -- ----------------------------
 -- Table structure for nhomhanghoa
@@ -456,7 +564,7 @@ CREATE TABLE `tygia` (
   `activity` bit(1) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of tygia

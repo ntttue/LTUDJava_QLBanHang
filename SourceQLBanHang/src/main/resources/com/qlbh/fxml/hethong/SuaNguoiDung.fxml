@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="430.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.danhmuc.SuaNguoiDungController">
+<AnchorPane id="AnchorPane" prefHeight="253.0" prefWidth="430.0" stylesheets="@../../css/themkhachhang.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.hethong.SuaNguoiDungController">
 	<children>
-		<AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<AnchorPane prefHeight="180.0" prefWidth="430.0" styleClass="paneInfo" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<children>
 				<AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 					<children>
@@ -24,52 +24,34 @@
 						</Label>
 					</children>
 				</AnchorPane>
-				<AnchorPane layoutX="15.0" layoutY="45.0" prefHeight="290.0" prefWidth="410.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+				<AnchorPane layoutX="15.0" layoutY="45.0" prefHeight="180.0" prefWidth="410.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
 					<children>
-						<AnchorPane prefHeight="260.0" prefWidth="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+						<AnchorPane prefHeight="150.0" prefWidth="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 							<children>
-								<Label layoutX="5.0" layoutY="280.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Ghi chú" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
-								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Tên đăng nhập" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
-									<graphic>
-										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
-									</graphic>
-								</Label>
-								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Mã người dùng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-									<graphic>
-										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
-									</graphic>
-								</Label>
-								<Label layoutX="19.0" layoutY="91.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Mật khẩu" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-								<Label layoutX="29.0" layoutY="101.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nhập lại mật khẩu" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0" />
-								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nhân viên" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
-									<graphic>
-										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
-									</graphic>
-								</Label>
-								<Label contentDisplay="RIGHT" layoutY="184.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Quyền" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0">
+								<Label layoutX="5.0" layoutY="280.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Ghi chú" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
+								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Tên đăng nhập" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+								<Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Nhân viên" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+								<Label contentDisplay="RIGHT" layoutY="184.0" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Quyền" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
 									<graphic>
 										<Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
 									</graphic>
 								</Label>
 							</children>
 						</AnchorPane>
-						<AnchorPane layoutX="120.0" prefHeight="260.0" prefWidth="280.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
+						<AnchorPane layoutX="120.0" prefHeight="150.0" prefWidth="280.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
 							<children>
-								<JFXTextField fx:id="txtMa" editable="false" layoutY="150.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+								<JFXTextField fx:id="txtNhanVien" editable="false" layoutX="-48.0" layoutY="15.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
 								<JFXTextField fx:id="txtTen" editable="false" layoutY="113.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
-								<JFXComboBox fx:id="cmbNhanVien" disable="true" layoutX="8.0" layoutY="94.0" prefHeight="25.0" prefWidth="264.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="80.0" />
-								<JFXPasswordField fx:id="txtMatKhau" editable="false" layoutY="119.0" maxWidth="280.0" minWidth="280.0" prefHeight="31.0" prefWidth="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
-								<JFXPasswordField fx:id="txtNhapLaiMatKhau" editable="false" layoutY="150.0" maxWidth="280.0" minWidth="280.0" prefHeight="31.0" prefWidth="280.0" AnchorPane.topAnchor="150.0" />
-								<JFXComboBox fx:id="cmbQuyen" layoutX="18.0" layoutY="104.0" prefHeight="25.0" prefWidth="264.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="185.0" />
-								<JFXTextField fx:id="txtGhiChu" layoutY="286.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="220.0" />
+								<JFXComboBox fx:id="cmbQuyen" layoutX="18.0" layoutY="104.0" prefHeight="25.0" prefWidth="264.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="80.0" />
+								<JFXTextField fx:id="txtGhiChu" layoutY="286.0" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="115.0" />
 							</children>
 						</AnchorPane>
-						<Label fx:id="lbValidate" layoutX="157.0" layoutY="42.0" textFill="RED" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="260.0" />
+						<Label fx:id="lbValidate" layoutX="157.0" layoutY="42.0" textFill="RED" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="150.0" />
 					</children>
 				</AnchorPane>
 			</children>
 		</AnchorPane>
-		<AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<AnchorPane prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="230.0">
 			<children>
 				<JFXButton fx:id="btnSave" graphicTextGap="15.0" layoutX="615.0" onAction="#btnSaveClick" prefHeight="30.0" prefWidth="85.0" ripplerFill="#8b99c6" text="Lưu" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0">
 					<graphic>
