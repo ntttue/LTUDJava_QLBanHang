@@ -2,6 +2,8 @@ package com.qlbh.controller.chucnang;
 
 import java.io.IOException;
 
+import com.qlbh.model.PhieunhapHome;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,18 +15,18 @@ public class ChuyenKhoController {
 	private AnchorPane anchorPaneContent;
 	@FXML
 	public void initialize() {
-		this.setManHinhChuyenKhoan();
+		this.setManHinhChuyenKho();
 	}
 	@FXML
 	public void onButtonPhieuChuyenKhoClick(ActionEvent event) {
-		this.setManHinhChuyenKhoan();
+		this.setManHinhChuyenKho();
 	}
 	@FXML
 	public void onButtonTheoHangHoaClick(ActionEvent event) {
-		
+		this.setManHinhbBangKeChuyenKho();
 	}
 	
-	private void setManHinhChuyenKhoan() {
+	private void setManHinhChuyenKho() {
 		Node node;
 		try {
 			node = (Node) FXMLLoader.load(getClass().getResource("../../fxml/chucnang/PhieuChuyenKho.fxml"));
@@ -39,10 +41,10 @@ public class ChuyenKhoController {
 		}
 	}
 	
-	private void setManHinhbBangKeChuyenKhoan() {
+	private void setManHinhbBangKeChuyenKho() {
 		Node node;
 		try {
-			node = (Node) FXMLLoader.load(getClass().getResource("../../fxml/chucnang/PhieuChuyenKho.fxml"));
+			node = (Node) FXMLLoader.load(getClass().getResource("../../fxml/chucnang/ThongKePhieuChuyenKho.fxml"));
 			anchorPaneContent.getChildren().addAll(node);
 			AnchorPane.setTopAnchor(node, 0d);
 			AnchorPane.setLeftAnchor(node, 0d);
