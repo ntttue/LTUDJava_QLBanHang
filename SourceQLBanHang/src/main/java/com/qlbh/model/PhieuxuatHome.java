@@ -1,6 +1,7 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -71,5 +72,40 @@ public class PhieuxuatHome extends AbstractDao{
 		phieuXuat.setActivity(false);
 		super.update(phieuXuat);
 		super.saveNhatKy("Phiếu xuất", "Xóa");
+	}
+	
+	public String getMaPhieu() {
+		Session session = HibernateFactory.openSession();
+		List<Phieuxuat> phieuNhaps;
+		try {
+			String hql = "FROM Phieuxuat";
+			Query query = session.createQuery(hql);
+			phieuNhaps = query.list();
+			if (phieuNhaps == null || phieuNhaps.isEmpty()) {
+				return "PX0000001";
+			} else {
+				phieuNhaps.sort(new Comparator<Phieuxuat>() {
+					@Override
+					public int compare(Phieuxuat o1, Phieuxuat o2) {
+						return o2.getMa().compareTo(o1.getMa());
+					}
+				});
+				Phieuxuat phieunhap = phieuNhaps.get(0); 
+				String str = phieunhap.getMa().substring(2, phieunhap.getMa().length());
+				int index = Integer.parseInt(str.trim()) + 1;
+				if(index/100 > 0){
+					return "PX0000" + index;
+				}else if(index / 10 > 0){
+					return "PX00000" + index;
+				}else{
+					return "PX000000" + index;
+				}
+			}
+		} catch (HibernateException e) {
+			System.err.println(e);
+		} finally {
+			session.close();
+		}
+		return "PX0000001";
 	}
 }
