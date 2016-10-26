@@ -1,6 +1,7 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -107,5 +108,27 @@ public class PhieuxuatHome extends AbstractDao{
 			session.close();
 		}
 		return "PX0000001";
+	}
+	
+	public ArrayList<Integer> getPhieuXuatIdListByDate(int khoId, Date dateFrom, Date dateTo){
+		ArrayList<Integer> idList  = new ArrayList<>();
+		try {
+			session = HibernateFactory.getSessionFactory().openSession();
+			String hql = "from "+Phieuxuat.class.getName()+" where activity = true and khoid = :khoid and (ngaylap BETWEEN :beginDay AND :enđDay)";
+			Query query = session.createQuery(hql);
+			query.setParameter("khoid", khoId);
+			query.setDate("beginDay", dateFrom);
+			query.setDate("enđDay", dateTo);
+			List<Phieuxuat> ds = query.list();
+			for(Phieuxuat phieuxuat : ds){
+				idList.add(phieuxuat.getId());
+			}
+		} catch (HibernateException e) {
+			handleException(e);
+			logger.error("error in findFirst:  \n" + e.getMessage());
+		} finally {
+			HibernateFactory.close(session);
+		}
+		return idList;
 	}
 }
