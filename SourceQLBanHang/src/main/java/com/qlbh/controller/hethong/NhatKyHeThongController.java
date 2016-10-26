@@ -79,7 +79,7 @@ public class NhatKyHeThongController {
 	}
 
 	public void setButtonControlsDisable(Boolean disable) {
-//		btnXoa.setDisable(disable);
+		// btnXoa.setDisable(disable);
 	}
 
 	@FXML
@@ -134,19 +134,22 @@ public class NhatKyHeThongController {
 				column -> new ReadOnlyObjectWrapper<Number>(tableNhatKy.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Nhatky, String> colNguoiDung = new TableColumn<Nhatky, String>("Người dùng");
-		colNguoiDung.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNguoiDung()));
+		colNguoiDung.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNguoidung()));
 
 		TableColumn<Nhatky, String> colChucNang = new TableColumn<Nhatky, String>("Nhóm chức năng");
-		colChucNang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTable()));
+		colChucNang.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBang()));
 
 		TableColumn<Nhatky, String> colHanhDong = new TableColumn<Nhatky, String>("Hành động");
-		colHanhDong.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHanhDong()));
+		colHanhDong.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHanhdong()));
 
 		TableColumn<Nhatky, String> colNgay = new TableColumn<Nhatky, String>("Thời gian");
 		colNgay.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNgay().toString()));
+		colNgay.setSortType(TableColumn.SortType.DESCENDING);
 
 		this.tableNhatKy.setItems(this.getDSNhatKy());
 		this.tableNhatKy.getColumns().addAll(colSTT, colNguoiDung, colChucNang, colHanhDong, colNgay);
+		this.tableNhatKy.getSortOrder().add(colNgay);
+
 	}
 
 	private void deleteNhatKy() {
@@ -162,6 +165,7 @@ public class NhatKyHeThongController {
 
 	@FXML
 	private void onButtonXoaClick() {
-//		DialogConfirmController.show("Xóa tỷ giá?", "Bạn có chắc muốn xóa", () -> this.deleteNhatKy(), null);
+		// DialogConfirmController.show("Xóa tỷ giá?", "Bạn có chắc muốn xóa",
+		// () -> this.deleteNhatKy(), null);
 	}
 }

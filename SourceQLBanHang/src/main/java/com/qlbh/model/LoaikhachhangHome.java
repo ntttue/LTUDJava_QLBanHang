@@ -28,15 +28,19 @@ public class LoaikhachhangHome extends AbstractDao {
 	}
 	public void save(Loaikhachhang lkh) {
 		super.save(lkh);
+		super.saveNhatKy("Loại khách hàng", "Thêm");
 	}
 	public void update(Loaikhachhang lkh) {
 		super.update(lkh);
+		super.saveNhatKy("Loại khách hàng", "Cập nhật");
 	}
 	public void deletePermanently(Loaikhachhang lkh) {
 		super.delete(lkh);
+		super.saveNhatKy("Loại khách hàng", "Xóa");
 	}
 	public void delete(Loaikhachhang lkh) {
 		lkh.setActivity(false);
 		super.update(lkh);
+		super.saveNhatKy("Loại khách hàng", "Xóa");
 	}
 }

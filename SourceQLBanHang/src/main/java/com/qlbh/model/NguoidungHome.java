@@ -25,15 +25,17 @@ public class NguoidungHome extends AbstractDao {
 	final static Logger logger = Logger.getLogger(NguoidungHome.class);
 
 	public void create(Nguoidung nd) throws DataAccessLayerException {
-		super.saveOrUpdate(nd);
+		super.save(nd);
+		super.saveNhatKy("Người dùng", "Thêm");
 	}
 
 	public NguoidungHome() {
 		super();
 	}
 
-	public void saveOrUpdate(Nguoidung obj) {
-		super.saveOrUpdate(obj);
+	public void update(Nguoidung obj) {
+		super.update(obj);
+		super.saveNhatKy("Người dùng", "Cập nhật");
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {

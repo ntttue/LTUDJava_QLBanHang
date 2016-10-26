@@ -1,5 +1,6 @@
 package com.qlbh.model.common;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,6 +9,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.qlbh.app.MainApp;
+import com.qlbh.model.NhatkyHome;
+import com.qlbh.pojo.Keeplogged;
+import com.qlbh.pojo.Nhatky;
 import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
@@ -20,17 +25,17 @@ public abstract class AbstractDao {
 		HibernateFactory.buildIfNeeded();
 	}
 
-	protected void saveOrUpdate(Object obj) {
-		try {
-			startOperation();
-			session.saveOrUpdate(obj);
-			tx.commit();
-		} catch (HibernateException e) {
-			handleException(e);
-		} finally {
-			HibernateFactory.close(session);
-		}
-	}
+	// protected void saveOrUpdate(Object obj) {
+	// try {
+	// startOperation();
+	// session.saveOrUpdate(obj);
+	// tx.commit();
+	// } catch (HibernateException e) {
+	// handleException(e);
+	// } finally {
+	// HibernateFactory.close(session);
+	// }
+	// }
 
 	protected void update(Object obj) {
 		try {
@@ -96,7 +101,7 @@ public abstract class AbstractDao {
 		}
 		return obj;
 	}
-	
+
 	protected Integer getLastID(Class clazz) {
 		Integer lastID = null;
 		try {
@@ -104,7 +109,7 @@ public abstract class AbstractDao {
 			Query query = session.createQuery("select distinct max(id) from " + clazz.getName());
 			List objects = query.list();
 			Object a = query.getFirstResult();
-			lastID = (Integer)query.getFirstResult();
+			lastID = (Integer) query.getFirstResult();
 			tx.commit();
 		} catch (HibernateException e) {
 			handleException(e);
@@ -138,6 +143,7 @@ public abstract class AbstractDao {
 		try {
 			startOperation();
 			Query query = session.createQuery("from " + clazz.getName() + " where Activity=true");
+			System.out.println(query.getQueryString());
 			objects = query.list();
 			tx.commit();
 		} catch (HibernateException e) {
@@ -156,5 +162,16 @@ public abstract class AbstractDao {
 	protected void startOperation() throws HibernateException {
 		session = HibernateFactory.openSession();
 		tx = session.beginTransaction();
+	}
+
+	public void saveNhatKy(String table, String hanhDong) {
+		System.out.println("save nhật ký");
+		Nhatky nk = new Nhatky();
+		nk.setActivity(true);
+		nk.setBang(table);
+		nk.setHanhdong(hanhDong);
+		nk.setNgay(new Date());
+		nk.setNguoidung(MainApp.loginUser.getMand() + " - " + MainApp.loginUser.getTennd());
+		this.save(nk);
 	}
 }

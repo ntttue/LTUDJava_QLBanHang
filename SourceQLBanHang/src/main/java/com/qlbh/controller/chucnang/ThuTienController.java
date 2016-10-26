@@ -1,16 +1,28 @@
 package com.qlbh.controller.chucnang;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import com.qlbh.controller.ManHinhChinhController;
+import com.qlbh.model.PhieuxuatHome;
+import com.qlbh.pojo.Phieuxuat;
 import com.qlbh.render.combobox.DateOption;
 import com.qlbh.util.DataInputUtils;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class ThuTienController {
@@ -19,8 +31,10 @@ public class ThuTienController {
 	@FXML
 	DatePicker dateNgayBatDau, dateNgayKetThuc;
 	@FXML
-	TableView<?> tableThuTien;
-
+	TableView<Phieuxuat> tableThuTien;
+	
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+	PhieuxuatHome phieuxuatHome = new PhieuxuatHome();
 	@FXML
 	public void initialize() {
 		// Set data for comboBox
@@ -34,10 +48,12 @@ public class ThuTienController {
 		dateNgayKetThuc.setShowWeekNumbers(false);
 		// Set initial date as a first option
 		this.setDatePeriod();
+		// Load table PhieuXuat
+		this.loadTableThuTien();
 	}
 
 	@FXML
-	void onSelectedItemChange(ActionEvent event) {
+	void onDateOptionChange(ActionEvent event) {
 		this.setDatePeriod();
 	}
 
@@ -47,6 +63,63 @@ public class ThuTienController {
 		LocalDate localdateEnd = selectedDateOption.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		dateNgayBatDau.setValue(localdateBegin);
 		dateNgayKetThuc.setValue(localdateEnd);
+	}
+
+	@SuppressWarnings("unchecked")
+	private ObservableList<Phieuxuat> getDSPhieuXuat() {
+		List<Phieuxuat> phieuxuats = phieuxuatHome.findAll();
+		ObservableList<Phieuxuat> oListPhieuXuat = FXCollections.observableList(phieuxuats);
+		return oListPhieuXuat;
+	}
+	@SuppressWarnings("unchecked")
+	private ObservableList<Phieuxuat> getDSPhieuXuat(Date beginDay, Date enđDay) {
+		List<Phieuxuat> phieuxuats = phieuxuatHome.getDataInPeriodTime(beginDay, enđDay);
+		ObservableList<Phieuxuat> oListPhieuXuat = FXCollections.observableList(phieuxuats);
+		return oListPhieuXuat;
+	}
+	@SuppressWarnings("unchecked")
+	private void loadTableThuTien() {
+		TableColumn<Phieuxuat, Number> colSTT = new TableColumn<>("#");
+		colSTT.setSortable(false);
+		colSTT.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(tableThuTien.getItems().indexOf(column.getValue()) + 1));
+		
+		TableColumn<Phieuxuat, String> colMa = new TableColumn<>("Phiếu");
+		colMa.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
+		
+		TableColumn<Phieuxuat, String> colNgayLap = new TableColumn<>("Ngày lập");
+		colNgayLap.setCellValueFactory(cellData -> new SimpleStringProperty(df.format(cellData.getValue().getNgaylap())));
+		
+		TableColumn<Phieuxuat, String> colNgayGiao = new TableColumn<>("Ngày giao");
+		colNgayGiao.setCellValueFactory(cellData -> new SimpleStringProperty(df.format(cellData.getValue().getNgaygiao())));
+		
+		TableColumn<Phieuxuat, String> colMaNV = new TableColumn<>("Mã NV bán");
+		colMaNV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNhanvien().getMa()));
+		
+		TableColumn<Phieuxuat, String> colTenNV = new TableColumn<>("Tên NV bán");
+		colTenNV.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNhanvien().getTen()));
+		
+		TableColumn<Phieuxuat, String> colMaKH = new TableColumn<>("Mã KH");
+		colMaKH.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKhachhang().getMa()));
+		
+		TableColumn<Phieuxuat, String> colTenKH = new TableColumn<>("Tên KH");
+		colTenKH.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKhachhang().getTen()));
+		
+		TableColumn<Phieuxuat, String> colMaKho = new TableColumn<>("Mã Kho");
+		colMaKho.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKhohang().getMa()));
+		
+		TableColumn<Phieuxuat, String> colTenKho = new TableColumn<>("Tên Kho");
+		colTenKho.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKhohang().getTen()));
+		
+		TableColumn<Phieuxuat, String> colTongTien = new TableColumn<>("Tổng tiền");
+		colTongTien.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTongtien().toString()));
+		
+		TableColumn<Phieuxuat, String> colGhiChu = new TableColumn<>("Ghi chú");
+		colGhiChu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
+		
+		Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
+		this.tableThuTien.getColumns().addAll(colSTT, colMa, colNgayLap, colNgayGiao, colMaNV, colTenNV, colMaKH, colTenKH, colMaKho, colTenKho, colTongTien, colGhiChu);
 	}
 
 	@FXML
@@ -76,13 +149,13 @@ public class ThuTienController {
 
 	@FXML
 	void onButtonXemClick(ActionEvent event) {
-		
+		Date beginDate = Date.from(dateNgayBatDau.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date endDate = Date.from(dateNgayKetThuc.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		this.tableThuTien.setItems(this.getDSPhieuXuat(beginDate, endDate));
 	}
 	
-	
-
 	@FXML
-	void onButtonLapPhieuThuClick(ActionEvent event) {
+	void onButtonXoaClick(ActionEvent event) {
 
 	}
 

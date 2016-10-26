@@ -86,10 +86,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                <children>
-                  <ComboBox cacheShape="false" prefWidth="103.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0" />
-                  <DatePicker layoutX="22.0" layoutY="3.0" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="3.0" />
-                  <DatePicker prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="235.0" AnchorPane.topAnchor="3.0" />
-                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                  <ComboBox fx:id="cbxTuyChonNgay" cacheShape="false" onAction="#onDateOptionChange" prefWidth="103.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker fx:id="dateNgayBatDau" layoutX="22.0" layoutY="3.0" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker fx:id="dateNgayKetThuc" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="3.0" />
+                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                      <children>
                         <JFXButton alignment="CENTER" onAction="#onButtonXemClick" ripplerFill="#c98c8c" text="Xem" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <graphic>
@@ -97,13 +99,13 @@
                            </graphic>
                         </JFXButton>
                         <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="2.0" />
-                        <JFXButton alignment="CENTER" onAction="#onButtonLapPhieuThuClick" ripplerFill="#c98c8c" text="Xóa" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="0.0">
+                        <JFXButton alignment="CENTER" onAction="#onButtonXoaClick" ripplerFill="#c98c8c" text="Xóa" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="0.0">
                            <graphic>
                               <SVGPath content="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z" fill="#db7b48" scaleX="0.8" scaleY="0.8" />
                            </graphic>
                         </JFXButton>
-                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="2.0" />
-                        <JFXButton alignment="CENTER" onAction="#onButtonExitClick" ripplerFill="#c98c8c" text="Đóng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="2.0" />
+                        <JFXButton alignment="CENTER" onAction="#onButtonExitClick" ripplerFill="#c98c8c" text="Đóng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="0.0">
                            <graphic>
                               <SVGPath content="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#db7b48" scaleX="0.8" scaleY="0.8" />
                            </graphic>
@@ -114,7 +116,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-table-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TableView fx:id="tableChiTien" prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
          </children></AnchorPane>
    </children>
