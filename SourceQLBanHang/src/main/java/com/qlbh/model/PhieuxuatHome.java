@@ -27,8 +27,6 @@ import com.qlbh.util.HibernateFactory;
  */
 @Stateless
 public class PhieuxuatHome extends AbstractDao{
-
-
 	private static final Logger logger = Logger.getLogger(PhieuxuatHome.class);
 	private Session session;
 
@@ -39,7 +37,7 @@ public class PhieuxuatHome extends AbstractDao{
 	public List getDataInPeriodTime(Date beginDay, Date enđDay) throws DataAccessLayerException {
 		try {
 			session = HibernateFactory.getSessionFactory().openSession();
-			String hql = "from "+Phieuxuat.class.getName()+" where activity = true and (ngaygiao BETWEEN :beginDay AND :enđDay)";
+			String hql = "from "+Phieuxuat.class.getName()+" where activity = true and (ngaylap BETWEEN :beginDay AND :enđDay)";
 			Query query = session.createQuery(hql);
 			query.setDate("beginDay", beginDay);
 			query.setDate("enđDay", enđDay);
