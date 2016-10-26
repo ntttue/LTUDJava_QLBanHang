@@ -23,7 +23,13 @@ import javax.persistence.Table;
 public class Loaihang  implements java.io.Serializable {
 
 
-     private Integer id;
+     @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ten;
+	}
+
+	private Integer id;
      private String ma;
      private String ghichu;
      private String ten;

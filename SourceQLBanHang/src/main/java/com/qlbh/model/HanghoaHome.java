@@ -176,4 +176,9 @@ public class HanghoaHome extends AbstractDao {
 		super.update(hanghoa);
 		super.saveNhatKy("Hàng hóa", "Xóa");
 	}
+	
+	public Hanghoa save(Hanghoa hanghoa){
+		super.save(hanghoa);
+		return hanghoa;
+	}
 }

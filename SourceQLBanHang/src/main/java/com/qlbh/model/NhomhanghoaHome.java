@@ -1,14 +1,22 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
+import com.qlbh.model.common.AbstractDao;
+import com.qlbh.pojo.Loaihang;
 import com.qlbh.pojo.Nhomhanghoa;
+import com.qlbh.util.HibernateFactory;
 
 /**
  * Home object for domain model class Nhomhanghoa.
@@ -16,7 +24,7 @@ import com.qlbh.pojo.Nhomhanghoa;
  * @author Hibernate Tools
  */
 @Stateless
-public class NhomhanghoaHome {
+public class NhomhanghoaHome extends AbstractDao{
 
 	private static final Log log = LogFactory.getLog(NhomhanghoaHome.class);
 
@@ -67,5 +75,20 @@ public class NhomhanghoaHome {
 			log.error("get failed", re);
 			throw re;
 		}
+	}
+	
+	public List<Nhomhanghoa> getNhomHangHoaList() {
+		Session session = HibernateFactory.openSession();
+		List<Nhomhanghoa> loaiHangs = null;
+		try {
+			String hql = "FROM Nhomhanghoa Where Activity = true";
+			Query query = session.createQuery(hql);
+			loaiHangs = query.list();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		} finally {
+			session.close();
+		}
+		return loaiHangs;
 	}
 }

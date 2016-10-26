@@ -235,6 +235,12 @@ public class Nhacungcap  implements java.io.Serializable {
         this.phieunhaps = phieunhaps;
     }
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.ten;
+	}
+
 
 
 
