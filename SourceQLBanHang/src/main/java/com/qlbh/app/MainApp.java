@@ -37,7 +37,7 @@ public class MainApp extends Application {
 		MainApp.loginUser = nd;
 		MainApp.loginStage.close();
 		MainApp.mainStage.show();
-		MainApp.mhcController.setStatus();
+		MainApp.mhcController.setStatusAndRoles();
 		MainApp.setPrimaryStage(MainApp.mainStage);
 	}
 
@@ -86,7 +86,7 @@ public class MainApp extends Application {
 		} else {
 			MainApp.setPrimaryStage(MainApp.mainStage);
 			MainApp.mainStage.show();
-			MainApp.mhcController.setStatus();
+			MainApp.mhcController.setStatusAndRoles();
 		}
 	}
 

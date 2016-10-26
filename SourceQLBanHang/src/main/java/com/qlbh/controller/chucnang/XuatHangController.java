@@ -32,7 +32,9 @@ import com.qlbh.pojo.Nhacungcap;
 import com.qlbh.pojo.Nhanvien;
 import com.qlbh.pojo.Phieunhap;
 import com.qlbh.pojo.Phieuxuat;
+import com.qlbh.render.combobox.MaKhachHangListCell;
 import com.qlbh.render.combobox.MaNhaCungCapListCell;
+import com.qlbh.render.combobox.TenKhachHangListCell;
 import com.qlbh.render.combobox.TenNhaCungCapListCell;
 
 import javafx.application.Application;
@@ -159,24 +161,24 @@ public class XuatHangController {
 			}
 		};
 		cmbMaKH.setConverter(converterMaNCC);
-//		cmbMaKH.setButtonCell(new MaNhaCungCapListCell());
-//		cmbMaKH.setCellFactory(new Callback<ListView<Nhacungcap>, ListCell<Nhacungcap>>() {
-//
-//			public ListCell<Nhacungcap> call(ListView<Nhacungcap> param) {
-//				return new MaNhaCungCapListCell();
-//			}
-//		});
+		cmbMaKH.setButtonCell(new MaKhachHangListCell());
+		cmbMaKH.setCellFactory(new Callback<ListView<Khachhang>, ListCell<Khachhang>>() {
+
+			public ListCell<Khachhang> call(ListView<Khachhang> param) {
+				return new MaKhachHangListCell();
+			}
+		});
 		cmbMaKH.setPromptText("Chọn mã khách hàng");
 		// Load ten khach hang
 		cmbModelTenKH = FXCollections.observableArrayList(khachhangs);
 		cmbTenKH.setItems(cmbModelTenKH);
-//		cmbTenNCC.setButtonCell(new TenNhaCungCapListCell());
-//		cmbTenNCC.setCellFactory(new Callback<ListView<Nhacungcap>, ListCell<Nhacungcap>>() {
-//
-//			public ListCell<Nhacungcap> call(ListView<Nhacungcap> param) {
-//				return new TenNhaCungCapListCell();
-//			}
-//		});
+		cmbTenKH.setButtonCell(new TenKhachHangListCell());
+		cmbTenKH.setCellFactory(new Callback<ListView<Khachhang>, ListCell<Khachhang>>() {
+
+			public ListCell<Khachhang> call(ListView<Khachhang> param) {
+				return new TenKhachHangListCell();
+			}
+		});
 		StringConverter<Khachhang> converterTenNCC = new StringConverter<Khachhang>() {
 
 			@Override

@@ -1,5 +1,7 @@
 package com.qlbh.controller.danhmuc;
 
+import java.text.DecimalFormat;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.qlbh.model.DonvitinhHome;
@@ -24,7 +26,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class ThemHangHoaController {
+public class SuaHangHoaController {
 
 	private KhohangHome khohangHome = new KhohangHome();
 	private NhacungcapHome nhacungcapHome = new NhacungcapHome();
@@ -32,6 +34,24 @@ public class ThemHangHoaController {
 	private LoaihangHome loaihangHome = new LoaihangHome();
 	private NhomhanghoaHome nhomhanghoaHome = new NhomhanghoaHome();
 	private HanghoaHome hanghoaHome = new HanghoaHome();
+	private Hanghoa hangHoa;
+	private final DecimalFormat doubleFormat = new DecimalFormat("#");
+	
+	public void setHangHoa(Hanghoa hanghoa){
+		this.hangHoa = hanghoa;
+		txtMa.setText(hanghoa.getMa());
+		txtTen.setText(hanghoa.getTen());
+		txtXuatXu.setText(hanghoa.getXuatxu());
+		txtSLTon.setText(hanghoa.getTonkho() + "");
+		txtGiaMua.setText(doubleFormat.format(hanghoa.getGiamua()));
+		txtGiaBanLe.setText(doubleFormat.format(hanghoa.getGiabanle()));
+		txtGiaBanSi.setText(doubleFormat.format(hanghoa.getGiabansi()));
+		cmbLoaiHang.setValue(hanghoa.getLoaihang());
+		cmbDonVi.setValue(hanghoa.getDonvitinh());
+		cmbNhaCC.setValue(hanghoa.getNhacungcap());
+		cmbKho.setValue(hanghoa.getKhohang());
+		cmbNhomHang.setValue(hanghoa.getNhomhanghoa());
+	}
 
 	@FXML
 	private ComboBox<Khohang> cmbKho;
@@ -99,9 +119,9 @@ public class ThemHangHoaController {
 			txtInputValidate.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 			return;
 		}
-		Hanghoa hanghoa =  hanghoaHome.save(getHangHoa());
-		QuanLyHangHoaController.controller.addHangHoan(hanghoa);
-		QuanLyHangHoaController.controller.closeManHinhThem();
+		hanghoaHome.save(getHangHoa());
+		QuanLyHangHoaController.controller.updateHangHoan(hangHoa);
+		QuanLyHangHoaController.controller.closeManHinhSua();
 	}
 
 	@FXML
@@ -127,10 +147,9 @@ public class ThemHangHoaController {
 	}
 
 	private Hanghoa getHangHoa() {
-		Hanghoa hangHoa = new Hanghoa();
 		hangHoa.setMa(txtMa.getText().trim());
 		hangHoa.setTen(txtTen.getText().trim());
-		hangHoa.setXuatxu(txtXuatXu.getText().trim());
+		hangHoa.setXuatxu(txtXuatXu.getText().trim() == null? "": txtXuatXu.getText().trim());
 		hangHoa.setTonkho(Integer.parseInt(txtSLTon.getText().trim().isEmpty()?"0": txtSLTon.getText().trim()));
 		hangHoa.setGiamua(Double.parseDouble(txtGiaMua.getText().trim().isEmpty()?"0": txtGiaMua.getText().trim()));
 		hangHoa.setGiabanle(Double.parseDouble(txtGiaBanLe.getText().trim().isEmpty()?"0": txtGiaBanLe.getText().trim()));

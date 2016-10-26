@@ -104,28 +104,7 @@ public class BackupDataController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Backup data error \n" + e.getMessage());
+			DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
 		}
 	}
-
-	public boolean restoreDB() {
-		try {
-			String[] executeCmd = new String[] { "mysql", "--user=" + "root", "--password=" + "1234", "qlbh", "-e",
-					" source " + "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql" };
-			Process runtimeProcess;
-			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
-			int processComplete = runtimeProcess.waitFor();
-			if (processComplete == 0) {
-				System.out.println("Backup restored successfully");
-				return true;
-			} else {
-				System.out.println("Could not restore the backup");
-			}
-		} catch (
-
-		Exception ex) {
-			ex.printStackTrace();
-		}
-		return false;
-	}
-
 }

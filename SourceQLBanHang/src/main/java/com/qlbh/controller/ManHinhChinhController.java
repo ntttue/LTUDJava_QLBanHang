@@ -9,6 +9,8 @@ import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.controller.hethong.BackupDataController;
 import com.qlbh.controller.hethong.DoiMatKhauController;
+import com.qlbh.controller.hethong.RestoreDataController;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -36,20 +38,47 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong, btnBackup;
-
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnNhatKyHeThong, btnBackup, btnPhanQuyen, btnBackUp, btnPhucHoi,
+	btnQuanLyKhuVuc, btnQuanLyKhachHang, btnQuanLyNhaCungCap, btnQuanLyKhoHang, btnNhanVien, btnBaoCaoKhoHang, btnBaoCaoBanHang,
+	btnChungTu, btnMuaHang, btnBanHang;
 	@FXML
 	private Text lblStatus;
 
 	@FXML
 	private AnchorPane anchorManHinhChinhRoot;
 
-	public void setStatus() {
+	public void setStatusAndRoles() {
 		if (MainApp.loginUser != null) {
 			String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
 			lblStatus.setText(status);
 		}
-
+		switch (MainApp.loginUser.getQuyen().getId()) {
+		case 2:
+			btnPhanQuyen.setDisable(true);
+			btnNhatKyHeThong.setDisable(true);
+			btnBackUp.setDisable(true);
+			btnPhucHoi.setDisable(true);
+			btnMuaHang.setDisable(true);
+			btnBanHang.setDisable(true);
+			break;
+		case 3:
+			btnPhanQuyen.setDisable(true);
+			btnNhatKyHeThong.setDisable(true);
+			btnBackUp.setDisable(true);
+			btnPhucHoi.setDisable(true);
+			btnQuanLyKhuVuc.setDisable(true);
+			btnQuanLyKhachHang.setDisable(true);
+			btnQuanLyNhaCungCap.setDisable(true);
+			btnQuanLyKhoHang.setDisable(true);
+			btnBoPhan.setDisable(true);
+			btnNhanVien.setDisable(true);
+			btnBaoCaoKhoHang.setDisable(true);
+			btnBaoCaoBanHang.setDisable(true);
+			btnChungTu.setDisable(true);
+			break;
+		default:
+			break;
+		}
 	}
 
 	public static Tab tabNhapHang = null;
@@ -497,7 +526,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
@@ -682,21 +711,34 @@ public class ManHinhChinhController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
 			primaryStage.show();
-			// primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			// public void handle(WindowEvent we) {
-			// if (doiMatKhauCtrl.isDoiMatKhauThanhCong()) {
-			// DialogController.show(anchorManHinhChinhRoot, null, "Thông báo",
-			// "Sao lưu dữ liệu thành công.");
-			// primaryStage.close();
-			// }
-			// }
-			// });
 		} catch (IOException e) {
 			logger.error("exeption open frmBackupData", e);
 			e.printStackTrace();
 		}
 	}
-	
+
+	@FXML
+	void btnPhucHoiClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/hethong/RestoreData.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			RestoreDataController restoreDataCtrl = loader.<RestoreDataController>getController();
+			primaryStage.setTitle("Phục hồi dữ liệu đã sao lưu");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			logger.error("exeption open frmBackupData", e);
+			e.printStackTrace();
+		}
+	}
+
 	public static Tab tabHangHoa = null;
 
 	@FXML
@@ -722,6 +764,18 @@ public class ManHinhChinhController {
 			ManHinhChinhController.tabHangHoa = tab;
 
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	void btnHuongDanClick(ActionEvent event){
+		Runtime rt = Runtime.getRuntime();
+		String url = "http://stackoverflow.com";
+		try {
+			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

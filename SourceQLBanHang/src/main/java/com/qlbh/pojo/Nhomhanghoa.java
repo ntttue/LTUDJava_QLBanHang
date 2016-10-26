@@ -102,7 +102,11 @@ public class Nhomhanghoa  implements java.io.Serializable {
         this.hanghoas = hanghoas;
     }
 
-
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.ten;
+	}
 
 
 }

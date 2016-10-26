@@ -39,11 +39,6 @@ public class QuanLyHangHoaController {
 	private final DecimalFormat doubleFormat = new DecimalFormat("#");
 	
 	private HanghoaHome hanghoaHome = new HanghoaHome();
-	private KhohangHome khohangHome = new KhohangHome();
-	private NhacungcapHome nhacungcapHome = new NhacungcapHome();
-	private DonvitinhHome DonvitinhHome = new DonvitinhHome();
-	private LoaihangHome LoaihangHome = new LoaihangHome();
-	private Nhomhanghoa Nhomhanghoa = new Nhomhanghoa();
 	
 	@FXML
 	private TableView<Hanghoa> table;
@@ -55,6 +50,7 @@ public class QuanLyHangHoaController {
 	 */
 	@FXML
 	protected void initialize() {
+		controller = this;
 		initTabel();
 	}
 	
@@ -87,13 +83,13 @@ public class QuanLyHangHoaController {
 		Stage primaryStage = new Stage();
 		Parent root;
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaKhachHang.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../fxml/danhmuc/SuaHangHoa.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
-			SuaKhachHangController controller = 
-				    loader.<SuaKhachHangController>getController();
-//			controller.setKhachhang(this.getSelected());
-			primaryStage.setTitle("Sửa Khách hàng");
+			SuaHangHoaController controller = 
+				    loader.<SuaHangHoaController>getController();
+			controller.setHangHoa(this.getSelected());
+			primaryStage.setTitle("Sửa hàng hoa");
 			primaryStage.initStyle(StageStyle.UNIFIED);
 			primaryStage.initModality(Modality.APPLICATION_MODAL);
 			primaryStage.setResizable(false);
@@ -136,8 +132,28 @@ public class QuanLyHangHoaController {
 			return;
 		}
 		hanghoaHome.delete(hangHoa);
-		table.refresh();
+		table.setItems(FXCollections.observableArrayList(hanghoaHome.getHangHoaList()));
 		this.setButtonControlsDisable(true);
+	}
+	
+	public void closeManHinhThem() {
+		if ( this.stageThem != null ) {
+			this.stageThem.close();
+		}
+	}
+	public void closeManHinhSua() {
+		if ( this.stageSua != null ) {
+			this.stageSua.close();
+		}
+	}
+	
+	public void addHangHoan(Hanghoa hanghoa){
+		table.getItems().add(hanghoa);
+		table.refresh();
+	}
+	
+	public void updateHangHoan(Hanghoa hanghoa){
+		table.refresh();
 	}
 	
 	private void initTabel(){

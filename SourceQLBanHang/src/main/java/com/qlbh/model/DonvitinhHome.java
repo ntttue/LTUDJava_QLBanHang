@@ -7,10 +7,15 @@ import javax.ejb.Stateless;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Donvitinh;
+import com.qlbh.pojo.Nhomhanghoa;
 import com.qlbh.util.DataAccessLayerException;
+import com.qlbh.util.HibernateFactory;
 
 @Stateless
 public class DonvitinhHome extends AbstractDao {
@@ -35,5 +40,20 @@ public class DonvitinhHome extends AbstractDao {
 		dvt.setActivity(false);
 		super.update(dvt);
 		super.saveNhatKy("Đơn vị tính", "Xóa");
+	}
+	
+	public List<Donvitinh> getDonViTinhList() {
+		Session session = HibernateFactory.openSession();
+		List<Donvitinh> loaiHangs = null;
+		try {
+			String hql = "FROM Donvitinh Where Activity = true";
+			Query query = session.createQuery(hql);
+			loaiHangs = query.list();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		} finally {
+			session.close();
+		}
+		return loaiHangs;
 	}
 }
