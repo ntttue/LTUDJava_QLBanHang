@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyAction" prefHeight="213.0" prefWidth="581.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.hethong.BackupDataController">
 	<children>
-		<TextField fx:id="txtDuongDan" layoutX="116.0" layoutY="105.0" prefHeight="25.0" prefWidth="379.0" text="F:\backup" />
+		<TextField fx:id="txtDuongDan" layoutX="116.0" layoutY="105.0" prefHeight="25.0" prefWidth="379.0" />
 		<TextField fx:id="txtTenFile" layoutX="116.0" layoutY="66.0" prefHeight="25.0" prefWidth="429.0" />
 		<JFXButton fx:id="btnDong" alignment="CENTER_RIGHT" graphicTextGap="15.0" layoutX="464.0" layoutY="165.0" onAction="#btnDongClick" prefHeight="30.0" prefWidth="83.0" ripplerFill="#9e6868" style="-fx-background-color: #CDCDCD;" text="Đóng" wrapText="true">
 			<graphic>
