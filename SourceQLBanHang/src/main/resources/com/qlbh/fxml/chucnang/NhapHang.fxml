@@ -46,14 +46,25 @@
                         <SVGPath content="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#ee4f4f" />
                      </graphic>
                   </JFXButton>
+                  <Text fx:id="txtInputValidate" fill="#d3401f" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane layoutY="35.0" prefHeight="200.0" prefWidth="200.0" styleClass="paneInfo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
                <children>
                   <AnchorPane layoutX="88.0" layoutY="-1.0" prefHeight="200.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="2.0" layoutY="26.0" prefHeight="17.0" prefWidth="53.0" text="Mã NNC" AnchorPane.leftAnchor="70.0" />
-                        <Label layoutX="-1.0" layoutY="61.0" prefHeight="17.0" prefWidth="53.0" text="Tên NNC" AnchorPane.leftAnchor="70.0" />
+                        <Label contentDisplay="RIGHT" layoutX="2.0" layoutY="26.0" prefHeight="17.0" prefWidth="78.0" text="Mã NNC" AnchorPane.leftAnchor="70.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic></Label>
+                        <Label contentDisplay="RIGHT" layoutX="-1.0" layoutY="61.0" prefHeight="17.0" prefWidth="75.0" text="Tên NNC" AnchorPane.leftAnchor="70.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic></Label>
                         <Label layoutX="-6.0" layoutY="96.0" prefHeight="17.0" prefWidth="53.0" text="Địa chỉ" AnchorPane.leftAnchor="70.0" />
                         <Label layoutX="2.0" layoutY="141.0" prefHeight="17.0" prefWidth="53.0" text="Ghi chú" AnchorPane.leftAnchor="70.0" />
                      </children>
@@ -69,11 +80,20 @@
                   <AnchorPane prefHeight="200.0" prefWidth="5.0" styleClass="decorde" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="5.0" />
                   <AnchorPane layoutX="412.0" layoutY="11.0" prefHeight="200.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="555.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="55.0" layoutY="19.0" prefHeight="17.0" prefWidth="45.0" text="Phiếu" AnchorPane.leftAnchor="70.0" />
+                        <Label contentDisplay="RIGHT" layoutX="55.0" layoutY="19.0" prefHeight="17.0" prefWidth="61.0" text="Phiếu" AnchorPane.leftAnchor="70.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic></Label>
                         <Label layoutX="68.0" layoutY="52.0" prefHeight="17.0" prefWidth="61.0" text="Điện thoại" AnchorPane.leftAnchor="70.0" />
                         <Label layoutX="72.0" layoutY="94.0" prefHeight="17.0" prefWidth="41.0" text="Ngày" AnchorPane.leftAnchor="72.0" />
-                        <Label layoutX="71.0" layoutY="127.0" text="Nhân viên" AnchorPane.leftAnchor="71.0" />
-                        <Label layoutX="72.0" layoutY="163.0" text="Kho nhập" AnchorPane.leftAnchor="72.0" />
+                        <Label contentDisplay="RIGHT" layoutX="71.0" layoutY="127.0" text="Nhân viên" AnchorPane.leftAnchor="71.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic></Label>
+                        <Label contentDisplay="RIGHT" layoutX="72.0" layoutY="163.0" text="Kho nhập" AnchorPane.leftAnchor="72.0">
+                           <graphic>
+                              <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                           </graphic></Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="933.0" layoutY="7.0" prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">

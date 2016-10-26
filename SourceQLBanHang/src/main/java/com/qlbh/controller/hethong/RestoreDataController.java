@@ -1,11 +1,17 @@
 package com.qlbh.controller.hethong;
 
 import java.io.File;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
+import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.model.NhatkyHome;
+import com.qlbh.pojo.InforConfig;
+import com.qlbh.pojo.Nhatky;
+import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -83,17 +89,17 @@ public class RestoreDataController {
 				lblError.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 				return;
 			}
-			// String[] executeCmd = new String[] { "mysql", "--user=" + "root",
-			// "--password=" + "1234", "qlbh", "-e",
-			// " source " +
-			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
-			// };
-			String[] executeCmd = new String[] { "mysql", "--user=" + "root", "--password=" + "1234", "quanlybanhang",
-					"-e", " source " + this.getPath() };
+
+			InforConfig config = new InforConfig();
+			config = HibernateFactory.getInforConfig();
+			System.out.println(config);
+			String[] executeCmd = new String[] { "mysql", "--user=" + config.getUser(),
+					"--password=" + config.getPass(), config.getDbname(), "-e", " source " + this.getPath() };
 			Process runtimeProcess;
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();
 			if (processComplete == 0) {
+				this.saveNhatKy();
 				DialogController.show(root, null, "Thông báo", "Phục hồi dữ liệu đã sao lưu thành công.");
 			} else {
 				DialogController.show(root, null, "Thông báo",
@@ -105,6 +111,17 @@ public class RestoreDataController {
 			DialogController.show(root, null, "Thông báo",
 					"Phục hồi dữ liệu đã sao lưu không thành công.Vui lòng thử lại.");
 		}
+	}
+
+	private void saveNhatKy() {
+		NhatkyHome nhatkyHome = new NhatkyHome();
+		Nhatky nhatky = new Nhatky();
+		nhatky.setActivity(true);
+		nhatky.setHanhdong("Phục hồi dữ liệu sao lưu");
+		nhatky.setBang("Hệ thống");
+		nhatky.setNgay(new Date());
+		nhatky.setNguoidung(MainApp.loginUser.getTennd());
+		nhatkyHome.save(nhatky);
 	}
 
 }

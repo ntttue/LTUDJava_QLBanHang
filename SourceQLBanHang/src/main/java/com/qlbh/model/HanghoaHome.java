@@ -95,6 +95,30 @@ public class HanghoaHome extends AbstractDao {
 		return hanghoas;
 	}
 
+	public List<Hanghoa> getListHangHoaTonKho(int khoId) {
+		Session session = HibernateFactory.openSession();
+		List<Hanghoa> hanghoas = null;
+		String hql = "";
+		if (khoId == 0) {
+			hql = "FROM Hanghoa Where Activity = true";
+		} else {
+			hql = "FROM Hanghoa Where khohangid = :khoid and Activity = true";
+		}
+
+		try {
+			Query query = session.createQuery(hql);
+			if (khoId != 0) {
+				query.setParameter("khoid", khoId);
+			}
+			hanghoas = query.list();
+		} catch (HibernateException e) {
+			System.err.println(e);
+		} finally {
+			session.close();
+		}
+		return hanghoas;
+	}
+
 	public Hanghoa layHangHoaTheoKho(int id, int khoId) {
 		Session session = HibernateFactory.openSession();
 		Hanghoa hanghoa = null;
@@ -111,8 +135,8 @@ public class HanghoaHome extends AbstractDao {
 		}
 		return hanghoa;
 	}
-	
-	public Hanghoa layHangHoa(int id){
+
+	public Hanghoa layHangHoa(int id) {
 		Session session = HibernateFactory.openSession();
 		Hanghoa hanghoa = null;
 		try {
@@ -122,12 +146,11 @@ public class HanghoaHome extends AbstractDao {
 			hanghoa = (Hanghoa) query.uniqueResult();
 		} catch (HibernateException e) {
 			System.err.println(e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return hanghoa;
 	}
-	
 
 	public void themSoLuongHangHoa(Hanghoa hanghoa, int khoid, int soLuong) {
 		Hanghoa hangHoaResult = layHangHoaTheoKho(hanghoa.getId(), khoid);
@@ -158,26 +181,26 @@ public class HanghoaHome extends AbstractDao {
 		hangHoaResult.setTonkho(hangHoaResult.getTonkho() - soLuong);
 		super.update(hangHoaResult);
 	}
-	
-	public void themSoLuongHangHoa(Hanghoa hanghoa, int soLuong){
-		Hanghoa hangHoaResult =layHangHoa(hanghoa.getId());
+
+	public void themSoLuongHangHoa(Hanghoa hanghoa, int soLuong) {
+		Hanghoa hangHoaResult = layHangHoa(hanghoa.getId());
 		hangHoaResult.setTonkho(hangHoaResult.getTonkho() + soLuong);
 		super.update(hangHoaResult);
 	}
-	
-	public void giamSoLuongHangHoa(Hanghoa hanghoa, int soLuong){
+
+	public void giamSoLuongHangHoa(Hanghoa hanghoa, int soLuong) {
 		Hanghoa hangHoaResult = layHangHoa(hanghoa.getId());
-		hangHoaResult.setTonkho(hangHoaResult.getTonkho() -  soLuong);
+		hangHoaResult.setTonkho(hangHoaResult.getTonkho() - soLuong);
 		super.update(hangHoaResult);
 	}
-	
+
 	public void delete(Hanghoa hanghoa) {
 		hanghoa.setActivity(false);
 		super.update(hanghoa);
 		super.saveNhatKy("Hàng hóa", "Xóa");
 	}
-	
-	public Hanghoa save(Hanghoa hanghoa){
+
+	public Hanghoa save(Hanghoa hanghoa) {
 		super.save(hanghoa);
 		return hanghoa;
 	}

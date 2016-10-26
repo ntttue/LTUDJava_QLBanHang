@@ -8,13 +8,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1000.0" styleClass="wrapper" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.BaoCaoKhoHangController">
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" styleClass="wrapper" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.TonKhoController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text fill="#15428b" strokeType="OUTSIDE" strokeWidth="0.0" text="Tồn kho tổng hợp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                  <Text fill="#15428b" strokeType="OUTSIDE" strokeWidth="0.0" text="Tồn kho" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -44,24 +44,12 @@
             </AnchorPane>
             <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-table-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
                <children>
-                  <TableView fx:id="tableTonKho" prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tableTonKho" prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy></TableView>
                </children></AnchorPane>
-            <AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Text fill="#272ad1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#272ad1" strokeType="OUTSIDE" strokeWidth="0.0" text="Số lượng" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="7.0" />
-                  <TextField fx:id="txtSoLuong" disable="true" prefWidth="200.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="2.0" />
-                  <Text fill="#272ad1" strokeType="OUTSIDE" strokeWidth="0.0" text="Thành tiền" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="7.0" />
-                  <TextField fx:id="txtThanhTien" disable="true" prefWidth="200.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="2.0" />
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
    </children>
    <stylesheets>

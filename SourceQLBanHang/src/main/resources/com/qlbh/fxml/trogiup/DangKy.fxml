@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="101.0" prefWidth="369.0" stylesheets="@../../css/thembophancongty.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Label id="lblTitle" alignment="CENTER" prefHeight="46.0" prefWidth="391.0" style="-fx-background-color: #4F95D2;" styleClass="lblTitle" text="ĐĂNG KÝ PHẦN MỀM" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="56.0" text="Phần mềm hỗ trợ miễn phí" textFill="#eb0e0e" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+	</children>
+	
+</AnchorPane>

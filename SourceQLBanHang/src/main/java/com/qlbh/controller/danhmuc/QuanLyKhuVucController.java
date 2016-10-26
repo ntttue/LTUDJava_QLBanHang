@@ -7,7 +7,9 @@ import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.KhuvucHome;
 import com.qlbh.pojo.Khuvuc;
+import com.qlbh.pojo.Nhanvien;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,8 +100,16 @@ public class QuanLyKhuVucController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListKhuVuc() {
-		TableColumn<Khuvuc, String> id = new TableColumn<Khuvuc, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		// TableColumn<Khuvuc, String> id = new TableColumn<Khuvuc,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Khuvuc, Number> colSTT = new TableColumn<Khuvuc, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableKhuVuc.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Khuvuc, String> ma = new TableColumn<Khuvuc, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
@@ -111,7 +121,7 @@ public class QuanLyKhuVucController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
 		this.tableKhuVuc.setItems(this.getListKV());
-		this.tableKhuVuc.getColumns().addAll(id, ma, ten, ghichu);
+		this.tableKhuVuc.getColumns().addAll(colSTT, ma, ten, ghichu);
 	}
 
 	void deleteKhuVuc() {
@@ -167,15 +177,15 @@ public class QuanLyKhuVucController {
 
 	@FXML
 	void btnXoaClick() {
-		DialogConfirmController.show("Xóa khu vực", "Bạn có chắc muốn xóa khu vực này?",
-				() -> this.deleteKhuVuc(), null);
+		DialogConfirmController.show("Xóa khu vực", "Bạn có chắc muốn xóa khu vực này?", () -> this.deleteKhuVuc(),
+				null);
 	}
 
 	@FXML
 	void btnNapLaiClick() {
 		reload();
 	}
-	
+
 	@FXML
 	void btnCloseClick() {
 		ManHinhChinhController.tabKhuVuc.getTabPane().getTabs().remove(ManHinhChinhController.tabKhuVuc);

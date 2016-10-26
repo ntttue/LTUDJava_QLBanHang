@@ -2,8 +2,6 @@ package com.qlbh.util;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
@@ -11,12 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Settings;
 import org.hibernate.internal.SessionFactoryImpl;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.log.Log4JLogger;
-//import com.qlbh.pojo.InforConfig;
+import com.qlbh.pojo.InforConfig;
 
 public class HibernateFactory {
 	private static SessionFactory sessionFactory;
@@ -101,12 +96,15 @@ public class HibernateFactory {
 		return sessionFactory;
 	}
 
-//	public static InforConfig getInforConfig() {
-//		InforConfig config = new InforConfig();
-//		SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) sessionFactory;
-//		Properties props = sessionFactoryImpl.getProperties();
-//		String databaseNmae = props.getProperty("hibernate.database.application");
-//		System.out.println(databaseNmae);
-//		return config;
-//	}
+	public static InforConfig getInforConfig() {
+
+		SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) sessionFactory;
+		Properties props = sessionFactoryImpl.getProperties();
+		String databaseName = props.getProperty("hibernate.database.application");
+		String userName = props.getProperty("hibernate.connection.username");
+		String pass = props.getProperty("hibernate.connection.password");
+		InforConfig config = new InforConfig(databaseName, pass, userName);
+		config.setDbname(databaseName);
+		return config;
+	}
 }

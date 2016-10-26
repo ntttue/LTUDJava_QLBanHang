@@ -7,8 +7,12 @@ import java.util.Date;
 import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
+import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
-//import com.qlbh.pojo.InforConfig;
+import com.qlbh.model.NhatkyHome;
+import com.qlbh.pojo.InforConfig;
+import com.qlbh.pojo.Nguoidung;
+import com.qlbh.pojo.Nhatky;
 import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
@@ -63,7 +67,7 @@ public class BackupDataController {
 	@FXML
 	void btnOpenFileClick(ActionEvent event) {
 		DirectoryChooser fx = new DirectoryChooser();
-		fx.setInitialDirectory(new File("F:\\backup"));
+		// fx.setInitialDirectory(new File("F:\\backup"));
 		File path = fx.showDialog(null);
 		if (path != null) {
 			this.txtDuongDan.setText(path.getPath());
@@ -88,18 +92,16 @@ public class BackupDataController {
 				lblError.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 				return;
 			}
-			// String[] executeCmd = new String[] { "mysqldump", "--user=" +
-			// "root", "--password=" + "1234", "qlbh", "-r",
-			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
-			// };
-//			InforConfig config = new InforConfig();
-//			config = HibernateFactory.getInforConfig();
-			String[] executeCmd = new String[] { "mysqldump", "--user=" + "root", "--password=" + "1234", "qlbh", "-r",
-					this.getPath() };
+			InforConfig config = new InforConfig();
+			config = HibernateFactory.getInforConfig();
+			System.out.println(config);
+			String[] executeCmd = new String[] { "mysqldump", "--user=" + config.getUser(),
+					"--password=" + config.getPass(), config.getDbname(), "-r", this.getPath() };
 			Process runtimeProcess;
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();
 			if (processComplete == 0) {
+				this.saveNhatKy();
 				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu thành công.");
 			} else {
 				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
@@ -109,5 +111,16 @@ public class BackupDataController {
 			logger.error("Backup data error \n" + e.getMessage());
 			DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
 		}
+	}
+
+	private void saveNhatKy() {
+		NhatkyHome nhatkyHome = new NhatkyHome();
+		Nhatky nhatky = new Nhatky();
+		nhatky.setActivity(true);
+		nhatky.setHanhdong("Sao lưu dữ liệu");
+		nhatky.setBang("Hệ thống");
+		nhatky.setNgay(new Date());
+		nhatky.setNguoidung(MainApp.loginUser.getTennd());
+		nhatkyHome.save(nhatky);
 	}
 }

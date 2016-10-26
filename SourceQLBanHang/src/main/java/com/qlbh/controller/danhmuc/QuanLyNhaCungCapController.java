@@ -7,7 +7,9 @@ import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.NhacungcapHome;
 import com.qlbh.pojo.Nhacungcap;
+import com.qlbh.pojo.Nhanvien;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,8 +100,16 @@ public class QuanLyNhaCungCapController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListNhaCungCap() {
-		TableColumn<Nhacungcap, String> id = new TableColumn<Nhacungcap, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		// TableColumn<Nhacungcap, String> id = new TableColumn<Nhacungcap,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Nhacungcap, Number> colSTT = new TableColumn<Nhacungcap, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableNhaCungCap.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Nhacungcap, String> ma = new TableColumn<Nhacungcap, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
@@ -129,7 +139,7 @@ public class QuanLyNhaCungCapController {
 		website.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWebsite()));
 
 		tableNhaCungCap.setItems(this.getListNhaCungCap());
-		tableNhaCungCap.getColumns().addAll(id, ma, ten, kv, nlh, diachi, dt, fax, email, website);
+		tableNhaCungCap.getColumns().addAll(colSTT, ma, ten, kv, nlh, diachi, dt, fax, email, website);
 	}
 
 	void deleteNhaCungCap() {
@@ -185,15 +195,15 @@ public class QuanLyNhaCungCapController {
 
 	@FXML
 	void btnXoaClick() {
-		DialogConfirmController.show("Xóa nhà cung cấp", "Bạn có chắc muốn xóa nhà cung cấp này?", () -> this.deleteNhaCungCap(),
-				null);
+		DialogConfirmController.show("Xóa nhà cung cấp", "Bạn có chắc muốn xóa nhà cung cấp này?",
+				() -> this.deleteNhaCungCap(), null);
 	}
 
 	@FXML
 	void btnNapLaiClick() {
 		reload();
 	}
-	
+
 	@FXML
 	void btnCloseClick() {
 		ManHinhChinhController.tabNhaCungCap.getTabPane().getTabs().remove(ManHinhChinhController.tabNhaCungCap);
