@@ -78,10 +78,7 @@ public class ThemNguoiDungController {
 			lbValidate.setText("Vui lòng nhập Tên, chọn Nhân viên và Quyền");
 			return;
 		}
-		
-		System.out.println(txtMatKhau.getText());
-		System.out.println(txtNhapLaiMatKhau.getText());
-		
+
 		if (!txtNhapLaiMatKhau.getText().equals(txtMatKhau.getText())) {
 			lbValidate.setText("Nhập lại mật khẩu không đúng");
 			return;
