@@ -39,9 +39,9 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnNhatKyHeThong, btnBackup, btnPhanQuyen, btnBackUp, btnPhucHoi,
-	btnQuanLyKhuVuc, btnQuanLyKhachHang, btnQuanLyNhaCungCap, btnQuanLyKhoHang, btnNhanVien, btnBaoCaoKhoHang, btnBaoCaoBanHang,
-	btnChungTu, btnMuaHang, btnBanHang;
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnNhatKyHeThong, btnBackup, btnPhanQuyen, btnBackUp,
+			btnPhucHoi, btnQuanLyKhuVuc, btnQuanLyKhachHang, btnQuanLyNhaCungCap, btnQuanLyKhoHang, btnNhanVien,
+			btnBaoCaoKhoHang, btnBaoCaoBanHang, btnChungTu, btnMuaHang, btnBanHang;
 	@FXML
 	private Text lblStatus;
 
@@ -140,6 +140,35 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabTonKho = null;
+
+	@FXML
+	void btnTonKhoClick(ActionEvent event) {
+		String title = "Tồn kho";
+		String fxmlPath = "../fxml/chucnang/TonKho.fxml";
+		if (ManHinhChinhController.tabTonKho != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabTonKho);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabTonKho = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabTonKho = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static Tab tabKhuVuc = null;
 
 	@FXML
@@ -377,7 +406,7 @@ public class ManHinhChinhController {
 	}
 
 	public static Tab tabChuyenKho = null;
-	
+
 	@FXML
 	void buttonChuyenKhoClick(ActionEvent event) {
 		String title = "Chuyển kho";
@@ -405,6 +434,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+
 	public static Tab tabThuTien = null;
 
 	@FXML
@@ -434,9 +464,9 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Tab tabBaoCaoKhoHang = null;
-	
+
 	@FXML
 	void onButtonBaoCaoKhoHangClick(ActionEvent event) {
 		String title = "Báo cáo tổng hợp kho";
@@ -464,6 +494,7 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
+
 	public static Tab tabBaoCaoBanHang = null;
 
 	@FXML
@@ -768,41 +799,97 @@ public class ManHinhChinhController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	void btnHuongDanClick(ActionEvent event){
+	void btnHuongDanClick(ActionEvent event) {
 		Runtime rt = Runtime.getRuntime();
 		String url1 = "http://perfect.com.vn/huong-dan-su-dung-phan-mem-quan-ly-ban-hang.html";
 		String url2 = "http://perfect.com.vn/video-huong-dan-su-dung-phan-mem-quan-ly-ban-hang.html";
 		try {
-			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url1);
-			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url2);
+			rt.exec("rundll32 url.dll,FileProtocolHandler " + url1);
+			rt.exec("rundll32 url.dll,FileProtocolHandler " + url2);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	void btnTrucTuyenClick( ActionEvent event){
+	void btnTrucTuyenClick(ActionEvent event) {
 		try {
 			Runtime runTime = Runtime.getRuntime();
 			Process process = runTime.exec("C:\\Program Files (x86)\\TeamViewer\\TeamViewer.exe");
 		} catch (IOException e) {
-			DialogConfirmController.show(
-					"Thông báo!!",
-					"Bạn muốn cài đặt teamviewr ",
-					()-> {
-						Runtime rt = Runtime.getRuntime();
-						String url = "https://www.teamviewer.com/vi/";
-						try {
-							rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-					},
-					null);
+			DialogConfirmController.show("Thông báo!!", "Bạn muốn cài đặt teamviewr ", () -> {
+				Runtime rt = Runtime.getRuntime();
+				String url = "https://www.teamviewer.com/vi/";
+				try {
+					rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}, null);
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnLienHe(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/ThongTinLienHe.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Thông tin liên hệ");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnCapNhatClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/CapNhat.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Cập nhật");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void btnDangKyClick(ActionEvent event) {
+		Stage primaryStage = new Stage();
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../fxml/trogiup/DangKy.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setTitle("Đăng ký");
+			primaryStage.initStyle(StageStyle.UNIFIED);
+			primaryStage.initModality(Modality.APPLICATION_MODAL);
+			primaryStage.setResizable(false);
+			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../images/appIcon.png")));
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

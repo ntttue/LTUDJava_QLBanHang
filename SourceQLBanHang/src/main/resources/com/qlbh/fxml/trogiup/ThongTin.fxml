@@ -12,33 +12,33 @@
 
 <AnchorPane prefHeight="206.0" prefWidth="391.0" stylesheets="@../../css/thembophancongty.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<Label id="lblTitle" alignment="CENTER" prefHeight="46.0" prefWidth="391.0" style="-fx-background-color: #4F95D2;" styleClass="lblTitle" text="PHẦN MỀM QUẢN LÝ BÁN HÀNG" textFill="WHITE" />
-      <Label layoutX="48.0" layoutY="50.0" text="Đồ án cuối kỳ lập trình ứng dụng Java - 15HCB2">
+		<Label id="lblTitle" alignment="CENTER" prefHeight="46.0" prefWidth="391.0" style="-fx-background-color: #4F95D2;" styleClass="lblTitle" text="PHẦN MỀM QUẢN LÝ BÁN HÀNG" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="48.0" layoutY="50.0" text="Đồ án cuối kỳ lập trình ứng dụng Java - 15HCB2" textFill="#1a0583" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="136.0" layoutY="80.0" text="Thành viên:" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="136.0" layoutY="80.0" text="Thành viên:">
+      <Label layoutX="92.0" layoutY="105.0" text="1542250  - Nguyễn Thanh Nhàn" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="88.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="107.0" text="1542250  - Nguyễn Thanh Nhàn">
+      <Label layoutX="92.0" layoutY="124.0" text="1542279  - Trần Văn Trãi" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="88.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="126.0" text="1542279 -  Trần Văn Trãi">
+      <Label layoutX="92.0" layoutY="144.0" text="1542287  - Phạm Chung Tú" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="88.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="83.0" layoutY="146.0" text="1542287  - Phạm Chung Tú">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="84.0" layoutY="167.0" text="1542289  -Nguyễn Thị Trí Tuệ">
+      <Label layoutX="92.0" layoutY="165.0" text="1542289  - Nguyễn Thị Trí Tuệ" AnchorPane.leftAnchor="92.0" AnchorPane.rightAnchor="88.0">
          <font>
             <Font size="14.0" />
          </font>
