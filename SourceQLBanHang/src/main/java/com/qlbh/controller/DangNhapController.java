@@ -92,7 +92,7 @@ public class DangNhapController {
 		Nhatky nhatky = new Nhatky();
 		nhatky.setActivity(true);
 		nhatky.setHanhdong("Đăng nhập");
-		nhatky.setNguoidung(nd.getMand() + " - " + nd.getTennd());
+		nhatky.setNguoidung(nd.getTennd());
 		nhatky.setBang("Người dùng");
 		nhatky.setNgay(new Date());
 		nhatkyHome.save(nhatky);
