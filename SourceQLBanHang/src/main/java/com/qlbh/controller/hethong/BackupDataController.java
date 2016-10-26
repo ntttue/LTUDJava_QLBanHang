@@ -7,8 +7,12 @@ import java.util.Date;
 import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
+import com.qlbh.app.MainApp;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.model.NhatkyHome;
 import com.qlbh.pojo.InforConfig;
+import com.qlbh.pojo.Nguoidung;
+import com.qlbh.pojo.Nhatky;
 import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
@@ -97,6 +101,7 @@ public class BackupDataController {
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();
 			if (processComplete == 0) {
+				this.saveNhatKy();
 				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu thành công.");
 			} else {
 				DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
@@ -106,5 +111,16 @@ public class BackupDataController {
 			logger.error("Backup data error \n" + e.getMessage());
 			DialogController.show(root, null, "Thông báo", "Sao lưu dữ liệu không thành công.Vui lòng thử lại.");
 		}
+	}
+
+	private void saveNhatKy() {
+		NhatkyHome nhatkyHome = new NhatkyHome();
+		Nhatky nhatky = new Nhatky();
+		nhatky.setActivity(true);
+		nhatky.setHanhdong("Sao lưu dữ liệu");
+		nhatky.setBang("Hệ thống");
+		nhatky.setNgay(new Date());
+		nhatky.setNguoidung(MainApp.loginUser.getTennd());
+		nhatkyHome.save(nhatky);
 	}
 }
