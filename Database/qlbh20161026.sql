@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-26 09:41:21
+Date: 2016-10-26 15:27:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,6 +42,30 @@ INSERT INTO `bophan` VALUES ('27', '1', 'Nhân sự', 'Bộ phận nhân sự', 
 INSERT INTO `bophan` VALUES ('28', '2', '2', '2', '\0');
 INSERT INTO `bophan` VALUES ('29', '2', '2222', '1222222', '\0');
 INSERT INTO `bophan` VALUES ('30', 'BH', 'Bộ phận bán hàng', 'Bộ phận bán hàng', '');
+
+-- ----------------------------
+-- Table structure for chitietchuyenkho
+-- ----------------------------
+DROP TABLE IF EXISTS `chitietchuyenkho`;
+CREATE TABLE `chitietchuyenkho` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `soluong` int(11) DEFAULT NULL,
+  `dongia` double DEFAULT NULL,
+  `thanhtien` double DEFAULT NULL,
+  `hanghoaid` int(11) DEFAULT NULL,
+  `chuyenkhoid` int(11) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chitietck_chuyenkho_fkey` (`chuyenkhoid`),
+  KEY `chitietck_hanghoa_fkey` (`hanghoaid`),
+  CONSTRAINT `chitietck_chuyenkho_fkey` FOREIGN KEY (`chuyenkhoid`) REFERENCES `chuyenkho` (`id`),
+  CONSTRAINT `chitietck_hanghoa_fkey` FOREIGN KEY (`hanghoaid`) REFERENCES `hanghoa` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of chitietchuyenkho
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for chitietphieunhap
@@ -90,6 +114,36 @@ CREATE TABLE `chitietphieuxuat` (
 
 -- ----------------------------
 -- Records of chitietphieuxuat
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for chuyenkho
+-- ----------------------------
+DROP TABLE IF EXISTS `chuyenkho`;
+CREATE TABLE `chuyenkho` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `khochuyenid` int(11) DEFAULT NULL,
+  `khonhanid` int(11) DEFAULT NULL,
+  `nguoichuyenid` int(11) DEFAULT NULL,
+  `nguoinhanid` int(11) DEFAULT NULL,
+  `ghichu` text COLLATE utf8_unicode_ci,
+  `ma` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phieuchuyentay` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ngay` date DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chuyenkho_nhanvienchuyen_fkey` (`nguoichuyenid`),
+  KEY `chuyenkho_nhanviennhan_fkey` (`nguoinhanid`),
+  KEY `chuyenkho_khochuyen_id` (`khochuyenid`),
+  KEY `chuyenkho_khonhan_fkey` (`khonhanid`),
+  CONSTRAINT `chuyenkho_khochuyen_id` FOREIGN KEY (`khochuyenid`) REFERENCES `khohang` (`id`),
+  CONSTRAINT `chuyenkho_khonhan_fkey` FOREIGN KEY (`khonhanid`) REFERENCES `khohang` (`id`),
+  CONSTRAINT `chuyenkho_nhanvienchuyen_fkey` FOREIGN KEY (`nguoichuyenid`) REFERENCES `nhanvien` (`id`),
+  CONSTRAINT `chuyenkho_nhanviennhan_fkey` FOREIGN KEY (`nguoinhanid`) REFERENCES `nhanvien` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of chuyenkho
 -- ----------------------------
 
 -- ----------------------------
@@ -415,7 +469,7 @@ CREATE TABLE `nhatky` (
   `ngay` datetime DEFAULT NULL,
   `activity` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of nhatky
@@ -457,6 +511,14 @@ INSERT INTO `nhatky` VALUES ('71', 'ND0002 - ntttue', 'Người dùng', 'Đăng 
 INSERT INTO `nhatky` VALUES ('72', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:34:29', '');
 INSERT INTO `nhatky` VALUES ('73', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:37:16', '');
 INSERT INTO `nhatky` VALUES ('74', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 09:37:38', '');
+INSERT INTO `nhatky` VALUES ('75', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 14:55:49', '');
+INSERT INTO `nhatky` VALUES ('76', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 14:59:59', '');
+INSERT INTO `nhatky` VALUES ('77', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 15:12:42', '');
+INSERT INTO `nhatky` VALUES ('78', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 15:19:35', '');
+INSERT INTO `nhatky` VALUES ('79', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 15:22:05', '');
+INSERT INTO `nhatky` VALUES ('80', 'ND0002 - ntttue', 'Người dùng', 'Cập nhật', '2016-10-26 15:22:46', '');
+INSERT INTO `nhatky` VALUES ('81', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 15:23:05', '');
+INSERT INTO `nhatky` VALUES ('82', 'ND0002 - ntttue', 'Người dùng', 'Đăng nhập', '2016-10-26 15:26:26', '');
 
 -- ----------------------------
 -- Table structure for nhomhanghoa
@@ -568,4 +630,33 @@ CREATE TABLE `tygia` (
 
 -- ----------------------------
 -- Records of tygia
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for vaitro
+-- ----------------------------
+DROP TABLE IF EXISTS `vaitro`;
+CREATE TABLE `vaitro` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ten` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `diengiai` longtext COLLATE utf8_unicode_ci,
+  `vaitrochaid` int(11) DEFAULT NULL,
+  `truycap` bit(1) DEFAULT NULL,
+  `them` bit(1) DEFAULT NULL,
+  `xem` bit(1) DEFAULT NULL,
+  `xoa` bit(1) DEFAULT NULL,
+  `sua` bit(1) DEFAULT NULL,
+  `in` bit(1) DEFAULT NULL,
+  `nhap` bit(1) DEFAULT NULL,
+  `xuat` bit(1) DEFAULT NULL,
+  `activity` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ma` (`ma`),
+  KEY `vaitro_vaitro_fkey` (`vaitrochaid`),
+  CONSTRAINT `vaitro_vaitro_fkey` FOREIGN KEY (`vaitrochaid`) REFERENCES `vaitro` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of vaitro
 -- ----------------------------

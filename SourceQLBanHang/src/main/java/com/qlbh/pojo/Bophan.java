@@ -1,15 +1,13 @@
 package com.qlbh.pojo;
-// Generated 25/10/2016 12:14:32 AM by Hibernate Tools 4.3.1
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -100,5 +98,4 @@ public class Bophan implements java.io.Serializable {
 	public String toString() {
 		return this.getTen();
 	}
-
 }

@@ -23,4 +23,6 @@
 	<table-filter match-catalog="qlbh" match-name="quyen" />
 	<table-filter match-catalog="qlbh" match-name="keeplogged" />
 	<table-filter match-catalog="qlbh" match-name="nhatky" />
+        <table-filter match-catalog="qlbh" match-name="chuyenkho"/>
+  <table-filter match-catalog="qlbh" match-name="chitietchuyenkho"/>
 </hibernate-reverse-engineering>
