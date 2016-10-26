@@ -8,19 +8,19 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="donvitinh" class="com.qlbh.pojo.Donvitinh" fetch="select">
+        <many-to-one name="donvitinh" class="com.qlbh.pojo.Donvitinh" fetch="select" lazy="false">
             <column name="donviid" />
         </many-to-one>
-        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
+        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select" lazy="false">
             <column name="khohangid" />
         </many-to-one>
-        <many-to-one name="loaihang" class="com.qlbh.pojo.Loaihang" fetch="select">
+        <many-to-one name="loaihang" class="com.qlbh.pojo.Loaihang" fetch="select" lazy="false">
             <column name="loaihangid" />
         </many-to-one>
-        <many-to-one name="nhacungcap" class="com.qlbh.pojo.Nhacungcap" fetch="select">
+        <many-to-one name="nhacungcap" class="com.qlbh.pojo.Nhacungcap" fetch="select" lazy="false">
             <column name="nhaccid" />
         </many-to-one>
-        <many-to-one name="nhomhanghoa" class="com.qlbh.pojo.Nhomhanghoa" fetch="select">
+        <many-to-one name="nhomhanghoa" class="com.qlbh.pojo.Nhomhanghoa" fetch="select" lazy="false">
             <column name="nhomhangid" />
         </many-to-one>
         <property name="ma" type="string">

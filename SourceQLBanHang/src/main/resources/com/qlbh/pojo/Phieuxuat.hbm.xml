@@ -8,13 +8,13 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="khachhang" class="com.qlbh.pojo.Khachhang" fetch="select">
+        <many-to-one name="khachhang" class="com.qlbh.pojo.Khachhang" fetch="select" lazy="false">
             <column name="khachhangid" />
         </many-to-one>
-        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select">
+        <many-to-one name="khohang" class="com.qlbh.pojo.Khohang" fetch="select" lazy="false">
             <column name="khoid" />
         </many-to-one>
-        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select">
+        <many-to-one name="nhanvien" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
             <column name="nhanvienbanhangid" />
         </many-to-one>
         <property name="ma" type="string">
