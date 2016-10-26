@@ -376,6 +376,35 @@ public class ManHinhChinhController {
 		}
 	}
 
+	public static Tab tabChuyenKho = null;
+	
+	@FXML
+	void buttonChuyenKhoClick(ActionEvent event) {
+		String title = "Chuyển kho";
+		String fxmlPath = "../fxml/chucnang/ChuyenKho.fxml";
+		if (ManHinhChinhController.tabChuyenKho != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabChuyenKho);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabChuyenKho = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabChuyenKho = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public static Tab tabThuTien = null;
 
 	@FXML
@@ -400,6 +429,65 @@ public class ManHinhChinhController {
 			tabMainContent.getTabs().add(tab);
 			tabMainContent.getSelectionModel().select(tab);
 			ManHinhChinhController.tabThuTien = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static Tab tabBaoCaoKhoHang = null;
+	
+	@FXML
+	void onButtonBaoCaoKhoHangClick(ActionEvent event) {
+		String title = "Báo cáo tổng hợp kho";
+		String fxmlPath = "../fxml/chucnang/BaoCaoKhoHang.fxml";
+		if (ManHinhChinhController.tabBaoCaoKhoHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabBaoCaoKhoHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabBaoCaoKhoHang = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabBaoCaoKhoHang = tab;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static Tab tabBaoCaoBanHang = null;
+
+	@FXML
+	void onButtonBaoCaoBanHangClick(ActionEvent event) {
+		String title = "Báo cáo bán hàng";
+		String fxmlPath = "../fxml/chucnang/BaoCaoBanHang.fxml";
+		if (ManHinhChinhController.tabBaoCaoBanHang != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabBaoCaoBanHang);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabBaoCaoBanHang = null;
+			}
+		});
+		Parent root;
+		try {
+			root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabBaoCaoBanHang = tab;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

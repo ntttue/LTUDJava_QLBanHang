@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" styleClass="wrapper" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.BaoCaoBanHangController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="180.0" styleClass="left-sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="left-sidebar-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="#e7ede5" strokeType="OUTSIDE" strokeWidth="0.0" text="Chức năng" wrappingWidth="145.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" styleClass="left-sidebar-box" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="left-sidebar-box-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text fill="#3c59ab" strokeType="OUTSIDE" strokeWidth="0.0" text="Phiếu thu" textAlignment="CENTER" wrappingWidth="170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" prefHeight="66.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Danh sách phiếu thu" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                     <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#1a7c0d" scaleX="1.5" scaleY="1.5" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="280.0" prefWidth="200.0" styleClass="left-sidebar-box" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+               <children>
+                  <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="left-sidebar-box-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text fill="#3c59ab" strokeType="OUTSIDE" strokeWidth="0.0" text="Bảng kê" textAlignment="CENTER" wrappingWidth="170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" prefHeight="60.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Danh sách phiếu công nợ" textFill="#3c0982" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                     <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#1a7c0d" scaleX="1.5" scaleY="1.5" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" prefHeight="60.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Danh sách phiếu trả ngay" textFill="#3c0982" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95.0">
+                     <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#1a7c0d" scaleX="1.5" scaleY="1.5" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" prefHeight="60.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Theo dõi công nợ" textFill="#3c0982" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="155.0">
+                     <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#1a7c0d" scaleX="1.5" scaleY="1.5" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="TOP" graphicTextGap="10.0" prefHeight="60.0" prefWidth="73.0" ripplerFill="#c98c8c" text="Tổng hợp công nợ" textFill="#3c0982" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="215.0">
+                     <graphic>
+                        <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#1a7c0d" scaleX="1.5" scaleY="1.5" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="#15428b" strokeType="OUTSIDE" strokeWidth="0.0" text="Báo cáo lợi nhuận theo hàng hóa" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kho hàng" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="8.0" />
+                  <ComboBox cacheShape="false" prefWidth="120.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="3.0" />
+                  <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="2.0" />
+                  <ComboBox cacheShape="false" prefWidth="103.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="202.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker editable="false" layoutX="22.0" layoutY="3.0" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="3.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="447.0" AnchorPane.topAnchor="8.0" />
+                  <DatePicker editable="false" prefWidth="110.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="475.0" AnchorPane.topAnchor="3.0" />
+                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                     <children>
+                        <JFXButton alignment="CENTER" ripplerFill="#c98c8c" text="Xem" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <SVGPath content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="WHITE" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="2.0" />
+                        <JFXButton alignment="CENTER" ripplerFill="#c98c8c" text="Đóng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <SVGPath content="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#db7b48" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-table-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+               <children>
+                  <TableView prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
+         </children></AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/ManHinhThuTien.css" />
+      <URL value="@../../css/ManHinhKhachHang.css" />
+   </stylesheets>
+</AnchorPane>

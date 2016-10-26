@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.controller.common.DialogController;
+import com.qlbh.pojo.InforConfig;
+import com.qlbh.util.HibernateFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +63,7 @@ public class BackupDataController {
 	@FXML
 	void btnOpenFileClick(ActionEvent event) {
 		DirectoryChooser fx = new DirectoryChooser();
-		fx.setInitialDirectory(new File("F:\\backup"));
+		// fx.setInitialDirectory(new File("F:\\backup"));
 		File path = fx.showDialog(null);
 		if (path != null) {
 			this.txtDuongDan.setText(path.getPath());
@@ -77,7 +79,6 @@ public class BackupDataController {
 	private String getPath() {
 		String path = this.txtDuongDan.getText() + "\\" + this.txtTenFile.getText();
 		path = path.replace("\\", "\\\\");
-		System.out.println(path);
 		return path;
 	}
 
@@ -87,12 +88,11 @@ public class BackupDataController {
 				lblError.setText("Vui lòng điền đủ thông tin trong các mục (*)");
 				return;
 			}
-			// String[] executeCmd = new String[] { "mysqldump", "--user=" +
-			// "root", "--password=" + "1234", "qlbh", "-r",
-			// "D:\\Study\\KH2_HCDH\\LTUDJava\\DoAn\\LTUDJava_QLBanHang\\Database\\backup.sql"
-			// };
-			String[] executeCmd = new String[] { "mysqldump", "--user=" + "root", "--password=" + "1234", "qlbh", "-r",
-					this.getPath() };
+			InforConfig config = new InforConfig();
+			config = HibernateFactory.getInforConfig();
+			System.out.println(config);
+			String[] executeCmd = new String[] { "mysqldump", "--user=" + config.getUser(),
+					"--password=" + config.getPass(), config.getDbname(), "-r", this.getPath() };
 			Process runtimeProcess;
 			runtimeProcess = Runtime.getRuntime().exec(executeCmd);
 			int processComplete = runtimeProcess.waitFor();

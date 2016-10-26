@@ -171,7 +171,7 @@ public abstract class AbstractDao {
 		nk.setBang(table);
 		nk.setHanhdong(hanhDong);
 		nk.setNgay(new Date());
-		nk.setNguoidung(MainApp.loginUser.getMand() + " - " + MainApp.loginUser.getTennd());
+		nk.setNguoidung(MainApp.loginUser.getTennd());
 		this.save(nk);
 	}
 }

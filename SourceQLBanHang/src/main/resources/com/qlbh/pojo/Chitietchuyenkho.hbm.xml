@@ -3,19 +3,19 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 26/10/2016 3:07:02 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.qlbh.pojo.Chitietphieuxuat" table="chitietphieuxuat" catalog="qlbh" optimistic-lock="version">
+    <class name="com.qlbh.pojo.Chitietchuyenkho" table="chitietchuyenkho" catalog="qlbh" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="hanghoa" class="com.qlbh.pojo.Hanghoa" fetch="select" lazy="false">
+        <many-to-one name="chuyenkho" class="com.qlbh.pojo.Chuyenkho" fetch="select">
+            <column name="chuyenkhoid" />
+        </many-to-one>
+        <many-to-one name="hanghoa" class="com.qlbh.pojo.Hanghoa" fetch="select">
             <column name="hanghoaid" />
         </many-to-one>
-        <many-to-one name="phieuxuat" class="com.qlbh.pojo.Phieuxuat" fetch="select" lazy="false">
-            <column name="phieuxuatid" />
-        </many-to-one>
         <property name="ma" type="string">
-            <column name="ma" length="20" />
+            <column name="ma" />
         </property>
         <property name="soluong" type="java.lang.Integer">
             <column name="soluong" />

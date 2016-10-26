@@ -1,17 +1,19 @@
 package com.qlbh.model;
 // Generated 24/09/2016 3:27:00 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.util.List;
+
 import javax.ejb.Stateless;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Nguoidung;
 import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
-
-import java.util.List;
 
 /**
  * Home object for domain model class Nguoidung.
@@ -46,6 +48,26 @@ public class NguoidungHome extends AbstractDao {
 
 	public NguoidungHome() {
 		super();
+	}
+	
+	public boolean findByTennd(String tenNguoiDung) {
+		try {
+			session = HibernateFactory.getSessionFactory().openSession();
+			// startOperation();
+			String hql = "from Nguoidung nd where nd.tennd = :tennd";
+			Query query = session.createQuery(hql);
+			query.setParameter("tennd", tenNguoiDung);
+			List<Nguoidung> ds = query.list();
+			if (ds.isEmpty()) {
+				return true;
+			}
+		} catch (HibernateException e) {
+			handleException(e);
+			logger.error("error in findByMa:  \n" + e.getMessage());
+		} finally {
+			HibernateFactory.close(session);
+		}
+		return false;
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {

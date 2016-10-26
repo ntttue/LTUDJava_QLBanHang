@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="1000.0" styleClass="wrapper" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qlbh.controller.chucnang.PhieuChuyenKhoController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="main-content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="#15428b" strokeType="OUTSIDE" strokeWidth="0.0" text="Chuyển kho" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <AnchorPane prefWidth="200.0" styleClass="main-content-header-bar" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                     <children>
+                        <JFXButton alignment="CENTER" onAction="#onButtonTaoMoiClick" ripplerFill="#c98c8c" text="Tạo mới" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <SVGPath content="M9.01 14H2v2h7.01v3L13 15l-3.99-4v3zm5.98-1v-3H22V8h-7.01V5L11 9l3.99 4z" fill="WHITE" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="85.0" AnchorPane.topAnchor="2.0" />
+                        <JFXButton alignment="CENTER" onAction="#onButtonLuuClick" ripplerFill="#c98c8c" text="Lưu" textFill="WHITE" AnchorPane.leftAnchor="90.0">
+                           <graphic>
+                              <SVGPath content="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" fill="WHITE" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="2.0" />
+                        <JFXButton alignment="CENTER" onAction="#onButtonNapLaiClick" ripplerFill="#c98c8c" text="Nạp lại" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <SVGPath content="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill="WHITE" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                        <AnchorPane prefWidth="2.0" styleClass="decorde" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="2.0" />
+                        <JFXButton alignment="CENTER" onAction="#onButtonExitClick" ripplerFill="#c98c8c" text="Đóng" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="232.0" AnchorPane.topAnchor="0.0">
+                           <graphic>
+                              <SVGPath content="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#db7b48" scaleX="0.8" scaleY="0.8" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+               <children>
+                  <AnchorPane prefHeight="95.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Kho xuất hàng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Kho nhận hàng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Ghi chú" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ComboBox fx:id="cbxKhoXuatHang" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                              <ComboBox fx:id="cbxKhoNhapHang" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                              <TextField fx:id="txtGhiChu" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-310.0" AnchorPane.topAnchor="65.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Người nhận" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Người chuyển" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="35.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ComboBox fx:id="cbxNguoiNhan" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                              <ComboBox fx:id="cbxNguoiChuyen" layoutY="8.0" prefWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="630.0" AnchorPane.rightAnchor="174.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Phiếu CK" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                              <Label contentDisplay="RIGHT" prefHeight="25.0" prefWidth="102.0" styleClass="lbInfor" text="Phiếu chuyển tay" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                                 <graphic>
+                                    <Label prefHeight="25.0" prefWidth="20.0" styleClass="lbred" text="(*)" />
+                                 </graphic>
+                              </Label>
+                              <Label layoutX="20.0" layoutY="114.0" prefHeight="27.0" prefWidth="65.0" styleClass="lbInfor" text="Ngày" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="760.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TextField fx:id="txtPhieuCK" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                              <TextField fx:id="txtPhieuChuyenTay" prefHeight="25.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                              <DatePicker fx:id="datePickerNgay" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="65.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="30.0" prefWidth="200.0" styleClass="main-content-table-wrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="155.0">
+               <children>
+                  <TableView fx:id="tableDSHangHoa" prefHeight="200.0" prefWidth="200.0" styleClass="main-content-table-view" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
+         </children></AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/ManHinhThuTien.css" />
+      <URL value="@../../css/ManHinhKhachHang.css" />
+   </stylesheets>
+</AnchorPane>

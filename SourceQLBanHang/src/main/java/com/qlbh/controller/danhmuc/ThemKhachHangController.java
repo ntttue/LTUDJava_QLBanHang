@@ -37,10 +37,10 @@ public class ThemKhachHangController {
 		this.setcbxLoaiKhachHang();
 		DataInputUtils.setFloatOnlyForTextField(this.numNoHienTai);
 		DataInputUtils.setFloatOnlyForTextField(this.numGioiHanNo);
-		this.setTestData();
+//		this.setTestData();
 	}
 	private void setTestData() {
-		txtMa.setText(khachHangHome.getNewID());
+//		txtMa.setText(khachHangHome.getNewID());
 		txtTen.setText("Trần Văn Khánh");
 		txtNguoiLienHe.setText("Nguyễn Văn A");
 		txtDiaChi.setText("227, Nguyễn Văn Cừ, Phường 9, Quận 5, TP.HCM");

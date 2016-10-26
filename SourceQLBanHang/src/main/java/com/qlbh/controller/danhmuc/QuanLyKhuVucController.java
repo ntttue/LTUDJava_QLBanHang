@@ -3,6 +3,7 @@ package com.qlbh.controller.danhmuc;
 import java.io.IOException;
 import java.util.List;
 
+import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.KhuvucHome;
 import com.qlbh.pojo.Khuvuc;
@@ -173,6 +174,12 @@ public class QuanLyKhuVucController {
 	@FXML
 	void btnNapLaiClick() {
 		reload();
+	}
+	
+	@FXML
+	void btnCloseClick() {
+		ManHinhChinhController.tabKhuVuc.getTabPane().getTabs().remove(ManHinhChinhController.tabKhuVuc);
+		ManHinhChinhController.tabKhuVuc = null;
 	}
 
 	void closeThem() {
