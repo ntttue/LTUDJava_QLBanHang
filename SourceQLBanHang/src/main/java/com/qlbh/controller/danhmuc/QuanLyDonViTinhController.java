@@ -7,7 +7,9 @@ import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.DonvitinhHome;
 import com.qlbh.pojo.Donvitinh;
+import com.qlbh.pojo.Khohang;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,8 +100,16 @@ public class QuanLyDonViTinhController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListDonViTinh() {
-		TableColumn<Donvitinh, String> id = new TableColumn<Donvitinh, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		// TableColumn<Donvitinh, String> id = new TableColumn<Donvitinh,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Donvitinh, Number> colSTT = new TableColumn<Donvitinh, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableDonViTinh.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Donvitinh, String> ma = new TableColumn<Donvitinh, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
@@ -111,7 +121,7 @@ public class QuanLyDonViTinhController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
 		this.tableDonViTinh.setItems(this.getListDVT());
-		this.tableDonViTinh.getColumns().addAll(id, ma, ten, ghichu);
+		this.tableDonViTinh.getColumns().addAll(colSTT, ma, ten, ghichu);
 	}
 
 	void deleteDonViTinh() {
@@ -175,7 +185,7 @@ public class QuanLyDonViTinhController {
 	void btnNapLaiClick() {
 		reload();
 	}
-	
+
 	@FXML
 	void btnCloseClick() {
 		ManHinhChinhController.tabDonViTinh.getTabPane().getTabs().remove(ManHinhChinhController.tabDonViTinh);

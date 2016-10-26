@@ -7,7 +7,9 @@ import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.KhohangHome;
 import com.qlbh.pojo.Khohang;
+import com.qlbh.pojo.Nhacungcap;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,8 +100,16 @@ public class QuanLyKhoHangController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListKhoHang() {
-		TableColumn<Khohang, String> id = new TableColumn<Khohang, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		// TableColumn<Khohang, String> id = new TableColumn<Khohang,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Khohang, Number> colSTT = new TableColumn<Khohang, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableKhoHang.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Khohang, String> ma = new TableColumn<Khohang, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
@@ -134,7 +144,7 @@ public class QuanLyKhoHangController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDiengiai()));
 
 		this.tableKhoHang.setItems(this.getListKhoHang());
-		this.tableKhoHang.getColumns().addAll(id, ma, ten, nql, nlh, diachi, dt, fax, email, ghichu);
+		this.tableKhoHang.getColumns().addAll(colSTT, ma, ten, nql, nlh, diachi, dt, fax, email, ghichu);
 	}
 
 	void deleteKhoHang() {
@@ -198,7 +208,7 @@ public class QuanLyKhoHangController {
 	void btnNapLaiClick() {
 		reload();
 	}
-	
+
 	@FXML
 	void btnCloseClick() {
 		ManHinhChinhController.tabKhoHang.getTabPane().getTabs().remove(ManHinhChinhController.tabKhoHang);

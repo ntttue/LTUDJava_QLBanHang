@@ -6,8 +6,10 @@ import java.util.List;
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.NhomhanghoaHome;
+import com.qlbh.pojo.Bophan;
 import com.qlbh.pojo.Nhomhanghoa;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,8 +100,16 @@ public class QuanLyNhomHangHoaController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListNhomHangHoa() {
-		TableColumn<Nhomhanghoa, String> id = new TableColumn<Nhomhanghoa, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		// TableColumn<Nhomhanghoa, String> id = new TableColumn<Nhomhanghoa,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Nhomhanghoa, Number> colSTT = new TableColumn<Nhomhanghoa, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setCellValueFactory(column -> new ReadOnlyObjectWrapper<Number>(
+				tableNhomHangHoa.getItems().indexOf(column.getValue()) + 1));
+		colSTT.setMaxWidth(70);
+		colSTT.setMinWidth(70);
 
 		TableColumn<Nhomhanghoa, String> ma = new TableColumn<Nhomhanghoa, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
@@ -111,7 +121,7 @@ public class QuanLyNhomHangHoaController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
 		tableNhomHangHoa.setItems(this.getListNHH());
-		tableNhomHangHoa.getColumns().addAll(id, ma, ten, ghichu);
+		tableNhomHangHoa.getColumns().addAll(colSTT, ma, ten, ghichu);
 	}
 
 	void deleteNhomHangHoa() {

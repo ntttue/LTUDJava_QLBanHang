@@ -6,7 +6,9 @@ import java.util.List;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.NguoidungHome;
 import com.qlbh.pojo.Nguoidung;
+import com.qlbh.pojo.Nhanvien;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,8 +99,12 @@ public class QuanLyNguoiDungController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListNguoiDung() {
-		TableColumn<Nguoidung, String> id = new TableColumn<Nguoidung, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Nguoidung, Number> colSTT = new TableColumn<Nguoidung, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableNguoiDung.getItems().indexOf(column.getValue()) + 1));
 
 		TableColumn<Nguoidung, String> ten = new TableColumn<Nguoidung, String>("Tên người dùng");
 		ten.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTennd()));
@@ -113,7 +119,7 @@ public class QuanLyNguoiDungController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDiengiai()));
 
 		this.tableNguoiDung.setItems(this.getListNguoiDung());
-		this.tableNguoiDung.getColumns().addAll(id, ten, nv, role, ghichu);
+		this.tableNguoiDung.getColumns().addAll(colSTT, ten, nv, role, ghichu);
 	}
 
 	void deleteNguoiDung() {
@@ -169,8 +175,8 @@ public class QuanLyNguoiDungController {
 
 	@FXML
 	void btnXoaClick() {
-		DialogConfirmController.show("Xóa người dùng", "Bạn có chắc muốn xóa người dùng này?", () -> this.deleteNguoiDung(),
-				null);
+		DialogConfirmController.show("Xóa người dùng", "Bạn có chắc muốn xóa người dùng này?",
+				() -> this.deleteNguoiDung(), null);
 	}
 
 	@FXML
