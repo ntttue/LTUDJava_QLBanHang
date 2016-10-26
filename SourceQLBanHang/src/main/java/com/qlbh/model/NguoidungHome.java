@@ -24,18 +24,28 @@ public class NguoidungHome extends AbstractDao {
 	private Session session;
 	final static Logger logger = Logger.getLogger(NguoidungHome.class);
 
-	public void create(Nguoidung nd) throws DataAccessLayerException {
+	public List findAll() throws DataAccessLayerException {
+		return super.findAll(Nguoidung.class);
+	}
+
+	public void create(Nguoidung nd) {
 		super.save(nd);
 		super.saveNhatKy("Người dùng", "Thêm");
 	}
 
-	public NguoidungHome() {
-		super();
+	public void update(Nguoidung nd) {
+		super.update(nd);
+		super.saveNhatKy("Người dùng", "Cập nhật");
 	}
 
-	public void update(Nguoidung obj) {
-		super.update(obj);
-		super.saveNhatKy("Người dùng", "Cập nhật");
+	public void delete(Nguoidung nd) {
+		nd.setActivity(false);
+		super.update(nd);
+		super.saveNhatKy("Người dùng", "Xóa");
+	}
+
+	public NguoidungHome() {
+		super();
 	}
 
 	public Nguoidung findByUsenamePass(String tenDangNhap, String matKhau) {
@@ -43,10 +53,21 @@ public class NguoidungHome extends AbstractDao {
 		try {
 			session = HibernateFactory.getSessionFactory().openSession();
 			// startOperation();
-			String hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau and activity = true";
+			String hql = "";
+
+			if (matKhau.isEmpty()) {
+				hql = "from Nguoidung nd where nd.tennd = :tennd and activity = true";
+			} else {
+				hql = "from Nguoidung nd where nd.tennd = :tennd and nd.matkhau = :matkhau and activity = true";
+			}
+
 			Query query = session.createQuery(hql);
 			query.setParameter("tennd", tenDangNhap);
-			query.setParameter("matkhau", matKhau);
+
+			if (matKhau.isEmpty() == false) {
+				query.setParameter("matkhau", matKhau);
+			}
+
 			List<Nguoidung> ds = query.list();
 			if (!ds.isEmpty()) {
 				nd = new Nguoidung();

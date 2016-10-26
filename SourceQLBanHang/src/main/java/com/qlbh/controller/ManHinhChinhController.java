@@ -380,6 +380,35 @@ public class ManHinhChinhController {
 		MainApp.getPrimaryStage().close();
 	}
 
+	public static Tab tabPhanQuyen = null;
+
+	@FXML
+	void btnPhanQuyenClick(ActionEvent event) {
+		String title = "Phân quyền";
+		String fxmlPath = "../fxml/hethong/QuanLyNguoiDung.fxml";
+		if (ManHinhChinhController.tabPhanQuyen != null) {
+			tabMainContent.getSelectionModel().select(ManHinhChinhController.tabPhanQuyen);
+			return;
+		}
+		Tab tab = new Tab();
+		tab.setText(title);
+		tab.setOnClosed(new EventHandler<Event>() {
+			public void handle(Event arg0) {
+				ManHinhChinhController.tabPhanQuyen = null;
+			}
+		});
+		try {
+			Parent root = (Parent) FXMLLoader.load(getClass().getResource(fxmlPath));
+			tab.setContent(root);
+			tabMainContent.getTabs().add(tab);
+			tabMainContent.getSelectionModel().select(tab);
+			ManHinhChinhController.tabPhanQuyen = tab;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	void btnThongTinClick(ActionEvent event) {
 		Stage primaryStage = new Stage();
