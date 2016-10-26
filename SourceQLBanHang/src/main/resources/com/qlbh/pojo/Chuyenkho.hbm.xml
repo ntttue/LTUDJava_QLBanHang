@@ -8,16 +8,16 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="khohangByKhochuyenid" class="com.qlbh.pojo.Khohang" fetch="select">
+        <many-to-one name="khohangByKhochuyenid" class="com.qlbh.pojo.Khohang" fetch="select" lazy="false">
             <column name="khochuyenid" />
         </many-to-one>
-        <many-to-one name="khohangByKhonhanid" class="com.qlbh.pojo.Khohang" fetch="select">
+        <many-to-one name="khohangByKhonhanid" class="com.qlbh.pojo.Khohang" fetch="select" lazy="false">
             <column name="khonhanid" />
         </many-to-one>
-        <many-to-one name="nhanvienByNguoichuyenid" class="com.qlbh.pojo.Nhanvien" fetch="select">
+        <many-to-one name="nhanvienByNguoichuyenid" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
             <column name="nguoichuyenid" />
         </many-to-one>
-        <many-to-one name="nhanvienByNguoinhanid" class="com.qlbh.pojo.Nhanvien" fetch="select">
+        <many-to-one name="nhanvienByNguoinhanid" class="com.qlbh.pojo.Nhanvien" fetch="select" lazy="false">
             <column name="nguoinhanid" />
         </many-to-one>
         <property name="ghichu" type="string">

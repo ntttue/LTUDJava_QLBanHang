@@ -257,7 +257,7 @@
                         </AnchorPane>
                         <AnchorPane layoutX="475.0" layoutY="3.0" prefHeight="85.0" prefWidth="255.0" styleClass="header-tab-group-wrapper" stylesheets="@../css/ManHinhChinh.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton fx:id="btnBaoCaoKhoHang" alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="21.0" layoutY="21.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Báo cáo&#10;kho hàng" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="btnBaoCaoKhoHang" alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="21.0" layoutY="21.0" onAction="#onButtonBaoCaoKhoHangClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Báo cáo&#10;kho hàng" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="-3.0" />
                                  </graphic>
@@ -267,7 +267,7 @@
                                     <SVGPath content="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="#3174d6" scaleX="1.5" scaleY="1.5" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton fx:id="btnBaoCaoBanHang" alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="87.0" layoutY="14.0" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Báo cáo&#10;bán hàng" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <JFXButton fx:id="btnBaoCaoBanHang" alignment="CENTER" contentDisplay="TOP" graphicTextGap="6.0" layoutX="87.0" layoutY="14.0" onAction="#onButtonBaoCaoBanHangClick" prefHeight="66.0" prefWidth="80.0" ripplerFill="#c98c8c" text="Báo cáo&#10;bán hàng" textAlignment="CENTER" textFill="#3c0982" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="#3174d6" scaleX="1.5" scaleY="1.5" translateY="-3.0" />
                                  </graphic>
