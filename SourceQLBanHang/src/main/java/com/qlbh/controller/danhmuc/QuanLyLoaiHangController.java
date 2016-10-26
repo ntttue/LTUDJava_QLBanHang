@@ -6,8 +6,10 @@ import java.util.List;
 import com.qlbh.controller.ManHinhChinhController;
 import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.model.LoaihangHome;
+import com.qlbh.pojo.Donvitinh;
 import com.qlbh.pojo.Loaihang;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,9 +100,16 @@ public class QuanLyLoaiHangController {
 
 	@SuppressWarnings("unchecked")
 	private void loadListLoaiHang() {
-		TableColumn<Loaihang, String> id = new TableColumn<Loaihang, String>("ID");
-		id.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId().toString()));
-
+		// TableColumn<Loaihang, String> id = new TableColumn<Loaihang,
+		// String>("ID");
+		// id.setCellValueFactory(cellData -> new
+		// SimpleStringProperty(cellData.getValue().getId().toString()));
+		TableColumn<Loaihang, Number> colSTT = new TableColumn<Loaihang, Number>("#");
+		colSTT.setSortable(false);
+		colSTT.setResizable(false);
+		colSTT.setPrefWidth(30);
+		colSTT.setCellValueFactory(
+				column -> new ReadOnlyObjectWrapper<Number>(tableLoaiHang.getItems().indexOf(column.getValue()) + 1));
 		TableColumn<Loaihang, String> ma = new TableColumn<Loaihang, String>("Mã");
 		ma.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMa()));
 
@@ -111,7 +120,7 @@ public class QuanLyLoaiHangController {
 		ghichu.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGhichu()));
 
 		this.tableLoaiHang.setItems(this.getListLH());
-		this.tableLoaiHang.getColumns().addAll(id, ma, ten, ghichu);
+		this.tableLoaiHang.getColumns().addAll(colSTT, ma, ten, ghichu);
 	}
 
 	void deleteLoaiHang() {
@@ -175,7 +184,7 @@ public class QuanLyLoaiHangController {
 	void btnNapLaiClick() {
 		reload();
 	}
-	
+
 	@FXML
 	void btnCloseClick() {
 		ManHinhChinhController.tabLoaiHang.getTabPane().getTabs().remove(ManHinhChinhController.tabLoaiHang);
