@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.jfoenix.controls.JFXButton;
 import com.qlbh.app.MainApp;
+import com.qlbh.controller.common.DialogConfirmController;
 import com.qlbh.controller.common.DialogController;
 import com.qlbh.controller.hethong.BackupDataController;
 import com.qlbh.controller.hethong.DoiMatKhauController;
@@ -683,11 +684,37 @@ public class ManHinhChinhController {
 	@FXML
 	void btnHuongDanClick(ActionEvent event){
 		Runtime rt = Runtime.getRuntime();
-		String url = "http://stackoverflow.com";
+		String url1 = "http://perfect.com.vn/huong-dan-su-dung-phan-mem-quan-ly-ban-hang.html";
+		String url2 = "http://perfect.com.vn/video-huong-dan-su-dung-phan-mem-quan-ly-ban-hang.html";
 		try {
-			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
+			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url1);
+			rt.exec( "rundll32 url.dll,FileProtocolHandler " + url2);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	void btnTrucTuyenClick( ActionEvent event){
+		try {
+			Runtime runTime = Runtime.getRuntime();
+			Process process = runTime.exec("C:\\Program Files (x86)\\TeamViewer\\TeamViewer.exe");
+		} catch (IOException e) {
+			DialogConfirmController.show(
+					"Thông báo!!",
+					"Bạn muốn cài đặt teamviewr ",
+					()-> {
+						Runtime rt = Runtime.getRuntime();
+						String url = "https://www.teamviewer.com/vi/";
+						try {
+							rt.exec( "rundll32 url.dll,FileProtocolHandler " + url);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					},
+					null);
 			e.printStackTrace();
 		}
 	}

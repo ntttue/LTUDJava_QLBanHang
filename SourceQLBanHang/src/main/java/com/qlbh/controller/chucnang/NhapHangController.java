@@ -51,6 +51,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -103,6 +104,8 @@ public class NhapHangController {
 	private DatePicker datePickerNhap;
 	@FXML
 	private JFXTextField txtDienThoai;
+	@FXML
+	private Text txtInputValidate;
 
 	public NhapHangController() {
 		super();
