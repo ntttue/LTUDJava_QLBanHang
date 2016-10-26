@@ -58,17 +58,17 @@ public class ThemKhoHangController {
 			return;
 		}
 
-		if (txtDienThoai.getText().isEmpty() == false && CheckValid.isValidPhoneNumber(txtDienThoai.getText()) == true) {
+		if (txtDienThoai.getLength() != 0 && CheckValid.isValidPhoneNumber(txtDienThoai.getText()) == false) {
 			lbValidate.setText("Số điện thoại không hợp lệ");
 			return;
 		}
 
-		if (txtFax.getText().isEmpty() == false && CheckValid.isValidPhoneNumber(txtFax.getText()) == true) {
+		if (txtFax.getLength() != 0 && CheckValid.isValidPhoneNumber(txtFax.getText()) == false) {
 			lbValidate.setText("Số fax không hợp lệ");
 			return;
 		}
 
-		if (txtEmail.getText().isEmpty() == false && CheckValid.isValidEmailAddress(txtEmail.getText()) == false) {
+		if (txtEmail.getLength() != 0 && CheckValid.isValidEmailAddress(txtEmail.getText()) == false) {
 			lbValidate.setText("Email không hợp lệ");
 			return;
 		}
