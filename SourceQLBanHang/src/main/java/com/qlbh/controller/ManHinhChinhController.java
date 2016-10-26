@@ -38,20 +38,47 @@ public class ManHinhChinhController {
 	private AnchorPane anchorPaneMainApp;
 
 	@FXML
-	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnBanHang, btnNhatKyHeThong, btnBackup;
-
+	private JFXButton btnThongTin, btnThongTinTroGiup, btnBoPhan, btnNhatKyHeThong, btnBackup, btnPhanQuyen, btnBackUp, btnPhucHoi,
+	btnQuanLyKhuVuc, btnQuanLyKhachHang, btnQuanLyNhaCungCap, btnQuanLyKhoHang, btnNhanVien, btnBaoCaoKhoHang, btnBaoCaoBanHang,
+	btnChungTu, btnMuaHang, btnBanHang;
 	@FXML
 	private Text lblStatus;
 
 	@FXML
 	private AnchorPane anchorManHinhChinhRoot;
 
-	public void setStatus() {
+	public void setStatusAndRoles() {
 		if (MainApp.loginUser != null) {
 			String status = MainApp.loginUser.getQuyen().getTen() + " - " + MainApp.loginUser.getNhanvien().getTen();
 			lblStatus.setText(status);
 		}
-
+		switch (MainApp.loginUser.getQuyen().getId()) {
+		case 2:
+			btnPhanQuyen.setDisable(true);
+			btnNhatKyHeThong.setDisable(true);
+			btnBackUp.setDisable(true);
+			btnPhucHoi.setDisable(true);
+			btnMuaHang.setDisable(true);
+			btnBanHang.setDisable(true);
+			break;
+		case 3:
+			btnPhanQuyen.setDisable(true);
+			btnNhatKyHeThong.setDisable(true);
+			btnBackUp.setDisable(true);
+			btnPhucHoi.setDisable(true);
+			btnQuanLyKhuVuc.setDisable(true);
+			btnQuanLyKhachHang.setDisable(true);
+			btnQuanLyNhaCungCap.setDisable(true);
+			btnQuanLyKhoHang.setDisable(true);
+			btnBoPhan.setDisable(true);
+			btnNhanVien.setDisable(true);
+			btnBaoCaoKhoHang.setDisable(true);
+			btnBaoCaoBanHang.setDisable(true);
+			btnChungTu.setDisable(true);
+			break;
+		default:
+			break;
+		}
 	}
 
 	public static Tab tabNhapHang = null;
