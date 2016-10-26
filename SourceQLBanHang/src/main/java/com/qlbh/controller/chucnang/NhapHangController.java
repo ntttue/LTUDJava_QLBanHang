@@ -125,6 +125,7 @@ public class NhapHangController {
 		hangHoaHome = new HanghoaHome();
 		phieunhapHome = new PhieunhapHome();
 		chitietphieunhapHome = new ChitietphieunhapHome();
+		txtMaPhieu.setText(phieunhapHome.getMaPhieu());
 		// Load hàng hóa
 		hangHoaList = hangHoaHome.getHangHoaList();
 		// Load nhan vien
@@ -413,14 +414,16 @@ public class NhapHangController {
 		Donvitinh donvitinh = new Donvitinh();
 		donvitinh.setTen("");
 		Hanghoa hanghoa = new Hanghoa();
-		hanghoa.setMa("");
-		hanghoa.setTen("");
+		hanghoa.setMa("Chọn mã");
+		hanghoa.setTen("Chọn tên");
 		hanghoa.setDonvitinh(donvitinh);
 		Chitietphieunhap chitietphieunhap = new Chitietphieunhap(hanghoa, new Phieunhap(), 0, 0d, 0d, "", true, "");
 		tableChiTiet.getItems().add(chitietphieunhap);
 	}
 
 	private void createNew() {
+		String ma = phieunhapHome.getMaPhieu();
+		txtMaPhieu.setText(ma);
 		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
@@ -430,7 +433,6 @@ public class NhapHangController {
 		txtGhiChu.setText("");
 		txtThanhToan.setText("0");
 		txtDienThoai.setText("");
-		txtMaPhieu.setText("");
 
 		modelTableChiTiet.clear();
 		addRowTable();
@@ -438,6 +440,7 @@ public class NhapHangController {
 	}
 
 	private void refresh() {
+		txtMaPhieu.setText(phieunhapHome.getMaPhieu());
 		phieunhap = null;
 		cmbKho.setValue(null);
 		cmbMaNCC.setValue(null);
@@ -447,13 +450,19 @@ public class NhapHangController {
 		txtGhiChu.setText("");
 		txtThanhToan.setText("0");
 		txtDienThoai.setText("");
-		txtMaPhieu.setText("");
-		if (!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().isEmpty()) {
+		if (!modelTableChiTiet.get(modelTableChiTiet.size() - 1).getHanghoa().getTen().equalsIgnoreCase("Chọn tên")) {
 			addRowTable();
 		}
 	}
 
 	private void saveInputBill() {
+		if(txtMaPhieu.getText().isEmpty() || cmbKho.getValue() == null || cmbMaNCC.getValue() == null
+				|| cmbNhanVien.getValue() == null || datePickerNhap.getValue() == null) {
+			txtInputValidate.setText("Phải chọn đầy đủ thông tin phiếu nhập");
+			return;
+		}else{
+			txtInputValidate.setText("");
+		}
 		LocalDate localDate = datePickerNhap.getValue();
 		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 		Date ngayNhap = Date.from(instant);
