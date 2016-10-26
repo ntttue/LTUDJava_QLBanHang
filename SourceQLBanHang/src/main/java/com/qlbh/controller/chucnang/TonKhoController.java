@@ -102,7 +102,6 @@ public class TonKhoController {
 			return new SimpleStringProperty(cellData.getValue().getNhomhanghoa().getTen());
 		});
 
-		
 		tableTonKho.setItems(this.getListHangHoa(khoId));
 		tableTonKho.getColumns().addAll(id, ma, ten, kho, dv, sl, nh);
 	}
