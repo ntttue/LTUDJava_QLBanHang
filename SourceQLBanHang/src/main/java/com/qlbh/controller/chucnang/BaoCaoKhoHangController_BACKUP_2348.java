@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+package com.qlbh.controller.chucnang;
+
+import com.jfoenix.controls.JFXButton;
+import com.qlbh.model.KhohangHome;
+import com.qlbh.pojo.Khohang;
+import com.qlbh.render.combobox.DateOption;
+import com.qlbh.util.DataInputUtils;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
+
+public class BaoCaoKhoHangController {
+	
+	
+}
+=======
 package com.qlbh.controller.chucnang;
 
 import java.util.List;
@@ -129,4 +148,4 @@ public class BaoCaoKhoHangController {
 		tableTonKho.getColumns().addAll(id, ma, ten, dv, sl, dg, tt, nh, kho);
 	}
 }
-
+>>>>>>> 97e3967b4b0a6a1ba1156daad9f599d5ee92f306

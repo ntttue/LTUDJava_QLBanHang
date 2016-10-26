@@ -129,4 +129,3 @@ public class BaoCaoKhoHangController {
 		tableTonKho.getColumns().addAll(id, ma, ten, dv, sl, dg, tt, nh, kho);
 	}
 }
-

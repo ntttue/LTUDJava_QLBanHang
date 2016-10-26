@@ -13,8 +13,6 @@ import org.hibernate.Session;
 
 import com.qlbh.model.common.AbstractDao;
 import com.qlbh.pojo.Loaihang;
-import com.qlbh.pojo.Nhacungcap;
-import com.qlbh.util.DataAccessLayerException;
 import com.qlbh.util.HibernateFactory;
 
 /**
@@ -28,26 +26,6 @@ public class LoaihangHome extends AbstractDao {
 
 	private static final Log log = LogFactory.getLog(LoaihangHome.class);
 
-	public List findAll() throws DataAccessLayerException {
-		return super.findAll(Loaihang.class);
-	}
-
-	public void save(Loaihang lh) {
-		super.save(lh);
-		super.saveNhatKy("Loại hoàng hóa", "Thêm");
-	}
-
-	public void update(Loaihang lh) {
-		super.update(lh);
-		super.saveNhatKy("Loại hoàng hóa", "Cập nhật");
-	}
-
-	public void delete(Loaihang lh) {
-		lh.setActivity(false);
-		super.update(lh);
-		super.saveNhatKy("Loại hoàng hóa", "Xóa");
-	}
-	
 	public List<Loaihang> getLoaiHangList() {
 		Session session = HibernateFactory.openSession();
 		List<Loaihang> loaiHangs = null;
