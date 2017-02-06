@@ -41,7 +41,7 @@
         <property name="activity" type="java.lang.Boolean">
             <column name="activity" />
         </property>
-        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="true" fetch="select">
+        <set name="chitietphieuxuats" table="chitietphieuxuat" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="phieuxuatid" />
             </key>
