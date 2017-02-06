@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="15eab152-fd6d-43b3-bd15-d13cf0f4fc5b"
+  name="QLBanHangUseCase" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="731776a3-f2c6-44fe-81ec-ed6245f51db4"
+        name="Người dùng"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="077a2ed9-a34e-4d05-84e1-38673760731e"
+            isDerived="false"
+            sourceEndRoleName="Người dùng"
+            targetEndRoleName="Đăng nhập"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="07f1c18f-4846-4461-8d55-28d0dd7cf7a8"
+              LastKnownName="Đăng nhập"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f118541f-a5e8-4856-b2ba-4679a03d6ff5"
+                  name="Người dùng"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ca898a55-5a0e-4b3d-9929-18ba7a0e38fe"
+                  name="Đăng nhập"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bd161b7d-a52d-49f9-a3ad-c3c7ac485a30"
+            isDerived="false"
+            sourceEndRoleName="Người dùng"
+            targetEndRoleName="Thoát"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="284a2747-f14e-4585-8348-a803e6558fe7"
+              LastKnownName="Thoát"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9939ad46-df08-4355-9cfa-089f41323eac"
+                  name="Người dùng"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="316ac369-0f05-415d-8d1d-29d0dcabc5c8"
+                  name="Thoát"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="db09651e-77aa-4d21-bd3b-102cbc756720"
+            isDerived="false"
+            sourceEndRoleName="Người dùng"
+            targetEndRoleName="Xem thông tin phần mềm"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="46c3da44-1692-4dc4-9ec5-554279306694"
+              LastKnownName="Xem thông tin phần mềm"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="77f8a0cc-eb42-409f-8c47-2d5615065d8f"
+                  name="Người dùng"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="830853b1-39e2-4db4-8bc0-88780e0fb112"
+                  name="Xem thông tin phần mềm"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="788fe5ca-721f-4d17-951d-f822b838312e"
+        name="Admin"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="b2cb4440-e723-44ff-b8a7-e902a7f7f167"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="731776a3-f2c6-44fe-81ec-ed6245f51db4"
+              LastKnownName="Người dùng"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="44774305-ef03-458a-88a9-b12ec6d0bb0b"
+        name="Quản lý"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="4f263d42-25db-4f02-ad7e-26ec19f57809"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="731776a3-f2c6-44fe-81ec-ed6245f51db4"
+              LastKnownName="Người dùng"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="92ab485e-b914-405a-bddb-ddc97d8ca27f"
+        name="Nhân Viên"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="dcd65827-2ab2-417c-8239-62bbb0568320"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="731776a3-f2c6-44fe-81ec-ed6245f51db4"
+              LastKnownName="Người dùng"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="07f1c18f-4846-4461-8d55-28d0dd7cf7a8"
+        name="Đăng nhập"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fe2073eb-1958-4967-ad3f-257da85c3927"
+        name="Nhớ mật khẩu đăng nhập"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="091db7fe-0a05-46d5-affe-4f5aaa735c95">
+            <useCaseMoniker
+              Id="07f1c18f-4846-4461-8d55-28d0dd7cf7a8"
+              LastKnownName="Đăng nhập"
+              LastKnownLocation="QLBanHangUseCase.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="284a2747-f14e-4585-8348-a803e6558fe7"
+        name="Thoát"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="46c3da44-1692-4dc4-9ec5-554279306694"
+        name="Xem thông tin phần mềm"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

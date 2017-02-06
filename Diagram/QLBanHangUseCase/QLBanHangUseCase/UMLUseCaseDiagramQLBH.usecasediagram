@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="00451150-75dc-4647-8c4f-ce357c379988" name="UMLUseCaseDiagramQLBH" linkedPackageId="ac39c74c-d4d7-4000-ac6a-52675cdb36d4" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="576405e0-70fd-4146-82e7-be9f6908ed00">
+      <profileInstance Id="b5f6e48b-9276-4d03-98d2-d397bee49027" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a8b5f7f9-8219-4a7e-9a3a-ed00961d4ab0">
+      <profileInstance Id="9323bdd1-b69f-450c-9e35-e4407bcee169" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="e04059b7-b990-4203-b105-96d4b96f3854" name="Người dùng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="731776a3-f2c6-44fe-81ec-ed6245f51db4" />
+        <targetEnds>
+          <association Id="6e2cb52c-cde0-4ae3-811b-34b7570c97f6" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Đăng nhập" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="068ae994-cc58-4c42-ba0c-37904a3621f5" LastKnownName="Đăng nhập" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c7b6607d-428c-4592-9818-2078df78b534" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f118541f-a5e8-4856-b2ba-4679a03d6ff5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="534643ee-c3cc-400f-b765-0d3a5bfb6d70" name="Đăng nhập" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ca898a55-5a0e-4b3d-9929-18ba7a0e38fe" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="077a2ed9-a34e-4d05-84e1-38673760731e" />
+          </association>
+          <association Id="408137e7-4232-4666-9add-7a87c33d0e0e" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Thoát" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="699540d3-a730-45cb-8822-0d0997d64fb5" LastKnownName="Thoát" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="104f3ec6-8ac4-47f3-bce9-06925b84b42e" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9939ad46-df08-4355-9cfa-089f41323eac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ccb934b0-a5da-4462-8a81-01cca127c1c8" name="Thoát" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="316ac369-0f05-415d-8d1d-29d0dcabc5c8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bd161b7d-a52d-49f9-a3ad-c3c7ac485a30" />
+          </association>
+          <association Id="d5d43cf9-1cab-4fec-8f2e-43b8c5915db2" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Xem thông tin phần mềm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5c419125-2db8-4ce4-93cb-ab996ec04e86" LastKnownName="Xem thông tin phần mềm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d250a69-23ef-441e-ae04-45c9e9e369d1" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="77f8a0cc-eb42-409f-8c47-2d5615065d8f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="49d1989d-b67a-45e8-b903-bd3030c996ad" name="Xem thông tin phần mềm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="830853b1-39e2-4db4-8bc0-88780e0fb112" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="db09651e-77aa-4d21-bd3b-102cbc756720" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="7357dda8-8cef-486b-af4f-cd9fc714036d" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="788fe5ca-721f-4d17-951d-f822b838312e" />
+        <generalsInternal>
+          <generalization Id="3e874381-7aa9-48b3-ae51-e0973965adaa" isSubstitutable="false">
+            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
+            <elementDefinition Id="b2cb4440-e723-44ff-b8a7-e902a7f7f167" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="27d6a61d-3dca-4f46-bd19-8dd0a7a24f8f" name="Quản lý" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="44774305-ef03-458a-88a9-b12ec6d0bb0b" />
+        <generalsInternal>
+          <generalization Id="91666067-804d-4054-862a-0aff3f341501" isSubstitutable="false">
+            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
+            <elementDefinition Id="4f263d42-25db-4f02-ad7e-26ec19f57809" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="2734ab73-659c-4812-b0d8-8d59f72059d1" name="Nhân Viên" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="92ab485e-b914-405a-bddb-ddc97d8ca27f" />
+        <generalsInternal>
+          <generalization Id="58322efd-1c43-4841-924d-0039e80d41c1" isSubstitutable="false">
+            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
+            <elementDefinition Id="dcd65827-2ab2-417c-8239-62bbb0568320" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="068ae994-cc58-4c42-ba0c-37904a3621f5" name="Đăng nhập" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="07f1c18f-4846-4461-8d55-28d0dd7cf7a8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9303e46c-ce4a-4c04-8c95-6cfe5b37f610" name="Nhớ mật khẩu đăng nhập" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fe2073eb-1958-4967-ad3f-257da85c3927" />
+        <extendedCases>
+          <extend Id="b226a906-2672-4e15-9569-5bd28ab96c82">
+            <useCaseMoniker Id="068ae994-cc58-4c42-ba0c-37904a3621f5" LastKnownName="Đăng nhập" />
+            <elementDefinition Id="091db7fe-0a05-46d5-affe-4f5aaa735c95" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="699540d3-a730-45cb-8822-0d0997d64fb5" name="Thoát" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="284a2747-f14e-4585-8348-a803e6558fe7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5c419125-2db8-4ce4-93cb-ab996ec04e86" name="Xem thông tin phần mềm" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="46c3da44-1692-4dc4-9ec5-554279306694" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="ac39c74c-d4d7-4000-ac6a-52675cdb36d4" name="QLBanHangUseCase">
+    <elementDefinition Id="15eab152-fd6d-43b3-bd15-d13cf0f4fc5b" />
+  </package>
+</useCaseModelRoot>
