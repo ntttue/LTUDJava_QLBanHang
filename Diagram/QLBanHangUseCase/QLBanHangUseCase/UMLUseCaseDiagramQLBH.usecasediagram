@@ -2,7 +2,7 @@
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="00451150-75dc-4647-8c4f-ce357c379988" name="UMLUseCaseDiagramQLBH" linkedPackageId="ac39c74c-d4d7-4000-ac6a-52675cdb36d4" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <packagedElements>
     <useCaseModelRootHasTypes>
-      <actor Id="e04059b7-b990-4203-b105-96d4b96f3854" name="Người dùng" isAbstract="false" isLeaf="false">
+      <actor Id="e04059b7-b990-4203-b105-96d4b96f3854" name="Nhân viên" isAbstract="false" isLeaf="false">
         <elementDefinition Id="731776a3-f2c6-44fe-81ec-ed6245f51db4" />
         <targetEnds>
           <association Id="6e2cb52c-cde0-4ae3-811b-34b7570c97f6" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Đăng nhập" isLeaf="false" isAbstract="false">
@@ -69,6 +69,166 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="6cc42e9a-5676-4284-8bb2-329b53225881" />
           </association>
+          <association Id="87d66283-5fa3-45ef-9e92-a78fe3f276b9" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Đăng ký" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="15c769df-7469-46e0-97a6-7f8a5861295c" LastKnownName="Đăng ký" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9245d63b-cc11-4464-8017-5aee854fd67f" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="92add6bc-2d55-44aa-8d74-34adce6b3c58" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f5dcc32e-c61a-4674-a8c5-05a6f3ad1267" name="Đăng ký" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8f086d6e-1d66-4169-ae9a-43501bbeb3fe" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f629cec1-5441-46aa-9a9b-e4ceee35e6ee" />
+          </association>
+          <association Id="2df4444c-462c-4b7d-a2d3-b14b789d805f" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Hướng dẫn sử dụng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3cf56781-b852-4b40-b65f-b53c69c0b4d8" LastKnownName="Hướng dẫn sử dụng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f5336e0f-6f3a-42d2-b45b-05afeba4df40" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7256abe7-db76-4c38-9628-bb2d6e3c664e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9704d622-ba8e-4ace-a949-f4f083f2ae7d" name="Hướng dẫn sử dụng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bc79400a-a6ba-48cb-9085-e1b75797427f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4da22621-7b46-4b61-b011-6d34affa3ea2" />
+          </association>
+          <association Id="b3a925e8-a1ae-4bac-87e7-4fc5c6a20fe0" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Hỗ trợ trực tuyến" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="af47b691-6cce-46a0-9794-b114bfc4eca2" LastKnownName="Hỗ trợ trực tuyến" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="37604b0c-6895-4a97-964e-21e121c7d412" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c2c359b2-7a5d-4db2-a5f8-57610078d4e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="242c4bdc-5208-48fe-926a-c8aa6fbe44cf" name="Hỗ trợ trực tuyến" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b4f01b21-7b85-480d-9487-4b30b6eba4a3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="66fafdf4-2581-4d85-8104-fe39a35f17c2" />
+          </association>
+          <association Id="17bb50fa-8a32-4db2-a065-1a7ea4f11d8f" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Mua hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="baf2958a-dba1-4f0f-86eb-87fe1304d563" LastKnownName="Mua hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd652289-8db2-4e21-82cd-c746dd576a34" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b24486b3-6385-4eee-9ca4-4f24eb908e84" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="30cf279f-e893-41fd-b591-7d5835e8770f" name="Mua hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="002dc58c-e827-44b7-94f4-924073d7cecd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a71aeec2-c6a0-4941-96ad-4ed55ce8132e" />
+          </association>
+          <association Id="e8b085f1-4e03-4159-95c6-97f1771510ca" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Bán hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="091fd386-3391-42af-ae2e-661d58bfa3ac" LastKnownName="Bán hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd12ad01-692b-49c9-9cdc-e54e96752b6c" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="916454cd-6b6e-4120-9415-42679d1692ef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0d62dc3a-500d-4b9d-91ee-e0c25e7412db" name="Bán hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f9c45a4d-0626-46a2-b2f1-f2d7a475c778" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9c1b35f9-ba1d-4d0f-bd42-dfb38ca12121" />
+          </association>
+          <association Id="62806809-2081-4ece-bcd4-9e25bdde2cb9" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Chuyển kho" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="83a57ffa-6399-4d99-86f2-b7604587361d" LastKnownName="Chuyển kho" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="790e3d5c-8554-46f0-acef-5a795a70af2d" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cc64522b-6f8f-4ce3-8237-1f441c4a5def" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c3fc4f1b-057d-418a-bb5b-f14bfbe6207b" name="Chuyển kho" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="757b2721-38a1-4db6-9d83-92c86f52ddef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa754665-8fb5-4f1f-ada7-4be8f09e9bea" />
+          </association>
+          <association Id="e1dde86e-6ef0-404b-93cc-3b849d76d2ca" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Thu tiền" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1aa996a4-a2fc-4f1e-8104-09a7c36e50c3" LastKnownName="Thu tiền" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d9d490a4-a12e-48ae-8152-1dd7cff953aa" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8bd7e779-b4ad-4a3d-951a-02ce196e6efe" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f9fd8cc6-4cca-4b9d-9240-30ed936d4017" name="Thu tiền" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="56ef1bc6-732c-4f89-b674-b7e10ef87425" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="96f5a224-3d92-423f-a47a-6a00404af8e1" />
+          </association>
+          <association Id="aecc08a1-5c57-43d7-8f0e-bae463f35234" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Trả tiền" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6e7e9060-55dd-4697-acf9-7cbd0f9f0bb9" LastKnownName="Trả tiền" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="90a50992-dcf0-4bcb-848a-f2f1f0cfdc80" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="01d38a08-8a70-4569-b1e9-ce1231e6701c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="16b096b6-976f-43b2-a641-54efca30a37d" name="Trả tiền" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0d4dca47-71b1-4ea3-b52a-93f2ddca0529" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="33c47556-8e58-4c59-bb59-3e0f26cdd661" />
+          </association>
+          <association Id="68496efb-99e4-4c04-93dc-09848ca8f4ea" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Xem thông tin" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f70f8bf0-4eee-422e-987c-8b1dd43386ce" LastKnownName="Xem thông tin" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c4a5cd60-a5f5-4860-b857-f7cf02f1c64a" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3e39ce28-8175-4a6b-a1a6-dc9b7c65f9e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4be2c732-2d2a-48b8-a24a-d77e8d8df0a7" name="Xem thông tin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2e066b6f-5f06-49e6-bbb7-4583b545ba01" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="80a270e2-ed08-43dd-9f2e-02dbc7631c97" />
+          </association>
+          <association Id="d790fc8a-2a62-43cb-b289-f12202c87dbc" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Cập nhật phần mềm" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4b4cdcb4-1bdf-4d79-87e5-8fd72107bb30" LastKnownName="Cập nhật phần mềm" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bc633985-8ca5-4904-b523-49abb044f1f7" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ac2835a6-e168-4400-91ff-ed7d4f21b463" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6eb923ae-1df3-42c6-8601-b11fca4a4338" name="Cập nhật phần mềm" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="199caf79-bfce-42cd-86ff-c33918752d9f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fe30055d-4909-487b-b23a-47858e4dda40" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
@@ -76,28 +236,12 @@
       <actor Id="7357dda8-8cef-486b-af4f-cd9fc714036d" name="Admin" isAbstract="false" isLeaf="false">
         <elementDefinition Id="788fe5ca-721f-4d17-951d-f822b838312e" />
         <generalsInternal>
-          <generalization Id="3e874381-7aa9-48b3-ae51-e0973965adaa" isSubstitutable="false">
-            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
-            <elementDefinition Id="b2cb4440-e723-44ff-b8a7-e902a7f7f167" />
+          <generalization Id="eac9c9d5-93a8-407e-be26-e25cfa515bee" isSubstitutable="false">
+            <actorMoniker Id="27d6a61d-3dca-4f46-bd19-8dd0a7a24f8f" LastKnownName="Quản lý" />
+            <elementDefinition Id="ccb3f4c9-ef48-49ba-bb9c-28d9b584baee" />
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="df7e9947-c1cd-4ae2-88a1-8482e3d93b24" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Quản lý người dùng" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="3993bd9d-fb74-469a-a743-346df4251ba1" LastKnownName="Quản lý người dùng" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="30a21500-3382-4bed-a4ca-4e1d2f3c18ed" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="2e420716-af3a-44ee-b38e-590c836226e8" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="742dbb14-35ec-4d78-813f-59d165a9537c" name="Quản lý người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="6e3723b6-2d58-4ee5-94f0-abb115eac52e" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="0a7c40fe-ce8b-4cac-9721-f7653e22426f" />
-          </association>
           <association Id="d5711cd4-3162-458e-a247-8a76fff2574b" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Sao lưu dữ liệu " isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="2cc44703-90ee-4cc7-87bd-ad30b4fa9fbf" LastKnownName="Sao lưu dữ liệu " />
             <relationshipOwnedElementsInternal>
@@ -130,21 +274,37 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="fccf3bd5-85a2-4ef8-9d2e-ad9a7b56bba2" />
           </association>
-          <association Id="6becc916-5234-4e20-81ed-b226e9fea841" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Quản lý khu vực" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="b75249f5-96b1-4d5a-909e-0e847f75f46d" LastKnownName="Quản lý khu vực" />
+          <association Id="b90b0642-1836-4fd6-abd9-b13789ffd532" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Quản lý người dùng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3993bd9d-fb74-469a-a743-346df4251ba1" LastKnownName="Quản lý người dùng" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="5260de2d-56cd-4209-8700-067da308937d" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="6e955417-d3b2-43d6-9388-2eed4cb33691" />
+                <memberEnd Id="3d18156f-2c06-40fb-a310-9dd1d3229ee2" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3a5d63e2-0838-4b5e-ad62-dda6ff2d321e" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="f1018169-ef71-4fad-b821-ba76c70e6cad" name="Quản lý khu vực" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="8d12a90e-8a65-4fcf-b61a-7d3e5c02e061" />
+                <memberEnd Id="ede2a712-4a28-4e18-8895-a194f2e2b0ce" name="Quản lý người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="02956772-97be-409f-b643-96c63f75a2eb" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="6c56a9d5-7b25-4174-bd92-3b28f078b6be" />
+            <elementDefinition Id="f9058895-23b5-45d4-8d20-0599e14541eb" />
+          </association>
+          <association Id="eec44f5e-f4ed-4ce9-98a9-836887d61551" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Nhật ký hệ thông" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1aeed911-98b0-4cf7-87e9-d4c030abea28" LastKnownName="Nhật ký hệ thông" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c7731b2f-c517-4106-b309-fbf505b7e96c" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fb5fefb2-e8c0-49df-84e8-28d85a8f484f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="621c6b53-81b5-4960-8b6a-e9c9ffdb72e4" name="Nhật ký hệ thông" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b8a1855c-5e20-4a0e-8942-f10f90372676" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3f83fae3-7b7e-451e-835e-42b08753ae4d" />
           </association>
         </targetEnds>
       </actor>
@@ -154,7 +314,7 @@
         <elementDefinition Id="44774305-ef03-458a-88a9-b12ec6d0bb0b" />
         <generalsInternal>
           <generalization Id="91666067-804d-4054-862a-0aff3f341501" isSubstitutable="false">
-            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
+            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Nhân viên" />
             <elementDefinition Id="4f263d42-25db-4f02-ad7e-26ec19f57809" />
           </generalization>
         </generalsInternal>
@@ -319,18 +479,71 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="58836d6d-1727-47e2-bae1-84ad07cafab3" />
           </association>
+          <association Id="7d1bddf8-5750-4133-9714-12f7e05491d7" isDerived="false" sourceEndRoleName="Quản lý" targetEndRoleName="Thống kê tồn kho" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="29eeba98-8f74-4965-b2c0-3aed7e92cb08" LastKnownName="Thống kê tồn kho" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="aef459c3-b3b2-48dc-a872-8f27cda71ac4" name="Quản lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5a9d2230-a79b-4d94-aa31-33f462470daf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2cf3810c-8389-4777-8a6e-59df47bcab9b" name="Thống kê tồn kho" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5ed71d78-c790-4281-bc33-6b639e568932" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fc6a0b32-3135-43bf-893a-4220f44315ec" />
+          </association>
+          <association Id="8ef78290-6b27-4480-a883-a818e63a6ad9" isDerived="false" sourceEndRoleName="Quản lý" targetEndRoleName="Báo cáo kho hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d5610f30-aa4b-488d-b053-c7fd2807ea69" LastKnownName="Báo cáo kho hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d32224bd-8197-4d5e-95d6-7c43e3fa1311" name="Quản lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f0e28e99-5c62-423f-a1b9-57b804093192" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1399e4ae-c5c8-4ce3-8bfa-a8ae525f3c5f" name="Báo cáo kho hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ccca4bdd-6719-401d-a3a9-55e1a87a5ae7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9616cef1-a300-4daf-a796-aabe0a810a11" />
+          </association>
+          <association Id="fdd0521c-0e66-4231-b681-106c1e7e8196" isDerived="false" sourceEndRoleName="Quản lý" targetEndRoleName="Báo cáo bán hàng" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="93d192cf-b569-452d-a44f-7caf1c339191" LastKnownName="Báo cáo bán hàng" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5530283c-8992-4950-bc40-b97774a602a9" name="Quản lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7784689d-17f9-420d-afcb-1d672120a49f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a3af7a0c-4a8b-4ba3-932a-f229ef01e998" name="Báo cáo bán hàng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6c93d97e-70c8-4153-b996-4190f7eea5cd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b78fbea2-7704-4e4f-91d1-cb9f9c0b6875" />
+          </association>
+          <association Id="1d1789d6-969e-4308-883a-3ebd08d42cbf" isDerived="false" sourceEndRoleName="Quản lý" targetEndRoleName="Quản lý chứng từ" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="014436a0-e3fa-4724-87a7-97db738eb0d1" LastKnownName="Quản lý chứng từ" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e067d0fa-da8e-4a69-b1b3-354fc1cc51a4" name="Quản lý" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d604b650-fed1-4888-b53a-474f8627f00f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1667b068-58b4-4bd2-9649-c321cffe64f0" name="Quản lý chứng từ" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3db55cd2-02ed-47c2-8e89-e52f02410965" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="30a2a364-c3ee-4c1c-b9df-6df85fe7a463" />
+          </association>
         </targetEnds>
-      </actor>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <actor Id="2734ab73-659c-4812-b0d8-8d59f72059d1" name="Nhân Viên" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="92ab485e-b914-405a-bddb-ddc97d8ca27f" />
-        <generalsInternal>
-          <generalization Id="58322efd-1c43-4841-924d-0039e80d41c1" isSubstitutable="false">
-            <actorMoniker Id="e04059b7-b990-4203-b105-96d4b96f3854" LastKnownName="Người dùng" />
-            <elementDefinition Id="dcd65827-2ab2-417c-8239-62bbb0568320" />
-          </generalization>
-        </generalsInternal>
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -479,24 +692,6 @@
     <useCaseModelRootHasTypes>
       <useCase Id="0c98c3e7-b5c2-4563-a86f-12ecf77d7c1c" name="Quản lý nhà cung cấp" isAbstract="false" isLeaf="false">
         <elementDefinition Id="67780aad-2a8a-4073-a05f-f98dbdc3d864" />
-        <targetEnds>
-          <association Id="f43cf23b-159f-4ddf-a5ec-11e9284e5f99" isDerived="false" sourceEndRoleName="Quản lỳ nhà cung cấp" targetEndRoleName="Xóa nhà cung cấp" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="1ef9a091-c712-471d-98e5-dbc2c58aa98d" LastKnownName="Xóa nhà cung cấp" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="ab98a75f-1bfb-47f1-8160-5c90a0d81669" name="Quản lỳ nhà cung cấp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="7f9c4041-9114-4736-8512-33d929f02334" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="053b30e0-989c-4e30-9ef2-293ad5154dd4" name="Xóa nhà cung cấp" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="020d5127-1e7e-4384-8916-5d234c03e7ec" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="6dd2e5d4-761f-49a5-a7b9-a5d7ee6b35be" />
-          </association>
-        </targetEnds>
         <additions>
           <include Id="96fa7894-321d-4a20-b228-67b40ad60de3">
             <useCaseMoniker Id="4c4b55bc-e4a8-40e0-92d5-75859951c0d0" LastKnownName="Thêm nhà cung cấp" />
@@ -505,6 +700,10 @@
           <include Id="d21c22f0-b1ee-4342-97d9-38382629696b">
             <useCaseMoniker Id="9a9db471-5829-42f1-9b25-3a32b55addec" LastKnownName="Cập nhật thông tin nhà cung cấp" />
             <elementDefinition Id="4647cbc4-e583-401e-87a7-22e3592a4d6f" />
+          </include>
+          <include Id="40c893b8-626a-4e46-985b-595259956b31">
+            <useCaseMoniker Id="1ef9a091-c712-471d-98e5-dbc2c58aa98d" LastKnownName="Xóa nhà cung cấp" />
+            <elementDefinition Id="2d20d211-891f-473d-b877-01feca762245" />
           </include>
         </additions>
       </useCase>
@@ -527,36 +726,134 @@
     <useCaseModelRootHasTypes>
       <useCase Id="f90908fe-0681-411c-9422-4e5e37107be4" name="Quản lý kho hàng" isAbstract="false" isLeaf="false">
         <elementDefinition Id="c68424c2-61a4-4814-aaaf-431caf5e2039" />
+        <additions>
+          <include Id="f712df6d-e046-4950-9975-940894328c28">
+            <useCaseMoniker Id="162f231a-1dd3-4fed-8ed7-9f355b2734a4" LastKnownName="Thêm kho hàng" />
+            <elementDefinition Id="fda6a6e1-1c5a-4cbe-a974-fa2fdd31d921" />
+          </include>
+          <include Id="659c0be7-669e-4578-828c-5284fdc72d41">
+            <useCaseMoniker Id="aeb09425-133d-424d-860e-238f6e7f73fd" LastKnownName="Cập nhật thông tin kho hàng" />
+            <elementDefinition Id="2d588d22-8f01-4604-ad48-fae71b984bac" />
+          </include>
+          <include Id="7fbd2b21-206d-4ec3-b321-42b1d84bba31">
+            <useCaseMoniker Id="1ef988b2-54ef-4c9b-b0b8-d8b66d89e38b" LastKnownName="Xóa kho hàng" />
+            <elementDefinition Id="1eb1bf11-c7c7-4520-a0b0-732c19b000de" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="f8f7217a-cb78-4456-a207-4fb71ff56ec8" name="Quản lý đơn vị tính" isAbstract="false" isLeaf="false">
         <elementDefinition Id="c42ee087-6301-470e-9def-d4e6e1d2b3b3" />
+        <additions>
+          <include Id="652790d9-dc54-457b-9261-ec1c6cf6e849">
+            <useCaseMoniker Id="9553d27c-efbd-4fac-b085-0c41add4bd7a" LastKnownName="Thêm đơn vị tính" />
+            <elementDefinition Id="35c41fbd-bbcb-48a6-bdfd-e747afc33d51" />
+          </include>
+          <include Id="f2213666-6630-4f0d-a0ee-6b12b628aefb">
+            <useCaseMoniker Id="7f9d711f-b60f-4541-9cc0-a6833f6f1940" LastKnownName="Cập nhật thông tin đơn vị tính" />
+            <elementDefinition Id="119bd530-6c47-49f1-a27c-a047feac4eb7" />
+          </include>
+          <include Id="7fe520d7-f5c6-4e1f-97e8-d94ab063ffa9">
+            <useCaseMoniker Id="a8aa702e-3039-409a-8741-3a8f5f769844" LastKnownName="Xóa đơn vị tính" />
+            <elementDefinition Id="2e1f471a-32d2-44e7-b644-14ab84369585" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="ae31bf7c-9253-4bfc-8099-b5ff9266f7ad" name="Quản lý nhóm hàng" isAbstract="false" isLeaf="false">
         <elementDefinition Id="fd1b0d4d-e64d-4f2f-b618-f191f649430c" />
+        <additions>
+          <include Id="16e5b14e-4b9f-4a07-8651-f52641df4ccd">
+            <useCaseMoniker Id="3378e2db-79f6-45dd-bbf3-cf9f511f07a4" LastKnownName="Thêm nhóm hàng" />
+            <elementDefinition Id="3f331dfd-0e87-4021-8031-3076247efeb2" />
+          </include>
+          <include Id="4bcf8db6-1c34-4b03-bee7-53b2c3045e8e">
+            <useCaseMoniker Id="1285ba36-5c37-4aad-87a0-9a0ab0a09e5a" LastKnownName="Cập nhật thông tin nhóm hàng" />
+            <elementDefinition Id="c6a29c30-407e-4c52-a82f-4a3cc26913ee" />
+          </include>
+          <include Id="38533db9-64bf-4b83-9898-bb76832cdc95">
+            <useCaseMoniker Id="3c33b264-205e-402e-82ae-5f2a10ec046f" LastKnownName="Xóa nhóm hàng" />
+            <elementDefinition Id="a9b4d62c-7a3d-466c-b115-220623433cf4" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="bd915a40-1c40-4d08-a7e9-d90bd3e81391" name="Quản lý hàng hóa" isAbstract="false" isLeaf="false">
         <elementDefinition Id="b079488d-0a87-4fb4-b237-1c034617f8b7" />
+        <additions>
+          <include Id="18793fc3-6239-4620-b5b8-39d36a54734f">
+            <useCaseMoniker Id="24250aaf-bdf6-466e-bf31-5e76536252e8" LastKnownName="Thêm hàng hóa" />
+            <elementDefinition Id="2186ae71-77c6-4453-b2a0-24e76d7652a8" />
+          </include>
+          <include Id="32f6dc17-9c01-462d-9c36-eddcc500711a">
+            <useCaseMoniker Id="07ce1c54-3751-4484-95ba-ab0541a106a0" LastKnownName="Cập nhật thông tin hàng hóa" />
+            <elementDefinition Id="ef18fbee-c876-4c96-ac7d-3f87b0b5b038" />
+          </include>
+          <include Id="bd57bb9f-39f6-490f-905c-de802b877722">
+            <useCaseMoniker Id="ee9edc4f-b4a1-4c59-a5cd-2eb8fdf69914" LastKnownName="Xóa hàng hóa" />
+            <elementDefinition Id="d8d04829-4b81-4583-9415-5f6a9d3323e4" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="bf7e30e2-2239-44dd-9686-eda39f648cbc" name="Quản lý tỷ giá" isAbstract="false" isLeaf="false">
         <elementDefinition Id="6db101dd-1c2e-4420-9c4c-14a44eba53e5" />
+        <additions>
+          <include Id="798640af-f34f-464e-a48e-71c9c6f4f032">
+            <useCaseMoniker Id="8d596b36-7a7f-4c48-b3d3-a7b5e24e92ba" LastKnownName="Thêm tỷ giá" />
+            <elementDefinition Id="6aa9fc94-1848-47bf-ac13-40dae473e3c4" />
+          </include>
+          <include Id="f9aca66a-8d7e-4996-9a51-bb0eba58da23">
+            <useCaseMoniker Id="3f6f0e6b-31d0-44c2-b312-8410dd2be61a" LastKnownName="Cập nhật tỷ giá" />
+            <elementDefinition Id="69d5f303-2c11-44e1-bb65-782632040961" />
+          </include>
+          <include Id="441232a5-253a-4557-a38b-ce2655da9e98">
+            <useCaseMoniker Id="53582bfb-b105-4292-b65a-c3ce09768759" LastKnownName="Xóa tý giá" />
+            <elementDefinition Id="75a47ae6-f36d-443c-87ec-e90ec68a8cdd" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="734ce4d0-8f77-4a2b-8d79-ab4b11d95b38" name="Quản lý bộ phận công ty" isAbstract="false" isLeaf="false">
         <elementDefinition Id="6adee2a4-2f6e-4813-9f44-f8adaa406cbb" />
+        <additions>
+          <include Id="525cd438-fdde-4f80-af21-40a8cbc292b8">
+            <useCaseMoniker Id="625e745a-bc21-44ed-b8a8-98c9b272e07f" LastKnownName="Thêm bộ phận công ty" />
+            <elementDefinition Id="a634c55e-7163-410b-b797-6ca63886e5c9" />
+          </include>
+          <include Id="250d831d-6554-4176-b6fd-497e64cd1bcc">
+            <useCaseMoniker Id="d0313b02-90d0-4dfe-a056-4cad9d671388" LastKnownName="Cập nhật thông tin bộ phận công ty" />
+            <elementDefinition Id="61534e1c-c951-4230-af8e-a2dad8e9cb42" />
+          </include>
+          <include Id="87e0dba7-8c6c-4140-ba6b-7f91c60e8bf9">
+            <useCaseMoniker Id="bc50a3ed-964a-4c3e-8093-ecd5529496c8" LastKnownName="Xoa bộ phận" />
+            <elementDefinition Id="263c08e1-ee7c-47d2-8dee-ff1af2b69613" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="9adc0da7-e836-4618-b539-5974f8671c33" name="Quản lý nhân viên" isAbstract="false" isLeaf="false">
         <elementDefinition Id="ed7e953b-56fc-4c53-8548-b0c53cec5761" />
+        <additions>
+          <include Id="0258e2e3-3699-4ae8-8e7c-53a86dedc0e2">
+            <useCaseMoniker Id="4efde3c9-f189-40c9-abd1-f8bd5586eb51" LastKnownName="Thêm nhân viên" />
+            <elementDefinition Id="fc632d9e-09f2-456a-be4d-672d8df79514" />
+          </include>
+          <include Id="71bc4911-c5e3-4635-ac88-fa72fde65112">
+            <useCaseMoniker Id="6d4689b8-81f6-45bc-af08-8ffbb22e2ba3" LastKnownName="Cập nhật thông tin nhân viên" />
+            <elementDefinition Id="fa196d61-7a2c-4f78-b5d2-1f3044e5e13d" />
+          </include>
+          <include Id="0be2314f-5e59-4374-bbd0-ec0aed3ecfda">
+            <useCaseMoniker Id="faf4a7dc-5a8e-44f1-a31f-55178b88b397" LastKnownName="Xóa nhân viên" />
+            <elementDefinition Id="552ffdbd-9ae4-4cbe-a6a5-51a4a4083622" />
+          </include>
+        </additions>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -627,6 +924,116 @@
     <useCaseModelRootHasTypes>
       <useCase Id="4b4cdcb4-1bdf-4d79-87e5-8fd72107bb30" name="Cập nhật phần mềm" isAbstract="false" isLeaf="false">
         <elementDefinition Id="066419c4-210d-46d6-b604-455908d1b0a8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="162f231a-1dd3-4fed-8ed7-9f355b2734a4" name="Thêm kho hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4a5caabd-4bbd-4ad9-9841-ef06f420e12f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="aeb09425-133d-424d-860e-238f6e7f73fd" name="Cập nhật thông tin kho hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d5ebf9de-d584-4f54-8a81-ee6e607cb09b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1ef988b2-54ef-4c9b-b0b8-d8b66d89e38b" name="Xóa kho hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="faf57fae-3bf6-4089-a9b9-a855e0c896b4" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9553d27c-efbd-4fac-b085-0c41add4bd7a" name="Thêm đơn vị tính" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c275dd4d-6a76-4288-9a97-572d211299f3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7f9d711f-b60f-4541-9cc0-a6833f6f1940" name="Cập nhật thông tin đơn vị tính" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6b93be49-f13c-4136-8be3-843d0c4fd773" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a8aa702e-3039-409a-8741-3a8f5f769844" name="Xóa đơn vị tính" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b8489e09-18da-4230-a0f5-646d53410e7b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3378e2db-79f6-45dd-bbf3-cf9f511f07a4" name="Thêm nhóm hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="36dd0487-becd-4922-b0e3-debb1ac952d5" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1285ba36-5c37-4aad-87a0-9a0ab0a09e5a" name="Cập nhật thông tin nhóm hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="00726395-0e20-4317-9c1e-1a5cbfa12293" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3c33b264-205e-402e-82ae-5f2a10ec046f" name="Xóa nhóm hàng" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1a0cc9e6-85ad-4fb2-a529-13a7970a4c91" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4efde3c9-f189-40c9-abd1-f8bd5586eb51" name="Thêm nhân viên" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="39d294f7-c997-4bf4-8330-377275a6953f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6d4689b8-81f6-45bc-af08-8ffbb22e2ba3" name="Cập nhật thông tin nhân viên" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aac4d57a-3315-4b9d-a20e-4b54e31bafb8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="faf4a7dc-5a8e-44f1-a31f-55178b88b397" name="Xóa nhân viên" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="64b5d9db-0fb8-40ae-92f4-2677611cb4a8" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8d596b36-7a7f-4c48-b3d3-a7b5e24e92ba" name="Thêm tỷ giá" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9863cbdb-7288-4a0f-96c4-d1768e875264" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3f6f0e6b-31d0-44c2-b312-8410dd2be61a" name="Cập nhật tỷ giá" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="09c3e5f0-b2ed-4bee-9b32-a6692ceccdbd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="53582bfb-b105-4292-b65a-c3ce09768759" name="Xóa tý giá" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5d317e99-827e-4036-8092-165b33ff1b1a" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="625e745a-bc21-44ed-b8a8-98c9b272e07f" name="Thêm bộ phận công ty" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6a7e662c-ecdc-4093-bcbc-08c3a38050db" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d0313b02-90d0-4dfe-a056-4cad9d671388" name="Cập nhật thông tin bộ phận công ty" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aa11d1b4-6dbf-4750-881c-17bac6a7c79d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bc50a3ed-964a-4c3e-8093-ecd5529496c8" name="Xoa bộ phận" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="abba8ccd-600a-4748-9e91-09b87d567bd0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="24250aaf-bdf6-466e-bf31-5e76536252e8" name="Thêm hàng hóa" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="eddf545d-4a39-46e7-a033-69f55369bf51" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="07ce1c54-3751-4484-95ba-ab0541a106a0" name="Cập nhật thông tin hàng hóa" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="42058efb-5761-4da4-8443-ca119d7ec8c7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ee9edc4f-b4a1-4c59-a5cd-2eb8fdf69914" name="Xóa hàng hóa" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9eb9b8f6-39d8-49ce-a6d1-a271c6036718" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1aeed911-98b0-4cf7-87e9-d4c030abea28" name="Nhật ký hệ thông" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9ca5dd67-2631-4fe1-9653-6aeee1d35e53" />
       </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>
