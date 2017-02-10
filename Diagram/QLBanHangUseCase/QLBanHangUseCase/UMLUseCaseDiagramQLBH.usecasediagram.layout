@@ -558,18 +558,6 @@
         <useCaseShapeMoniker Id="0273f857-a3d9-478f-bd98-a60d01fda4a9" />
       </nodes>
     </useCaseAssociationConnector>
-    <useCaseShape Id="0dd0994c-72a5-4f3b-afca-4b22de685e09" absoluteBounds="18, 3.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
-      <useCaseMoniker Id="f70f8bf0-4eee-422e-987c-8b1dd43386ce" LastKnownName="Xem thông tin" />
-      <relativeChildShapes />
-    </useCaseShape>
-    <useCaseAssociationConnector edgePoints="[(13.75 : 4.11309523809524); (18.0005659311378 : 4.01189128735386)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
-      <associationMoniker Id="68496efb-99e4-4c04-93dc-09848ca8f4ea" />
-      <relativeChildShapes />
-      <nodes>
-        <actorShapeMoniker Id="dd183feb-6b7c-4540-a9ed-99a817ec9617" />
-        <useCaseShapeMoniker Id="0dd0994c-72a5-4f3b-afca-4b22de685e09" />
-      </nodes>
-    </useCaseAssociationConnector>
     <useCaseShape Id="0673c4e8-2911-4cfb-b40d-f87297f916b9" absoluteBounds="20.25, 4.375, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
       <useCaseMoniker Id="4b4cdcb4-1bdf-4d79-87e5-8fd72107bb30" LastKnownName="Cập nhật phần mềm" />
       <relativeChildShapes />

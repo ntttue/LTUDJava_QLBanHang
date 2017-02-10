@@ -197,22 +197,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="33c47556-8e58-4c59-bb59-3e0f26cdd661" />
           </association>
-          <association Id="68496efb-99e4-4c04-93dc-09848ca8f4ea" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Xem thông tin" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="f70f8bf0-4eee-422e-987c-8b1dd43386ce" LastKnownName="Xem thông tin" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="c4a5cd60-a5f5-4860-b857-f7cf02f1c64a" name="Người dùng" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="3e39ce28-8175-4a6b-a1a6-dc9b7c65f9e6" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="4be2c732-2d2a-48b8-a24a-d77e8d8df0a7" name="Xem thông tin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="2e066b6f-5f06-49e6-bbb7-4583b545ba01" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="80a270e2-ed08-43dd-9f2e-02dbc7631c97" />
-          </association>
           <association Id="d790fc8a-2a62-43cb-b289-f12202c87dbc" isDerived="false" sourceEndRoleName="Người dùng" targetEndRoleName="Cập nhật phần mềm" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="4b4cdcb4-1bdf-4d79-87e5-8fd72107bb30" LastKnownName="Cập nhật phần mềm" />
             <relationshipOwnedElementsInternal>
@@ -914,11 +898,6 @@
     <useCaseModelRootHasTypes>
       <useCase Id="15c769df-7469-46e0-97a6-7f8a5861295c" name="Đăng ký" isAbstract="false" isLeaf="false">
         <elementDefinition Id="c61b6249-0ab2-4191-af8f-66bcb217fc10" />
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="f70f8bf0-4eee-422e-987c-8b1dd43386ce" name="Xem thông tin" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="fdd116d1-da87-4085-8cbe-bb0697a34baf" />
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
