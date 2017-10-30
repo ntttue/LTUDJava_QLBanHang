@@ -1,6 +1,7 @@
 # LTUDJava_QLBanHang
 Đồ án môn "Phân tích và thiết kế phần mềm" - Xây dựng ứng dụng quản lý bán hàng.
-Java. 
+<br/>
+<h2 style="color:#3399ff;"> Java </h2>
 
 ![screenshot_6](https://user-images.githubusercontent.com/6711997/32153003-4087f492-bd5a-11e7-9c13-5df2c16d4f18.png)
 
