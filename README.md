@@ -5,7 +5,9 @@ Xây dựng ứng dụng quản lý bán hàng.
 
 ![screenshot_6](https://user-images.githubusercontent.com/6711997/32153003-4087f492-bd5a-11e7-9c13-5df2c16d4f18.png)
 
-<h2> Báo Cáo:</h2> [Báo cáo - Đồ án](https://github.com/ntttue/LTUDJava_QLBanHang/tree/master/BaoCao)
+<h2>Báo cáo đồ án</h2>
+
+[Báo cáo đồ án](https://github.com/ntttue/LTUDJava_QLBanHang/tree/master/BaoCao/images)
 <br/>
 
 <h2>Một vài chức năng trong đồ án: </h2>
